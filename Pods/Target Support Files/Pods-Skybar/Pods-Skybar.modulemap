@@ -1,0 +1,6 @@
+framework module Pods_Skybar {
+  umbrella header "Pods-Skybar-umbrella.h"
+
+  export *
+  module * { export * }
+}

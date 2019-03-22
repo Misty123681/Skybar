@@ -1,0 +1,39 @@
+PODS:
+  - ActionSheetPicker-3.0 (2.3.0)
+  - Charts (3.2.2):
+    - Charts/Core (= 3.2.2)
+  - Charts/Core (3.2.2)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
+  - IQKeyboardManagerSwift (6.2.0)
+  - OneSignal (2.9.5)
+
+DEPENDENCIES:
+  - ActionSheetPicker-3.0
+  - Charts
+  - Crashlytics
+  - Fabric
+  - IQKeyboardManagerSwift
+  - OneSignal
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ActionSheetPicker-3.0
+    - Charts
+    - Crashlytics
+    - Fabric
+    - IQKeyboardManagerSwift
+    - OneSignal
+
+SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
+  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
+  OneSignal: ccdeb961882f8668305e5b694e2cb7cb325fc907
+
+PODFILE CHECKSUM: 57067c88402d825bda91aec9b0fbdd929219df11
+
+COCOAPODS: 1.6.0.beta.2

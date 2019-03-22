@@ -15,11 +15,55 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.6</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>fd8297bf8a482ab2ddda49535221767904c313c3</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
+	<key>InstagramAppClientId</key>
+	<string>729b926c842f480da7b6873c6d922b7c</string>
+	<key>InstagramAppRedirectURL</key>
+	<string>http://www.skybarbeirut.com/</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>careem</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>This app requires access to the camera in order to set a profile picture.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Skybar needs the access to the location in order to send a cab later on to your location.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires access to the photo library in order to set a profile picture.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SourceSansPro-Bold.ttf</string>
+		<string>SourceSansPro-Light.ttf</string>
+		<string>SourceSansPro-Regular.ttf</string>
+		<string>SourceSansPro-SemiBold.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -28,11 +72,14 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<false/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -41,5 +88,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>

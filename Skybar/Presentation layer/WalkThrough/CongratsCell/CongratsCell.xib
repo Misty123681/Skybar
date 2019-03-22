@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SourceSansPro-Bold.ttf">
+            <string>SourceSansPro-Bold</string>
+        </array>
+        <array key="SourceSansPro-Regular.ttf">
+            <string>SourceSansPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CongratsCell" customModule="Skybar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="364" height="579"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="364" height="579"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7K-aK-wuP">
+                        <rect key="frame" x="182" y="259.5" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="32"/>
+                        <color key="textColor" red="0.10980392160000001" green="0.16078431369999999" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPx-wN-35d">
+                        <rect key="frame" x="182" y="259.5" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="32"/>
+                        <color key="textColor" red="0.10980392160000001" green="0.16078431369999999" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR KEY TO THE SKY IS ACTIVE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FsK-35-pi4">
+                        <rect key="frame" x="55.5" y="281.5" width="253" height="24"/>
+                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="19"/>
+                        <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUd-2k-jvX">
+                        <rect key="frame" x="63" y="70" width="238" height="41"/>
+                        <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="32"/>
+                        <color key="textColor" red="0.078431372550000003" green="0.33725490200000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME TO THE SKY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ui-P2-qRC">
+                        <rect key="frame" x="47" y="305.5" width="270" height="37"/>
+                        <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="29"/>
+                        <color key="textColor" red="0.078431372550000003" green="0.33725490200000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="54c-kG-ykT">
+                        <rect key="frame" x="121" y="132" width="122" height="122.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="54c-kG-ykT" secondAttribute="height" multiplier="1:1" id="aHJ-9k-jNM"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="vPx-wN-35d" firstAttribute="centerX" secondItem="K7K-aK-wuP" secondAttribute="centerX" id="1eC-Kx-72p"/>
+                <constraint firstItem="6ui-P2-qRC" firstAttribute="centerX" secondItem="FsK-35-pi4" secondAttribute="centerX" id="4YD-Yx-cgg"/>
+                <constraint firstItem="uUd-2k-jvX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="70" id="K01-k5-5NB"/>
+                <constraint firstItem="FsK-35-pi4" firstAttribute="top" secondItem="vPx-wN-35d" secondAttribute="bottom" constant="22" id="LI4-qc-ftH"/>
+                <constraint firstItem="54c-kG-ykT" firstAttribute="centerX" secondItem="uUd-2k-jvX" secondAttribute="centerX" id="NJv-v5-Dsx"/>
+                <constraint firstItem="54c-kG-ykT" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="126:375" id="TtP-bH-5wA"/>
+                <constraint firstItem="uUd-2k-jvX" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="XuE-PO-YgG"/>
+                <constraint firstItem="FsK-35-pi4" firstAttribute="centerX" secondItem="vPx-wN-35d" secondAttribute="centerX" id="drV-6M-3YU"/>
+                <constraint firstItem="vPx-wN-35d" firstAttribute="top" secondItem="K7K-aK-wuP" secondAttribute="bottom" id="f4m-QY-tQ5"/>
+                <constraint firstItem="K7K-aK-wuP" firstAttribute="top" secondItem="54c-kG-ykT" secondAttribute="bottom" constant="5" id="hZL-dD-ICx"/>
+                <constraint firstItem="6ui-P2-qRC" firstAttribute="top" secondItem="FsK-35-pi4" secondAttribute="bottom" id="pxR-yn-F9E"/>
+                <constraint firstItem="54c-kG-ykT" firstAttribute="top" secondItem="uUd-2k-jvX" secondAttribute="bottom" constant="21" id="ski-tl-cVI"/>
+                <constraint firstItem="K7K-aK-wuP" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="xfT-rQ-gGG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="364" height="579"/>
+            <connections>
+                <outlet property="fNameLbl" destination="K7K-aK-wuP" id="GjM-SB-vHb"/>
+                <outlet property="imageView" destination="54c-kG-ykT" id="w5v-ee-eM5"/>
+                <outlet property="lNameLbl" destination="vPx-wN-35d" id="o4M-Kn-SUn"/>
+            </connections>
+            <point key="canvasLocation" x="192" y="188.45577211394306"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="avatar" width="512" height="512"/>
+    </resources>
+</document>

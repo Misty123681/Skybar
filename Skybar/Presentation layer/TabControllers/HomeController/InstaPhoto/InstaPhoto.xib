@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="InstaPhoto" customModule="Skybar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="224" height="174"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zaF-V2-cUm">
+                    <rect key="frame" x="0.0" y="0.0" width="224" height="174"/>
+                </imageView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="We0-2g-7gd">
+                    <rect key="frame" x="102" y="77" width="20" height="20"/>
+                </activityIndicatorView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nsH-aL-XJY">
+                    <rect key="frame" x="196" y="146" width="23" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="23" id="25q-e3-aTt"/>
+                        <constraint firstAttribute="width" secondItem="nsH-aL-XJY" secondAttribute="height" multiplier="1:1" id="xbf-Pc-LQ7"/>
+                        <constraint firstAttribute="height" constant="23" id="y36-hM-SaC"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="We0-2g-7gd" firstAttribute="centerY" secondItem="zaF-V2-cUm" secondAttribute="centerY" id="8Pm-vP-PEF"/>
+                <constraint firstItem="zaF-V2-cUm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DYa-O8-mf0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nsH-aL-XJY" secondAttribute="trailing" constant="5" id="DgK-Io-jmm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zaF-V2-cUm" secondAttribute="bottom" id="dcO-sr-uLA"/>
+                <constraint firstItem="zaF-V2-cUm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gKG-2Y-awD"/>
+                <constraint firstAttribute="trailing" secondItem="zaF-V2-cUm" secondAttribute="trailing" id="kpj-xb-epm"/>
+                <constraint firstItem="We0-2g-7gd" firstAttribute="centerX" secondItem="zaF-V2-cUm" secondAttribute="centerX" id="rhU-Ak-Byz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nsH-aL-XJY" secondAttribute="bottom" constant="5" id="s5U-oX-XbQ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="13"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="imageView" destination="zaF-V2-cUm" id="Pjn-PA-GIA"/>
+                <outlet property="loader" destination="We0-2g-7gd" id="K0s-0W-xS1"/>
+                <outlet property="playIcon" destination="nsH-aL-XJY" id="d7J-Sc-Kg8"/>
+            </connections>
+            <point key="canvasLocation" x="-42" y="-193"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="playIcon" width="128" height="128"/>
+    </resources>
+</document>
