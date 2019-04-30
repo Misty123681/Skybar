@@ -96,7 +96,16 @@ class EventController: ParentController {
                 OperationQueue.main.addOperation({
                     self.navigationController?.popViewController(animated: true)
                 })
-            }
+                
+                    let alert = UIAlertController(title: "Your booking was successfully deleted", message: nil, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                    UIAlertAction in
+                  //self.reservationPopupView.isHidden=true
+                    self.reservationPopupView.isHidden = true
+                    self.navigationController?.popViewController(animated: true)
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)               }
         }
     }
     

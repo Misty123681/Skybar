@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GwR-vb-1PU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GwR-vb-1PU">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,7 +63,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WE’VE ALREADY CREATED YOUR ACCOUNT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KSX-EG-j5Y">
-                                <rect key="frame" x="13.333333333333343" y="688" width="348.66666666666663" height="25.333333333333371"/>
+                                <rect key="frame" x="13.333333333333343" y="688" width="348.66666666666663" height="23.333333333333371"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="20"/>
                                 <color key="textColor" red="0.87058823529999996" green="0.80392156859999997" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -76,16 +76,16 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line1" translatesAutoresizingMaskIntoConstraints="NO" id="KaZ-qi-g9Z">
-                                <rect key="frame" x="16" y="178" width="187" height="51"/>
+                                <rect key="frame" x="16" y="178" width="16" height="16"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line2" translatesAutoresizingMaskIntoConstraints="NO" id="FuG-Sp-YMN">
-                                <rect key="frame" x="16" y="249" width="269" height="51"/>
+                                <rect key="frame" x="16" y="214" width="16" height="16"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line3" translatesAutoresizingMaskIntoConstraints="NO" id="OdY-pz-EVH">
-                                <rect key="frame" x="16" y="320" width="312" height="51"/>
+                                <rect key="frame" x="16" y="250" width="16" height="16"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line4" translatesAutoresizingMaskIntoConstraints="NO" id="FCu-OW-NTL">
-                                <rect key="frame" x="16" y="391" width="305" height="18"/>
+                                <rect key="frame" x="16" y="286" width="16" height="16"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -671,51 +671,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EDIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJR-Hf-IdR">
-                                <rect key="frame" x="163" y="44" width="49" height="30.666666666666671"/>
+                                <rect key="frame" x="163" y="44" width="49" height="30.333333333333329"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6g-7R-HVX">
-                                <rect key="frame" x="283" y="44" width="49" height="31"/>
+                                <rect key="frame" x="283" y="44" width="49" height="30.333333333333329"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.49019607843137253" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5J-AN-pPv">
-                                <rect key="frame" x="21" y="160.66666666666666" width="81" height="23"/>
+                                <rect key="frame" x="21" y="159.66666666666666" width="81" height="22.666666666666657"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfq-89-OM2">
-                                <rect key="frame" x="21" y="272.66666666666669" width="80" height="23"/>
+                                <rect key="frame" x="21" y="271.33333333333331" width="79.333333333333329" height="22.666666666666686"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hP-BN-zNd">
-                                <rect key="frame" x="21" y="99.666666666666671" width="34" height="23"/>
+                                <rect key="frame" x="21" y="99.333333333333329" width="34" height="22.666666666666671"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4P-Mh-Qse">
-                                <rect key="frame" x="21" y="254.66666666666666" width="333" height="1"/>
+                                <rect key="frame" x="21" y="253.33333333333334" width="333" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="AXs-pb-Nb5"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="giG-9K-c65">
-                                <rect key="frame" x="21" y="366.66666666666669" width="333" height="1"/>
+                                <rect key="frame" x="21" y="365" width="333" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="EVz-AE-VM8"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eVL-OW-pa1">
-                                <rect key="frame" x="21" y="204.66666666666666" width="333" height="50"/>
+                                <rect key="frame" x="21" y="203.33333333333334" width="333" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Zfm-cP-VWQ"/>
                                 </constraints>
@@ -729,7 +729,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dnA-5y-T9Z">
-                                <rect key="frame" x="21" y="316.66666666666669" width="333" height="50"/>
+                                <rect key="frame" x="21" y="315" width="333" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="QqL-BE-cjk"/>
                                 </constraints>
@@ -743,13 +743,13 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9T-CO-BY9">
-                                <rect key="frame" x="21" y="122.66666666666669" width="26" height="28"/>
+                                <rect key="frame" x="21" y="122.00000000000001" width="26" height="27.666666666666671"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="22"/>
                                 <color key="textColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXI-uK-iFW" customClass="EditPageButton" customModule="SKY_2_0" customModuleProvider="target">
-                                <rect key="frame" x="48.666666666666657" y="427.66666666666669" width="278" height="50"/>
+                                <rect key="frame" x="48.666666666666657" y="426" width="278" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="CNr-aJ-6fM"/>
                                 </constraints>
@@ -762,7 +762,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFv-Wi-2N8">
-                                <rect key="frame" x="15" y="42" width="35" height="35"/>
+                                <rect key="frame" x="15" y="41.666666666666664" width="35" height="34.999999999999993"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="3RQ-06-SP6"/>
                                     <constraint firstAttribute="width" constant="35" id="3Xa-0W-D6N"/>
@@ -782,7 +782,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iO2-Jb-LTN">
-                                <rect key="frame" x="272" y="40" width="82" height="39"/>
+                                <rect key="frame" x="272" y="39.666666666666664" width="82" height="38.999999999999993"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="82" id="IDH-Sv-vPf"/>
                                     <constraint firstAttribute="height" constant="39" id="IHA-sc-3Dw"/>
@@ -1095,13 +1095,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CARD PREVIEW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjB-fZ-8Fx">
-                                <rect key="frame" x="108.66666666666669" y="44" width="158" height="31"/>
+                                <rect key="frame" x="99.000000000000014" y="44" width="177.33333333333337" height="28"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riC-Ui-X5Z">
-                                <rect key="frame" x="29.666666666666657" y="95.000000000000014" width="315.66666666666674" height="205.33333333333337"/>
+                                <rect key="frame" x="29.666666666666657" y="92.000000000000014" width="315.66666666666674" height="205.33333333333337"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-ZZ-T8W">
                                         <rect key="frame" x="0.0" y="0.0" width="315.66666666666669" height="205.33333333333334"/>
@@ -1172,7 +1172,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoa-OE-gpV">
-                                <rect key="frame" x="115.66666666666667" y="335.33333333333331" width="143.66666666666663" height="31"/>
+                                <rect key="frame" x="115.66666666666667" y="332.33333333333331" width="143.66666666666663" height="30"/>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                 <state key="normal" title="EDIT YOUR INFO">
@@ -1189,13 +1189,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5F-Qy-UHn">
-                                <rect key="frame" x="29.666666666666671" y="386.33333333333331" width="171" height="26"/>
+                                <rect key="frame" x="29.666666666666671" y="382.33333333333331" width="174.33333333333331" height="23.333333333333314"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usV-h2-pkf">
-                                <rect key="frame" x="29.666666666666671" y="578.33333333333337" width="28" height="28"/>
+                                <rect key="frame" x="29.666666666666671" y="571.66666666666663" width="28" height="28"/>
                                 <color key="backgroundColor" red="0.078431372549019607" green="0.33725490196078434" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="2lQ-9H-S4A"/>
@@ -1236,13 +1236,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to the Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6OL-2q-2A8">
-                                <rect key="frame" x="62.666666666666657" y="581" width="302.33333333333337" height="23"/>
+                                <rect key="frame" x="62.666666666666657" y="575.33333333333337" width="302.33333333333337" height="21"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.33725490200000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGW-1V-HUN">
-                                <rect key="frame" x="29.666666666666657" y="412.33333333333331" width="315.66666666666674" height="159.99999999999994"/>
+                                <rect key="frame" x="29.666666666666657" y="405.66666666666669" width="315.66666666666674" height="160.00000000000006"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -1250,7 +1250,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTz-k9-EjY">
-                                <rect key="frame" x="62.666666666666657" y="577.33333333333337" width="302.33333333333337" height="30"/>
+                                <rect key="frame" x="62.666666666666657" y="570.66666666666663" width="302.33333333333337" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="nAw-MD-gDD"/>
                                 </constraints>
@@ -1327,18 +1327,18 @@
                                 <rect key="frame" x="52" y="156" width="271" height="500"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRE-6X-ONs">
-                                        <rect key="frame" x="20" y="15" width="231" height="38"/>
+                                        <rect key="frame" x="20" y="15" width="231" height="36"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Your KEYS TO THE SKY will be delivered to this address in ">
                                                 <attributes>
-                                                    <font key="NSFont" size="15" name="SourceSansPro-Regular"/>
+                                                    <font key="NSFont" metaFont="system" size="15"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <mapView multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xX1-F1-2RZ">
-                                        <rect key="frame" x="-10" y="85" width="291" height="200"/>
+                                        <rect key="frame" x="-10" y="83" width="291" height="200"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1354,7 +1354,7 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxO-Ue-jpr">
-                                        <rect key="frame" x="20" y="300" width="231" height="60.666666666666686"/>
+                                        <rect key="frame" x="20" y="298" width="231" height="60.666666666666686"/>
                                         <string key="text">53 Al Jish Street, Villa 4
 Jumeirah 3
 Dubai - UAE</string>
@@ -1376,7 +1376,7 @@ Dubai - UAE</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 business days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFa-0r-EqU">
-                                        <rect key="frame" x="20.000000000000007" y="53" width="102.66666666666669" height="19"/>
+                                        <rect key="frame" x="20.000000000000007" y="51" width="102.66666666666669" height="19"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1480,20 +1480,20 @@ Dubai - UAE</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVx-78-QYv">
-                                <rect key="frame" x="78.666666666666686" y="379" width="218" height="65.666666666666686"/>
+                                <rect key="frame" x="78.666666666666686" y="379" width="218" height="121.33333333333331"/>
                                 <attributedString key="attributedText">
                                     <fragment content="SKY STAR ">
                                         <attributes>
                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="20" name="SourceSansPro-Bold"/>
-                                            <font key="NSOriginalFont" size="20" name="SourceSansPro-Bold"/>
+                                            <font key="NSFont" metaFont="system" size="20"/>
+                                            <font key="NSOriginalFont" metaFont="system" size="20"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="ONBOARDING">
                                         <attributes>
                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="20" name="SourceSansPro-Bold"/>
+                                            <font key="NSFont" metaFont="system" size="20"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -1502,7 +1502,7 @@ Dubai - UAE</string>
 SUCCESSFUL!</string>
                                         <attributes>
                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="32" name="SourceSansPro-Bold"/>
+                                            <font key="NSFont" metaFont="system" size="32"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -1510,7 +1510,7 @@ SUCCESSFUL!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the SKY…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXu-Er-Flx">
-                                <rect key="frame" x="87" y="620" width="201" height="28"/>
+                                <rect key="frame" x="87.333333333333329" y="620.33333333333337" width="200.66666666666669" height="27.666666666666629"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1679,7 +1679,7 @@ SUCCESSFUL!</string>
                                                 <rect key="frame" x="29.333333333333329" y="15" width="35" height="35"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08g-af-sxa">
-                                                <rect key="frame" x="34" y="50" width="25.666666666666671" height="13"/>
+                                                <rect key="frame" x="34.333333333333336" y="50" width="25.333333333333336" height="12.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1713,7 +1713,7 @@ SUCCESSFUL!</string>
                                                 <rect key="frame" x="29.333333333333329" y="15" width="35" height="35"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MySky" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oy-eG-Dfk">
-                                                <rect key="frame" x="33.333333333333329" y="50" width="27" height="13"/>
+                                                <rect key="frame" x="33.333333333333329" y="50" width="27" height="12.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1764,7 +1764,7 @@ SUCCESSFUL!</string>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reserve" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBn-Zy-Ke0">
-                                                <rect key="frame" x="30.000000000000004" y="50" width="33.333333333333343" height="13"/>
+                                                <rect key="frame" x="30.000000000000004" y="50" width="33.333333333333343" height="12.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1800,7 +1800,7 @@ SUCCESSFUL!</string>
                                                 <rect key="frame" x="29.333333333333371" y="15" width="35" height="35"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRZ-ln-ZkQ">
-                                                <rect key="frame" x="29.666666666666686" y="50" width="34" height="13"/>
+                                                <rect key="frame" x="29.666666666666686" y="50" width="34" height="12.666666666666664"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="10"/>
                                                 <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1841,10 +1841,10 @@ SUCCESSFUL!</string>
                                 </constraints>
                             </view>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTu-P7-jaD">
-                                <rect key="frame" x="20" y="241.66666666666663" width="355" height="216"/>
+                                <rect key="frame" x="20" y="241.66666666666663" width="355" height="217"/>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBy-Cx-ih2">
-                                <rect key="frame" x="18" y="477.66666666666669" width="0.0" height="25.333333333333314"/>
+                                <rect key="frame" x="18" y="478.66666666666669" width="0.0" height="25.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25.5" id="DlJ-al-Pia"/>
                                 </constraints>
@@ -1882,7 +1882,7 @@ SUCCESSFUL!</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efs-1u-RN2">
-                                <rect key="frame" x="102.99999999999999" y="158.33333333333334" width="167.66666666666663" height="32"/>
+                                <rect key="frame" x="103.00000000000001" y="158.33333333333334" width="167.33333333333337" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="9hm-Ha-KzY"/>
@@ -1896,7 +1896,7 @@ SUCCESSFUL!</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="STAR PRIVILEGES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Q8g-05-EUr">
-                                <rect key="frame" x="137" y="164" width="123.66666666666669" height="20.666666666666657"/>
+                                <rect key="frame" x="137" y="164" width="123.33333333333331" height="20.666666666666657"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="16.200000762939453"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1908,7 +1908,7 @@ SUCCESSFUL!</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jct-IO-ZWw">
-                                <rect key="frame" x="34.666666666666657" y="619" width="306" height="55"/>
+                                <rect key="frame" x="34.666666666666657" y="620" width="306" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="22"/>
                                 <state key="normal" title="TAKE ME TO SKY">
@@ -1925,25 +1925,25 @@ SUCCESSFUL!</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiK-Dc-aTb">
-                                <rect key="frame" x="102.99999999999999" y="158.33333333333334" width="167.66666666666663" height="32"/>
+                                <rect key="frame" x="103.00000000000001" y="158.33333333333334" width="167.33333333333337" height="32"/>
                                 <connections>
                                     <segue destination="qv5-eq-IFJ" kind="show" id="g8o-UF-WKq"/>
                                 </connections>
                             </button>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="careemLogo" translatesAutoresizingMaskIntoConstraints="NO" id="0UT-xp-VPx">
-                                <rect key="frame" x="34.666666666666657" y="619" width="64" height="55"/>
+                                <rect key="frame" x="34.666666666666657" y="620" width="64" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0UT-xp-VPx" secondAttribute="height" multiplier="71:61" id="mwS-WM-ZsD"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guest_list" translatesAutoresizingMaskIntoConstraints="NO" id="gAJ-A4-8Vg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guest_list" translatesAutoresizingMaskIntoConstraints="NO" id="gAJ-A4-8Vg">
                                 <rect key="frame" x="319" y="207" width="31" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="31" id="huT-fn-uaN"/>
                                     <constraint firstAttribute="height" constant="26" id="oju-5w-A1u"/>
                                 </constraints>
                             </imageView>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEM-2p-zud">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEM-2p-zud">
                                 <rect key="frame" x="340" y="202" width="15" height="15"/>
                                 <color key="backgroundColor" red="0.92835897842639592" green="0.15490034476685055" blue="0.16518770285665155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1960,10 +1960,10 @@ SUCCESSFUL!</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="MY GUEST LIST" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iBp-Se-IO4">
-                                <rect key="frame" x="211" y="209.66666666666666" width="105" height="20.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="MY GUEST LIST" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iBp-Se-IO4">
+                                <rect key="frame" x="211.33333333333334" y="210" width="104.66666666666666" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="16"/>
-                                <color key="textColor" red="0.078431372550000003" green="0.33725490200000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
@@ -1972,13 +1972,16 @@ SUCCESSFUL!</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oti-9B-3g9">
-                                <rect key="frame" x="92" y="686" width="191" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" misplaced="YES" usesAttributedText="YES" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oti-9B-3g9">
+                                <rect key="frame" x="113.33333333333333" y="687" width="148.66666666666666" height="31"/>
+                                <accessibility key="accessibilityConfiguration" identifier="UsePromoLabel" label="UsePromoLabel">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                </accessibility>
                                 <attributedString key="attributedText">
-                                    <fragment content="PLEASE DON'T DRINK AND DRIVE">
+                                    <fragment content="Please Use Promo Code">
                                         <attributes>
-                                            <color key="NSColor" red="0.29803921568627451" green="0.29803921568627451" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="13.300000190734863" name="SourceSansPro-Bold"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" metaFont="system" size="13.300000190734863"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
@@ -1993,10 +1996,14 @@ SUCCESSFUL!</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBb-yj-Ide">
-                                <rect key="frame" x="18" y="513" width="357" height="86"/>
+                                <rect key="frame" x="18" y="514" width="357" height="86"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0F-Ga-J86">
-                                <rect key="frame" x="211" y="205" width="139" height="30"/>
+                            <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0F-Ga-J86">
+                                <rect key="frame" x="211.33333333333337" y="205" width="138.66666666666663" height="30"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="myGuestListAction:" destination="lIZ-DG-lzD" eventType="touchUpInside" id="zNJ-gb-TqQ"/>
                                 </connections>
@@ -2073,6 +2080,7 @@ SUCCESSFUL!</string>
                         <viewLayoutGuide key="safeArea" id="vKU-vp-Ra4"/>
                     </view>
                     <connections>
+                        <outlet property="UsePromoLabel" destination="oti-9B-3g9" id="Di6-TI-1cf"/>
                         <outlet property="careemIcon" destination="0UT-xp-VPx" id="db7-cd-vc7"/>
                         <outlet property="containerView" destination="fBb-yj-Ide" id="6N9-a7-Nrk"/>
                         <outlet property="eventsContainer" destination="dTu-P7-jaD" id="xNp-VL-O2B"/>
@@ -2520,7 +2528,7 @@ SUCCESSFUL!</string>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="46b-rb-hZ5">
-                                <rect key="frame" x="102.66666666666669" y="558" width="170" height="20"/>
+                                <rect key="frame" x="95.666666666666686" y="558" width="184" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Fyo-7G-roo"/>
                                 </constraints>
@@ -2528,7 +2536,7 @@ SUCCESSFUL!</string>
                                     <attributedString key="attributedTitle">
                                         <fragment content="Read Reservation Policy">
                                             <attributes>
-                                                <font key="NSFont" size="17" name="SourceSansPro-Regular"/>
+                                                <font key="NSFont" metaFont="system" size="17"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
@@ -2569,7 +2577,7 @@ SUCCESSFUL!</string>
                                 <rect key="frame" x="216" y="498" width="139" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
-                                <state key="normal" title="CANCEL">
+                                <state key="normal" title="DELETE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -3032,7 +3040,7 @@ will get back to you shortly…</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJy-Xo-aUG">
-                                <rect key="frame" x="15" y="42" width="35" height="35"/>
+                                <rect key="frame" x="15" y="41.666666666666664" width="35" height="34.999999999999993"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="YG1-cp-gur"/>
                                     <constraint firstAttribute="height" constant="35" id="q8g-oH-8JR"/>
@@ -3043,13 +3051,13 @@ will get back to you shortly…</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCAN SKY KEY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohc-LI-0gl">
-                                <rect key="frame" x="114" y="44" width="147" height="30.666666666666671"/>
+                                <rect key="frame" x="114.00000000000001" y="44" width="147.33333333333337" height="30.333333333333329"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please turn on SKY KEY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5D-rf-cga">
-                                <rect key="frame" x="101.66666666666669" y="81.666666666666671" width="172" height="23"/>
+                                <rect key="frame" x="101.66666666666669" y="81.333333333333329" width="172" height="22.666666666666671"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -3061,7 +3069,7 @@ will get back to you shortly…</string>
                                 <rect key="frame" x="0.0" y="578" width="375" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICX-iN-S3g">
-                                        <rect key="frame" x="110" y="137" width="155" height="23"/>
+                                        <rect key="frame" x="109.66666666666667" y="137.33333333333337" width="155.66666666666663" height="22.666666666666657"/>
                                         <string key="text">your key to the sky is
 Activated</string>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
@@ -3069,13 +3077,13 @@ Activated</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONGRATULATIONS!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nu8-4p-6vw">
-                                        <rect key="frame" x="97.666666666666686" y="101" width="180" height="26"/>
+                                        <rect key="frame" x="97.666666666666671" y="102" width="179.66666666666663" height="25.333333333333329"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confirm" translatesAutoresizingMaskIntoConstraints="NO" id="DQj-vW-871">
-                                        <rect key="frame" x="160.66666666666666" y="12" width="54" height="54"/>
+                                        <rect key="frame" x="160.66666666666666" y="13" width="54" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="54" id="d5W-wC-mGy"/>
                                             <constraint firstAttribute="height" constant="54" id="rdz-RW-f0U"/>
@@ -3733,7 +3741,7 @@ Activated</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DETAILED BILL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fza-7F-aLW">
-                                <rect key="frame" x="18.000000000000007" y="331" width="115.66666666666669" height="23"/>
+                                <rect key="frame" x="18.000000000000007" y="331" width="115.66666666666669" height="22.666666666666686"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>
                                 <color key="textColor" red="0.10980392160000001" green="0.15686274510000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3742,7 +3750,7 @@ Activated</string>
                                 <rect key="frame" x="0.0" y="678" width="375" height="134"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Consumption Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vj3-3v-6Ae">
-                                        <rect key="frame" x="18" y="23" width="127" height="20.666666666666671"/>
+                                        <rect key="frame" x="18" y="23" width="127" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
                                         <color key="textColor" white="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3754,19 +3762,19 @@ Activated</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3N-Dm-76l">
-                                        <rect key="frame" x="18" y="55.666666666666629" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="18" y="55.333333333333371" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
                                         <color key="textColor" white="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkt-MD-Ve9">
-                                        <rect key="frame" x="357" y="55.666666666666629" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="357" y="55.333333333333371" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>
                                         <color key="textColor" white="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBQ-Nl-UEv">
-                                        <rect key="frame" x="357" y="59.666666666666629" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="357" y="59.333333333333371" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="25"/>
                                         <color key="textColor" red="0.078431372550000003" green="0.33725490200000002" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3788,7 +3796,7 @@ Activated</string>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cmh-Ng-L6j">
-                                <rect key="frame" x="18" y="362" width="339" height="308"/>
+                                <rect key="frame" x="18" y="361.66666666666674" width="339" height="308.33333333333326"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3839,13 +3847,13 @@ Activated</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STAR PRIVILEGES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ce-QD-Usk">
-                                <rect key="frame" x="96" y="44" width="183" height="30.666666666666671"/>
+                                <rect key="frame" x="96" y="44" width="183" height="30.333333333333329"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fic-xm-jZT">
-                                <rect key="frame" x="15" y="42" width="35" height="35"/>
+                                <rect key="frame" x="15" y="41.666666666666664" width="35" height="34.999999999999993"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="F7g-3e-oK3"/>
                                     <constraint firstAttribute="height" constant="35" id="vCF-sF-e4D"/>
@@ -3856,7 +3864,7 @@ Activated</string>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g5Z-1C-RtH">
-                                <rect key="frame" x="0.0" y="92" width="375" height="686"/>
+                                <rect key="frame" x="0.0" y="91.666666666666686" width="375" height="686.33333333333326"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -4136,45 +4144,45 @@ Activated</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EDIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdl-Lb-Ul4">
-                                <rect key="frame" x="163" y="44" width="49" height="30.666666666666671"/>
+                                <rect key="frame" x="163" y="44" width="49" height="30.333333333333329"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGG-v8-5qP">
-                                <rect key="frame" x="21" y="160.66666666666666" width="81" height="23"/>
+                                <rect key="frame" x="21" y="159.66666666666666" width="81" height="22.666666666666657"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7t-3z-Yzf">
-                                <rect key="frame" x="21" y="272.66666666666669" width="80" height="23"/>
+                                <rect key="frame" x="21" y="271.33333333333331" width="79.333333333333329" height="22.666666666666686"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcc-Hx-BbW">
-                                <rect key="frame" x="21" y="99.666666666666671" width="34" height="23"/>
+                                <rect key="frame" x="21" y="99.333333333333329" width="34" height="22.666666666666671"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="18"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eET-Wr-ijq">
-                                <rect key="frame" x="21" y="254.66666666666666" width="333" height="1"/>
+                                <rect key="frame" x="21" y="253.33333333333334" width="333" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="qpv-QQ-oBx"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIp-q2-MaC">
-                                <rect key="frame" x="21" y="366.66666666666669" width="333" height="1"/>
+                                <rect key="frame" x="21" y="365" width="333" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="eKK-oL-qpN"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eB5-fQ-eQa">
-                                <rect key="frame" x="21" y="204.66666666666666" width="333" height="50"/>
+                                <rect key="frame" x="21" y="203.33333333333334" width="333" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3W5-Kr-2db"/>
                                 </constraints>
@@ -4188,7 +4196,7 @@ Activated</string>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rfz-OJ-Jh4">
-                                <rect key="frame" x="21" y="316.66666666666669" width="333" height="50"/>
+                                <rect key="frame" x="21" y="315" width="333" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Iee-mN-FAb"/>
                                 </constraints>
@@ -4202,13 +4210,13 @@ Activated</string>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOa-UL-QzP">
-                                <rect key="frame" x="21" y="122.66666666666669" width="26" height="28"/>
+                                <rect key="frame" x="21" y="122.00000000000001" width="26" height="27.666666666666671"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="22"/>
                                 <color key="textColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rr7-vl-rSl" customClass="EditPageButton" customModule="SKY_2_0" customModuleProvider="target">
-                                <rect key="frame" x="48.666666666666657" y="427.66666666666669" width="278" height="50"/>
+                                <rect key="frame" x="48.666666666666657" y="426" width="278" height="50"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
                                 <state key="normal" title="DONE">
                                     <color key="titleColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
@@ -4218,7 +4226,7 @@ Activated</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceI-Zs-uFm">
-                                <rect key="frame" x="15" y="42" width="35" height="35"/>
+                                <rect key="frame" x="15" y="41.666666666666664" width="35" height="34.999999999999993"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="LiZ-s3-e3N"/>
                                     <constraint firstAttribute="height" constant="35" id="TO6-6f-bvS"/>
@@ -4396,12 +4404,12 @@ Activated</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFh-3H-Yoz">
-                                <rect key="frame" x="23" y="94" width="329" height="47"/>
+                                <rect key="frame" x="23" y="94" width="329" height="44.666666666666657"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Refer a person you know who deserves to be a SKY STAR ">
                                         <attributes>
                                             <color key="NSColor" red="0.10980392160000001" green="0.15686274510000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="18" name="SourceSansPro-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="18"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1.5" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -4409,13 +4417,13 @@ Activated</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uav-dt-YYB">
-                                <rect key="frame" x="22" y="180" width="72" height="22"/>
+                                <rect key="frame" x="22" y="177.66666666666666" width="72" height="22"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                 <color key="textColor" red="0.35686274509803922" green="0.35686274509803922" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="James Doe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Xs-GR-7XU">
-                                <rect key="frame" x="19" y="205" width="337" height="50"/>
+                                <rect key="frame" x="19" y="202.66666666666666" width="337" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="nkF-Tt-MGe"/>
                                 </constraints>
@@ -4429,7 +4437,7 @@ Activated</string>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rd-Nl-tvm">
-                                <rect key="frame" x="19" y="260" width="337" height="1"/>
+                                <rect key="frame" x="19" y="257.66666666666669" width="337" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="HDP-P5-fYo"/>
@@ -4437,13 +4445,13 @@ Activated</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKK-ih-5bd">
-                                <rect key="frame" x="22" y="278" width="40" height="22"/>
+                                <rect key="frame" x="22" y="275.66666666666669" width="40" height="22"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="james.doe@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBo-1M-rMi">
-                                <rect key="frame" x="19" y="322" width="337" height="50"/>
+                                <rect key="frame" x="19" y="319.66666666666669" width="337" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="z5G-V4-clp"/>
                                 </constraints>
@@ -4457,21 +4465,21 @@ Activated</string>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nm7-p1-dyP">
-                                <rect key="frame" x="19" y="372" width="337" height="1"/>
+                                <rect key="frame" x="19" y="369.66666666666669" width="337" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="lKO-6P-of7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-Ou-TkI">
-                                <rect key="frame" x="19" y="484" width="97" height="1"/>
+                                <rect key="frame" x="19" y="481.66666666666669" width="97" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="bVr-WT-25S"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+971" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lZb-lA-ILB">
-                                <rect key="frame" x="19" y="424" width="97" height="50"/>
+                                <rect key="frame" x="19" y="421.66666666666669" width="97" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Wvt-xZ-MEt"/>
                                     <constraint firstAttribute="width" constant="97" id="jXO-f3-Ywl"/>
@@ -4486,26 +4494,26 @@ Activated</string>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0h-oH-FhD">
-                                <rect key="frame" x="19" y="424" width="97" height="50"/>
+                                <rect key="frame" x="19" y="421.66666666666669" width="97" height="50"/>
                                 <connections>
                                     <action selector="countryCodeAction:" destination="1oo-kj-mCk" eventType="touchUpInside" id="duu-KI-79y"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObP-HW-G0k">
-                                <rect key="frame" x="22" y="392" width="110" height="22"/>
+                                <rect key="frame" x="22" y="389.66666666666669" width="110" height="22"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="17"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8J-xa-zTd">
-                                <rect key="frame" x="139.66666666666663" y="484" width="216.33333333333337" height="1"/>
+                                <rect key="frame" x="139.66666666666663" y="481.66666666666669" width="216.33333333333337" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="gDv-Pg-mDb"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="55 555 5555" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VvO-xR-Ax9">
-                                <rect key="frame" x="139.66666666666663" y="424" width="216.33333333333337" height="50"/>
+                                <rect key="frame" x="139.66666666666663" y="421.66666666666669" width="216.33333333333337" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="W9y-r5-bNX"/>
                                 </constraints>
@@ -4519,19 +4527,19 @@ Activated</string>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.15000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho0-jb-fPB">
-                                <rect key="frame" x="19" y="495" width="97" height="21"/>
+                                <rect key="frame" x="19" y="492.66666666666669" width="97" height="21.000000000000057"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.15000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VoT-EP-95d">
-                                <rect key="frame" x="139.66666666666666" y="495" width="58" height="21"/>
+                                <rect key="frame" x="139.66666666666666" y="492.66666666666669" width="58" height="21.000000000000057"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDc-7e-h9Z" customClass="EditPageButton" customModule="SKY_2_0" customModuleProvider="target">
-                                <rect key="frame" x="48.666666666666657" y="546" width="278" height="55"/>
+                                <rect key="frame" x="48.666666666666657" y="543.66666666666663" width="278" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="2SE-EZ-SNz"/>
                                 </constraints>
@@ -5390,7 +5398,7 @@ will get back to you shortly…</string>
         <segue reference="Glr-RH-n9w"/>
         <segue reference="GAW-q1-mqA"/>
         <segue reference="gzw-8O-fqF"/>
-        <segue reference="amd-fd-TFi"/>
+        <segue reference="JHX-1d-x34"/>
         <segue reference="YjN-25-VUa"/>
         <segue reference="yqF-qQ-oVN"/>
         <segue reference="Kxi-fK-E6B"/>

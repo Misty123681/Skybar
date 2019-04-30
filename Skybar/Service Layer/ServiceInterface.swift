@@ -411,14 +411,17 @@ class ServiceInterface: NSObject {
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: params) { (success, result) in
             if let handler = handler{
                 handler(success,result)
+              
             }
         }
     }
     
-    static func getZonesByBudget(budget:Float,handler:APICompletionHandler?){
+    static func getZonesByBudget(budget:Float,numberOfGuests:Int,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetZonesByBudget"
         var params = [String:Any]()
         params["budget"] = budget
+        params["numberOfGuests"] = numberOfGuests
+
         ServiceEngine.sharedInstance.startTaskCancelleable(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: params) { (success, result) in
             if let handler = handler{
                 handler(success,result)

@@ -264,7 +264,6 @@
 			children = (
 				AA1D18E32116F52100CA4A8F /* ReserveEvent */,
 				AA1D18E12116EDDB00CA4A8F /* EventController.swift */,
-				AA625626222199EC00A75B51 /* EventControllerStep1.swift */,
 				AA625628222199F600A75B51 /* EventControllerStep2.swift */,
 			);
 			path = EventController;
@@ -295,7 +294,6 @@
 				AA0F1F1F2188DBF200610D40 /* NotificationView */,
 				AA540D462160DCBF00317DAE /* StatsView */,
 				AA1D1902211A098200CA4A8F /* InvoiceController */,
-				AA1D18EC2118BA8600CA4A8F /* HistoryController.swift */,
 				AA1D18FC2118EDC200CA4A8F /* HistoryView */,
 			);
 			path = HistoryController;
@@ -304,8 +302,8 @@
 		AA1D18FC2118EDC200CA4A8F /* HistoryView */ = {
 			isa = PBXGroup;
 			children = (
+				AA1D18EC2118BA8600CA4A8F /* HistoryController.swift */,
 				AA1D18FA2118EDBE00CA4A8F /* HistoryView.xib */,
-				AA1D18F82118EDB100CA4A8F /* HistoryView.swift */,
 			);
 			name = HistoryView;
 			sourceTree = "<group>";
@@ -332,6 +330,7 @@
 		AA1D1902211A098200CA4A8F /* InvoiceController */ = {
 			isa = PBXGroup;
 			children = (
+				AA1D18F82118EDB100CA4A8F /* HistoryView.swift */,
 				AA70B176216911A200BD493A /* BillCell */,
 				AA4C265B211A0A0400820CC0 /* InvoiceController.swift */,
 			);
@@ -557,6 +556,7 @@
 			children = (
 				AA1D18E02116EDC700CA4A8F /* EventController */,
 				AA52DB042114D42700600B38 /* Views */,
+				AA625626222199EC00A75B51 /* EventControllerStep1.swift */,
 				AA5D4D942110DACC00568D09 /* InstaPhoto */,
 				AA5D4D912110CF3C00568D09 /* WebViewInsta */,
 				AA5D4D8F2110CA2400568D09 /* HomeController.swift */,
@@ -733,7 +733,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "Christopher Nassar";
+				ORGANIZATIONNAME = "CSP SOLUTIONS";
 				TargetAttributes = {
 					AA75F1AE2102436A00B28C4D = {
 						CreatedOnToolsVersion = 9.4.1;

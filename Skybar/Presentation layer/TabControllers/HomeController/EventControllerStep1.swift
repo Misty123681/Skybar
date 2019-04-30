@@ -107,7 +107,10 @@ class EventControllerStep1: ParentController {
     
     func getZone(){
         loader.startAnimating()
-        zoneImageView.imageFromServerURL(urlString: "http://skybarstar.com/UserAppService/GetAvailableZonesImage?budget=\(slider.value)", setImage: true) { (success, data) in
+        var serviceUrl:String
+        serviceUrl = "https://skybarstar.com/UserAppService/GetAvailableZonesImage?budget=\(slider.value)&numberOfGuests=\(guestCount)"
+        
+        zoneImageView.imageFromServerURL(urlString: serviceUrl, setImage: true) { (success, data) in
             OperationQueue.main.addOperation({
                 self.loader.stopAnimating()
             })

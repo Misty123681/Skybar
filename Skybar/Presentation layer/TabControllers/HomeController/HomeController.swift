@@ -55,6 +55,7 @@ class HomeController: ParentController,InstaDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var headerThree: UILabel!
     @IBOutlet weak var headerTwo: UILabel!
+    @IBOutlet weak var UsePromoLabel: UILabel!
     @IBOutlet weak var headerOne: UILabel!
     var instaView:InstaView = InstaView.fromNib()
     @IBOutlet weak var eventsContainer: UIScrollView!
@@ -70,6 +71,9 @@ class HomeController: ParentController,InstaDelegate {
     var careemLinks:CareemLinks! = nil
     var skyStatus:SkyStatus! = nil
     
+  
+
+    
     @IBOutlet weak var guestListBadgeLbl: UILabel!
     
     var refreshInitialCenter:CGPoint!
@@ -83,13 +87,13 @@ class HomeController: ParentController,InstaDelegate {
     
     @IBAction func myGuestListAction(_ sender: Any) {
         
-        if isAtSkybar{
+       // if isAtSkybar{
             self.performSegue(withIdentifier: "toGuestList", sender: nil)
-        }else{
-            let alert = UIAlertController(title: "Guest List", message: "Only works on the day of the event", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+      //  }else{
+        //    let alert = UIAlertController(title: "Guest List", message: "Only works on the day of the event", preferredStyle: .alert)
+         //   alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+         //   self.present(alert, animated: true, completion: nil)
+       // }
         
     }
     func openMedia(media: InstaMedia,index:Int) {
@@ -136,7 +140,7 @@ class HomeController: ParentController,InstaDelegate {
         }
     }
     func getInstaMedia(){
-        let instaToken = "7537546145.1677ed0.f0cd6150db4a4d04b422de9903809ffa"
+        let instaToken = "7537546145.ed04f18.35e74d443a97432493ffc5e355782db0"
         ServiceInterface.getInstagramMedia(token: instaToken) { (success, result) in
             if success {
                 do{
@@ -189,6 +193,7 @@ class HomeController: ParentController,InstaDelegate {
         }
         if let headerTwo = skyStatus.headingTwo{
             self.headerTwo.text = headerTwo
+            
         }
 
         self.bill = skyStatus.currentVisitInfo
@@ -200,16 +205,38 @@ class HomeController: ParentController,InstaDelegate {
                 let color2 = CIColor(color:UIColor(red: 245.0/255.0, green: 109.0/255.0, blue: 47.0/255.0, alpha: 1))
                 if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
                     self.headerTwo.textColor = UIColor.init(patternImage: uiimage)
+                    self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
+                    
                 }
             }else{
                 let color1 = CIColor(color:UIColor(red: 69.0/255.0, green: 146.0/255.0, blue: 42.0/255.0, alpha: 1))
                 let color2 = CIColor(color:UIColor(red: 188.0/255.0, green: 228.0/255.0, blue: 130.0/255.0, alpha: 1))
                 if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
                     self.headerTwo.textColor = UIColor.init(patternImage: uiimage)
+                    self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
+                    
                 }
             }
         }
+        let plz = "Please Use Promo Code "
+        let promoCodeText = "KEYTOTHESKY "
+        let destination = "\nDestination SKY2.0 For Free Rides"
         
+        let attrString = NSMutableAttributedString(string: plz,
+                                                   attributes: [NSAttributedString.Key.font:
+                                                    UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregroundColor:UIColor.black,NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]);
+        
+        
+        attrString.append(NSMutableAttributedString(string: promoCodeText,
+                                                    attributes: [NSAttributedString.Key.font:
+                                                        UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,NSAttributedString.Key.foregroundColor:UIColor.gray]));
+        
+        attrString.append(NSMutableAttributedString(string: destination,
+                                                    attributes: [NSAttributedString.Key.font:
+UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregroundColor:UIColor.black,NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]));
+   
+        UsePromoLabel.attributedText = attrString;
+        UsePromoLabel.sizeToFit() ;
         if let isOpen = skyStatus.isOpen{
             
             self.isOpen = isOpen
@@ -222,6 +249,8 @@ class HomeController: ParentController,InstaDelegate {
                 }
                 
                 instaTitleLbl.text = "We Party Legendary"
+                
+                
             }else{
                 instaTitleLbl.text = "We party legendary"
             }

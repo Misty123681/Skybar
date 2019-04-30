@@ -44,7 +44,10 @@ class EventControllerStep2: ParentController {
     
     func getZoneImage(){
         loader.startAnimating()
-        zoneImageView.imageFromServerURL(urlString: "http://skybarstar.com/UserAppService/GetAvailableZonesImage?budget=\(budget)", setImage: true) { (success, data) in
+        var serviceUrl:String
+        serviceUrl = "https://skybarstar.com/UserAppService/GetAvailableZonesImage?budget=\(budget)&numberOfGuests=\(guestCount)"
+        
+        zoneImageView.imageFromServerURL(urlString: serviceUrl, setImage: true) { (success, data) in
             OperationQueue.main.addOperation({
                 self.loader.stopAnimating()
             })
@@ -52,7 +55,7 @@ class EventControllerStep2: ParentController {
     }
     
     func getZone(){
-        ServiceInterface.getZonesByBudget(budget: budget) { (success, result) in
+        ServiceInterface.getZonesByBudget(budget: budget, numberOfGuests: guestCount) { (success, result) in
             OperationQueue.main.addOperation({
                 
             })

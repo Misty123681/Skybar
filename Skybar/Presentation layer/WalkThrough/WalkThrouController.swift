@@ -32,7 +32,7 @@ class WalkThrouController: ParentController,UICollectionViewDataSource,UICollect
         imageArr.append("careem_screen")
         
         titleArr.append("Free careem pick up and drop off".capitalized)
-        descriptionArr.append("Don't drink and drive, just order a Careem ride from the app for free")
+        descriptionArr.append("Please Use Promo Code ")
         imageArr.append("careem_screen")
         
         titleArr.append("Make Reservations".capitalized)
