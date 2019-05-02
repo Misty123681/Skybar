@@ -171,7 +171,7 @@ class ProfileController: ParentController,UINavigationControllerDelegate, UIImag
             fNameLbl.text = profile.firstName
             lNameLbl.text = profile.lastName
             emailLbl.text = profile.email
-            phoneLbl.text = profile.phoneCode!+profile.mobile.replacingOccurrences(of: "+", with: "")
+            phoneLbl.text = profile.phoneCode ?? "" + profile.mobile ?? "".replacingOccurrences(of: "+", with: "")
             addressLbl.text = profile.address
             levelLbl.text = profile.level
             membershipLbl.text = "STAR \(String(format: "%04d", profile.starMembershipSeed))"

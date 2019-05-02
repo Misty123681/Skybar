@@ -16,6 +16,7 @@ class GuestView: UIView {
     @IBOutlet weak var statusLbl: UILabel!
     var parent:GuestListController!
     var guest:GuestElement!
+    var guestCount:Int!
     var eventId:String!
     
     @IBAction func removeAction(_ sender: Any) {
@@ -32,8 +33,8 @@ class GuestView: UIView {
         }
     }
     
-    func displayError(){
-        let alert = UIAlertController(title: "Missing information", message: "Please fill all required information", preferredStyle: .alert)
+    func displayError(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         parent.present(alert, animated: true, completion: nil)
     }
@@ -41,7 +42,12 @@ class GuestView: UIView {
     @IBAction func addAction(_ sender: Any) {
         
         if (nameTF.text?.isEmpty)!{
-            displayError()
+            displayError(title: "Missing information", message: "Please fill all required information")
+            return
+        }
+        
+        if guestCount > 7{
+            displayError(title: "Error", message: "Reached maximum number of guests for this event")
             return
         }
         
@@ -81,22 +87,56 @@ class GuestView: UIView {
         }
     }
     
-    func setInfo(guest:GuestElement,eventId:String,parent:GuestListController){
+    func setInfo(guest:GuestElement, guestCount:Int, eventId:String,parent:GuestListController){
         self.parent = parent
         self.guest = guest
+        self.guestCount = guestCount
         self.eventId = eventId
+        
         nameLbl.text = guest.guestFullName
         nameTF.text = guest.guestFullName
-        statusLbl.text = "Added To Guest List"
+       // statusLbl.text = "Added To Guest List"
         
         if let enteredDate = guest.enteredDate{
             statusLbl.textColor = UIColor.init(red: 0.13, green: 0.64, blue: 0, alpha: 1)
             statusLbl.text = "Entered at \(enteredDate)"
         }
         
-        if let statusName = guest.statusName{
-            statusLbl.text = statusName
+        if guest.statusName == "Not In Venue Yet"{
+            
+            if let createDate = guest.creatededDate{
+                if let date = Date(jsonDate: createDate){
+                    let formatter = DateFormatter()
+                    // initially set the format based on your datepicker date / server String
+                    formatter.dateFormat = "MMM dd, yyyy - hh:mm a"
+                    
+                    let monthDayStr = formatter.string(from: date) // string purpose I add here
+                    statusLbl.text = monthDayStr.uppercased()
+                }
+            }
         }
+        else if guest.statusName == "In Venue"{
+            
+            if let enterDate = guest.enteredDate{
+                if let date = Date(jsonDate: enterDate){
+                    let formatter = DateFormatter()
+                    // initially set the format based on your datepicker date / server String
+                    formatter.dateFormat = "MMM dd, yyyy - hh:mm a"
+                    
+                    let monthDayStr = formatter.string(from: date) // string purpose I add here
+                    statusLbl.text = monthDayStr.uppercased()
+                }
+            }
+            
+            statusLbl.backgroundColor = UIColor.gray
+        }
+        
+        
+       
+        
+//        if let statusName = guest.statusName{
+//            statusLbl.text = statusName
+//        }
     }
     
 }

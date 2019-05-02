@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,7 +19,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HistoryView" customModule="Skybar" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HistoryView" customModule="SKY_2_0" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="482" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -56,7 +56,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Consumption Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65z-Z8-De3">
                                     <rect key="frame" x="14" y="85.5" width="127" height="20.5"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
-                                    <color key="textColor" white="0.58999999999999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" red="0.51764705882352935" green="0.51889115571975708" blue="0.51889115571975708" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvh-hG-zAZ">
@@ -147,12 +147,22 @@
                         <action selector="valueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="1ue-25-xu9"/>
                     </connections>
                 </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate Us" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFv-cA-6Hj">
+                    <rect key="frame" x="311" y="4.5" width="51" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Zzi-Ni-4fa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
+                    <color key="textColor" red="0.51764705882352935" green="0.51764705882352935" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="bab-Gi-hWy" secondAttribute="trailing" constant="10" id="0rT-Fc-atI"/>
                 <constraint firstItem="bab-Gi-hWy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="41J-8e-aId"/>
                 <constraint firstAttribute="trailing" secondItem="WUm-nC-Osn" secondAttribute="trailing" constant="10" id="Fh8-OY-im9"/>
+                <constraint firstItem="G8s-v5-BCA" firstAttribute="leading" secondItem="rFv-cA-6Hj" secondAttribute="trailing" constant="10" id="G2f-iH-KOi"/>
                 <constraint firstItem="WUm-nC-Osn" firstAttribute="leading" secondItem="Pjq-Fz-P0Z" secondAttribute="trailing" constant="7" id="Hdf-Db-cK6"/>
                 <constraint firstItem="l72-na-KHy" firstAttribute="leading" secondItem="Zoc-qK-wGo" secondAttribute="trailing" constant="10" id="Kr7-tk-whN"/>
                 <constraint firstItem="2z0-Au-3se" firstAttribute="leading" secondItem="l72-na-KHy" secondAttribute="trailing" constant="7" id="Q4w-VX-qkK"/>
@@ -161,6 +171,7 @@
                 <constraint firstItem="2z0-Au-3se" firstAttribute="centerY" secondItem="89S-kc-cN3" secondAttribute="centerY" id="Z8b-Br-h0s"/>
                 <constraint firstItem="bab-Gi-hWy" firstAttribute="top" secondItem="Zoc-qK-wGo" secondAttribute="bottom" constant="10" id="c4E-mj-mjd"/>
                 <constraint firstItem="G8s-v5-BCA" firstAttribute="leading" secondItem="Zoc-qK-wGo" secondAttribute="trailing" constant="8" id="eG3-pq-CER"/>
+                <constraint firstItem="rFv-cA-6Hj" firstAttribute="centerY" secondItem="G8s-v5-BCA" secondAttribute="centerY" id="ewB-4m-2px"/>
                 <constraint firstItem="89S-kc-cN3" firstAttribute="centerY" secondItem="Pjq-Fz-P0Z" secondAttribute="centerY" id="fhy-O4-zbT"/>
                 <constraint firstItem="Zoc-qK-wGo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="li6-7D-fAM"/>
                 <constraint firstItem="G8s-v5-BCA" firstAttribute="centerY" secondItem="Zoc-qK-wGo" secondAttribute="centerY" id="nB4-jV-MVp"/>

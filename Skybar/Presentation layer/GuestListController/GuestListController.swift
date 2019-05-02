@@ -12,6 +12,7 @@ import IQKeyboardManagerSwift
 class GuestListController: ParentController {
 
     @IBOutlet weak var accessCodeLbl: UILabel!
+    @IBOutlet weak var accessCodeShareBtn: UIButton!
     @IBOutlet weak var calendarIcon: UIImageView!
     @IBOutlet weak var container: UIScrollView!
     var event:NearestEventDetails! = nil
@@ -19,6 +20,7 @@ class GuestListController: ParentController {
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
+    @IBOutlet weak var guestCountLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     var guests:[GuestElement]!
@@ -49,6 +51,7 @@ class GuestListController: ParentController {
         guestView.innerView.isHidden = true
         guestView.parent = self
         guestView.eventId = eventID
+        
         y += guestView.getHeight()+15
         self.container.addSubview(guestView)
         
@@ -59,18 +62,26 @@ class GuestListController: ParentController {
                 do{
                     let guests = try JSONDecoder().decode(Guest.self, from: result as! Data)
                     self.guests = guests
+                    guestView.guestCount = self.guests.count
                     OperationQueue.main.addOperation {
-                            
+                        
                         for guest in guests{
                             let guestView:GuestView = GuestView.fromNib()
                             guestView.frame = CGRect(x: 16, y: y, width: self.container.getWidth()-32, height: guestView.getHeight())
-                            guestView.setInfo(guest: guest, eventId: self.eventID, parent: self)
+                            guestView.setInfo(guest: guest, guestCount: self.guests.count, eventId: self.eventID, parent: self)
                             y += guestView.getHeight()+15
                             self.container.addSubview(guestView)
                         }
                         
                         let minHeight:CGFloat = 100
                         self.container.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: y+minHeight, right: 0)
+                        
+                        self.guestCountLbl.isHidden = (self.guests.count == 0)
+                        self.guestCountLbl.text = "Guests(\(self.guests.count)/8)"
+                        
+                        self.accessCodeLbl.isHidden = self.guestCountLbl.isHidden
+                        self.accessCodeShareBtn.isHidden = self.guestCountLbl.isHidden
+                       
                     }
                     
                 }

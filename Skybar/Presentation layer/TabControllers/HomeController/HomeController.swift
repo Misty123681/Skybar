@@ -191,9 +191,9 @@ class HomeController: ParentController,InstaDelegate {
         if let headerOne = skyStatus.headingOne{
             self.headerOne.text = headerOne
         }
+        
         if let headerTwo = skyStatus.headingTwo{
             self.headerTwo.text = headerTwo
-            
         }
 
         self.bill = skyStatus.currentVisitInfo
@@ -387,7 +387,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                         self.dragGesture.isEnabled = true
                         self.populateHeaders()
                         self.getCurrentEvents()
-                        Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { (timer) in
+                        Timer.scheduledTimer(withTimeInterval: 10, repeats: false, block: { (timer) in
                             self.getCurrentStatus()
                         })
                     })

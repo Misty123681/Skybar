@@ -25,7 +25,6 @@
 		AA1D18EA2118B0AD00CA4A8F /* InstaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1D18E92118B0AD00CA4A8F /* InstaView.xib */; };
 		AA1D18ED2118BA8600CA4A8F /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1D18EC2118BA8600CA4A8F /* HistoryController.swift */; };
 		AA1D18F92118EDB100CA4A8F /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1D18F82118EDB100CA4A8F /* HistoryView.swift */; };
-		AA1D18FB2118EDBE00CA4A8F /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1D18FA2118EDBE00CA4A8F /* HistoryView.xib */; };
 		AA1D18FF2119FF2500CA4A8F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1D18FE2119FF2500CA4A8F /* SettingsController.swift */; };
 		AA28A18E21B9C24B00ECE18C /* SubInstaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28A18C21B9C24B00ECE18C /* SubInstaCell.swift */; };
 		AA28A18F21B9C24B00ECE18C /* SubInstaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA28A18D21B9C24B00ECE18C /* SubInstaCell.xib */; };
@@ -71,7 +70,6 @@
 		AA70B17A216911C900BD493A /* BillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA70B179216911C900BD493A /* BillCell.xib */; };
 		AA75F1B32102436A00B28C4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA75F1B22102436A00B28C4D /* AppDelegate.swift */; };
 		AA75F1B52102436A00B28C4D /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA75F1B42102436A00B28C4D /* LandingController.swift */; };
-		AA75F1B82102436A00B28C4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA75F1B62102436A00B28C4D /* Main.storyboard */; };
 		AA75F1BA2102436B00B28C4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA75F1B92102436B00B28C4D /* Assets.xcassets */; };
 		AA75F1BD2102436B00B28C4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA75F1BB2102436B00B28C4D /* LaunchScreen.storyboard */; };
 		AA815A04217CA87D005468B8 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA815A03217CA87D005468B8 /* CoreImage.framework */; };
@@ -82,6 +80,8 @@
 		AAC7AFB8217B4BDD00B42339 /* FullscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7AFB7217B4BDD00B42339 /* FullscreenController.swift */; };
 		AAF45AE22126D23C0052E5EB /* ParentObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF45AE12126D23C0052E5EB /* ParentObject.swift */; };
 		AAF45AE42126D24C0052E5EB /* ProfileObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF45AE32126D24C0052E5EB /* ProfileObject.swift */; };
+		DA9CDDFD227AF9E400D44F1A /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9CDDFC227AF9E400D44F1A /* HistoryView.xib */; };
+		DA9CDDFF227B0A0200D44F1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9CDDFE227B0A0200D44F1A /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -117,7 +117,6 @@
 		AA1D18E92118B0AD00CA4A8F /* InstaView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstaView.xib; sourceTree = "<group>"; };
 		AA1D18EC2118BA8600CA4A8F /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 		AA1D18F82118EDB100CA4A8F /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		AA1D18FA2118EDBE00CA4A8F /* HistoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryView.xib; sourceTree = "<group>"; };
 		AA1D18FE2119FF2500CA4A8F /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		AA28A18C21B9C24B00ECE18C /* SubInstaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubInstaCell.swift; sourceTree = "<group>"; };
 		AA28A18D21B9C24B00ECE18C /* SubInstaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubInstaCell.xib; sourceTree = "<group>"; };
@@ -165,7 +164,6 @@
 		AA75F1AF2102436A00B28C4D /* SKY 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SKY 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA75F1B22102436A00B28C4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA75F1B42102436A00B28C4D /* LandingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingController.swift; sourceTree = "<group>"; };
-		AA75F1B72102436A00B28C4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA75F1B92102436B00B28C4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA75F1BC2102436B00B28C4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA75F1BE2102436B00B28C4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -179,6 +177,8 @@
 		AAF45AE12126D23C0052E5EB /* ParentObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentObject.swift; sourceTree = "<group>"; };
 		AAF45AE32126D24C0052E5EB /* ProfileObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileObject.swift; sourceTree = "<group>"; };
 		AAFBAEA92141A49C0004CEB8 /* Skybar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Skybar.entitlements; sourceTree = "<group>"; };
+		DA9CDDFC227AF9E400D44F1A /* HistoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryView.xib; sourceTree = "<group>"; };
+		DA9CDDFE227B0A0200D44F1A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F2177A0524C8CF2631C24DD7 /* Pods-Skybar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skybar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skybar/Pods-Skybar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -303,7 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				AA1D18EC2118BA8600CA4A8F /* HistoryController.swift */,
-				AA1D18FA2118EDBE00CA4A8F /* HistoryView.xib */,
+				DA9CDDFC227AF9E400D44F1A /* HistoryView.xib */,
 			);
 			name = HistoryView;
 			sourceTree = "<group>";
@@ -648,7 +648,7 @@
 				AA2E07662105DE3C0070BE88 /* ProfileController */,
 				AA5D4D8B210DD2F000568D09 /* GlobalUI */,
 				AA75F1BB2102436B00B28C4D /* LaunchScreen.storyboard */,
-				AA75F1B62102436A00B28C4D /* Main.storyboard */,
+				DA9CDDFE227B0A0200D44F1A /* Main.storyboard */,
 				AA75F1C52102454700B28C4D /* Landing page */,
 			);
 			path = "Presentation layer";
@@ -776,9 +776,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA562E3B21E224A40044DE8F /* BillView.xib in Resources */,
+				DA9CDDFD227AF9E400D44F1A /* HistoryView.xib in Resources */,
 				AA562E4521E237D50044DE8F /* GuestView.xib in Resources */,
 				AA70B17A216911C900BD493A /* BillCell.xib in Resources */,
 				AA75F1BD2102436B00B28C4D /* LaunchScreen.storyboard in Resources */,
+				DA9CDDFF227B0A0200D44F1A /* Main.storyboard in Resources */,
 				AA2E07572105BDD50070BE88 /* SourceSansPro-Bold.ttf in Resources */,
 				AA0F1F57218B9F9200610D40 /* LastReservationView.xib in Resources */,
 				AA2E07582105BDD50070BE88 /* SourceSansPro-Light.ttf in Resources */,
@@ -794,8 +796,6 @@
 				AA0F1F232188DC0B00610D40 /* NotificationView.xib in Resources */,
 				AA81777D21BC357F003B7126 /* TutorialCell.xib in Resources */,
 				AA1D18EA2118B0AD00CA4A8F /* InstaView.xib in Resources */,
-				AA1D18FB2118EDBE00CA4A8F /* HistoryView.xib in Resources */,
-				AA75F1B82102436A00B28C4D /* Main.storyboard in Resources */,
 				AA5D4D982110DAF200568D09 /* InstaPhoto.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -923,14 +923,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AA75F1B62102436A00B28C4D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AA75F1B72102436A00B28C4D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AA75F1BB2102436B00B28C4D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1064,8 +1056,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_ENTITLEMENTS = Skybar/Skybar.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BEPQ8J6P85;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = RKMQKMSBB7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1108,8 +1101,9 @@
 					"-framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.csp.skybar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fws.GroopVideo;
 				PRODUCT_NAME = "SKY 2.0";
+				PROVISIONING_PROFILE_SPECIFIER = GroopVideo_Dist_New1;
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1124,8 +1118,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_ENTITLEMENTS = Skybar/Skybar.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BEPQ8J6P85;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = RKMQKMSBB7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1168,8 +1163,9 @@
 					"-framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.csp.skybar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fws.GroopVideo;
 				PRODUCT_NAME = "SKY 2.0";
+				PROVISIONING_PROFILE_SPECIFIER = GroopVideo_Dist_New1;
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

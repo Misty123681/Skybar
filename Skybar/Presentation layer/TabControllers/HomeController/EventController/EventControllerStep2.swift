@@ -70,7 +70,7 @@ class EventControllerStep2: ParentController {
                             if let name = zone.zoneName{
                                 self.zonesLabel.text! += name
                                 if index<zones.count-1{
-                                    self.zonesLabel.text! += ","
+                                    self.zonesLabel.text! += ", "
                                 }
                             }
                         }

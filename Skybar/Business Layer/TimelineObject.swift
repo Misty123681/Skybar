@@ -215,6 +215,7 @@ struct GuestElement: Codable {
     let mobile: String?
     let visitDate: String?
     let enteredDate: String?
+    let creatededDate: String?
     let statusName:String?
     let statusTypeID:Int?
     
@@ -225,6 +226,7 @@ struct GuestElement: Codable {
         case mobile = "Mobile"
         case visitDate = "VisitDate"
         case enteredDate = "EnteredDate"
+        case creatededDate = "DateCreated"
         case statusName = "StatusName"
         case statusTypeID = "StatusTypeID"
     }
