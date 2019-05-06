@@ -64,7 +64,7 @@ class EventControllerStep2: ParentController {
                 do{
                     let zones = try JSONDecoder().decode(Zones.self, from: result as! Data)
                     OperationQueue.main.addOperation({
-                        self.zonesLabel.text = "ZONES:"
+                        self.zonesLabel.text = "ZONES: "
                         
                         for (index,zone) in zones.enumerated(){
                             if let name = zone.zoneName{

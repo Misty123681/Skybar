@@ -11,8 +11,8 @@ import UIKit
 class EventController: ParentController {
 
     @IBOutlet weak var maxLbl: UILabel!
-    @IBOutlet weak var barBtn: CustomButton!
-    @IBOutlet weak var tableBtn: CustomButton!
+    @IBOutlet weak var barBtn: UIButton!
+    @IBOutlet weak var tableBtn: UIButton!
     @IBOutlet weak var reservationPopupView: UIView!
     @IBOutlet weak var reservationNumberLbl: UILabel!
     @IBOutlet weak var reservationDateLbl: UILabel!
@@ -187,6 +187,7 @@ class EventController: ParentController {
         setReservationConfiguration()
         setInfo()
         
+        
         if editEvent{
             self.cancelBtn.isHidden = false
             self.modifyBtn.isHidden = false
@@ -311,17 +312,50 @@ class EventController: ParentController {
     func tableUIUpdate(){
         reservationType = 2
         barBtn.tag = 0
-        barBtn.layoutSubviews()
-        tableBtn.tag = 1
-        tableBtn.layoutSubviews()
+        setGradientBgToButton(btn: barBtn)
+        tableBtn.tag = 11
+        setGradientBgToButton(btn: tableBtn)
     }
     
     func barUIUpdate(){
         reservationType = 1
-        barBtn.tag = 1
-        barBtn.layoutSubviews()
+        barBtn.tag = 11
+        setGradientBgToButton(btn: barBtn)
         tableBtn.tag = 0
-        tableBtn.layoutSubviews()
+        setGradientBgToButton(btn: tableBtn)
+    }
+    
+    func setGradientBgToButton(btn: UIButton){
+        
+        if(btn.tag == 11){
+            btn.setTitleColor(.white, for: .normal)
+            let overlayer = UIView(frame: btn.bounds)
+            overlayer.tag = 10
+            overlayer.layer.cornerRadius = btn.frame.size.height/2
+            
+            let gradient = CAGradientLayer()
+            gradient.frame = btn.bounds
+            gradient.colors = [
+                UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
+                UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
+            ]
+            gradient.locations = [0, 1]
+            gradient.startPoint = CGPoint(x: 1, y: 0.2)
+            gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
+            gradient.cornerRadius = btn.frame.size.height/2
+            
+            overlayer.layer.addSublayer(gradient)
+            
+            btn.addSubview(overlayer)
+            btn.sendSubviewToBack(overlayer)
+        }else{
+            btn.setTitleColor(UIColor.init(red: 0, green: 164.0/255.0, blue: 242.0/255.0, alpha: 1), for: .normal)
+            
+            if let view = btn.viewWithTag(10){
+                
+                view.removeFromSuperview()
+            }
+        }
     }
     
     @IBAction func barAction(_ sender: Any) {
@@ -365,6 +399,9 @@ class EventController: ParentController {
                     self.guestNumberLbl.text = "\(guestCount)"
                 }
             
+            }
+            else{
+                barUIUpdate()
             }
 
             descriptionLbl.text = event.description

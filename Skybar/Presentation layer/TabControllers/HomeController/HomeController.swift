@@ -284,7 +284,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     
     func populateEvents(events:[Event]){
         eventsContainer.subviews.forEach({ $0.removeFromSuperview() })
-        
+
         if isAtSkybar{
             self.view.layoutIfNeeded()
             let width = eventsContainer.frame.size.width-20
@@ -300,7 +300,6 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             guestListBadgeLbl.alpha = 1
             return
         }
-        
         
         var i = 0
         var x:CGFloat = 0
@@ -387,7 +386,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                         self.dragGesture.isEnabled = true
                         self.populateHeaders()
                         self.getCurrentEvents()
-                        Timer.scheduledTimer(withTimeInterval: 10, repeats: false, block: { (timer) in
+                        Timer.scheduledTimer(withTimeInterval: 20, repeats: false, block: { (timer) in
                             self.getCurrentStatus()
                         })
                     })

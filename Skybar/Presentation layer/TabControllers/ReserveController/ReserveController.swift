@@ -122,9 +122,9 @@ class ReserveController: ParentController {
     
     func selectReservation(info:Reservation){
         
-        if let reservationstatusID = info.reservationStatusID,let resStatus = ReservationStatus(rawValue: reservationstatusID){
+        /*if let reservationstatusID = info.reservationStatusID,let resStatus = ReservationStatus(rawValue: reservationstatusID){
             switch resStatus{
-            case .Submitted,.Approved,.Pending:
+            case .Submitted,.Approved,.Pending,.Processing,.WalkinOnly, .WaitList, .Confirmed:
                 let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
@@ -133,7 +133,26 @@ class ReserveController: ParentController {
                 }))
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
-            case .Rejected:
+            case .Rejected,.FullCapacity:
+                self.editEvent = false
+                self.performSegue(withIdentifier: "toEvent", sender: info)
+                break
+            }
+        }*/
+        
+        if let reservationstatusID = info.reservationStatusID{
+            switch reservationstatusID{
+            case 1,2,3:
+                let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                    self.editEvent = true
+                    self.performSegue(withIdentifier: "toEvent", sender: info)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            
+            default://Rejected
                 self.editEvent = false
                 self.performSegue(withIdentifier: "toEvent", sender: info)
                 break
@@ -143,7 +162,7 @@ class ReserveController: ParentController {
     
     func selectEvent(info:Event){
         
-        if let reservationstatusID = info.reservationInfo?.reservationStatusID,let resStatus = ReservationStatus(rawValue: reservationstatusID){
+        /*if let reservationstatusID = info.reservationInfo?.reservationStatusID,let resStatus = ReservationStatus(rawValue: reservationstatusID){
             switch resStatus{
             case .Submitted,.Approved,.Pending:
                 let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
@@ -162,7 +181,29 @@ class ReserveController: ParentController {
         }else{
             self.editEvent = false
             self.performSegue(withIdentifier: "toEvent", sender: info)
+        }*/
+        
+        if let reservationstatusID = info.reservationInfo?.reservationStatusID{
+            switch reservationstatusID{
+            case 1,2,3:
+                let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                    self.editEvent = true
+                    self.performSegue(withIdentifier: "toEvent", sender: info)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            default://Rejected
+                self.editEvent = false
+                self.performSegue(withIdentifier: "toEvent", sender: info)
+                break
+            }
+        }else{
+            self.editEvent = false
+            self.performSegue(withIdentifier: "toEvent", sender: info)
         }
+        
     }
     
     func getReservations(){

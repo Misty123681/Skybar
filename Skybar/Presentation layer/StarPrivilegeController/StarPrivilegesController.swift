@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import WebKit
 
-class StarPrivilegesController: ParentController,UITableViewDataSource,UITableViewDelegate {
+class StarPrivilegesController: ParentController,UITableViewDataSource,UITableViewDelegate, WKUIDelegate, WKNavigationDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var houseRulesView: UIView!
+    @IBOutlet weak var webView: WKWebView!
     var privileges:[Privilege]! = nil
     
     @IBAction func popController(_ sender: Any) {
@@ -26,11 +29,21 @@ class StarPrivilegesController: ParentController,UITableViewDataSource,UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PrivilegesCell", for: indexPath) as! PrivilegesCell
         cell.setContent(privileges[indexPath.row],indexPath.row)
+        
+        cell.houseRules.addTarget(self, action: #selector(self.navigateToRulesRegulationsPreview), for: .touchUpInside)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    @objc func navigateToRulesRegulationsPreview(){
+        self.houseRulesView.isHidden = false
+    }
+    
+    @IBAction func hideHouseRulesView(_ sender: Any) {
+        self.houseRulesView.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -41,7 +54,24 @@ class StarPrivilegesController: ParentController,UITableViewDataSource,UITableVi
         tableView.register(nib, forCellReuseIdentifier: "PrivilegesCell")
         // Do any additional setup after loading the view.
         
+        self.houseRulesView.frame = self.view.frame
+        self.view.addSubview(self.houseRulesView)
+        
+        self.houseRulesView.isHidden = true
+        
+        loadLocalHTMLToWebView()
+        
         getPrivileges()
+    }
+    
+    func loadLocalHTMLToWebView(){
+        
+        webView.uiDelegate = self
+        webView.navigationDelegate = self
+                
+        let htmlPath = Bundle.main.path(forResource: "AdmissionRules", ofType: "html")
+        let htmlUrl = URL(fileURLWithPath: htmlPath!, isDirectory: false)
+        webView.loadFileURL(htmlUrl, allowingReadAccessTo: htmlUrl)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

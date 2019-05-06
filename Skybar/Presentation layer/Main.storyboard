@@ -1853,7 +1853,7 @@ SUCCESSFUL!</string>
                                 </constraints>
                             </view>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTu-P7-jaD">
-                                <rect key="frame" x="20" y="189.5" width="300" height="101.5"/>
+                                <rect key="frame" x="20" y="186.5" width="300" height="114.5"/>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBy-Cx-ih2">
                                 <rect key="frame" x="18" y="311" width="0.0" height="25.5"/>
@@ -2047,7 +2047,7 @@ SUCCESSFUL!</string>
                             <constraint firstItem="oti-9B-3g9" firstAttribute="top" secondItem="jct-IO-ZWw" secondAttribute="bottom" constant="12" id="LaY-k6-9p5"/>
                             <constraint firstItem="vKU-vp-Ra4" firstAttribute="trailing" secondItem="dTu-P7-jaD" secondAttribute="trailing" id="Nhi-iB-hfh"/>
                             <constraint firstItem="nSi-N3-AfF" firstAttribute="trailing" secondItem="lhF-MK-r1A" secondAttribute="trailing" id="Nt7-WP-E1L"/>
-                            <constraint firstItem="aBy-Cx-ih2" firstAttribute="top" secondItem="dTu-P7-jaD" secondAttribute="bottom" constant="20" id="O0i-iV-eNm"/>
+                            <constraint firstItem="aBy-Cx-ih2" firstAttribute="top" secondItem="dTu-P7-jaD" secondAttribute="bottom" constant="10" id="O0i-iV-eNm"/>
                             <constraint firstItem="Efs-1u-RN2" firstAttribute="trailing" secondItem="Q8g-05-EUr" secondAttribute="trailing" constant="10" id="QsW-a7-9fw"/>
                             <constraint firstItem="bqN-NP-epD" firstAttribute="top" secondItem="Q8g-05-EUr" secondAttribute="bottom" constant="27" id="RQG-Ch-NI3"/>
                             <constraint firstItem="oti-9B-3g9" firstAttribute="centerX" secondItem="uH7-Dj-HNG" secondAttribute="centerX" id="RqQ-mx-HLm"/>
@@ -2056,7 +2056,7 @@ SUCCESSFUL!</string>
                             <constraint firstItem="vKU-vp-Ra4" firstAttribute="trailing" secondItem="fLU-2u-ZZi" secondAttribute="trailing" id="Wfg-4y-pFr"/>
                             <constraint firstItem="Efs-1u-RN2" firstAttribute="leading" secondItem="ohl-Q4-8AK" secondAttribute="leading" constant="-10" id="WpK-9J-8k8"/>
                             <constraint firstItem="ohl-Q4-8AK" firstAttribute="top" secondItem="nSi-N3-AfF" secondAttribute="bottom" constant="10" id="YPT-yu-hVv"/>
-                            <constraint firstItem="dTu-P7-jaD" firstAttribute="top" secondItem="bqN-NP-epD" secondAttribute="bottom" constant="13" id="Ya1-ZQ-gfZ"/>
+                            <constraint firstItem="dTu-P7-jaD" firstAttribute="top" secondItem="bqN-NP-epD" secondAttribute="bottom" constant="10" id="Ya1-ZQ-gfZ"/>
                             <constraint firstItem="jct-IO-ZWw" firstAttribute="width" secondItem="uH7-Dj-HNG" secondAttribute="width" multiplier="306:375" id="Yac-ob-bCq"/>
                             <constraint firstItem="lhF-MK-r1A" firstAttribute="top" secondItem="wtN-vR-5Ou" secondAttribute="top" constant="-8" id="Zd4-s5-moT"/>
                             <constraint firstItem="jct-IO-ZWw" firstAttribute="top" secondItem="fBb-yj-Ide" secondAttribute="bottom" constant="20" id="aRZ-Gc-I2I"/>
@@ -3894,10 +3894,49 @@ Activated</string>
                         <viewLayoutGuide key="safeArea" id="6Ba-dX-JJf"/>
                     </view>
                     <connections>
+                        <outlet property="houseRulesView" destination="Mb2-Ar-3Cn" id="OM0-eA-GM9"/>
                         <outlet property="tableView" destination="g5Z-1C-RtH" id="x2j-xK-c6l"/>
+                        <outlet property="webView" destination="iA5-BK-Qg2" id="qT3-TJ-IwP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8IT-LQ-Yru" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Mb2-Ar-3Cn">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjZ-VO-8eb">
+                            <rect key="frame" x="15" y="10" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="aw1-G5-mME"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="dQ3-pY-Cwl"/>
+                                <constraint firstAttribute="height" constant="35" id="iTQ-BA-RpZ"/>
+                                <constraint firstAttribute="width" constant="35" id="imU-sr-CNd"/>
+                            </constraints>
+                            <state key="normal" image="blackBack"/>
+                            <connections>
+                                <action selector="hideHouseRulesView:" destination="qv5-eq-IFJ" eventType="touchUpInside" id="ViF-9g-UJg"/>
+                            </connections>
+                        </button>
+                        <wkWebView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iA5-BK-Qg2">
+                            <rect key="frame" x="10" y="65" width="300" height="493"/>
+                            <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                            <wkWebViewConfiguration key="configuration">
+                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                <wkPreferences key="preferences"/>
+                            </wkWebViewConfiguration>
+                        </wkWebView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="HjZ-VO-8eb" firstAttribute="leading" secondItem="BEf-as-Med" secondAttribute="leading" constant="15" id="4HX-M9-R0S"/>
+                        <constraint firstItem="HjZ-VO-8eb" firstAttribute="top" secondItem="Mb2-Ar-3Cn" secondAttribute="top" constant="10" id="8Qp-GI-Si2"/>
+                        <constraint firstItem="BEf-as-Med" firstAttribute="trailing" secondItem="iA5-BK-Qg2" secondAttribute="trailing" constant="10" id="NYa-ET-cUy"/>
+                        <constraint firstItem="BEf-as-Med" firstAttribute="bottom" secondItem="iA5-BK-Qg2" secondAttribute="bottom" constant="10" id="V1h-8o-Kog"/>
+                        <constraint firstItem="iA5-BK-Qg2" firstAttribute="leading" secondItem="BEf-as-Med" secondAttribute="leading" constant="10" id="gmR-3f-Dv6"/>
+                        <constraint firstItem="iA5-BK-Qg2" firstAttribute="top" secondItem="HjZ-VO-8eb" secondAttribute="bottom" constant="20" id="tEG-oU-Ojg"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="BEf-as-Med"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="5132" y="-607"/>
         </scene>
@@ -5136,13 +5175,13 @@ Activated</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ETV-ur-Pwb">
-                                <rect key="frame" x="80" y="313" width="160" height="160"/>
+                                <rect key="frame" x="64" y="313" width="192" height="192"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ETV-ur-Pwb" secondAttribute="height" multiplier="1:1" id="zi6-Y3-PlR"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Tv-k3-NZh">
-                                <rect key="frame" x="41.5" y="513" width="237" height="50"/>
+                                <rect key="frame" x="41.5" y="545" width="237" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qf2-xi-rdc"/>
@@ -5297,7 +5336,7 @@ will get back to you shortly…</string>
                                 </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mZz-fy-0lj">
-                                <rect key="frame" x="150" y="383" width="20" height="20"/>
+                                <rect key="frame" x="150" y="399" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -5343,7 +5382,7 @@ will get back to you shortly…</string>
                             <constraint firstItem="6Tv-k3-NZh" firstAttribute="width" secondItem="HDK-0R-9SF" secondAttribute="width" multiplier="278:375" id="tEC-uv-yJb"/>
                             <constraint firstItem="reb-Od-UQm" firstAttribute="top" secondItem="vnP-yK-TZa" secondAttribute="top" id="wNb-IE-1CS"/>
                             <constraint firstItem="vnP-yK-TZa" firstAttribute="trailing" secondItem="nfk-xn-WQL" secondAttribute="trailing" constant="25" id="y0o-2I-LGT"/>
-                            <constraint firstItem="ETV-ur-Pwb" firstAttribute="width" secondItem="HDK-0R-9SF" secondAttribute="width" multiplier="0.5" id="yyS-zB-7Cr"/>
+                            <constraint firstItem="ETV-ur-Pwb" firstAttribute="width" secondItem="HDK-0R-9SF" secondAttribute="width" multiplier="0.6" id="yyS-zB-7Cr"/>
                             <constraint firstItem="JwL-ga-0ud" firstAttribute="leading" secondItem="vnP-yK-TZa" secondAttribute="leading" constant="25" id="zIF-9O-BYS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vnP-yK-TZa"/>
@@ -5413,11 +5452,11 @@ will get back to you shortly…</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Glr-RH-n9w"/>
-        <segue reference="GAW-q1-mqA"/>
+        <segue reference="vM1-kL-tbY"/>
         <segue reference="gzw-8O-fqF"/>
         <segue reference="amd-fd-TFi"/>
         <segue reference="YjN-25-VUa"/>
-        <segue reference="yqF-qQ-oVN"/>
-        <segue reference="Kxi-fK-E6B"/>
+        <segue reference="FvB-LB-Ucn"/>
+        <segue reference="wBY-zj-VXW"/>
     </inferredMetricsTieBreakers>
 </document>

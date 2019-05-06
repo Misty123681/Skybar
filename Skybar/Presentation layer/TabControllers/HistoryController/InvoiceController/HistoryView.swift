@@ -21,7 +21,11 @@ class HistoryView: UIView {
     @IBOutlet weak var star1: UIImageView!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var loader: UIActivityIndicatorView!
+    
     @IBOutlet weak var consumptionLbl: UILabel!
+    @IBOutlet weak var freeConsumptionLbl: UILabel!
+    @IBOutlet weak var paidConsumptionLbl: UILabel!
+    
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -122,6 +126,15 @@ class HistoryView: UIView {
         if let totalBill = self.visit.totalBillValue{
             self.consumptionLbl.text = totalBill.toCurrency()
         }
+        
+        if let freeBill = self.visit.discountProvided{
+            self.freeConsumptionLbl.text = freeBill.toCurrency()
+        }
+        
+        if let paidBill = self.visit.totalPaid{
+            self.paidConsumptionLbl.text = paidBill.toCurrency()
+        }
+        
         
         if let rating = self.visit.visitRatingValue{
             starManipulation(value: Int(rating))

@@ -82,6 +82,7 @@
 		AAF45AE42126D24C0052E5EB /* ProfileObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF45AE32126D24C0052E5EB /* ProfileObject.swift */; };
 		DA9CDDFD227AF9E400D44F1A /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9CDDFC227AF9E400D44F1A /* HistoryView.xib */; };
 		DA9CDDFF227B0A0200D44F1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9CDDFE227B0A0200D44F1A /* Main.storyboard */; };
+		DACEEA5222807C8800DA0B91 /* AdmissionRules.html in Resources */ = {isa = PBXBuildFile; fileRef = DACEEA5122807C8800DA0B91 /* AdmissionRules.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -179,6 +180,7 @@
 		AAFBAEA92141A49C0004CEB8 /* Skybar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Skybar.entitlements; sourceTree = "<group>"; };
 		DA9CDDFC227AF9E400D44F1A /* HistoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryView.xib; sourceTree = "<group>"; };
 		DA9CDDFE227B0A0200D44F1A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DACEEA5122807C8800DA0B91 /* AdmissionRules.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AdmissionRules.html; sourceTree = "<group>"; };
 		F2177A0524C8CF2631C24DD7 /* Pods-Skybar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skybar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skybar/Pods-Skybar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -431,6 +433,7 @@
 		AA369FD42150418700B356BA /* StarPrivilegeController */ = {
 			isa = PBXGroup;
 			children = (
+				DACEEA4E228078B400DA0B91 /* Html */,
 				AA369FDB215042BF00B356BA /* PrivilegesCell */,
 				AA369FD5215041A100B356BA /* StarPrivilegesController.swift */,
 			);
@@ -692,6 +695,14 @@
 			path = "Business Layer";
 			sourceTree = "<group>";
 		};
+		DACEEA4E228078B400DA0B91 /* Html */ = {
+			isa = PBXGroup;
+			children = (
+				DACEEA5122807C8800DA0B91 /* AdmissionRules.html */,
+			);
+			path = Html;
+			sourceTree = "<group>";
+		};
 		E38C8A258A4BC2ABA1824DD3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -782,6 +793,7 @@
 				AA75F1BD2102436B00B28C4D /* LaunchScreen.storyboard in Resources */,
 				DA9CDDFF227B0A0200D44F1A /* Main.storyboard in Resources */,
 				AA2E07572105BDD50070BE88 /* SourceSansPro-Bold.ttf in Resources */,
+				DACEEA5222807C8800DA0B91 /* AdmissionRules.html in Resources */,
 				AA0F1F57218B9F9200610D40 /* LastReservationView.xib in Resources */,
 				AA2E07582105BDD50070BE88 /* SourceSansPro-Light.ttf in Resources */,
 				AA52DB092114D44C00600B38 /* EventView.xib in Resources */,
@@ -1056,8 +1068,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_ENTITLEMENTS = Skybar/Skybar.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RKMQKMSBB7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1101,9 +1113,9 @@
 					"-framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fws.GroopVideo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.csp.skybar;
 				PRODUCT_NAME = "SKY 2.0";
-				PROVISIONING_PROFILE_SPECIFIER = GroopVideo_Dist_New1;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1118,8 +1130,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_ENTITLEMENTS = Skybar/Skybar.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RKMQKMSBB7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1163,9 +1175,9 @@
 					"-framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fws.GroopVideo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.csp.skybar;
 				PRODUCT_NAME = "SKY 2.0";
-				PROVISIONING_PROFILE_SPECIFIER = GroopVideo_Dist_New1;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

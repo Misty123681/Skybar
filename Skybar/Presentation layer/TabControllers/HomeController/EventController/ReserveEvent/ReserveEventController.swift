@@ -8,45 +8,11 @@
 
 import UIKit
 
-class CustomButton:UIButton{
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if(self.tag == 1){
-            self.setTitleColor(.white, for: .normal)
-            let overlayer = UIView(frame: self.bounds)
-            overlayer.tag = 10
-            overlayer.layer.cornerRadius = self.frame.size.height/2
-            
-            let gradient = CAGradientLayer()
-            gradient.frame = self.bounds
-            gradient.colors = [
-                UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
-                UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
-            ]
-            gradient.locations = [0, 1]
-            gradient.startPoint = CGPoint(x: 1, y: 0.2)
-            gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
-            gradient.cornerRadius = self.frame.size.height/2
-            overlayer.layer.addSublayer(gradient)
-            
-            self.addSubview(overlayer)
-            self.sendSubviewToBack(overlayer)
-        }else{
-            self.setTitleColor(UIColor.init(red: 0, green: 164.0/255.0, blue: 242.0/255.0, alpha: 1), for: .normal)
-            if let view = self.viewWithTag(10){
-                view.removeFromSuperview()
-            }
-        }
-    }
-}
-
 class ReserveEventController: ParentController {
 
     @IBOutlet weak var maxLbl: UILabel!
-    @IBOutlet weak var barBtn: CustomButton!
-    @IBOutlet weak var tableBtn: CustomButton!
+    @IBOutlet weak var barBtn: UIButton!
+    @IBOutlet weak var tableBtn: UIButton!
     @IBOutlet weak var reservationPopupView: UIView!
     @IBOutlet weak var reservationNumberLbl: UILabel!
     @IBOutlet weak var reservationDateLbl: UILabel!
@@ -145,11 +111,19 @@ class ReserveEventController: ParentController {
         self.guestNumberLbl.text = "\(guestCount)"
         enablePlusButton()
         disableMinusButton()
+        
+        barBtn.tag = 11
+        setGradientBgToButton(btn: barBtn)
+        
+        tableBtn.tag = 0
+        setGradientBgToButton(btn: tableBtn)
+        
         // Do any additional setup after loading the view.
         plusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
         minusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
         
         GlobalUI.showLoading(self.view)
+        
         
         ServiceInterface.getReservationRules(handler: { (success, result) in
             GlobalUI.hideLoading()
@@ -186,9 +160,9 @@ class ReserveEventController: ParentController {
         self.maxLbl.text = "You can reserve up to \(self.maximumLimit) people"
         reservationType = 2
         barBtn.tag = 0
-        barBtn.layoutSubviews()
-        tableBtn.tag = 1
-        tableBtn.layoutSubviews()
+        setGradientBgToButton(btn: barBtn)
+        tableBtn.tag = 11
+        setGradientBgToButton(btn: tableBtn)
         
         guestCount = self.minimumLimit
         self.guestNumberLbl.text = "\(self.guestCount)"
@@ -202,10 +176,12 @@ class ReserveEventController: ParentController {
         self.maximumLimit = self.reservationRules.barMaximumNumberOfPeople
         self.maxLbl.text = "You can reserve up to \(self.maximumLimit) people"
         reservationType = 1
-        barBtn.tag = 1
-        barBtn.layoutSubviews()
+        barBtn.tag = 11
+        setGradientBgToButton(btn: barBtn)
+        
         tableBtn.tag = 0
-        tableBtn.layoutSubviews()
+        setGradientBgToButton(btn: tableBtn)
+        
         
         guestCount = self.minimumLimit
         self.guestNumberLbl.text = "\(self.guestCount)"
@@ -213,6 +189,39 @@ class ReserveEventController: ParentController {
         enablePlusButton()
         
         maxLbl.text = "Every bar stool fits 2 people"
+    }
+    
+    func setGradientBgToButton(btn: UIButton){
+        
+        if(btn.tag == 11){
+            btn.setTitleColor(.white, for: .normal)
+            let overlayer = UIView(frame: btn.bounds)
+            overlayer.tag = 10
+            overlayer.layer.cornerRadius = btn.frame.size.height/2
+            
+            let gradient = CAGradientLayer()
+            gradient.frame = btn.bounds
+            gradient.colors = [
+                UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
+                UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
+            ]
+            gradient.locations = [0, 1]
+            gradient.startPoint = CGPoint(x: 1, y: 0.2)
+            gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
+            gradient.cornerRadius = btn.frame.size.height/2
+            
+            overlayer.layer.addSublayer(gradient)
+            
+            btn.addSubview(overlayer)
+            btn.sendSubviewToBack(overlayer)
+        }else{
+            btn.setTitleColor(UIColor.init(red: 0, green: 164.0/255.0, blue: 242.0/255.0, alpha: 1), for: .normal)
+            
+            if let view = btn.viewWithTag(10){
+                
+                view.removeFromSuperview()
+            }
+        }
     }
     
     func showReservationPopup(){

@@ -71,7 +71,7 @@ class ReserveTableView: UIView {
         
         statusLbl.text = reservation.reservationStatusTypeName?.uppercased()
         
-        if let reservationStatus = self.reservation.reservationStatusID,let resStatus = ReservationStatus(rawValue: reservationStatus){
+        /*if let reservationStatus = self.reservation.reservationStatusID,let resStatus = ReservationStatus(rawValue: reservationStatus){
             switch resStatus{
             case .Pending:
                 statusLbl.textColor = .orange
@@ -83,18 +83,28 @@ class ReserveTableView: UIView {
                 statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
                 break
             }
+        }*/
+        
+        if let reservationStatus = self.reservation.reservationStatusID{
+            switch reservationStatus{
+            case 1://Processing||Submitted
+                statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
+                statusImg.image = #imageLiteral(resourceName: "processingIcon")
+                break
+            case 2://WalkinOnly||WaitList||Pending
+                statusLbl.textColor = .orange
+                statusImg.image = #imageLiteral(resourceName: "pendingIcon")
+            case 4://Rejected||FullCapacity
+                statusLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
+                statusImg.image = #imageLiteral(resourceName: "rejectedIcon")
+                break
+            default://Confirmed||Approved
+                statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
+                statusImg.image = #imageLiteral(resourceName: "approveIcon")
+                break
+            }
         }
         
-//        if let reservationtypeID = self.reservation.reservationTypeID,let type:ReservationType = ReservationType(rawValue:reservationtypeID){
-//            switch type{
-//            case .bar:
-//                self.dateLbl.text = "Bar"
-//                break
-//            case .table:
-//                self.dateLbl.text = "Table"
-//                break
-//            }
-//        }
         
         if let reservationtypeName = self.reservation.reservationTypeName{
             self.dateLbl.text = reservationtypeName

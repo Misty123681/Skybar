@@ -131,20 +131,19 @@ class EventView: UIView {
             }
             
             if let statusID = info.reservationStatusID{
-                if let status = ReservationStatus(rawValue: statusID){
-                    switch status{
-                    case .Rejected:
+                    switch statusID{
+                    case 4:
                         self.reserveLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
-                    case .Pending:
+                    case 2:
                         self.reserveLbl.textColor = .orange
-                    case .Approved:
+                    case 3:
                         self.reserveIcon.image = UIImage(named: "confirmed_event")
                         self.reserveLbl.textColor = UIColor(red: 0.13, green: 0.64, blue: 0, alpha: 1)
                     default:
+                        self.reserveLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
                         break
                     }
 
-                }
             }
         }
         

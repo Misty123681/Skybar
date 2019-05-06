@@ -17,6 +17,7 @@ class PrivilegesCell: UITableViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var topDescription: UILabel!
     @IBOutlet weak var innerView: UIView!
+    @IBOutlet weak var houseRules: UIButton!
     
     override func layoutSubviews() {
         super.layoutSubviews()
