@@ -15,6 +15,10 @@ class ParentController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
 
     @IBAction func homeAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: false)

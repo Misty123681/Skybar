@@ -56,7 +56,7 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rejectedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="g8W-qI-ssX">
-                            <rect key="frame" x="333" y="67" width="16" height="16"/>
+                            <rect key="frame" x="335" y="67" width="16" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="16" id="mD1-Qh-wfj"/>
                                 <constraint firstAttribute="width" constant="16" id="sbY-3T-hhV"/>
@@ -73,7 +73,7 @@
                         <constraint firstItem="dJf-5U-D0e" firstAttribute="trailing" secondItem="4u9-hY-1bQ" secondAttribute="trailing" constant="19" id="Mbb-ly-YdA"/>
                         <constraint firstAttribute="bottom" secondItem="yvy-iV-02h" secondAttribute="bottom" constant="15" id="Nll-ei-QQF"/>
                         <constraint firstItem="g8W-qI-ssX" firstAttribute="centerY" secondItem="4u9-hY-1bQ" secondAttribute="centerY" id="QRV-cu-sv4"/>
-                        <constraint firstItem="4u9-hY-1bQ" firstAttribute="leading" secondItem="g8W-qI-ssX" secondAttribute="trailing" constant="7" id="TFT-Ji-Vth"/>
+                        <constraint firstItem="4u9-hY-1bQ" firstAttribute="leading" secondItem="g8W-qI-ssX" secondAttribute="trailing" constant="5" id="TFT-Ji-Vth"/>
                         <constraint firstItem="z2v-cq-JKl" firstAttribute="leading" secondItem="dJf-5U-D0e" secondAttribute="leading" constant="19" id="UGi-3w-J8o"/>
                         <constraint firstItem="yvy-iV-02h" firstAttribute="leading" secondItem="dJf-5U-D0e" secondAttribute="leading" constant="19" id="ZNx-PU-rmH"/>
                         <constraint firstItem="dJf-5U-D0e" firstAttribute="trailing" secondItem="kXm-dZ-AC6" secondAttribute="trailing" constant="19" id="eUV-X2-tvQ"/>

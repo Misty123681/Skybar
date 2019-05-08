@@ -89,18 +89,28 @@ class ReserveTableView: UIView {
             switch reservationStatus{
             case 1://Processing||Submitted
                 statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
-                statusImg.image = #imageLiteral(resourceName: "processingIcon")
+                
+                let image = #imageLiteral(resourceName: "processingIcon")
+                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1))
+                
                 break
             case 2://WalkinOnly||WaitList||Pending
                 statusLbl.textColor = .orange
-                statusImg.image = #imageLiteral(resourceName: "pendingIcon")
+                
+                let image = #imageLiteral(resourceName: "pendingIcon")
+                statusImg.image =  image.maskWithColor(color: .orange)
+                
             case 4://Rejected||FullCapacity
                 statusLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
-                statusImg.image = #imageLiteral(resourceName: "rejectedIcon")
+                
+                let image = #imageLiteral(resourceName: "rejectedIcon")
+                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1))
                 break
             default://Confirmed||Approved
                 statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
-                statusImg.image = #imageLiteral(resourceName: "approveIcon")
+                
+                let image = #imageLiteral(resourceName: "approveIcon")
+                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1))
                 break
             }
         }
@@ -126,4 +136,32 @@ class ReserveTableView: UIView {
         }
         
     }
+}
+
+
+extension UIImage {
+    
+    func maskWithColor(color: UIColor) -> UIImage? {
+        let maskImage = cgImage!
+        
+        let width = size.width
+        let height = size.height
+        let bounds = CGRect(x: 0, y: 0, width: width, height: height)
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+        let context = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
+        
+        context.clip(to: bounds, mask: maskImage)
+        context.setFillColor(color.cgColor)
+        context.fill(bounds)
+        
+        if let cgImage = context.makeImage() {
+            let coloredImage = UIImage(cgImage: cgImage)
+            return coloredImage
+        } else {
+            return nil
+        }
+    }
+    
 }

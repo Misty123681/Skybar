@@ -59,8 +59,8 @@
                                     <color key="textColor" red="0.51764705882352935" green="0.51889115571975708" blue="0.51889115571975708" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvh-hG-zAZ">
-                                    <rect key="frame" x="447" y="120" width="0.0" height="0.0"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED 0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvh-hG-zAZ">
+                                    <rect key="frame" x="350.5" y="104" width="96.5" height="31.5"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="25"/>
                                     <color key="textColor" red="0.078431372549019607" green="0.33725490196078434" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -71,20 +71,20 @@
                                     <color key="textColor" red="0.51764705879999995" green="0.5188911557" blue="0.5188911557" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pee-Uv-tIN">
-                                    <rect key="frame" x="447" y="149.5" width="0.0" height="0.0"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED 0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pee-Uv-tIN">
+                                    <rect key="frame" x="350.5" y="133.5" width="96.5" height="31.5"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="25"/>
                                     <color key="textColor" red="0.078431372550000003" green="0.33725490200000002" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paid Consumption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oA-8h-Vk9">
-                                    <rect key="frame" x="14" y="169.5" width="123.5" height="20.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paid Consumption Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oA-8h-Vk9">
+                                    <rect key="frame" x="14" y="169.5" width="159.5" height="20.5"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
                                     <color key="textColor" red="0.51764705879999995" green="0.5188911557" blue="0.5188911557" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItE-2j-1LA">
-                                    <rect key="frame" x="447" y="180" width="0.0" height="0.0"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED 0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItE-2j-1LA">
+                                    <rect key="frame" x="350.5" y="164" width="96.5" height="31.5"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="25"/>
                                     <color key="textColor" red="0.078431372550000003" green="0.33725490200000002" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>

@@ -18,6 +18,7 @@ class PrivilegesCell: UITableViewCell {
     @IBOutlet weak var topDescription: UILabel!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var houseRules: UIButton!
+    @IBOutlet weak var houseRulesButtonHeightConstraint: NSLayoutConstraint!
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -92,8 +93,15 @@ class PrivilegesCell: UITableViewCell {
 
 
             topDescription.attributedText = attrString
+            
+            houseRules.isHidden = false
+            houseRulesButtonHeightConstraint.constant = 50.0
+            
         }else{
             topDescription.text = nil
+            
+            houseRules.isHidden = true
+            houseRulesButtonHeightConstraint.constant = 10.0
         }
     }
     

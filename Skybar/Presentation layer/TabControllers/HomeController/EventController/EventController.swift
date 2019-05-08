@@ -184,9 +184,13 @@ class EventController: ParentController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setReservationConfiguration()
-        setInfo()
         
+        setReservationConfiguration()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        setInfo()
         
         if editEvent{
             self.cancelBtn.isHidden = false
@@ -197,7 +201,6 @@ class EventController: ParentController {
             self.modifyBtn.isHidden = true
             self.reserveBtn.isHidden = false
         }
-        
     }
 
     func setReservationConfiguration(){

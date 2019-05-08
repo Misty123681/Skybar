@@ -111,6 +111,9 @@ class ReserveEventController: ParentController {
         self.guestNumberLbl.text = "\(guestCount)"
         enablePlusButton()
         disableMinusButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         
         barBtn.tag = 11
         setGradientBgToButton(btn: barBtn)
@@ -123,7 +126,6 @@ class ReserveEventController: ParentController {
         minusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
         
         GlobalUI.showLoading(self.view)
-        
         
         ServiceInterface.getReservationRules(handler: { (success, result) in
             GlobalUI.hideLoading()
