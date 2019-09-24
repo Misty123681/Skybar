@@ -16,6 +16,7 @@ enum MethodName:String{
 }
 class ServiceEngine: NSObject {
     
+    
     var cancelleableTask:URLSessionDataTask!
     
     private func clearCookies(forURL URL: URL) -> Void {

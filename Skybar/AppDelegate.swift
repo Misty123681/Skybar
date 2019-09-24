@@ -57,6 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
             OneSignal.add(self as OSSubscriptionObserver)
             Fabric.with([Crashlytics.self])
         
+        
+    
         if let window = UIApplication.shared.windows.first {
             window.backgroundColor = .white
         }

@@ -14,10 +14,12 @@ class StarPrivilegesController: ParentController,UITableViewDataSource,UITableVi
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var houseRulesView: UIView!
     @IBOutlet weak var webView: WKWebView!
+    
     var privileges:[Privilege]! = nil
     
     @IBAction func popController(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let _ = privileges{
@@ -86,6 +88,7 @@ class StarPrivilegesController: ParentController,UITableViewDataSource,UITableVi
         
         ServiceInterface.getPrivileges(handler: { (success, result) in
             GlobalUI.hideLoading()
+        
             if success {
                 self.privileges = try? JSONDecoder().decode(Privileges.self, from: result as! Data)
                 OperationQueue.main.addOperation {
