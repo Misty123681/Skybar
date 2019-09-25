@@ -25,38 +25,41 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="z2v-cq-JKl">
-                            <rect key="frame" x="19" y="15" width="303" height="0.0"/>
+                            <rect key="frame" x="13" y="15" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="24"/>
                             <color key="textColor" white="0.22" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yvy-iV-02h">
-                            <rect key="frame" x="19" y="75" width="0.0" height="0.0"/>
+                            <rect key="frame" x="13" y="75" width="78" height="0.0"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="78" id="YtM-FV-Oqb"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>
                             <color key="textColor" white="0.58999999999999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4u9-hY-1bQ">
-                            <rect key="frame" x="356" y="75" width="0.0" height="0.0"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sd" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4u9-hY-1bQ">
+                            <rect key="frame" x="343.5" y="65" width="16.5" height="20.5"/>
                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="16"/>
                             <color key="textColor" red="0.9455849274" green="0.19573716760000001" blue="0.26427667119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phoneIcon" translatesAutoresizingMaskIntoConstraints="NO" id="kXm-dZ-AC6">
-                            <rect key="frame" x="332" y="3" width="24" height="24"/>
+                            <rect key="frame" x="336" y="3" width="24" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="24" id="9p2-pb-JIe"/>
                                 <constraint firstAttribute="height" constant="24" id="m2B-KR-Mwn"/>
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJS-zF-mHl">
-                            <rect key="frame" x="0.0" y="0.0" width="312" height="90"/>
+                            <rect key="frame" x="0.0" y="0.0" width="316" height="90"/>
                             <connections>
                                 <action selector="toEventAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="cgP-0e-msJ"/>
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rejectedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="g8W-qI-ssX">
-                            <rect key="frame" x="335" y="67" width="16" height="16"/>
+                            <rect key="frame" x="322.5" y="67" width="16" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="16" id="mD1-Qh-wfj"/>
                                 <constraint firstAttribute="width" constant="16" id="sbY-3T-hhV"/>
@@ -69,17 +72,18 @@
                         <constraint firstItem="ZJS-zF-mHl" firstAttribute="leading" secondItem="dJf-5U-D0e" secondAttribute="leading" id="3CL-vx-Ilh"/>
                         <constraint firstItem="kXm-dZ-AC6" firstAttribute="centerY" secondItem="z2v-cq-JKl" secondAttribute="centerY" id="79Y-W4-Xg8"/>
                         <constraint firstItem="z2v-cq-JKl" firstAttribute="top" secondItem="dJf-5U-D0e" secondAttribute="top" constant="15" id="Azl-A4-diw"/>
+                        <constraint firstItem="yvy-iV-02h" firstAttribute="leading" secondItem="z2v-cq-JKl" secondAttribute="leading" id="GqJ-Ey-ji3"/>
                         <constraint firstItem="ZJS-zF-mHl" firstAttribute="bottom" secondItem="dJf-5U-D0e" secondAttribute="bottom" id="IPa-ec-fOv"/>
-                        <constraint firstItem="dJf-5U-D0e" firstAttribute="trailing" secondItem="4u9-hY-1bQ" secondAttribute="trailing" constant="19" id="Mbb-ly-YdA"/>
                         <constraint firstAttribute="bottom" secondItem="yvy-iV-02h" secondAttribute="bottom" constant="15" id="Nll-ei-QQF"/>
                         <constraint firstItem="g8W-qI-ssX" firstAttribute="centerY" secondItem="4u9-hY-1bQ" secondAttribute="centerY" id="QRV-cu-sv4"/>
                         <constraint firstItem="4u9-hY-1bQ" firstAttribute="leading" secondItem="g8W-qI-ssX" secondAttribute="trailing" constant="5" id="TFT-Ji-Vth"/>
-                        <constraint firstItem="z2v-cq-JKl" firstAttribute="leading" secondItem="dJf-5U-D0e" secondAttribute="leading" constant="19" id="UGi-3w-J8o"/>
-                        <constraint firstItem="yvy-iV-02h" firstAttribute="leading" secondItem="dJf-5U-D0e" secondAttribute="leading" constant="19" id="ZNx-PU-rmH"/>
-                        <constraint firstItem="dJf-5U-D0e" firstAttribute="trailing" secondItem="kXm-dZ-AC6" secondAttribute="trailing" constant="19" id="eUV-X2-tvQ"/>
+                        <constraint firstItem="z2v-cq-JKl" firstAttribute="leading" secondItem="dJf-5U-D0e" secondAttribute="leading" constant="13" id="UGi-3w-J8o"/>
+                        <constraint firstItem="dJf-5U-D0e" firstAttribute="trailing" secondItem="kXm-dZ-AC6" secondAttribute="trailing" constant="15" id="eUV-X2-tvQ"/>
                         <constraint firstItem="kXm-dZ-AC6" firstAttribute="leading" secondItem="ZJS-zF-mHl" secondAttribute="trailing" constant="20" id="gNc-hJ-vOR"/>
                         <constraint firstItem="4u9-hY-1bQ" firstAttribute="centerY" secondItem="yvy-iV-02h" secondAttribute="centerY" id="i8g-a2-FeT"/>
-                        <constraint firstItem="kXm-dZ-AC6" firstAttribute="leading" secondItem="z2v-cq-JKl" secondAttribute="trailing" constant="10" id="z72-Mi-zbb"/>
+                        <constraint firstItem="g8W-qI-ssX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yvy-iV-02h" secondAttribute="trailing" constant="8" id="nTL-YR-xBM"/>
+                        <constraint firstItem="4u9-hY-1bQ" firstAttribute="trailing" secondItem="kXm-dZ-AC6" secondAttribute="trailing" id="qDX-4s-TfC"/>
+                        <constraint firstItem="kXm-dZ-AC6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="z2v-cq-JKl" secondAttribute="trailing" constant="10" id="z72-Mi-zbb"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="dJf-5U-D0e"/>
                 </view>
@@ -105,6 +109,6 @@
     </objects>
     <resources>
         <image name="phoneIcon" width="30" height="30"/>
-        <image name="rejectedIcon" width="38.400001525878906" height="38.400001525878906"/>
+        <image name="rejectedIcon" width="24" height="24"/>
     </resources>
 </document>

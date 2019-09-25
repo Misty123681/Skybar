@@ -71,9 +71,11 @@ class StarPrivilegesController: ParentController,UITableViewDataSource,UITableVi
         webView.uiDelegate = self
         webView.navigationDelegate = self
                 
-        let htmlPath = Bundle.main.path(forResource: "AdmissionRules", ofType: "html")
-        let htmlUrl = URL(fileURLWithPath: htmlPath!, isDirectory: false)
-        webView.loadFileURL(htmlUrl, allowingReadAccessTo: htmlUrl)
+        if let htmlPath = Bundle.main.path(forResource: "AdmissionRules", ofType: "html"){
+            let htmlUrl = URL(fileURLWithPath: htmlPath, isDirectory: false)
+            webView.loadFileURL(htmlUrl, allowingReadAccessTo: htmlUrl)
+        }
+      
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -88,9 +90,12 @@ class StarPrivilegesController: ParentController,UITableViewDataSource,UITableVi
         
         ServiceInterface.getPrivileges(handler: { (success, result) in
             GlobalUI.hideLoading()
+            guard let tempData  = result as? Data else{
+                return
+            }
         
             if success {
-                self.privileges = try? JSONDecoder().decode(Privileges.self, from: result as! Data)
+                self.privileges = try? JSONDecoder().decode(Privileges.self, from: tempData)
                 OperationQueue.main.addOperation {
                     self.tableView.reloadData()
                 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		55E1DDE1C4CC31C054A455B8 /* Pods_Skybar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3607E893CCD06800542112 /* Pods_Skybar.framework */; };
+		92325267233B911100F6291B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92325266233B911000F6291B /* WebKit.framework */; };
 		AA0F1F1E2187902400610D40 /* TimelineObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F1F1D2187902400610D40 /* TimelineObject.swift */; };
 		AA0F1F212188DC0300610D40 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F1F202188DC0300610D40 /* NotificationView.swift */; };
 		AA0F1F232188DC0B00610D40 /* NotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0F1F222188DC0B00610D40 /* NotificationView.xib */; };
@@ -101,6 +102,7 @@
 /* Begin PBXFileReference section */
 		137037C58A0DA0CEDA2A41C4 /* Pods-Skybar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skybar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skybar/Pods-Skybar.debug.xcconfig"; sourceTree = "<group>"; };
 		2A3607E893CCD06800542112 /* Pods_Skybar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skybar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92325266233B911000F6291B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		AA0F1F1D2187902400610D40 /* TimelineObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineObject.swift; sourceTree = "<group>"; };
 		AA0F1F202188DC0300610D40 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		AA0F1F222188DC0B00610D40 /* NotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationView.xib; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92325267233B911100F6291B /* WebKit.framework in Frameworks */,
 				AA815A04217CA87D005468B8 /* CoreImage.framework in Frameworks */,
 				AA190112212B601600F545C2 /* MapKit.framework in Frameworks */,
 				55E1DDE1C4CC31C054A455B8 /* Pods_Skybar.framework in Frameworks */,
@@ -201,6 +204,7 @@
 		30859F7002DD161B82A40C0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92325266233B911000F6291B /* WebKit.framework */,
 				AA815A03217CA87D005468B8 /* CoreImage.framework */,
 				AA815A01217CA851005468B8 /* libc++.tbd */,
 				AA190111212B601600F545C2 /* MapKit.framework */,
