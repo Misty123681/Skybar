@@ -566,7 +566,6 @@
 				AA625626222199EC00A75B51 /* EventControllerStep1.swift */,
 				AA5D4D942110DACC00568D09 /* InstaPhoto */,
 				AA5D4D912110CF3C00568D09 /* WebViewInsta */,
-				AA5D4D8F2110CA2400568D09 /* HomeController.swift */,
 			);
 			path = HomeController;
 			sourceTree = "<group>";
@@ -574,6 +573,7 @@
 		AA5D4D912110CF3C00568D09 /* WebViewInsta */ = {
 			isa = PBXGroup;
 			children = (
+				AA5D4D8F2110CA2400568D09 /* HomeController.swift */,
 			);
 			path = WebViewInsta;
 			sourceTree = "<group>";

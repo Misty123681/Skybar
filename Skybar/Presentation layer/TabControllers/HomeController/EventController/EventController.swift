@@ -518,6 +518,7 @@ class EventController: ParentController {
                 if let data = result as? Data{
                     if let resultStr = String(data: data, encoding: String.Encoding.utf8){
                         if(!resultStr.isEmpty){
+                            
                             OperationQueue.main.addOperation({
                                 self.showReservationPopup()
                             })
