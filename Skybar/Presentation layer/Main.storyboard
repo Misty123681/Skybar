@@ -1101,10 +1101,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riC-Ui-X5Z">
-                                <rect key="frame" x="25" y="70.5" width="270" height="175.5"/>
+                                <rect key="frame" x="25" y="70.5" width="270" height="165.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-ZZ-T8W">
-                                        <rect key="frame" x="0.0" y="0.0" width="270" height="175.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="165.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
@@ -1114,7 +1114,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="3TE-fW-Cg6">
-                                        <rect key="frame" x="20" y="40" width="100" height="95.5"/>
+                                        <rect key="frame" x="20" y="30" width="100" height="105.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="RAc-9l-EmU"/>
                                         </constraints>
@@ -1153,8 +1153,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="hep-Tl-jak" firstAttribute="top" secondItem="kFb-XZ-fgA" secondAttribute="bottom" id="2NN-mE-D61"/>
-                                    <constraint firstItem="3TE-fW-Cg6" firstAttribute="top" secondItem="riC-Ui-X5Z" secondAttribute="top" constant="40" id="H5Q-yr-oEA"/>
-                                    <constraint firstAttribute="bottom" secondItem="3TE-fW-Cg6" secondAttribute="bottom" constant="40" id="JJl-uJ-fzC"/>
+                                    <constraint firstItem="3TE-fW-Cg6" firstAttribute="top" secondItem="riC-Ui-X5Z" secondAttribute="top" constant="30" id="H5Q-yr-oEA"/>
+                                    <constraint firstAttribute="bottom" secondItem="3TE-fW-Cg6" secondAttribute="bottom" constant="30" id="JJl-uJ-fzC"/>
                                     <constraint firstAttribute="trailing" secondItem="kFb-XZ-fgA" secondAttribute="trailing" constant="10" id="Je1-NK-w0D"/>
                                     <constraint firstItem="yyh-I0-JdI" firstAttribute="top" secondItem="riC-Ui-X5Z" secondAttribute="top" constant="56" id="Kwn-TL-KvT"/>
                                     <constraint firstAttribute="trailing" secondItem="yyh-I0-JdI" secondAttribute="trailing" constant="35" id="Mst-Mw-xwX"/>
@@ -1166,13 +1166,13 @@
                                     <constraint firstItem="pRr-ZZ-T8W" firstAttribute="top" secondItem="riC-Ui-X5Z" secondAttribute="top" id="k2V-UH-uCy"/>
                                     <constraint firstItem="pRr-ZZ-T8W" firstAttribute="leading" secondItem="riC-Ui-X5Z" secondAttribute="leading" id="kG0-tV-rqn"/>
                                     <constraint firstAttribute="bottom" secondItem="pRr-ZZ-T8W" secondAttribute="bottom" id="mUC-Fs-sdX"/>
-                                    <constraint firstAttribute="width" secondItem="riC-Ui-X5Z" secondAttribute="height" multiplier="326:212" id="p7a-uh-DK3"/>
+                                    <constraint firstAttribute="width" secondItem="riC-Ui-X5Z" secondAttribute="height" multiplier="326:200" id="p7a-uh-DK3"/>
                                     <constraint firstAttribute="trailing" secondItem="hep-Tl-jak" secondAttribute="trailing" constant="10" id="sDt-xE-tQr"/>
                                     <constraint firstItem="hep-Tl-jak" firstAttribute="leading" secondItem="3TE-fW-Cg6" secondAttribute="trailing" constant="10" id="zur-8Y-g5t"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoa-OE-gpV">
-                                <rect key="frame" x="99" y="281" width="122" height="31"/>
+                                <rect key="frame" x="99" y="266" width="122" height="31"/>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="15"/>
                                 <state key="normal" title="EDIT YOUR INFO">
@@ -1189,13 +1189,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5F-Qy-UHn">
-                                <rect key="frame" x="25" y="332" width="171" height="25.5"/>
+                                <rect key="frame" x="25" y="317" width="171" height="25.5"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usV-h2-pkf">
-                                <rect key="frame" x="25" y="475" width="28" height="28"/>
+                                <rect key="frame" x="25" y="460.5" width="28" height="28"/>
                                 <color key="backgroundColor" red="0.078431372549019607" green="0.33725490196078434" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="2lQ-9H-S4A"/>
@@ -1213,10 +1213,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AC8-w9-zBj">
-                                <rect key="frame" x="41.5" y="498" width="237" height="50"/>
+                                <rect key="frame" x="41.5" y="503" width="237" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="boL-Ip-fTs"/>
+                                    <constraint firstAttribute="width" secondItem="AC8-w9-zBj" secondAttribute="height" multiplier="237:45" id="iIN-F8-9Yc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
                                 <state key="normal" title="ACTIVATE MY KEY">
@@ -1236,13 +1236,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to the Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6OL-2q-2A8">
-                                <rect key="frame" x="58" y="477.5" width="252" height="23"/>
+                                <rect key="frame" x="58" y="463" width="252" height="23"/>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.33725490200000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGW-1V-HUN">
-                                <rect key="frame" x="25" y="357.5" width="270" height="111.5"/>
+                                <rect key="frame" x="25" y="342.5" width="270" height="112"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -1250,7 +1250,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTz-k9-EjY">
-                                <rect key="frame" x="58" y="474" width="252" height="30"/>
+                                <rect key="frame" x="58" y="459.5" width="252" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="nAw-MD-gDD"/>
                                 </constraints>
@@ -1274,7 +1274,7 @@
                             <constraint firstItem="riC-Ui-X5Z" firstAttribute="top" secondItem="bjB-fZ-8Fx" secondAttribute="bottom" constant="20" id="Msi-ib-K5I"/>
                             <constraint firstItem="TGW-1V-HUN" firstAttribute="trailing" secondItem="pRr-ZZ-T8W" secondAttribute="trailing" id="RIr-XI-cOU"/>
                             <constraint firstItem="6OL-2q-2A8" firstAttribute="leading" secondItem="usV-h2-pkf" secondAttribute="trailing" constant="5" id="SK7-ff-INP"/>
-                            <constraint firstItem="aoa-OE-gpV" firstAttribute="top" secondItem="riC-Ui-X5Z" secondAttribute="bottom" constant="35" id="TyP-hN-4fs"/>
+                            <constraint firstItem="aoa-OE-gpV" firstAttribute="top" secondItem="riC-Ui-X5Z" secondAttribute="bottom" constant="30" id="TyP-hN-4fs"/>
                             <constraint firstItem="TGW-1V-HUN" firstAttribute="top" secondItem="h5F-Qy-UHn" secondAttribute="bottom" id="VCz-Le-UbU"/>
                             <constraint firstItem="riC-Ui-X5Z" firstAttribute="width" secondItem="YuM-1j-CMg" secondAttribute="width" multiplier="326:387" id="VKG-JP-flS"/>
                             <constraint firstItem="riC-Ui-X5Z" firstAttribute="centerX" secondItem="YuM-1j-CMg" secondAttribute="centerX" id="WmK-N1-fyE"/>
@@ -4953,7 +4953,7 @@ Activated</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qx-yG-p69" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5968.125" y="-607.3943661971831"/>
+            <point key="canvasLocation" x="5486" y="-652"/>
         </scene>
         <!--Event Controller Step1-->
         <scene sceneID="H4M-uI-RgC">
@@ -5513,7 +5513,7 @@ will get back to you shortly…</string>
         <image name="line2" width="269" height="51"/>
         <image name="line3" width="312" height="51"/>
         <image name="line4" width="305" height="18"/>
-        <image name="logo" width="1024" height="1024"/>
+        <image name="logo" width="512" height="512"/>
         <image name="mysky" width="35" height="35"/>
         <image name="myskyGray" width="35" height="35"/>
         <image name="next" width="24" height="24"/>
@@ -5537,12 +5537,12 @@ will get back to you shortly…</string>
         <image name="wood" width="854" height="462"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Glr-RH-n9w"/>
-        <segue reference="GAW-q1-mqA"/>
+        <segue reference="CFY-Ei-ncG"/>
+        <segue reference="vM1-kL-tbY"/>
         <segue reference="gzw-8O-fqF"/>
-        <segue reference="amd-fd-TFi"/>
-        <segue reference="ixl-77-itZ"/>
-        <segue reference="yqF-qQ-oVN"/>
+        <segue reference="JHX-1d-x34"/>
+        <segue reference="YjN-25-VUa"/>
+        <segue reference="FvB-LB-Ucn"/>
         <segue reference="Kxi-fK-E6B"/>
     </inferredMetricsTieBreakers>
 </document>
