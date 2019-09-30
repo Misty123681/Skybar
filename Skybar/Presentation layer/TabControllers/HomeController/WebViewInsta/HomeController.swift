@@ -39,6 +39,9 @@ class StartPrivilegeView:UIView{
 
 class HomeController: ParentController,InstaDelegate {
     
+    
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var privilegeBtn: UIButton!
     @IBOutlet weak var reservationNotificationBadgeLbl: UILabel!
     @IBOutlet weak var dummyTableView: UITableView!
@@ -236,7 +239,7 @@ class HomeController: ParentController,InstaDelegate {
 UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregroundColor:UIColor.black,NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]));
    
         UsePromoLabel.attributedText = attrString;
-        UsePromoLabel.sizeToFit() ;
+       // UsePromoLabel.sizeToFit() ;
         if let isOpen = skyStatus.isOpen{
             
             self.isOpen = isOpen
