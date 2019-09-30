@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Skybar/Service Layer/ServiceEngine.swift"
-            timestampString = "591514715.3536921"
+            timestampString = "591526783.313571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "215"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Skybar/Service Layer/ServiceEngine.swift"
-            timestampString = "591514715.354261"
+            timestampString = "591526783.313659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Skybar/Service Layer/ServiceInterface.swift"
-            timestampString = "591277555.853573"
+            timestampString = "591521189.440496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "395"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Skybar/Service Layer/ServiceInterface.swift"
-            timestampString = "591277555.85366"
+            timestampString = "591521189.440559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "398"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Skybar/Service Layer/ServiceInterface.swift"
-            timestampString = "591277555.853736"
+            timestampString = "591521189.440621"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "401"
@@ -346,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Skybar/Presentation layer/TabControllers/ReserveController/ReserveController.swift"
-            timestampString = "591278955.62588"
+            timestampString = "591526783.314123"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "257"
@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Skybar/Presentation layer/TabControllers/ReserveController/ReserveController.swift"
-            timestampString = "591278955.62634"
+            timestampString = "591526783.314255"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -426,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Skybar/Presentation layer/TabControllers/ReserveController/ReserveController.swift"
-            timestampString = "591278955.6264139"
+            timestampString = "591526783.31432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -490,7 +490,7 @@
                   moduleName = "SKY 2.0"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/neosoft/Desktop/SKYBAR/skybar/Skybar/Presentation%20layer/TabControllers/HomeController/EventController/ReserveEvent/ReserveEventController.swift"
-                  timestampString = "591514720.601876"
+                  timestampString = "591526783.936062"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
@@ -505,7 +505,7 @@
                   moduleName = "SKY 2.0"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/neosoft/Desktop/SKYBAR/skybar/Skybar/Presentation%20layer/TabControllers/HomeController/EventController/ReserveEvent/ReserveEventController.swift"
-                  timestampString = "591514720.6060801"
+                  timestampString = "591526783.939719"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "140"
@@ -554,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Skybar/Presentation layer/TabControllers/ReserveController/ReserveController.swift"
-            timestampString = "591278955.626866"
+            timestampString = "591526783.314487"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "258"
@@ -576,118 +576,6 @@
             startingLineNumber = "394"
             endingLineNumber = "394"
             landmarkName = "getCurrentStatus()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Service Layer/ServiceInterface.swift"
-            timestampString = "591277555.85526"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "getTimelineInfo(handler:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static SKY_2_0.ServiceInterface.getTimelineInfo(handler: Swift.Optional&lt;(Swift.Bool, Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "SKY 2.0"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/SKYBAR/skybar/Skybar/Service%20Layer/ServiceInterface.swift"
-                  timestampString = "591514720.63042"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "170"
-                  endingLineNumber = "170"
-                  offsetFromSymbolStart = "345">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; () in static SKY_2_0.ServiceInterface.getTimelineInfo(handler: Swift.Optional&lt;(Swift.Bool, Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "SKY 2.0"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/SKYBAR/skybar/Skybar/Service%20Layer/ServiceInterface.swift"
-                  timestampString = "591514720.633342"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "171"
-                  endingLineNumber = "171"
-                  offsetFromSymbolStart = "47">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Presentation layer/GuestListController/GuestListController.swift"
-            timestampString = "591104243.080911"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "shareAccessCode(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Presentation layer/GuestListController/GuestListController.swift"
-            timestampString = "591104243.081064"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "shareAccessCode(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Presentation layer/GuestListController/GuestListController.swift"
-            timestampString = "591104243.081154"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "shareAccessCode(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Presentation layer/GuestListController/GuestListController.swift"
-            timestampString = "591104243.081273"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "shareAccessCode(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -752,38 +640,6 @@
             startingLineNumber = "86"
             endingLineNumber = "86"
             landmarkName = "toReserve(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Presentation layer/GuestListController/GuestListController.swift"
-            timestampString = "591104243.082448"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "populateGuests()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Presentation layer/GuestListController/GuestListController.swift"
-            timestampString = "591104243.082534"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "populateGuests()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -913,118 +769,6 @@
             endingLineNumber = "80"
             landmarkName = "editReservation()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Presentation layer/TabControllers/HomeController/Views/EventView/EventView.swift"
-            timestampString = "591514715.35576"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "getImage(key:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Presentation layer/TabControllers/HomeController/Views/EventView/EventView.swift"
-            timestampString = "591514715.355842"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "getImage(key:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Presentation layer/TabControllers/HomeController/Views/EventView/EventView.swift"
-            timestampString = "591514715.355918"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "getImage(key:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Presentation layer/TabControllers/HomeController/Views/EventView/EventView.swift"
-            timestampString = "591515150.477064"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "getImage(key:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Skybar/Presentation layer/TabControllers/HomeController/Views/EventView/EventView.swift"
-            timestampString = "591515176.1408401"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "getImage(key:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SKY_2_0.EventView.getImage(key: Swift.String) -&gt; ()"
-                  moduleName = "SKY 2.0"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/SKYBAR/skybar/Skybar/Presentation%20layer/TabControllers/HomeController/Views/EventView/EventView.swift"
-                  timestampString = "591515176.150748"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "170"
-                  endingLineNumber = "170"
-                  offsetFromSymbolStart = "231">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; () in SKY_2_0.EventView.getImage(key: Swift.String) -&gt; ()"
-                  moduleName = "SKY 2.0"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/SKYBAR/skybar/Skybar/Presentation%20layer/TabControllers/HomeController/Views/EventView/EventView.swift"
-                  timestampString = "591515176.1552"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "171"
-                  endingLineNumber = "171"
-                  offsetFromSymbolStart = "43">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

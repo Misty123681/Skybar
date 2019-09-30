@@ -25,6 +25,9 @@ class EventView: UIView {
     
     @IBOutlet weak var reserveBtn: UIButton!
     var shareLink = ""
+    var cacheArr = [NSCache<NSString, UIImage>]()
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -84,7 +87,7 @@ class EventView: UIView {
         }
     }
     
-    func setInfo(event:Event,controller:UIViewController){
+    func setInfo(event:Event,controller:UIViewController,cnt:Int){
         
         self.controller = controller
         self.event = event
@@ -93,7 +96,7 @@ class EventView: UIView {
         titleLbl.text = self.event.name
         descriptionLbl.text = self.event.description
         if let image = self.event.eventImage{
-            self.getImage(key:image)
+            self.getImage(key:image,cnt:cnt)
         }
         
 //        if self.event.booked ?? false{
@@ -165,19 +168,46 @@ class EventView: UIView {
     }
     
     
-    func getImage(key:String){
+    fileprivate func getEventImage(_ key: String) {
         self.loader.startAnimating()
         ServiceInterface.resizeImage(imageKey: key,width: Float(imageView.getWidth()),height: Float(imageView.getHeight()), handler: { (success, result) in
             OperationQueue.main.addOperation {
                 self.loader.stopAnimating()
-            if success {
-                if let data = result as? Data{
-                    
-                        self.imageView.image = UIImage(data: data)
+                if success {
+                    if let data = result as? Data,let img = UIImage(data: data){
+                        self.imageView.image = img
+                        let imageCache = NSCache<NSString, UIImage>()
+                        imageCache.setObject(img, forKey: key as NSString)
+                        if let controller = self.controller as? HomeController{
+                            controller.cacheEventImages.append(imageCache)
+
+                        }
+                        
                     }
                 }
             }
         })
     }
+    
+    
+    // MARK:- check event image in cache
+    func getImage(key:String,cnt:Int){
+        
+        if let controller = self.controller as? HomeController{
+            self.cacheArr = controller.cacheEventImages
+        }
+     
+        if self.cacheArr.count == cnt{
+              self.cacheArr.forEach { (cache) in
+                if let cachedImage = cache.object(forKey: key as NSString) {
+                    self.imageView.image = cachedImage
+                }
+            }
+        }
+        else{
+            getEventImage(key)
+       }
+    }
 
 }
+

@@ -71,7 +71,7 @@ class ReserveController: ParentController {
             eventView.frame = CGRect(x: 10, y: y, width: width, height: eventView.frame.size.height)
             i += 1
             y += (eventView.frame.size.height+20)
-            eventView.setInfo(event: event, controller: self)
+            eventView.setInfo(event: event, controller: self, cnt: events.count)
 
             eventsContainer.addSubview(eventView)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toEvent))

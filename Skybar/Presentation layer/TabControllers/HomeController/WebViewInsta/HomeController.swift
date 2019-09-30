@@ -73,6 +73,7 @@ class HomeController: ParentController,InstaDelegate {
     let skybarLatitude = 25.190911
     var careemLinks:CareemLinks! = nil
     var skyStatus:SkyStatus! = nil
+    var cacheEventImages = [NSCache<NSString, UIImage>]()
     
   
 
@@ -313,7 +314,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             eventView.frame = CGRect(x: x, y: 0, width: width, height: eventsContainer.frame.size.height)
             i += 1
             x += (eventView.frame.size.width+20)
-            eventView.setInfo(event: event, controller: self)
+            eventView.setInfo(event: event, controller: self,cnt:events.count)
 
             eventsContainer.addSubview(eventView)
             
@@ -457,7 +458,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         ServiceUser.setLoggedIn()
         // Do any additional setup after loading the view.
         getResetvationNumber()
-        getCurrentStatus()
+     
         getCareemLinks()
         
         self.view.layoutIfNeeded()
@@ -475,6 +476,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         
         designPrivilegeBtn()
     }
+    
     
     func designPrivilegeBtn(){
         let layer = UIView(frame: privilegeBtn.bounds)
@@ -536,6 +538,8 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        self.cacheEventImages = [NSCache<NSString, UIImage>]()
+        getCurrentStatus()
         self.populateProfileInfo()
         self.reloadMedia()
         
@@ -554,10 +558,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.default
