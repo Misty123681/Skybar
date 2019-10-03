@@ -67,9 +67,10 @@ class StatsView: UIView,ChartViewDelegate {
         let size = self.visitsLbl.intrinsicContentSize
         let color1 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
         let color2 = CIColor(color:UIColor(red: 25.0/255.0, green: 146.0/255.0, blue: 224.0/255.0, alpha: 1))
-        if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
-            self.visitsLbl.textColor = UIColor.init(patternImage: uiimage)
-        }
+        //if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
+            self.visitsLbl.textColor =  UIColor.black
+                //UIColor.init(patternImage: uiimage)
+        //}
         
         for entry in info{
             if let entry = entry as? [String:Any]{

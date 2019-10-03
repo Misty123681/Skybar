@@ -141,8 +141,8 @@
                         <constraint firstAttribute="bottom" secondItem="rFw-ME-uzM" secondAttribute="bottom" constant="16" id="yue-MH-GqI"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="MySky" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7GF-Ui-t7v">
-                    <rect key="frame" x="13" y="425" width="88" height="34"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="NOTIFICATIONS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7GF-Ui-t7v">
+                    <rect key="frame" x="13" y="425" width="205.5" height="34"/>
                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>

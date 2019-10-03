@@ -133,7 +133,8 @@ class HistoryController: ParentController {
         getTimeline()
         
         if let profile = ServiceUser.profile{
-            titleLbl.text = profile.level+" Summary"
+            titleLbl.text =  "Your Summary"
+                //profile.level+" Summary"
             descriptionLbl.text = "Thank you for being a great \(profile.level)"
         }
         // Do any additional setup after loading the view.
