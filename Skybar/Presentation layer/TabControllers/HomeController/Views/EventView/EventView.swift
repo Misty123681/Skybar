@@ -26,6 +26,7 @@ class EventView: UIView {
     @IBOutlet weak var reserveBtn: UIButton!
     var shareLink = ""
     var cacheArr = [NSCache<NSString, UIImage>]()
+    var documentInteractionController:UIDocumentInteractionController!
     
     
     

@@ -629,7 +629,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                     dest.event = info
                 }
                 
-                if let code = self.bill.reservationAccessCode{
+                if let code = self.skyStatus.nearestEventDetails?.reservationInfo?.reservationAccessCode{
                     dest.reservationCode = code
                 }
                 
