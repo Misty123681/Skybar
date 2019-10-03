@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		55E1DDE1C4CC31C054A455B8 /* Pods_Skybar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3607E893CCD06800542112 /* Pods_Skybar.framework */; };
+		920E28692343677E0003746B /* Ui+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E28682343677E0003746B /* Ui+Extension.swift */; };
 		92325267233B911100F6291B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92325266233B911000F6291B /* WebKit.framework */; };
 		AA0F1F1E2187902400610D40 /* TimelineObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F1F1D2187902400610D40 /* TimelineObject.swift */; };
 		AA0F1F212188DC0300610D40 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F1F202188DC0300610D40 /* NotificationView.swift */; };
@@ -102,6 +103,7 @@
 /* Begin PBXFileReference section */
 		137037C58A0DA0CEDA2A41C4 /* Pods-Skybar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skybar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skybar/Pods-Skybar.debug.xcconfig"; sourceTree = "<group>"; };
 		2A3607E893CCD06800542112 /* Pods_Skybar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skybar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		920E28682343677E0003746B /* Ui+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ui+Extension.swift"; sourceTree = "<group>"; };
 		92325266233B911000F6291B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		AA0F1F1D2187902400610D40 /* TimelineObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineObject.swift; sourceTree = "<group>"; };
 		AA0F1F202188DC0300610D40 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,14 @@
 				2A3607E893CCD06800542112 /* Pods_Skybar.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		920E2867234367590003746B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				920E28682343677E0003746B /* Ui+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		AA0F1F1F2188DBF200610D40 /* NotificationView */ = {
@@ -364,6 +374,7 @@
 		AA2E075A2105CAF90070BE88 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				920E2867234367590003746B /* Extension */,
 				AA2E075B2105CB070070BE88 /* Helper.swift */,
 			);
 			path = Helper;
@@ -922,6 +933,7 @@
 				AA52DB072114D43900600B38 /* EventView.swift in Sources */,
 				AA1D18F92118EDB100CA4A8F /* HistoryView.swift in Sources */,
 				AA1A4B2C21B9B19900252C66 /* TermsController.swift in Sources */,
+				920E28692343677E0003746B /* Ui+Extension.swift in Sources */,
 				AA2E07622105D9DE0070BE88 /* ResendController.swift in Sources */,
 				AA0F1F1E2187902400610D40 /* TimelineObject.swift in Sources */,
 				AA562E4321E237CB0044DE8F /* GuestView.swift in Sources */,

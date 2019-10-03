@@ -6,10 +6,15 @@
 //  Created by Christopher Nassar on 2/23/19.
 //  Copyright © 2019 Christopher Nassar. All rights reserved.
 //
+import UIKit
+
+
 
 import UIKit
 
 class EventControllerStep1: ParentController {
+    @IBOutlet weak var constraintWidthZoneImage: NSLayoutConstraint!
+    
     @IBOutlet weak var doorOpenLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
@@ -33,6 +38,9 @@ class EventControllerStep1: ParentController {
         super.viewDidLoad()
         setInfo()
         getZone()
+        let newMultiplier:CGFloat = 0.68
+        constraintWidthZoneImage = constraintWidthZoneImage.setMultiplier(multiplier: newMultiplier)
+
     }
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.default
@@ -41,6 +49,7 @@ class EventControllerStep1: ParentController {
     @IBAction func budgetChange(_ slider: UISlider) {
         let roundedValue = round(slider.value / step) * step
         slider.value = roundedValue
+     
         
         let discountValue = slider.value*0.75
         discountLb.text = "25% DISCOUNT (\(discountValue.toCurrencyNoPrefix()))"
@@ -105,7 +114,25 @@ class EventControllerStep1: ParentController {
         }
     }
     
+    fileprivate func setZoneImageSize() {
+        var newMultiplier:CGFloat = 0.68
+        if slider.value <= 600{
+            if slider.value <= 250{
+                newMultiplier = 0.68
+            }else{
+                newMultiplier = 0.82
+            }
+        }else{
+            newMultiplier = 0.9
+        }
+        
+        constraintWidthZoneImage = constraintWidthZoneImage.setMultiplier(multiplier: newMultiplier)
+        self.loadViewIfNeeded()
+    }
+    
     func getZone(){
+        setZoneImageSize()
+        
         loader.startAnimating()
         var serviceUrl:String
         serviceUrl = "https://skybarstar.com/UserAppService/GetAvailableZonesImage?budget=\(slider.value)&numberOfGuests=\(guestCount)"

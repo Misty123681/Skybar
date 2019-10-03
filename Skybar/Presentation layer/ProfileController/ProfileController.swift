@@ -128,6 +128,7 @@ class ProfileController: ParentController,UINavigationControllerDelegate, UIImag
         confirmInfoBtn.layoutSubviews()
         confirmInfoBtn.setTitleColor(.white, for: .normal)
         confirmInfoBtn.setTitle("DONE", for: .normal)
+        editInfoBtn.setTitle("YOUR INFO", for: .normal)
         confirmInfoBtn.backgroundColor = .clear
         confirmInfoBtn.removeTarget(self, action:  #selector(self.toCardPreview), for: .touchUpInside)
         confirmInfoBtn.addTarget(self, action: #selector(self.holdEditInformation), for: .touchUpInside)
@@ -148,6 +149,7 @@ class ProfileController: ParentController,UINavigationControllerDelegate, UIImag
         confirmInfoBtn.layoutSubviews()
         confirmInfoBtn.setTitleColor(.black, for: .normal)
         confirmInfoBtn.setTitle("CONFIRM YOUR INFO", for: .normal)
+         editInfoBtn.setTitle("EDIT YOUR INFO", for: .normal)
         confirmInfoBtn.backgroundColor = .white
         confirmInfoBtn.removeTarget(self, action:  #selector(self.holdEditInformation), for: .touchUpInside)
         confirmInfoBtn.addTarget(self, action: #selector(self.toCardPreview), for: .touchUpInside)
