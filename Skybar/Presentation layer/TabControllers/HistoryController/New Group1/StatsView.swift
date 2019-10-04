@@ -175,9 +175,9 @@ class StatsView: UIView,ChartViewDelegate {
         }
         
         let chartDataSet = BarChartDataSet(values: dataEntries, label: "Paid consumption")
-        chartDataSet.setColor(UIColor(red: 20.0/255.0, green: 87.0/255.0, blue: 204.0/255.0, alpha: 1))
+        chartDataSet.setColor(UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1))
         let chartDataSet1 = BarChartDataSet(values: dataEntries1, label: "Discount")
-        chartDataSet1.setColor(UIColor(red: 0, green: 224.0/255.0, blue: 1, alpha: 1))
+        chartDataSet1.setColor(UIColor(red: 128/255.0, green: 128/255.0, blue: 128/255.0, alpha: 1))
         let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet1]
         //chartDataSet.colors = [.purple]
         //chartDataSet.colors = ChartColorTemplates.colorful()

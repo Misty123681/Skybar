@@ -29,7 +29,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qa4-If-fdQ">
-                        <rect key="frame" x="20" y="459.5" width="327" height="108.5"/>
+                        <rect key="frame" x="15" y="459.5" width="337" height="108.5"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="20"/>
                         <color key="textColor" red="0.078431372550000003" green="0.33725490200000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="qa4-If-fdQ" secondAttribute="trailing" constant="20" id="5k1-dH-r3J"/>
+                <constraint firstAttribute="trailing" secondItem="qa4-If-fdQ" secondAttribute="trailing" constant="15" id="5k1-dH-r3J"/>
                 <constraint firstItem="Z6z-GL-IZb" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="MKf-tv-lkz"/>
                 <constraint firstItem="UoN-ov-uqy" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="MUN-7v-ZKx"/>
                 <constraint firstItem="qa4-If-fdQ" firstAttribute="top" secondItem="UoN-ov-uqy" secondAttribute="bottom" id="PGL-sm-FSP"/>
@@ -66,12 +66,13 @@
                 <constraint firstItem="Z6z-GL-IZb" firstAttribute="top" secondItem="qa4-If-fdQ" secondAttribute="bottom" constant="8" id="bM8-8f-aNf"/>
                 <constraint firstItem="UoN-ov-uqy" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="257:375" id="cXP-Dj-KDZ"/>
                 <constraint firstItem="Z6z-GL-IZb" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="305:375" id="ePb-qe-2cY"/>
-                <constraint firstItem="qa4-If-fdQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="i7h-fJ-dIU"/>
+                <constraint firstItem="qa4-If-fdQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="i7h-fJ-dIU"/>
                 <constraint firstItem="UoN-ov-uqy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="lXH-49-aJw"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="367" height="639"/>
             <connections>
+                <outlet property="ConstraintHtImage" destination="QaZ-70-Yic" id="09a-8o-ezg"/>
                 <outlet property="descriptiobLbl" destination="qa4-If-fdQ" id="Po1-d2-Wfm"/>
                 <outlet property="imageView" destination="UoN-ov-uqy" id="yeo-Fp-97W"/>
                 <outlet property="letsStartBtn" destination="Z6z-GL-IZb" id="idY-Ae-Up2"/>

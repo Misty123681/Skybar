@@ -22,13 +22,14 @@ class StartPrivilegeView:UIView{
         
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
-        gradient.colors = [
-            UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
-            UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
-        ]
+        gradient.colors = [UIColor.black]
+            //[
+           // UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
+           // UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
+        //]
         gradient.locations = [0, 1]
-        gradient.startPoint = CGPoint(x: 1, y: 0.2)
-        gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
+        //gradient.startPoint = CGPoint(x: 1, y: 0.2)
+        //gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
         gradient.cornerRadius = 8
         layer.layer.addSublayer(gradient)
         
@@ -205,21 +206,21 @@ class HomeController: ParentController,InstaDelegate {
         let size = self.headerTwo.intrinsicContentSize
         if let isFull = skyStatus.isFullCapacity{
             if isFull{
-                let color1 = CIColor(color:UIColor(red: 248.0/255.0, green: 166.0/255.0, blue: 95.0/255.0, alpha: 1))
-                let color2 = CIColor(color:UIColor(red: 245.0/255.0, green: 109.0/255.0, blue: 47.0/255.0, alpha: 1))
-                if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
-                    self.headerTwo.textColor = UIColor.init(patternImage: uiimage)
+                //let color1 = CIColor(color:UIColor(red: 248.0/255.0, green: 166.0/255.0, blue: 95.0/255.0, alpha: 1))
+               // let color2 = CIColor(color:UIColor(red: 245.0/255.0, green: 109.0/255.0, blue: 47.0/255.0, alpha: 1))
+                //if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
+                    self.headerTwo.textColor = UIColor.black
                     self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
                     
-                }
+               // }
             }else{
                 let color1 = CIColor(color:UIColor(red: 69.0/255.0, green: 146.0/255.0, blue: 42.0/255.0, alpha: 1))
                 let color2 = CIColor(color:UIColor(red: 188.0/255.0, green: 228.0/255.0, blue: 130.0/255.0, alpha: 1))
-                if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
-                    self.headerTwo.textColor = UIColor.init(patternImage: uiimage)
+               // if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
+                    self.headerTwo.textColor =  UIColor.black
                     self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
                     
-                }
+                //}
             }
         }
         let plz = "Please Use Promo Code "
@@ -248,9 +249,9 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                 redesignBtn(msg: skyStatus.rideDisabledMsg)
                 let color1 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
                 let color2 = CIColor(color:UIColor(red: 25.0/255.0, green: 146.0/255.0, blue: 224.0/255.0, alpha: 1))
-                if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
-                    self.headerTwo.textColor = UIColor.init(patternImage: uiimage)
-                }
+               // if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
+                    self.headerTwo.textColor =  UIColor.black
+               // }
                 
                 instaTitleLbl.text = "We Party Legendary"
                 
@@ -479,22 +480,24 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     
     
     func designPrivilegeBtn(){
-        let layer = UIView(frame: privilegeBtn.bounds)
-        layer.layer.cornerRadius = 8
+       // let layer = UIView(frame: privilegeBtn.bounds)
+        privilegeBtn.layer.cornerRadius = 8
+        privilegeBtn.backgroundColor = UIColor.black
         
-        let gradient = CAGradientLayer()
-        gradient.frame = privilegeBtn.bounds
-        gradient.colors = [
-            UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
-            UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
-        ]
-        gradient.locations = [0, 1]
-        gradient.startPoint = CGPoint(x: 1, y: 0.2)
-        gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
-        gradient.cornerRadius = 8
-        layer.layer.addSublayer(gradient)
+        //let gradient = CAGradientLayer()
+        //gradient.frame = privilegeBtn.bounds
+       // gradient.colors = [UIColor.black]
+            //[
+            //UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
+           // UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
+       // ]
+       // gradient.locations = [0, 1]
+       // gradient.startPoint = CGPoint(x: 1, y: 0.2)
+        //gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
+       // gradient.cornerRadius = 8
+        //layer.layer.addSublayer(gradient)
         
-        privilegeBtn.addSubview(layer)
+        //privilegeBtn.addSubview(layer)
     }
     
     func snap(){

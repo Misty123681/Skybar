@@ -10,6 +10,7 @@ import UIKit
 
 class TutorialCell: UICollectionViewCell {
 
+    @IBOutlet weak var ConstraintHtImage: NSLayoutConstraint!
     @IBOutlet weak var letsStartBtn: UIButton!
     @IBOutlet weak var descriptiobLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -17,8 +18,21 @@ class TutorialCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
+        var newMultiplier:CGFloat = 0.7
+        
+            let result = UIScreen.main.bounds.size
+            if(result.height <= 667.0)
+            {
+                var newMultiplier:CGFloat = 0.6
+                
+            }else{
+                var newMultiplier:CGFloat = 0.7
+                
+            }
+    
+           ConstraintHtImage = ConstraintHtImage.setMultiplier(multiplier: newMultiplier)
+        }
+    
     
     @IBAction func letsStartAction(_ sender: Any) {
         if let parent = parent{
