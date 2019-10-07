@@ -74,10 +74,10 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wc-La-RH4">
-                        <rect key="frame" x="19" y="111.5" width="154" height="27"/>
+                        <rect key="frame" x="19" y="111.5" width="159" height="27"/>
                         <color key="backgroundColor" red="0.83921568627450982" green="0.84705882352941175" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="154" id="ChL-Cy-3Sb"/>
+                            <constraint firstAttribute="width" constant="159" id="ChL-Cy-3Sb"/>
                             <constraint firstAttribute="height" constant="27" id="XXW-VZ-dib"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="13"/>

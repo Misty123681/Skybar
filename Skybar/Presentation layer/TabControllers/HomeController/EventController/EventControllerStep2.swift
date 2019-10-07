@@ -38,6 +38,9 @@ class EventControllerStep2: ParentController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let screen = UIScreen.main.bounds.size
+         reservationPopupView.frame = CGRect(x: 0, y: 0, width: screen.width, height: screen.height)
+        self.view.addSubview(reservationPopupView)
         setInfo()
         getZone()
         getZoneImage()

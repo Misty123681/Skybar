@@ -169,7 +169,7 @@ class EventView: UIView {
     }
     
     
-    fileprivate func getEventImage(_ key: String) {
+    fileprivate func getEventImage(_ key: String,cnt:Int) {
         self.loader.startAnimating()
         ServiceInterface.resizeImage(imageKey: key,width: Float(imageView.getWidth()),height: Float(imageView.getHeight()), handler: { (success, result) in
             OperationQueue.main.addOperation {
@@ -180,7 +180,11 @@ class EventView: UIView {
                         let imageCache = NSCache<NSString, UIImage>()
                         imageCache.setObject(img, forKey: key as NSString)
                         if let controller = self.controller as? HomeController{
-                            controller.cacheEventImages.append(imageCache)
+                            if  controller.cacheEventImages.count == cnt{
+                                //controller.cacheEventImages.append(imageCache)
+                            }else{
+                                 controller.cacheEventImages.append(imageCache)
+                            }
 
                         }
                         
@@ -204,10 +208,10 @@ class EventView: UIView {
                     self.imageView.image = cachedImage
                 }
             }
+        }else{
+            getEventImage(key, cnt: cnt)
         }
-        else{
-            getEventImage(key)
-       }
+      
     }
 
 }

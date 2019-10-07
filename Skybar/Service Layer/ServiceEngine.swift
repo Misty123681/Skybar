@@ -62,7 +62,7 @@ class ServiceEngine: NSObject {
         var request:URLRequest = URLRequest(url: url!)
         request.httpMethod = httpMethod.rawValue
         request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-        request.timeoutInterval = 30
+        request.timeoutInterval = 40
         
         if let params = bodyparams{
             do {
