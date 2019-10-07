@@ -13,6 +13,8 @@ class TermsController: ParentController,WKNavigationDelegate {
 
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var headingLbl: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,10 @@ class TermsController: ParentController,WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
         self.loader.stopAnimating()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+             self.headingLbl.text = "PRIVILEGES APPLY UPON YOUR PHYSICAL PRESENCE WITH YOUR STAR CARD ONLY"
+        }
+       
     }
 
     /*

@@ -121,6 +121,7 @@ class HomeController: ParentController,InstaDelegate {
     @IBAction func takemetoskyAction(_ sender: Any) {
         
         if !self.isOpen{
+            careemMsg = "Please use SKY2.0 Dubai as destination when you want to visit SKY2.0 and use KEYTOTHESKY as promo code in your Careem App for 100% cash back."
             GlobalUI.showMessage(title: "", message: careemMsg, cntrl: self)
             return
         }
