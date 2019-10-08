@@ -380,6 +380,7 @@ struct ZoneLocation: Codable {
 }
 /////////
 struct SkyStatus: Codable {
+    let reservationAccessCode : String?
     let nearestEventDetails: NearestEventDetails?
     let totalReservationNotifications, totalGuestsInVenueNotifications, id: Int?
     let discount:CGFloat?
@@ -392,6 +393,7 @@ struct SkyStatus: Codable {
     let currentVisitInfo: CurrentVisitInfo?
     
     enum CodingKeys: String, CodingKey {
+        case reservationAccessCode = "ReservationAccessCode"
         case nearestEventDetails = "NearestEventDetails"
         case totalReservationNotifications = "TotalReservationNotifications"
         case totalGuestsInVenueNotifications = "TotalGuestsInVenueNotifications"
@@ -448,9 +450,11 @@ struct NearestEventDetails: Codable {
     let maximumNumberOfPeople: Int?
     let published: Bool?
     let eventImageFile, createdByUserFullName, totalNumberReservationGuests, totalNumberReservation: String?
-    let totalEventVisits, totalEventVisitGuests, reservationInfo: String?
+    let totalEventVisits, totalEventVisitGuests, reservationInfo: ReservationInfo?
+    
     
     enum CodingKeys: String, CodingKey {
+        case reservationInfo = "ReservationInfo"
         case booked = "Booked"
         case rating = "Rating"
         case tickets = "Tickets"
@@ -473,6 +477,6 @@ struct NearestEventDetails: Codable {
         case totalNumberReservation = "TotalNumberReservation"
         case totalEventVisits = "TotalEventVisits"
         case totalEventVisitGuests = "TotalEventVisitGuests"
-        case reservationInfo = "ReservationInfo"
+        //case reservationInfo = "ReservationInfo"
     }
 }

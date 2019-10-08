@@ -73,8 +73,9 @@ class EventController: ParentController {
         if let _ = reservation{
             id = reservation.id ?? ""
         }
-        
+          GlobalUI.showLoading(self.view)
         ServiceInterface.editReservation(reservationId: id, type: reservationType, guests: Int(guestNumberLbl.text!)!) { (success, result) in
+              GlobalUI.hideLoading()
             if success{
                 OperationQueue.main.addOperation({
                     self.showReservationPopup()
@@ -91,7 +92,9 @@ class EventController: ParentController {
             if let _ = reservation{
                 id = reservation.id ?? ""
         }
+          GlobalUI.showLoading(self.view)
         ServiceInterface.cancelReservation(reservationId: id) { (success, result) in
+              GlobalUI.hideLoading()
             if success{
                 OperationQueue.main.addOperation({
                     self.navigationController?.popViewController(animated: true)
@@ -518,6 +521,7 @@ class EventController: ParentController {
                 if let data = result as? Data{
                     if let resultStr = String(data: data, encoding: String.Encoding.utf8){
                         if(!resultStr.isEmpty){
+                            
                             OperationQueue.main.addOperation({
                                 self.showReservationPopup()
                             })

@@ -11,7 +11,7 @@ import UIKit
 class LoginController: ParentController {
 
     @IBOutlet weak var codeTF: UITextField!
-    
+
     @IBAction func activateKey(_ sender: Any) {
         
         if (codeTF.text?.isEmpty)!{

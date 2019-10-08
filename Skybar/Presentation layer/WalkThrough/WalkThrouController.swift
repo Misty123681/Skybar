@@ -115,7 +115,7 @@ class WalkThrouController: ParentController,UICollectionViewDataSource,UICollect
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.getWidth(), height: collectionView.getHeight())
-    }
+   }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let index = Int(scrollView.contentOffset.x/scrollView.getWidth())

@@ -8,6 +8,14 @@
 
 import UIKit
 
+extension String {
+    func firstCharacterUpperCase() -> String? {
+        guard !isEmpty else { return nil }
+        let lowerCasedString = self.lowercased()
+        return lowerCasedString.replacingCharacters(in: lowerCasedString.startIndex...lowerCasedString.startIndex, with: String(lowerCasedString[lowerCasedString.startIndex]).uppercased())
+    }
+}
+
 class PrivilegesCell: UITableViewCell {
 
     @IBOutlet weak var btmDescription: UILabel!
@@ -70,10 +78,12 @@ class PrivilegesCell: UITableViewCell {
         if(index == 0){
             
             let dear = "Dear "
-            let name = (ServiceUser.profile?.firstName)!
-            let between = ",\n\nMany benefits await you as we strive to make your nights memorable…"
-            let final = "\n\nCheers to you!"
-            let priveleges = "\n\nPRIVILEGES APPLY UPON YOUR PHYSICAL PRESENCE ONLY"
+            let name = "\(String(describing: ServiceUser.profile?.level ?? ""))".firstCharacterUpperCase() ?? ""
+                //(ServiceUser.profile?.firstName)!
+            let between = ",\n\nMany benefits await you as we strive to make your nights memorable."
+            //",\n\nMany benefits await you as we strive to make your nights memorable…"
+            let final = "\n\nThank you,"
+            let priveleges = "\n\nPRIVILEGES APPLY UPON YOUR PHYSICAL PRESENCE WITH YOUR STAR CARD ONLY"
             
             let attrString = NSMutableAttributedString(string: dear,
                                                        attributes: [NSAttributedString.Key.font:
@@ -89,7 +99,7 @@ class PrivilegesCell: UITableViewCell {
             attrString.append(NSMutableAttributedString(string: final,
                                                         attributes: [NSAttributedString.Key.font: UIFont.init(name: "SourceSansPro-Regular", size: 16)!]));
             attrString.append(NSMutableAttributedString(string: priveleges,
-                                                        attributes: [NSAttributedString.Key.font: UIFont.init(name: "SourceSansPro-bold",size:13),NSAttributedString.Key.foregroundColor:UIColor.init(displayP3Red: 0.43, green:0.60, blue: 0.35, alpha: 1.0)]));
+                                                        attributes: [NSAttributedString.Key.font: UIFont.init(name: "SourceSansPro-bold",size:13),NSAttributedString.Key.foregroundColor:UIColor.init(displayP3Red: 1.0, green:0, blue: 0, alpha: 1.0)]));
 
 
             topDescription.attributedText = attrString

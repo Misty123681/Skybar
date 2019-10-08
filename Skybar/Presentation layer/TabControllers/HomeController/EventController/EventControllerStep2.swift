@@ -10,6 +10,7 @@ import UIKit
 
 class EventControllerStep2: ParentController {
     
+    @IBOutlet weak var constraintWidthZoneImage: NSLayoutConstraint!
     @IBOutlet weak var doorOpenLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
@@ -37,12 +38,32 @@ class EventControllerStep2: ParentController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let screen = UIScreen.main.bounds.size
+         reservationPopupView.frame = CGRect(x: 0, y: 0, width: screen.width, height: screen.height)
+        self.view.addSubview(reservationPopupView)
         setInfo()
         getZone()
         getZoneImage()
     }
     
+    fileprivate func setZoneImageSize() {
+        var newMultiplier:CGFloat = 0.68
+        if budget <= 600{
+            if budget <= 250{
+                newMultiplier = 0.68
+            }else{
+                newMultiplier = 0.82
+            }
+        }else{
+            newMultiplier = 0.9
+        }
+        
+        constraintWidthZoneImage = constraintWidthZoneImage.setMultiplier(multiplier: newMultiplier)
+        self.loadViewIfNeeded()
+    }
+    
     func getZoneImage(){
+        setZoneImageSize()
         loader.startAnimating()
         var serviceUrl:String
         serviceUrl = "https://skybarstar.com/UserAppService/GetAvailableZonesImage?budget=\(budget)&numberOfGuests=\(guestCount)"

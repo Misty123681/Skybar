@@ -103,7 +103,6 @@ extension Date {
     }
 }
 
-
 extension Float{
     func toCurrency()->String{
         let formatter = NumberFormatter()

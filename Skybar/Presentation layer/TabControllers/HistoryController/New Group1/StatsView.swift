@@ -67,9 +67,10 @@ class StatsView: UIView,ChartViewDelegate {
         let size = self.visitsLbl.intrinsicContentSize
         let color1 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
         let color2 = CIColor(color:UIColor(red: 25.0/255.0, green: 146.0/255.0, blue: 224.0/255.0, alpha: 1))
-        if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
-            self.visitsLbl.textColor = UIColor.init(patternImage: uiimage)
-        }
+        //if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
+            self.visitsLbl.textColor =  UIColor.black
+                //UIColor.init(patternImage: uiimage)
+        //}
         
         for entry in info{
             if let entry = entry as? [String:Any]{
@@ -174,9 +175,9 @@ class StatsView: UIView,ChartViewDelegate {
         }
         
         let chartDataSet = BarChartDataSet(values: dataEntries, label: "Paid consumption")
-        chartDataSet.setColor(UIColor(red: 20.0/255.0, green: 87.0/255.0, blue: 204.0/255.0, alpha: 1))
+        chartDataSet.setColor(UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1))
         let chartDataSet1 = BarChartDataSet(values: dataEntries1, label: "Discount")
-        chartDataSet1.setColor(UIColor(red: 0, green: 224.0/255.0, blue: 1, alpha: 1))
+        chartDataSet1.setColor(UIColor(red: 128/255.0, green: 128/255.0, blue: 128/255.0, alpha: 1))
         let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet1]
         //chartDataSet.colors = [.purple]
         //chartDataSet.colors = ChartColorTemplates.colorful()

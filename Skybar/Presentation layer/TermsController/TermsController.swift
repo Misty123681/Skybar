@@ -13,13 +13,17 @@ class TermsController: ParentController,WKNavigationDelegate {
 
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var headingLbl: UILabel!
+    @IBOutlet weak var webviewHt: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        webView.scrollView.isScrollEnabled =  false
         if let url = URL(string:"http://skybarstar.com/privacy.html"){
             webView.load(URLRequest(url:url))
             webView.navigationDelegate = self
         }
+          self.webviewHt.constant = self.view.frame.size.height
         // Do any additional setup after loading the view.
     }
     
@@ -43,7 +47,15 @@ class TermsController: ParentController,WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
+      
         self.loader.stopAnimating()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+             self.headingLbl.text = "PRIVILEGES APPLY UPON YOUR PHYSICAL PRESENCE WITH YOUR STAR CARD ONLY"
+            self.webviewHt.constant = webView.scrollView.contentSize.height
+        }
+        
+
+       
     }
 
     /*

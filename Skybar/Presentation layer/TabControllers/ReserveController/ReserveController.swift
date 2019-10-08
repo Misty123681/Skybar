@@ -34,6 +34,7 @@ class ReserveController: ParentController {
     
     
     @IBAction func editChange(_ tf: UITextField) {
+     
         if (tf.text?.isEmpty)!{
             if let events = events{
                 populateEvents(events: events)
@@ -71,7 +72,7 @@ class ReserveController: ParentController {
             eventView.frame = CGRect(x: 10, y: y, width: width, height: eventView.frame.size.height)
             i += 1
             y += (eventView.frame.size.height+20)
-            eventView.setInfo(event: event, controller: self)
+            eventView.setInfo(event: event, controller: self, cnt: events.count)
 
             eventsContainer.addSubview(eventView)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toEvent))
@@ -87,6 +88,7 @@ class ReserveController: ParentController {
                 do{
                     let events = try JSONDecoder().decode([Event].self, from: data)
                     OperationQueue.main.addOperation({
+                        self.events =  events
                         self.populateEvents(events:events)
                     })
                 }
@@ -142,7 +144,7 @@ class ReserveController: ParentController {
         
         if let reservationstatusID = info.reservationStatusID{
             switch reservationstatusID{
-            case 1,2,3:
+            case 1,2,3,4:
                 let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in

@@ -22,13 +22,14 @@ class StartPrivilegeView:UIView{
         
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
-        gradient.colors = [
-            UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
-            UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
-        ]
+        gradient.colors = [UIColor.black]
+            //[
+           // UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
+           // UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
+        //]
         gradient.locations = [0, 1]
-        gradient.startPoint = CGPoint(x: 1, y: 0.2)
-        gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
+        //gradient.startPoint = CGPoint(x: 1, y: 0.2)
+        //gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
         gradient.cornerRadius = 8
         layer.layer.addSublayer(gradient)
         
@@ -39,6 +40,9 @@ class StartPrivilegeView:UIView{
 
 class HomeController: ParentController,InstaDelegate {
     
+    
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var privilegeBtn: UIButton!
     @IBOutlet weak var reservationNotificationBadgeLbl: UILabel!
     @IBOutlet weak var dummyTableView: UITableView!
@@ -70,6 +74,7 @@ class HomeController: ParentController,InstaDelegate {
     let skybarLatitude = 25.190911
     var careemLinks:CareemLinks! = nil
     var skyStatus:SkyStatus! = nil
+    var cacheEventImages = [NSCache<NSString, UIImage>]()
     
   
 
@@ -116,6 +121,7 @@ class HomeController: ParentController,InstaDelegate {
     @IBAction func takemetoskyAction(_ sender: Any) {
         
         if !self.isOpen{
+            careemMsg = "Please use SKY2.0 Dubai as destination when you want to visit SKY2.0 and use KEYTOTHESKY as promo code in your Careem App for 100% cash back."
             GlobalUI.showMessage(title: "", message: careemMsg, cntrl: self)
             return
         }
@@ -201,21 +207,21 @@ class HomeController: ParentController,InstaDelegate {
         let size = self.headerTwo.intrinsicContentSize
         if let isFull = skyStatus.isFullCapacity{
             if isFull{
-                let color1 = CIColor(color:UIColor(red: 248.0/255.0, green: 166.0/255.0, blue: 95.0/255.0, alpha: 1))
-                let color2 = CIColor(color:UIColor(red: 245.0/255.0, green: 109.0/255.0, blue: 47.0/255.0, alpha: 1))
-                if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
-                    self.headerTwo.textColor = UIColor.init(patternImage: uiimage)
+                //let color1 = CIColor(color:UIColor(red: 248.0/255.0, green: 166.0/255.0, blue: 95.0/255.0, alpha: 1))
+               // let color2 = CIColor(color:UIColor(red: 245.0/255.0, green: 109.0/255.0, blue: 47.0/255.0, alpha: 1))
+                //if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
+                    self.headerTwo.textColor = UIColor.black
                     self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
                     
-                }
+               // }
             }else{
                 let color1 = CIColor(color:UIColor(red: 69.0/255.0, green: 146.0/255.0, blue: 42.0/255.0, alpha: 1))
                 let color2 = CIColor(color:UIColor(red: 188.0/255.0, green: 228.0/255.0, blue: 130.0/255.0, alpha: 1))
-                if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
-                    self.headerTwo.textColor = UIColor.init(patternImage: uiimage)
+               // if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
+                    self.headerTwo.textColor =  UIColor.black
                     self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
                     
-                }
+                //}
             }
         }
         let plz = "Please Use Promo Code "
@@ -236,7 +242,7 @@ class HomeController: ParentController,InstaDelegate {
 UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregroundColor:UIColor.black,NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]));
    
         UsePromoLabel.attributedText = attrString;
-        UsePromoLabel.sizeToFit() ;
+       // UsePromoLabel.sizeToFit() ;
         if let isOpen = skyStatus.isOpen{
             
             self.isOpen = isOpen
@@ -244,9 +250,9 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                 redesignBtn(msg: skyStatus.rideDisabledMsg)
                 let color1 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
                 let color2 = CIColor(color:UIColor(red: 25.0/255.0, green: 146.0/255.0, blue: 224.0/255.0, alpha: 1))
-                if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
-                    self.headerTwo.textColor = UIColor.init(patternImage: uiimage)
-                }
+               // if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
+                    self.headerTwo.textColor =  UIColor.black
+               // }
                 
                 instaTitleLbl.text = "We Party Legendary"
                 
@@ -310,7 +316,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             eventView.frame = CGRect(x: x, y: 0, width: width, height: eventsContainer.frame.size.height)
             i += 1
             x += (eventView.frame.size.width+20)
-            eventView.setInfo(event: event, controller: self)
+            eventView.setInfo(event: event, controller: self,cnt:events.count)
 
             eventsContainer.addSubview(eventView)
             
@@ -454,7 +460,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         ServiceUser.setLoggedIn()
         // Do any additional setup after loading the view.
         getResetvationNumber()
-        getCurrentStatus()
+     
         getCareemLinks()
         
         self.view.layoutIfNeeded()
@@ -473,23 +479,26 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         designPrivilegeBtn()
     }
     
+    
     func designPrivilegeBtn(){
-        let layer = UIView(frame: privilegeBtn.bounds)
-        layer.layer.cornerRadius = 8
+       // let layer = UIView(frame: privilegeBtn.bounds)
+        privilegeBtn.layer.cornerRadius = 8
+        privilegeBtn.backgroundColor = UIColor.black
         
-        let gradient = CAGradientLayer()
-        gradient.frame = privilegeBtn.bounds
-        gradient.colors = [
-            UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
-            UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
-        ]
-        gradient.locations = [0, 1]
-        gradient.startPoint = CGPoint(x: 1, y: 0.2)
-        gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
-        gradient.cornerRadius = 8
-        layer.layer.addSublayer(gradient)
+        //let gradient = CAGradientLayer()
+        //gradient.frame = privilegeBtn.bounds
+       // gradient.colors = [UIColor.black]
+            //[
+            //UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
+           // UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
+       // ]
+       // gradient.locations = [0, 1]
+       // gradient.startPoint = CGPoint(x: 1, y: 0.2)
+        //gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
+       // gradient.cornerRadius = 8
+        //layer.layer.addSublayer(gradient)
         
-        privilegeBtn.addSubview(layer)
+        //privilegeBtn.addSubview(layer)
     }
     
     func snap(){
@@ -533,6 +542,8 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        self.cacheEventImages = [NSCache<NSString, UIImage>]()
+        getCurrentStatus()
         self.populateProfileInfo()
         self.reloadMedia()
         
@@ -551,10 +562,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.default
@@ -625,7 +633,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                     dest.event = info
                 }
                 
-                if let code = self.bill.reservationAccessCode{
+                if let code = self.skyStatus.nearestEventDetails?.reservationInfo?.reservationAccessCode{
                     dest.reservationCode = code
                 }
                 
