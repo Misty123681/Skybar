@@ -40,11 +40,14 @@ class EventView: UIView {
     }
     @IBAction func shareAction(_ sender: Any) {
         if shareLink.isEmpty{
-            if let name = self.event.name, let description = self.event.description{
-                
-                shareAll = "\(dateEvent ?? "")\n \(name) \(description)\n\n Please Use: \(event.reservationInfo?.reservationAccessCode ?? "")"
+            if let name = self.event.name, let _ = self.event.description{
+                if event.reservationInfo?.reservationAccessCode == "" || event.reservationInfo?.reservationAccessCode == nil{
+                    shareAll = "\(dateEvent ?? "")\n \(name)"
 
-               // let shareAll = ["\(name) \(description)"]
+                }else{
+                    shareAll = "\(dateEvent ?? "")\n \(name)\n\n Please Use: \(event.reservationInfo?.reservationAccessCode ?? "")"
+
+                }
                 let activityViewController = UIActivityViewController(activityItems: [shareAll] as [Any], applicationActivities: nil)
                 controller.present(activityViewController, animated: true, completion: nil)
             }
@@ -143,14 +146,26 @@ class EventView: UIView {
             if let statusID = info.reservationStatusID{
     
                     switch statusID{
-                    case 4:
+                    case 1://Processing||Submitted
+                      let image = #imageLiteral(resourceName: "time_icon")
+                        self.reserveLbl.textColor = UIColor.init(red: 255.0/255.0, green: 140.0/255.0, blue: 0.0/255.0, alpha: 1)
+                        self.reserveIcon.image = image.maskWithColor(color: UIColor.init(red: 255.0/255.0, green: 140.0/255.0, blue: 0.0/255.0, alpha: 1))
+                            break
+                    case 4://Rejected||FullCapacity
+                         let image = #imageLiteral(resourceName: "rejectedIcon")
                         self.reserveLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
-                    case 2:
-                        self.reserveLbl.textColor = .orange
-                    case 3:
+                         self.reserveIcon.image = image.maskWithColor(color:UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1))
+                        break
+                    case 2://WalkinOnly||WaitList||Pending
+                          let image = #imageLiteral(resourceName: "waiting-list")
+                        self.reserveLbl.textColor = UIColor.init(red: 255.0/255.0, green: 140.0/255.0, blue: 0.0/255.0, alpha: 1)
+                        self.reserveIcon.image = image.maskWithColor(color: UIColor.init(red: 255.0/255.0, green: 140.0/255.0, blue: 0.0/255.0, alpha: 1))
+                        break
+                    case 3://Confirmed||Approved
                         self.reserveIcon.image = UIImage(named: "confirmed_event")
                         self.reserveLbl.textColor = UIColor(red: 0.13, green: 0.64, blue: 0, alpha: 1)
                         self.lblShare.text = info.reservationAccessCode ?? ""
+                        break
                     default:
                         self.reserveLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
                         break
@@ -158,6 +173,42 @@ class EventView: UIView {
 
             }
         }
+        
+        
+//        if let reservationStatus =  event.reservationInfo?.reservationStatusID{
+//            switch reservationStatus{
+//            case 1://Processing||Submitted
+//                statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
+//
+//                let image = #imageLiteral(resourceName: "time_icon")
+//                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1))
+//
+//            case 2://WalkinOnly||WaitList||Pending
+//                statusLbl.textColor = .orange
+//
+//                let image = #imageLiteral(resourceName: "pendingIcon")
+//                statusImg.image =  image.maskWithColor(color: .orange)
+//
+//            case 4://Rejected||FullCapacity
+//                statusLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
+//
+//                let image = #imageLiteral(resourceName: "rejectedIcon")
+//                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1))
+//
+//            default://Confirmed||Approved
+//                self.reserveIcon.image = UIImage(named: "confirmed_event")
+//                self.reserveLbl.textColor = UIColor(red: 0.13, green: 0.64, blue: 0, alpha: 1)
+//                self.lblShare.text = info.reservationAccessCode ?? ""
+//
+//                statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
+//
+//                let image = #imageLiteral(resourceName: "approveIcon")
+//                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1))
+//                break
+//            }
+//        }
+        
+        
         
         if let eventDate = self.event.eventDate{
             if let date = Date(jsonDate: eventDate){

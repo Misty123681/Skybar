@@ -97,7 +97,8 @@ class ReserveTableView: UIView {
             case 2://WalkinOnly||WaitList||Pending
                 statusLbl.textColor = .orange
                 
-                let image = #imageLiteral(resourceName: "pendingIcon")
+                //let image = #imageLiteral(resourceName: "pendingIcon")
+                  let image = #imageLiteral(resourceName: "waiting-list")
                 statusImg.image =  image.maskWithColor(color: .orange)
                 
             case 4://Rejected||FullCapacity
