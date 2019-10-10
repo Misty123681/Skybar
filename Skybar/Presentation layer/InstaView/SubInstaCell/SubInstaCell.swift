@@ -25,6 +25,7 @@ class SubInstaCell: UICollectionViewCell {
     var player:AVPlayer!
     let playerViewController = AVPlayerViewController()
     
+    @IBOutlet weak var contentView1: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

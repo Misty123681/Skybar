@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		55E1DDE1C4CC31C054A455B8 /* Pods_Skybar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3607E893CCD06800542112 /* Pods_Skybar.framework */; };
+		920CE144234E08A900CC6A18 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CE142234E08A800CC6A18 /* DynamicHeightCollectionView.swift */; };
+		920CE145234E08A900CC6A18 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920CE143234E08A800CC6A18 /* CollectionViewFlowLayout.swift */; };
 		920E28692343677E0003746B /* Ui+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E28682343677E0003746B /* Ui+Extension.swift */; };
 		92325267233B911100F6291B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92325266233B911000F6291B /* WebKit.framework */; };
 		AA0F1F1E2187902400610D40 /* TimelineObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F1F1D2187902400610D40 /* TimelineObject.swift */; };
@@ -103,6 +105,8 @@
 /* Begin PBXFileReference section */
 		137037C58A0DA0CEDA2A41C4 /* Pods-Skybar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skybar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skybar/Pods-Skybar.debug.xcconfig"; sourceTree = "<group>"; };
 		2A3607E893CCD06800542112 /* Pods_Skybar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skybar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		920CE142234E08A800CC6A18 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
+		920CE143234E08A800CC6A18 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		920E28682343677E0003746B /* Ui+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ui+Extension.swift"; sourceTree = "<group>"; };
 		92325266233B911000F6291B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		AA0F1F1D2187902400610D40 /* TimelineObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineObject.swift; sourceTree = "<group>"; };
@@ -618,6 +622,8 @@
 		AA75F1A62102436A00B28C4D = {
 			isa = PBXGroup;
 			children = (
+				920CE142234E08A800CC6A18 /* DynamicHeightCollectionView.swift */,
+				920CE143234E08A800CC6A18 /* CollectionViewFlowLayout.swift */,
 				AA540D30215FDA5000317DAE /* BridgingHeader.h */,
 				AA75F1B12102436A00B28C4D /* Skybar */,
 				AA75F1B02102436A00B28C4D /* Products */,
@@ -895,6 +901,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA75F1B52102436A00B28C4D /* LandingController.swift in Sources */,
+				920CE145234E08A900CC6A18 /* CollectionViewFlowLayout.swift in Sources */,
 				AA2E076E2107C5A90070BE88 /* EditInfoController.swift in Sources */,
 				AA1D18D92114E2E300CA4A8F /* ReserveController.swift in Sources */,
 				AA369FD6215041A100B356BA /* StarPrivilegesController.swift in Sources */,
@@ -921,6 +928,7 @@
 				AA2E075F2105CD490070BE88 /* LoginControllerViewController.swift in Sources */,
 				AA52371121B718F100ECCC4E /* WalkThrouController.swift in Sources */,
 				AA625627222199EC00A75B51 /* EventControllerStep1.swift in Sources */,
+				920CE144234E08A900CC6A18 /* DynamicHeightCollectionView.swift in Sources */,
 				AA1D18FF2119FF2500CA4A8F /* SettingsController.swift in Sources */,
 				AA5D4D8D210DD2FB00568D09 /* GlobalUI.swift in Sources */,
 				AA2E0773210DC6390070BE88 /* ServiceInterface.swift in Sources */,

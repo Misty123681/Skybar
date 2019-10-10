@@ -44,26 +44,27 @@ class EventControllerStep2: ParentController {
         setInfo()
         getZone()
         getZoneImage()
+        setZoneImageSize()
     }
     
     fileprivate func setZoneImageSize() {
-        var newMultiplier:CGFloat = 0.68
-        if budget <= 600{
-            if budget <= 250{
-                newMultiplier = 0.68
-            }else{
-                newMultiplier = 0.82
-            }
-        }else{
-            newMultiplier = 0.9
-        }
+        let newMultiplier:CGFloat = 0.80
+//        if budget <= 600{
+//            if budget <= 250{
+//                newMultiplier = 0.68
+//            }else{
+//                newMultiplier = 0.82
+//            }
+//        }else{
+//            newMultiplier = 0.9
+//        }
         
         constraintWidthZoneImage = constraintWidthZoneImage.setMultiplier(multiplier: newMultiplier)
         self.loadViewIfNeeded()
     }
     
     func getZoneImage(){
-        setZoneImageSize()
+       
         loader.startAnimating()
         var serviceUrl:String
         serviceUrl = "https://skybarstar.com/UserAppService/GetAvailableZonesImage?budget=\(budget)&numberOfGuests=\(guestCount)"

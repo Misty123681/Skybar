@@ -23,11 +23,14 @@ class EventView: UIView {
     @IBOutlet weak var reserveLbl: UILabel!
     @IBOutlet weak var reserveIcon: UIImageView!
     
+    @IBOutlet weak var lblShare: UILabel!
+    
     @IBOutlet weak var reserveBtn: UIButton!
     var shareLink = ""
     var cacheArr = [NSCache<NSString, UIImage>]()
     var documentInteractionController:UIDocumentInteractionController!
-    
+    var shareAll =  ""
+    var dateEvent:String?
     
     
     override func awakeFromNib() {
@@ -38,8 +41,11 @@ class EventView: UIView {
     @IBAction func shareAction(_ sender: Any) {
         if shareLink.isEmpty{
             if let name = self.event.name, let description = self.event.description{
-                let shareAll = ["\(name) \(description)"]
-                let activityViewController = UIActivityViewController(activityItems: shareAll as [Any], applicationActivities: nil)
+                
+                shareAll = "\(dateEvent ?? "")\n \(name) \(description)\n\n Please Use: \(event.reservationInfo?.reservationAccessCode ?? "")"
+
+               // let shareAll = ["\(name) \(description)"]
+                let activityViewController = UIActivityViewController(activityItems: [shareAll] as [Any], applicationActivities: nil)
                 controller.present(activityViewController, animated: true, completion: nil)
             }
         }else{
@@ -133,8 +139,9 @@ class EventView: UIView {
             if let typeName = info.reservationStatusTypeName{
                 self.reserveLbl.text = typeName
             }
-            
+              self.lblShare.text = "Share"
             if let statusID = info.reservationStatusID{
+    
                     switch statusID{
                     case 4:
                         self.reserveLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
@@ -143,11 +150,23 @@ class EventView: UIView {
                     case 3:
                         self.reserveIcon.image = UIImage(named: "confirmed_event")
                         self.reserveLbl.textColor = UIColor(red: 0.13, green: 0.64, blue: 0, alpha: 1)
+                        self.lblShare.text = info.reservationAccessCode ?? ""
                     default:
                         self.reserveLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
                         break
                     }
 
+            }
+        }
+        
+        if let eventDate = self.event.eventDate{
+            if let date = Date(jsonDate: eventDate){
+                let formatter = DateFormatter()
+                // initially set the format based on your datepicker date / server String
+                formatter.dateFormat = "MMM dd, yyyy"
+                
+                let monthDayStr = formatter.string(from: date) // string purpose I add here
+                dateEvent = monthDayStr.uppercased()
             }
         }
         

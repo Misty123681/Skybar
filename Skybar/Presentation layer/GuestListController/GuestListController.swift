@@ -26,10 +26,12 @@ class GuestListController: ParentController {
     var guests:[GuestElement]!
     var eventID = ""
     var reservationCode = ""
+    var shareAll = ""
     
     @IBAction func shareAccessCode(_ sender: Any) {
-        let shareAll = ["Please Use \(accessCodeLbl.text!)"]
-        let activityViewController = UIActivityViewController(activityItems: shareAll as [Any], applicationActivities: nil)
+        shareAll = "\(dateLbl.text ?? "")\n \(titleLbl.text ?? "")\n\n Please Use: \(accessCodeLbl.text!)"
+      //  let shareAll = ["Please Use \(accessCodeLbl.text!)"]
+        let activityViewController = UIActivityViewController(activityItems: [shareAll] as [Any], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
     
