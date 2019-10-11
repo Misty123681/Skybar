@@ -147,7 +147,7 @@ class EventView: UIView {
     
                     switch statusID{
                     case 1://Processing||Submitted
-                      let image = #imageLiteral(resourceName: "time_icon")
+                          let image = #imageLiteral(resourceName: "pendingIcon")
                         self.reserveLbl.textColor = UIColor.init(red: 255.0/255.0, green: 140.0/255.0, blue: 0.0/255.0, alpha: 1)
                         self.reserveIcon.image = image.maskWithColor(color: UIColor.init(red: 255.0/255.0, green: 140.0/255.0, blue: 0.0/255.0, alpha: 1))
                             break
@@ -162,7 +162,8 @@ class EventView: UIView {
                         self.reserveIcon.image = image.maskWithColor(color: UIColor.init(red: 255.0/255.0, green: 140.0/255.0, blue: 0.0/255.0, alpha: 1))
                         break
                     case 3://Confirmed||Approved
-                        self.reserveIcon.image = UIImage(named: "confirmed_event")
+                        let image = #imageLiteral(resourceName: "approveIcon")
+                        self.reserveIcon.image = image.maskWithColor(color:UIColor.init(red: 0.13, green: 0.64, blue: 0, alpha: 1))
                         self.reserveLbl.textColor = UIColor(red: 0.13, green: 0.64, blue: 0, alpha: 1)
                         self.lblShare.text = info.reservationAccessCode ?? ""
                         break

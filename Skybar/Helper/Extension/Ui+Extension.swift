@@ -24,3 +24,9 @@ extension NSLayoutConstraint {
         return newConstraint
     }
 }
+
+extension StringProtocol where Index == String.Index {
+    var isEmptyField: Bool {
+        return trimmingCharacters(in: .whitespaces) == ""
+    }
+}

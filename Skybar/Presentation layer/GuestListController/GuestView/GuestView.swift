@@ -46,6 +46,11 @@ class GuestView: UIView {
             return
         }
         
+        if (nameTF.text?.isEmptyField)! {
+              displayError(title: "Missing information", message: "This field cannot be left blank")
+            return
+        }
+        
         if guestCount > 7{
             displayError(title: "Error", message: "Reached maximum number of guests for this event")
             return

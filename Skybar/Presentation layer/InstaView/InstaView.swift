@@ -22,6 +22,7 @@ class InstaView: UIView,UICollectionViewDataSource,UICollectionViewDelegateFlowL
         super.awakeFromNib()
         let nib = UINib(nibName: cellIdentifier, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: cellIdentifier)
+        
     }
     
     @objc func scrollToIndex(){
@@ -66,6 +67,7 @@ class InstaView: UIView,UICollectionViewDataSource,UICollectionViewDelegateFlowL
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
         return size(for: indexPath)
     }
     
@@ -83,7 +85,7 @@ class InstaView: UIView,UICollectionViewDataSource,UICollectionViewDelegateFlowL
         let width = collectionView.frame.width
         let height: CGFloat = 0
         
-        let targetSize = CGSize(width: width, height: height)
+        let targetSize = CGSize(width: width, height: height )
         
         // get size with width that you want and automatic height
         let size = cell.contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .defaultHigh, verticalFittingPriority: .fittingSizeLevel)
