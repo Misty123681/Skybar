@@ -10,7 +10,9 @@ import UIKit
 
 class ServiceInterface: NSObject {
     //static let hostURL = "http://40.76.73.185/skybar/UserAppService/"
-    static let hostURL = "http://skybarstar.com/UserAppService/"
+    //http://40.76.73.185/SkybarstarTest/ // testing
+    static let hostURL = "http://40.76.73.185/SkybarstarTest/UserAppService/"
+   // static let hostURL = "http://skybarstar.com/UserAppService/" // live
     static let cache = NSCache<AnyObject, AnyObject>()
     
     static func activateAccount(key:String,handler:APICompletionHandler?){

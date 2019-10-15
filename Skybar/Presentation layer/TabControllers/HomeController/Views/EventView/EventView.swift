@@ -258,6 +258,12 @@ class EventView: UIView {
                             }
 
                         }
+                        if let controller = self.controller as? ReserveController{
+                           
+                            controller.cacheEventImages.append(imageCache)
+                           
+                        }
+                        
                         
                     }
                 }
@@ -271,17 +277,31 @@ class EventView: UIView {
         
         if let controller = self.controller as? HomeController{
             self.cacheArr = controller.cacheEventImages
+            if self.cacheArr.count == cnt{
+                self.cacheArr.forEach { (cache) in
+                    if let cachedImage = cache.object(forKey: key as NSString) {
+                        self.imageView.image = cachedImage
+                    }
+                }
+            }else{
+                getEventImage(key, cnt: cnt)
+            }
+        }
+        if let controller = self.controller as? ReserveController{
+            self.cacheArr = controller.cacheEventImages
+            if controller.filter == true{
+                self.cacheArr.forEach { (cache) in
+                    if let cachedImage = cache.object(forKey: key as NSString) {
+                        self.imageView.image = cachedImage
+                    }
+                }
+            }else{
+                 getEventImage(key, cnt: cnt)
+            }
+            
         }
      
-        if self.cacheArr.count == cnt{
-              self.cacheArr.forEach { (cache) in
-                if let cachedImage = cache.object(forKey: key as NSString) {
-                    self.imageView.image = cachedImage
-                }
-            }
-        }else{
-            getEventImage(key, cnt: cnt)
-        }
+      
       
     }
 
