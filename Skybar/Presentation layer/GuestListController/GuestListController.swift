@@ -113,6 +113,10 @@ class GuestListController: ParentController {
             if let name = self.event.name{
                 titleLbl.text = name
             }
+            if let name = self.event.description{
+               // descriptionLbl.text = name
+            }
+            
             
             doorOpenLbl.text = "Doors open at"
             if let door = self.event.doorOpen{

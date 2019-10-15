@@ -572,7 +572,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                 self.present(alert, animated: true, completion: nil)
               
             }else{
-              isedit =  false
+                 isedit =  false
                 self.toEventController(event: eventView.event)
             }
            
@@ -580,7 +580,30 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     }
     
     func toEventController(event:Event){
-        self.performSegue(withIdentifier: "toEvent", sender: event)
+        
+        
+        if let reservationstatusID = event.reservationInfo?.reservationStatusID{
+            switch reservationstatusID{
+            case 1,2,3,4:
+                let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                    self.isedit = true
+                    self.performSegue(withIdentifier: "toEvent", sender: event)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            default://Rejected
+                self.isedit = false
+                self.performSegue(withIdentifier: "toEvent", sender: event)
+                break
+            }
+        }else{
+            self.isedit = false
+            self.performSegue(withIdentifier: "toEvent", sender: event)
+        }
+        
+        //self.performSegue(withIdentifier: "toEvent", sender: event)
     }
     
     func reloadMedia(){

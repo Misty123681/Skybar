@@ -191,7 +191,7 @@ class ReserveController: ParentController {
         
         if let reservationstatusID = info.reservationInfo?.reservationStatusID{
             switch reservationstatusID{
-            case 1,2,3:
+            case 1,2,3,4:
                 let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
