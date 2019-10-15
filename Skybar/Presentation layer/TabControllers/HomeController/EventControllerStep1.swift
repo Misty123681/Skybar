@@ -38,8 +38,7 @@ class EventControllerStep1: ParentController {
         super.viewDidLoad()
         setInfo()
         getZone()
-        let newMultiplier:CGFloat = 0.68
-        constraintWidthZoneImage = constraintWidthZoneImage.setMultiplier(multiplier: newMultiplier)
+        setZoneImageSize()
 
     }
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -115,23 +114,14 @@ class EventControllerStep1: ParentController {
     }
     
     fileprivate func setZoneImageSize() {
-        var newMultiplier:CGFloat = 0.68
-        if slider.value <= 600{
-            if slider.value <= 250{
-                newMultiplier = 0.68
-            }else{
-                newMultiplier = 0.82
-            }
-        }else{
-            newMultiplier = 0.9
-        }
+        let newMultiplier:CGFloat = 0.75
         
         constraintWidthZoneImage = constraintWidthZoneImage.setMultiplier(multiplier: newMultiplier)
         self.loadViewIfNeeded()
     }
     
     func getZone(){
-        setZoneImageSize()
+       
         
         loader.startAnimating()
         var serviceUrl:String

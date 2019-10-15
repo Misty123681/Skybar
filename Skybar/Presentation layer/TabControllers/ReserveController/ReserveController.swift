@@ -20,8 +20,10 @@ class ReserveController: ParentController {
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var eventsContainer: UIScrollView!
     @IBOutlet weak var tableContainer: UIScrollView!
+    var cacheEventImages = [NSCache<NSString, UIImage>]()
     var events:[Event]!
     var editEvent = false
+    var filter = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,7 @@ class ReserveController: ParentController {
     }
     
     
+    
     @IBAction func editChange(_ tf: UITextField) {
      
         if (tf.text?.isEmpty)!{
@@ -40,6 +43,7 @@ class ReserveController: ParentController {
                 populateEvents(events: events)
             }
         }else if let events = events{
+            filter = true
             let searchedTxt = tf.text?.capitalized
             var filteredEvents = [Event]()
             for event in events{
@@ -54,7 +58,7 @@ class ReserveController: ParentController {
                 }
             }
             
-            populateEvents(events: filteredEvents)
+           populateEvents(events: filteredEvents)
         }
     }
     
@@ -187,7 +191,7 @@ class ReserveController: ParentController {
         
         if let reservationstatusID = info.reservationInfo?.reservationStatusID{
             switch reservationstatusID{
-            case 1,2,3:
+            case 1,2,3,4:
                 let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
@@ -226,6 +230,8 @@ class ReserveController: ParentController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+          self.cacheEventImages = [NSCache<NSString, UIImage>]()
+    
         getReservations()
     }
     
@@ -242,16 +248,7 @@ class ReserveController: ParentController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toEvent"){
             let eventCntrl = segue.destination as! EventController

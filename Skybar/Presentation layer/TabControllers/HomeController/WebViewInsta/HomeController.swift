@@ -75,6 +75,7 @@ class HomeController: ParentController,InstaDelegate {
     var careemLinks:CareemLinks! = nil
     var skyStatus:SkyStatus! = nil
     var cacheEventImages = [NSCache<NSString, UIImage>]()
+    var isedit = false
     
   
 
@@ -151,6 +152,7 @@ class HomeController: ParentController,InstaDelegate {
             if success {
                 do{
                     let medias = try JSONDecoder().decode(InstaMedias.self, from: result as! Data)
+                    print(medias)
                     self.medias = medias.data
                     OperationQueue.main.addOperation {
                         self.instaView.setConfig(arr: self.medias, parent: self)
@@ -388,8 +390,8 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                 do{
                     self.skyStatus = try JSONDecoder().decode(SkyStatus.self, from: data)
                     OperationQueue.main.addOperation({
-                        self.snap()
-                        self.dragGesture.isEnabled = true
+                        //self.snap()
+                        //self.dragGesture.isEnabled = true
                         self.populateHeaders()
                         self.getCurrentEvents()
                         Timer.scheduledTimer(withTimeInterval: 20, repeats: false, block: { (timer) in
@@ -453,9 +455,13 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             }
         }
     }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    
         getInstaMedia()
         ServiceUser.setLoggedIn()
         // Do any additional setup after loading the view.
@@ -466,39 +472,21 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         self.view.layoutIfNeeded()
         self.imageView.layer.cornerRadius = self.imageView.frame.size.height/2
         
-//        let size = self.privilegeBtn.intrinsicContentSize
-//        let color1 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
-//        let color2 = CIColor(color:UIColor(red: 25.0/255.0, green: 146.0/255.0, blue: 224.0/255.0, alpha: 1))
-//        if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
-//            self.privilegeBtn.backgroundColor = UIColor.init(patternImage: uiimage)
-//        }
-        
-        dragGesture = UIPanGestureRecognizer(target: self, action: #selector(refreshGesture))
-        self.view.addGestureRecognizer(dragGesture)
+      //  dragGesture = UIPanGestureRecognizer(target: self, action: #selector(refreshGesture))
+       // self.view.addGestureRecognizer(dragGesture)
         
         designPrivilegeBtn()
     }
     
+    @objc func appMovedToForeground() {
+      self.cacheEventImages = [NSCache<NSString, UIImage>]()
+    }
+    
     
     func designPrivilegeBtn(){
-       // let layer = UIView(frame: privilegeBtn.bounds)
+   
         privilegeBtn.layer.cornerRadius = 8
         privilegeBtn.backgroundColor = UIColor.black
-        
-        //let gradient = CAGradientLayer()
-        //gradient.frame = privilegeBtn.bounds
-       // gradient.colors = [UIColor.black]
-            //[
-            //UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
-           // UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
-       // ]
-       // gradient.locations = [0, 1]
-       // gradient.startPoint = CGPoint(x: 1, y: 0.2)
-        //gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
-       // gradient.cornerRadius = 8
-        //layer.layer.addSublayer(gradient)
-        
-        //privilegeBtn.addSubview(layer)
     }
     
     func snap(){
@@ -568,15 +556,54 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         return UIStatusBarStyle.default
     }
     
+    
+  
     @objc func toEvent(gesture:UITapGestureRecognizer){
         
         if let eventView = gesture.view as? EventView{
-            self.toEventController(event: eventView.event)
+            if eventView.event.reservationInfo?.reservationStatusID == 1 ||  eventView.event.reservationInfo?.reservationStatusID == 3 || eventView.event.reservationInfo?.reservationStatusID == 4 || eventView.event.reservationInfo?.reservationStatusID == 2{
+                let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                     self.isedit = true
+                     self.toEventController(event: eventView.event)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+              
+            }else{
+                 isedit =  false
+                self.toEventController(event: eventView.event)
+            }
+           
         }
     }
     
     func toEventController(event:Event){
-        self.performSegue(withIdentifier: "toEvent", sender: event)
+        
+        
+        if let reservationstatusID = event.reservationInfo?.reservationStatusID{
+            switch reservationstatusID{
+            case 1,2,3,4:
+                let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                    self.isedit = true
+                    self.performSegue(withIdentifier: "toEvent", sender: event)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            default://Rejected
+                self.isedit = false
+                self.performSegue(withIdentifier: "toEvent", sender: event)
+                break
+            }
+        }else{
+            self.isedit = false
+            self.performSegue(withIdentifier: "toEvent", sender: event)
+        }
+        
+
     }
     
     func reloadMedia(){
@@ -614,6 +641,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             let dest = segue.destination as! EventController
             if let event = sender as? Event{
                 dest.event = event
+                dest.editEvent = isedit
             }
         }else
         if segue.identifier == "fullScreen"{

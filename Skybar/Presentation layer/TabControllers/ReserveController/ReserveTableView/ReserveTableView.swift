@@ -85,33 +85,39 @@ class ReserveTableView: UIView {
             }
         }*/
         
+        
+        
+      
+        
+        
+        
         if let reservationStatus = self.reservation.reservationStatusID{
             switch reservationStatus{
             case 1://Processing||Submitted
-                statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
-                
-                let image = #imageLiteral(resourceName: "processingIcon")
-                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1))
-                
+               let image = #imageLiteral(resourceName: "pendingIcon")
+                statusLbl.textColor = UIColor.init(red: 255.0/255.0, green: 140.0/255.0, blue: 0.0/255.0, alpha: 1)
+              statusImg.image = image.maskWithColor(color: UIColor.init(red: 255.0/255.0, green: 140.0/255.0, blue: 0.0/255.0, alpha: 1))
                 break
             case 2://WalkinOnly||WaitList||Pending
-                statusLbl.textColor = .orange
-                
-                let image = #imageLiteral(resourceName: "pendingIcon")
-                statusImg.image =  image.maskWithColor(color: .orange)
-                
+                let image = #imageLiteral(resourceName: "waiting-list")
+                self.statusLbl.textColor = UIColor.init(red: 255.0/255.0, green: 140.0/255.0, blue: 0.0/255.0, alpha: 1)
+                self.statusImg.image = image.maskWithColor(color: UIColor.init(red: 255.0/255.0, green: 140.0/255.0, blue: 0.0/255.0, alpha: 1))
+                break
+             
             case 4://Rejected||FullCapacity
-                statusLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
-                
                 let image = #imageLiteral(resourceName: "rejectedIcon")
-                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1))
+                self.statusLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
+                 self.statusImg.image = image.maskWithColor(color:UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1))
                 break
-            default://Confirmed||Approved
-                statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
-                
-                let image = #imageLiteral(resourceName: "approveIcon")
-                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1))
+            case 3://Confirmed||Approved
+               let image = #imageLiteral(resourceName: "approveIcon")
+                self.statusImg.image = image.maskWithColor(color:UIColor.init(red: 0.13, green: 0.64, blue: 0, alpha: 1))
+                self.statusLbl.textColor = UIColor(red: 0.13, green: 0.64, blue: 0, alpha: 1)
                 break
+            default: // others
+                self.statusLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
+                break
+             
             }
         }
         

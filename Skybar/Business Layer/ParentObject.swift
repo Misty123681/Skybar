@@ -327,8 +327,8 @@ struct MediaInfo: Codable {
 }
 
 struct Location: Codable {
-    let latitude, longitude: Double
-    let name: String
+   // let latitude, longitude: Double
+   // let name: String
     let id: Int
 }
 

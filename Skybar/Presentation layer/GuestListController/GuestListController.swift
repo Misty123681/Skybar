@@ -26,10 +26,12 @@ class GuestListController: ParentController {
     var guests:[GuestElement]!
     var eventID = ""
     var reservationCode = ""
+    var shareAll = ""
     
     @IBAction func shareAccessCode(_ sender: Any) {
-        let shareAll = ["Please Use \(accessCodeLbl.text!)"]
-        let activityViewController = UIActivityViewController(activityItems: shareAll as [Any], applicationActivities: nil)
+        shareAll = "\(dateLbl.text ?? "")\n \(titleLbl.text ?? "")\n\n Please Use: \(accessCodeLbl.text!)"
+      //  let shareAll = ["Please Use \(accessCodeLbl.text!)"]
+        let activityViewController = UIActivityViewController(activityItems: [shareAll] as [Any], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
     
@@ -111,6 +113,10 @@ class GuestListController: ParentController {
             if let name = self.event.name{
                 titleLbl.text = name
             }
+            if let name = self.event.description{
+               // descriptionLbl.text = name
+            }
+            
             
             doorOpenLbl.text = "Doors open at"
             if let door = self.event.doorOpen{
@@ -151,14 +157,5 @@ class GuestListController: ParentController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

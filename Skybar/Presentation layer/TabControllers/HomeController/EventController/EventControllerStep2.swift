@@ -15,15 +15,12 @@ class EventControllerStep2: ParentController {
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
-    
     @IBOutlet weak var reservationStatusLabel: UILabel!
     @IBOutlet weak var zonesLabel: UILabel!
-    
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var discountLb: UILabel!
     @IBOutlet weak var budgetLbl: UILabel!
     @IBOutlet weak var zoneImageView: UIImageView!
-    
     @IBOutlet weak var zonesResLbl: UILabel!
     @IBOutlet weak var reservationPopupView: UIView!
     @IBOutlet weak var reservationNumberLbl: UILabel!
@@ -44,26 +41,17 @@ class EventControllerStep2: ParentController {
         setInfo()
         getZone()
         getZoneImage()
+        setZoneImageSize()
     }
     
     fileprivate func setZoneImageSize() {
-        var newMultiplier:CGFloat = 0.68
-        if budget <= 600{
-            if budget <= 250{
-                newMultiplier = 0.68
-            }else{
-                newMultiplier = 0.82
-            }
-        }else{
-            newMultiplier = 0.9
-        }
-        
+        let newMultiplier:CGFloat = 0.75
         constraintWidthZoneImage = constraintWidthZoneImage.setMultiplier(multiplier: newMultiplier)
         self.loadViewIfNeeded()
     }
     
     func getZoneImage(){
-        setZoneImageSize()
+       
         loader.startAnimating()
         var serviceUrl:String
         serviceUrl = "https://skybarstar.com/UserAppService/GetAvailableZonesImage?budget=\(budget)&numberOfGuests=\(guestCount)"
