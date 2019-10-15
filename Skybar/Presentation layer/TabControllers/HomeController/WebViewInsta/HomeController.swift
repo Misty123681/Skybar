@@ -603,7 +603,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             self.performSegue(withIdentifier: "toEvent", sender: event)
         }
         
-        //self.performSegue(withIdentifier: "toEvent", sender: event)
+
     }
     
     func reloadMedia(){
