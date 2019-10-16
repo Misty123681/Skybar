@@ -9,8 +9,8 @@
 import UIKit
 
 class GuestView: UIView {
+    // MARK:- outlets and properties
     @IBOutlet weak var nameLbl: UILabel!
-    var layerCorners:UIView! = nil
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var statusLbl: UILabel!
@@ -18,7 +18,8 @@ class GuestView: UIView {
     var guest:GuestElement!
     var guestCount:Int!
     var eventId:String!
-    
+    var layerCorners:UIView! = nil
+
     @IBAction func removeAction(_ sender: Any) {
         GlobalUI.showLoading(parent.view)
         ServiceInterface.removeGuest(guestID: self.guest.id) { (success, result) in
@@ -100,8 +101,6 @@ class GuestView: UIView {
         
         nameLbl.text = guest.guestFullName
         nameTF.text = guest.guestFullName
-       // statusLbl.text = "Added To Guest List"
-        
         if let enteredDate = guest.enteredDate{
             statusLbl.textColor = UIColor.init(red: 0.13, green: 0.64, blue: 0, alpha: 1)
             statusLbl.text = "Entered at \(enteredDate)"
@@ -135,13 +134,7 @@ class GuestView: UIView {
             
             statusLbl.backgroundColor = UIColor.gray
         }
-        
-        
-       
-        
-//        if let statusName = guest.statusName{
-//            statusLbl.text = statusName
-//        }
+  
     }
     
 }

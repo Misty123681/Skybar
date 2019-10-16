@@ -10,12 +10,13 @@ import UIKit
 import IQKeyboardManagerSwift
 
 class GuestListController: ParentController {
+    
+    // MARK:- outlets
 
     @IBOutlet weak var accessCodeLbl: UILabel!
     @IBOutlet weak var accessCodeShareBtn: UIButton!
     @IBOutlet weak var calendarIcon: UIImageView!
     @IBOutlet weak var container: UIScrollView!
-    var event:NearestEventDetails! = nil
     @IBOutlet weak var doorOpenLbl: UILabel!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var descriptionLbl: UILabel!
@@ -23,14 +24,24 @@ class GuestListController: ParentController {
     @IBOutlet weak var guestCountLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
+    // MARK:- properties
+    var event:NearestEventDetails! = nil
     var guests:[GuestElement]!
     var eventID = ""
     var reservationCode = ""
-    var shareAll = ""
     
+    // MARK:- View Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setInfo()
+        self.populateGuests()
+
+    }
+    
+    // MARK:- Actions & methods
     @IBAction func shareAccessCode(_ sender: Any) {
-        shareAll = "\(dateLbl.text ?? "")\n \(titleLbl.text ?? "")\n\n Please Use: \(accessCodeLbl.text!)"
-      //  let shareAll = ["Please Use \(accessCodeLbl.text!)"]
+        let shareAll = "\(dateLbl.text ?? "")\n \(titleLbl.text ?? "")\n\n Please Use: \(accessCodeLbl.text!)"
         let activityViewController = UIActivityViewController(activityItems: [shareAll] as [Any], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
@@ -80,7 +91,7 @@ class GuestListController: ParentController {
                         
                         self.guestCountLbl.isHidden = (self.guests.count == 0)
                         self.guestCountLbl.text = "Guests(\(self.guests.count)/8)"
-                        
+
                         self.accessCodeLbl.isHidden = self.guestCountLbl.isHidden
                         self.accessCodeShareBtn.isHidden = self.guestCountLbl.isHidden
                        
@@ -98,26 +109,15 @@ class GuestListController: ParentController {
         })
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setInfo()
-        self.populateGuests()
+     // MARK:- UiInitialise
+    fileprivate func setInfo(){
         accessCodeLbl.text = "Access Code: \(reservationCode)"
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
-        // Do any additional setup after loading the view.
-    }
-    
-    func setInfo(){
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 10
         if let _ = self.event{
             calendarIcon.isHidden = false
             if let name = self.event.name{
                 titleLbl.text = name
             }
-            if let name = self.event.description{
-               // descriptionLbl.text = name
-            }
-            
-            
             doorOpenLbl.text = "Doors open at"
             if let door = self.event.doorOpen{
                 doorOpenLbl.text! += door
@@ -140,7 +140,7 @@ class GuestListController: ParentController {
         }
     }
     
-    
+    // MARK:- download image
     func getImage(key:String){
         self.loader.startAnimating()
         ServiceInterface.resizeImage(imageKey: key,width:Float(self.imageView.getWidth()),height:Float(self.imageView.getHeight()), handler: { (success, result) in
@@ -155,7 +155,5 @@ class GuestListController: ParentController {
             }
         })
     }
-    
-
-
+  
 }

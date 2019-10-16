@@ -9,7 +9,8 @@
 import UIKit
 
 class CongratsCell: UICollectionViewCell {
-
+    
+    // MARK:- Outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var lNameLbl: UILabel!
     @IBOutlet weak var fNameLbl: UILabel!
@@ -20,25 +21,20 @@ class CongratsCell: UICollectionViewCell {
     }
     
     func setInformation(profileID:String,fName:String,lName:String){
+        
         fNameLbl.text = fName
         lNameLbl.text = lName
-        
         self.layoutIfNeeded()
         self.imageView.layer.masksToBounds = true
         self.imageView.layer.cornerRadius =  self.imageView.getHeight()/2
         
         ServiceInterface.getImage(imageName: "\(profileID).jpg", handler: { (success, result) in
-            
             if success {
                 if let data = result as? Data{
                     OperationQueue.main.addOperation {
                         self.imageView.image = UIImage(data: data)
                     }
                 }
-            }else{
-                //if let res = result as? String{
-                    //GlobalUI.showMessage(title: "Error", message: res, cntrl: self)
-                //}
             }
         })
     }

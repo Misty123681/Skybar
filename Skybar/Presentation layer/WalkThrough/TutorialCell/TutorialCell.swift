@@ -9,30 +9,28 @@
 import UIKit
 
 class TutorialCell: UICollectionViewCell {
-    @IBOutlet weak var letsStartBtnConstraint: NSLayoutConstraint!
     
+     // MARK:- Outlets
+    @IBOutlet weak var letsStartBtnConstraint: NSLayoutConstraint!
     @IBOutlet weak var ConstraintHtImage: NSLayoutConstraint!
     @IBOutlet weak var letsStartBtn: UIButton!
     @IBOutlet weak var descriptiobLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
     var parent:WalkThrouController! = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // dynamic size for carousel
         var newMultiplier:CGFloat = 0.7
-        
             let result = UIScreen.main.bounds.size
-            if(result.height <= 667.0)
-            {
+            if(result.height <= 667.0){
                 newMultiplier  = 0.6
                 descriptiobLbl.font = descriptiobLbl.font.withSize(17)
-                
             }else{
                  newMultiplier = 0.7
                 descriptiobLbl.font = descriptiobLbl.font.withSize(20)
-                
             }
-    
            ConstraintHtImage = ConstraintHtImage.setMultiplier(multiplier: newMultiplier)
         }
     

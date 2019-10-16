@@ -12,19 +12,31 @@ import IQKeyboardManagerSwift
 
 class ReferController: ParentController {
 
+      // MARK:- download image
     @IBOutlet weak var countryCodeTF: UITextField!
     @IBOutlet weak var phoneTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var nameTF: UITextField!
+    
     var phoneCodes:[PhoneCode]!
     
+    // MARK:- View Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        getCountryCodes()
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
+    }
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .default
+    }
+    
+     // MARK:- CountryCode api
     func getCountryCodes(){
         GlobalUI.showLoading(self.view)
         
         ServiceInterface.getCountryCodes( handler: { (success, result) in
             GlobalUI.hideLoading()
             if success {
-                
                 do{
                     self.phoneCodes = try JSONDecoder().decode(PhoneCodes.self, from: result as! Data)
                 }
@@ -39,13 +51,7 @@ class ReferController: ParentController {
         })
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getCountryCodes()
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
-        // Do any additional setup after loading the view.
-    }
-    
+  
     func displayError(){
         let alert = UIAlertController(title: "Missing information", message: "Please fill all required information", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
@@ -85,9 +91,7 @@ class ReferController: ParentController {
             }
         }
     }
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .default
-    }
+ 
     
     @IBAction func backAction(_ sender: Any) {
         if let nav = self.navigationController{
@@ -111,15 +115,5 @@ class ReferController: ParentController {
             }, cancel: { ActionMultipleStringCancelBlock in return }, origin: self.view)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

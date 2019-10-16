@@ -8,14 +8,12 @@
 
 import UIKit
 
-class WalkThrouController: ParentController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class WalkThrouController: ParentController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var nextArrow: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
-    
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var pageControl: UIPageControl!
     
     var descriptionArr = [String]()
@@ -55,7 +53,6 @@ class WalkThrouController: ParentController,UICollectionViewDataSource,UICollect
         descriptionArr.append("Refer star candidates to this program")
         imageArr.append("refer_screen")
         
-        // Do any additional setup after loading the view.
         let nib = UINib(nibName: tutorialCellIdentifier, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: tutorialCellIdentifier)
         
