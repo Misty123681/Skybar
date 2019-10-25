@@ -12,7 +12,7 @@ class ServiceInterface: NSObject {
     //static let hostURL = "http://40.76.73.185/skybar/UserAppService/"
    
     static let hostURL = "http://40.76.73.185/SkybarstarTest/UserAppService/" // testing
-    //static let hostURL = "http://skybarstar.com/UserAppService/" // live
+  // static let hostURL = "http://skybarstar.com/UserAppService/" // live
     static let cache = NSCache<AnyObject, AnyObject>()
     
     static func activateAccount(key:String,handler:APICompletionHandler?){
@@ -175,19 +175,33 @@ class ServiceInterface: NSObject {
             }
         }
     }
+ 
     
     static func setRating(visitID:String,rating:Float,handler:APICompletionHandler?){
-        let fullPath = "\(hostURL)RateVisit"
+        let fullPath = "\(hostURL)RateVisitDetailed"
         
         var params = [String:Any]()
         params["visitID"] = visitID
-        params["rating"] = rating
+        params["VisitRatingValue"] = rating
         
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: params) { (success, result) in
             if let handler = handler{
                 handler(success,result)
             }
         }
+    }
+    static func thisWasNotMeAPI(visitID:String,rating:Float,handler:APICompletionHandler?){
+//        let fullPath = "\(hostURL)RateVisit"
+//
+//        var params = [String:Any]()
+//        params["visitID"] = visitID
+//        params["rating"] = rating
+//
+//        ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: params) { (success, result) in
+//            if let handler = handler{
+//                handler(success,result)
+//            }
+//        }
     }
     
     static func getReservationRules(handler:APICompletionHandler?){

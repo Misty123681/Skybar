@@ -10,6 +10,8 @@ import UIKit
 
 class EventControllerStep2: ParentController {
     
+    //MARK:- Outlets
+    
     @IBOutlet weak var constraintWidthZoneImage: NSLayoutConstraint!
     @IBOutlet weak var doorOpenLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
@@ -27,27 +29,40 @@ class EventControllerStep2: ParentController {
     @IBOutlet weak var reservationDateLbl: UILabel!
     @IBOutlet weak var reservationNameLbl: UILabel!
     
+    //MARK:- Variables
     var event:Event! = nil
     var reservation:Reservation! = nil
     var guestCount = 0
     var reservationType = 1
     var budget:Float = 0
     
+     //MARK:- View methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let screen = UIScreen.main.bounds.size
-         reservationPopupView.frame = CGRect(x: 0, y: 0, width: screen.width, height: screen.height)
-        self.view.addSubview(reservationPopupView)
+        // initialization
+        addReservationPopUp()
         setInfo()
         getZone()
         getZoneImage()
         setZoneImageSize()
     }
     
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.default
+    }
+    
+     //MARK:- Methods and action
     fileprivate func setZoneImageSize() {
         let newMultiplier:CGFloat = 0.75
         constraintWidthZoneImage = constraintWidthZoneImage.setMultiplier(multiplier: newMultiplier)
         self.loadViewIfNeeded()
+    }
+    
+    fileprivate func addReservationPopUp() {
+        let screen = UIScreen.main.bounds.size
+        reservationPopupView.frame = CGRect(x: 0, y: 0, width: screen.width, height: screen.height)
+        self.view.addSubview(reservationPopupView)
     }
     
     func getZoneImage(){
@@ -65,14 +80,12 @@ class EventControllerStep2: ParentController {
     
     func getZone(){
         ServiceInterface.getZonesByBudget(budget: budget, numberOfGuests: guestCount) { (success, result) in
-            OperationQueue.main.addOperation({
-                
-            })
-            
+
             if success {
                 do{
                     let zones = try JSONDecoder().decode(Zones.self, from: result as! Data)
                     OperationQueue.main.addOperation({
+                        
                         self.zonesLabel.text = "ZONES: "
                         
                         for (index,zone) in zones.enumerated(){
@@ -233,7 +246,5 @@ class EventControllerStep2: ParentController {
         self.reservationPopupView.isHidden = false
     }
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.default
-    }
+    
 }

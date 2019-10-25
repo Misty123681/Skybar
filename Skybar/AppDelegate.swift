@@ -16,12 +16,12 @@ import Crashlytics
 class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
 
     var window: UIWindow?
-
+    var customNavigationVC:UINavigationController!
     func onOSSubscriptionChanged(_ stateChanges: OSSubscriptionStateChanges!) {
         if !stateChanges.from.subscribed && stateChanges.to.subscribed {
             print("Subscribed for OneSignal push notifications!")
         }
-        print("SubscriptionStateChange: \n\(stateChanges)")
+        print("SubscriptionStateChange: \n\(String(describing: stateChanges))")
         
         //The player id is inside stateChanges. But be careful, this value can be nil if the user has not granted you permission to send notifications.
         if let playerId = stateChanges.to.userId {
@@ -30,30 +30,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
         }
     }
     
+   
+    
+    fileprivate func oneSignalCallbackHandler(_ launchOptions: [UIApplication.LaunchOptionsKey : Any]?, _ onesignalInitSettings: [String : Bool]) {
+        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
+            
+            print("Received Notification: \(String(describing: notification!.payload.notificationID))")
+        }
+        
+        let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
+            // This block gets called when the user reacts to a notification received
+            let payload: OSNotificationPayload = result!.notification.payload
+            
+            var fullMessage = payload.body
+            print("Message = \(String(describing: fullMessage))")
+            
+            if payload.additionalData != nil {
+                if payload.title != nil {
+                    let messageTitle = payload.title
+                    print("Message Title = \(messageTitle!)")
+                }
+                
+                let additionalData = payload.additionalData
+                if additionalData?["Event"] != nil {
+                    fullMessage = fullMessage! + "\nPressed ButtonID: \(String(describing: additionalData!["EventI"]))"
+                }
+            }
+        }
+        
+        OneSignal.initWithLaunchOptions(launchOptions,
+                                        appId: Helper.oneSignalAppID,
+                                        handleNotificationReceived: notificationReceivedBlock,
+                                        handleNotificationAction: notificationOpenedBlock,
+                                        settings: onesignalInitSettings)
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-            // Override point for customization after application launch.
+//
+//        let state = UIApplication.shared.applicationState
+//        switch state {
+//        case .active:
+//              print("foreground")
+//        case .inactive:
+//              print("inactive")
+//        case .background:
+//            print("background")
+//        }
+//
+
+    
             IQKeyboardManager.shared.enable = true
-            //ServiceUser.clearMobileSessionID()
-            
-            //dump(UIFont.fontNames(forFamilyName: "Source Sans Pro"))
-            let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
-            
-            // Replace 'YOUR_APP_ID' with your OneSignal App ID.
-            OneSignal.initWithLaunchOptions(launchOptions,
-                                            appId: Helper.oneSignalAppID,
-                                            handleNotificationAction: nil,
-                                            settings: onesignalInitSettings)
-            
-            OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
-            
-            // Recommend moving the below line to prompt for push after informing the user about
-            //   how your app will use them.
+        
+           let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+        
+            oneSignalCallbackHandler(launchOptions, onesignalInitSettings)
+        
+           OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
+        
             OneSignal.promptForPushNotifications(userResponse: { accepted in
                 print("User accepted notifications: \(accepted)")
             })
+        
             if let playerId = OneSignal.getPermissionSubscriptionState().subscriptionStatus.userId{
                 ServiceInterface.updateUserPlayer(playerId: playerId, handler: nil)
             }
+        
             OneSignal.add(self as OSSubscriptionObserver)
             Fabric.with([Crashlytics.self])
         
@@ -62,10 +103,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
         if let window = UIApplication.shared.windows.first {
             window.backgroundColor = .white
         }
-            
-            return true
-    }
         
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+       
+        
+        if ServiceUser.loggedIn(){
+            let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeController") as! HomeController
+            customNavigationVC = UINavigationController(rootViewController: homeVC)
+        } else {
+            let landingVC = storyboard.instantiateViewController(withIdentifier: "LandingController") as! LandingController
+            customNavigationVC = UINavigationController(rootViewController: landingVC)
+        }
+        customNavigationVC.isNavigationBarHidden = true
+        self.window?.rootViewController = customNavigationVC
+        return true
+    }
+    
+    
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        debugPrint("Received: \(userInfo)")
+        
+        let state = UIApplication.shared.applicationState
+        switch state {
+        case .active:
+              print("foreground")
+        case .inactive:
+            print("inactive")
+        case .background:
+             print("background")
+        }
+   
+        
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

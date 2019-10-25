@@ -9,7 +9,8 @@
 import UIKit
 
 class ReserveEventController: ParentController {
-
+    
+     // MARK:- Outlets
     @IBOutlet weak var maxLbl: UILabel!
     @IBOutlet weak var barBtn: UIButton!
     @IBOutlet weak var tableBtn: UIButton!
@@ -20,14 +21,18 @@ class ReserveEventController: ParentController {
     @IBOutlet weak var guestNumberLbl: UILabel!
     @IBOutlet weak var plusBtn: UIButton!
     @IBOutlet weak var minusBtn: UIButton!
+    
+    // MARK:- variables
     var guestCount = 0
     var event:Event! = nil
     var reservationType = 1
     var reservationRules:ReservationRules! = nil
-    
     var minimumLimit = 0
     var maximumLimit = 15
     
+    
+   //MARK:- action & methods
+
     @IBAction func callToReserve(_ sender: Any) {
         if let url = URL(string: "tel://\(ServiceUser.contactPhoneNumber)"), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {
@@ -105,28 +110,8 @@ class ReserveEventController: ParentController {
         plusBtn.isEnabled = false
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.layoutIfNeeded()
-        self.guestNumberLbl.text = "\(guestCount)"
-        enablePlusButton()
-        disableMinusButton()
-    }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        barBtn.tag = 11
-        setGradientBgToButton(btn: barBtn)
-        
-        tableBtn.tag = 0
-        setGradientBgToButton(btn: tableBtn)
-        
-        // Do any additional setup after loading the view.
-        plusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
-        minusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
-        
-        GlobalUI.showLoading(self.view)
-        
+    fileprivate func getReservationRules() {
         ServiceInterface.getReservationRules(handler: { (success, result) in
             GlobalUI.hideLoading()
             if success {
@@ -151,11 +136,40 @@ class ReserveEventController: ParentController {
             }
         })
     }
+    
+    // MARK:- view cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.layoutIfNeeded()
+        self.guestNumberLbl.text = "\(guestCount)"
+        enablePlusButton()
+        disableMinusButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        barBtn.tag = 11
+        setGradientBgToButton(btn: barBtn)
+        tableBtn.tag = 0
+        setGradientBgToButton(btn: tableBtn)
+        plusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
+        minusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
+        GlobalUI.showLoading(self.view)
+        getReservationRules()
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .default
+    }
 
+    
+    
+    // MARK:- Booking reservation call
     @IBAction func confirmReservation(_ sender: Any) {
         reserveEvent()
     }
     
+    // MARK:- Table tapped
     @IBAction func tableAction(_ sender: Any) {
         self.minimumLimit = self.reservationRules.tableMinimumNumberOfPeople
         self.maximumLimit = self.reservationRules.tableMaximumNumberOfPeople
@@ -173,6 +187,9 @@ class ReserveEventController: ParentController {
         
         maxLbl.text = "All reservations at the bar above \(self.reservationRules.barMaximumNumberOfPeople) people are switched to table bookings"
     }
+    
+    
+    // MARK:- Bar tapped
     @IBAction func barAction(_ sender: Any) {
         self.minimumLimit = self.reservationRules.barMinimumNumberOfPeople
         self.maximumLimit = self.reservationRules.barMaximumNumberOfPeople
@@ -184,7 +201,6 @@ class ReserveEventController: ParentController {
         tableBtn.tag = 0
         setGradientBgToButton(btn: tableBtn)
         
-        
         guestCount = self.minimumLimit
         self.guestNumberLbl.text = "\(self.guestCount)"
         disableMinusButton()
@@ -193,8 +209,9 @@ class ReserveEventController: ParentController {
         maxLbl.text = "Every bar stool fits 2 people"
     }
     
+    //MARK:- action & methods
+    
     func setGradientBgToButton(btn: UIButton){
-        
         if(btn.tag == 11){
             btn.setTitleColor(.white, for: .normal)
             let overlayer = UIView(frame: btn.bounds)
@@ -226,8 +243,8 @@ class ReserveEventController: ParentController {
         }
     }
     
+    // MARK:- popup UI
     func showReservationPopup(){
-        
         var typStr = "Table"
         if reservationType == 1{
             typStr = "Bar"
@@ -247,9 +264,10 @@ class ReserveEventController: ParentController {
         }
  
         self.reservationNameLbl.text = event.name
-        
         self.reservationPopupView.isHidden = false
     }
+    
+      // MARK:-  APi Booking resrvation
     
     func reserveEvent(){
         GlobalUI.showLoading(self.view)
@@ -271,24 +289,4 @@ class ReserveEventController: ParentController {
         
     }
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .default
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

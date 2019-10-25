@@ -8,23 +8,39 @@
 
 import UIKit
 
-class WalkThrouController: ParentController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+class WalkThrouController: ParentController{
     
+    // MARK:- properties
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var nextArrow: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    // MARK:- properties
     var descriptionArr = [String]()
     var titleArr = [String]()
     var imageArr = [String]()
     var tutorialCellIdentifier = "TutorialCell"
     var congratCellIdentifier = "CongratsCell"
     
+    // MARK:- view cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUpData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.default
+    }
+    
+     // MARK:- Methods
+    fileprivate func setUpData() {
         titleArr.append("Free careem pick up and drop off".capitalized)
         descriptionArr.append("Don't drink and drive, just order a Careem ride from the app for free")
         imageArr.append("careem_screen")
@@ -48,7 +64,7 @@ class WalkThrouController: ParentController,UICollectionViewDataSource,UICollect
         titleArr.append("Rate The Night".capitalized)
         descriptionArr.append("Tap on the stars to let us know your satisfaction level on that night ")
         imageArr.append("rate_screen")
-        
+    
         titleArr.append("Refer A Star".capitalized)
         descriptionArr.append("Refer star candidates to this program")
         imageArr.append("refer_screen")
@@ -59,14 +75,7 @@ class WalkThrouController: ParentController,UICollectionViewDataSource,UICollect
         let nib1 = UINib(nibName: congratCellIdentifier, bundle: nil)
         collectionView.register(nib1, forCellWithReuseIdentifier: congratCellIdentifier)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.default
-    }
+  
     
     @IBAction func nextAction(_ sender: Any) {
         let index = Int(collectionView.contentOffset.x/collectionView.getWidth())
@@ -84,6 +93,11 @@ class WalkThrouController: ParentController,UICollectionViewDataSource,UICollect
         collectionView.setContentOffset(CGPoint(x: collectionView.contentOffset.x+collectionView.getWidth(), y: 0), animated: true)
     }
     
+   
+}
+
+// MARK:- extension
+extension WalkThrouController:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
     }
@@ -112,17 +126,18 @@ class WalkThrouController: ParentController,UICollectionViewDataSource,UICollect
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.getWidth(), height: collectionView.getHeight())
-   }
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let index = Int(scrollView.contentOffset.x/scrollView.getWidth())
-        
+        guard  index <= 6 else{
+          return
+        }
         if index == 0 {
             titleLbl.text = ""
         }else {
             titleLbl.text = titleArr[index]
         }
-        
         nextBtn.isHidden = false
         nextArrow.isHidden = false
         

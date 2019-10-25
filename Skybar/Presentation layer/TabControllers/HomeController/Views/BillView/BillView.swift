@@ -10,8 +10,10 @@ import UIKit
 
 class BillView: UIView {
     
+    // MARK:- Outlets
     @IBOutlet weak var tabOpenLbl: UILabel!
     @IBOutlet weak var discountPercentageLbl: UILabel!
+    
     @IBOutlet weak var star5: UIImageView!
     @IBOutlet weak var star4: UIImageView!
     @IBOutlet weak var star3: UIImageView!
@@ -21,19 +23,18 @@ class BillView: UIView {
     @IBOutlet weak var accessCodeLbl: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var reservationMsgLbl: UILabel!
-    //@IBOutlet weak var eventNameLbl: UILabel!
     @IBOutlet weak var dayLbl: UILabel!
     @IBOutlet weak var monthLbl: UILabel!
     @IBOutlet weak var reservationInVenue: UILabel!
     @IBOutlet weak var currentTabLbl: UILabel!
-    
     @IBOutlet weak var discountLbl: UILabel!
-    
-    var layerCorners:UIView! = nil
     @IBOutlet weak var innerView: UIView!
-    var bill:CurrentVisitInfo! = nil
-    weak var controller:UIViewController! = nil
     @IBOutlet weak var loader: UIActivityIndicatorView!
+    
+    var bill:CurrentVisitInfo! = nil
+    var layerCorners:UIView! = nil
+    weak var controller:UIViewController! = nil
+    
     
     @IBAction func shareAccessCode(_ sender: Any) {
         let shareAll = ["Please Use \(accessCodeLbl.text!)"]
@@ -54,6 +55,7 @@ class BillView: UIView {
         star4.image = UIImage(named: "stargrey")
         star5.image = UIImage(named: "stargrey")
     }
+    
     
     func starManipulation(value:Int){
         
@@ -100,6 +102,8 @@ class BillView: UIView {
         setRatingAPI(rating: self.slider!.value)
         starManipulation(value: Int(self.slider!.value))
     }
+    
+    // MARK:- rating Api
     
     func setRatingAPI(rating:Float){
         if let id = bill.visitID{
@@ -179,10 +183,6 @@ class BillView: UIView {
         if let discount = self.bill.totalDiscountValue{
             self.discountLbl.text = discount.toCurrencyNoPrefix()
         }
-        
-//        if let name = self.bill["TodayEventName"] as? String{
-//            self.eventNameLbl.text = name
-//        }
         
         if let reservationMsg = self.bill.reservation{
             self.reservationMsgLbl.text = reservationMsg

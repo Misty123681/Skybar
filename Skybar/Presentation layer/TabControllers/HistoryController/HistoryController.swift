@@ -34,7 +34,7 @@ class HistoryController: ParentController {
             OperationQueue.main.addOperation({
                 self.loader.stopAnimating()
             })
-            
+    
             if let data = result as? Data{
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: []) as? [Any]
@@ -86,6 +86,7 @@ class HistoryController: ParentController {
                     container.addSubview(reservationView)
                 }
                 break
+                
             case .notification:
                 if let notification = single.notification{
                     let notificationView:NotificationView = NotificationView.fromNib()
@@ -132,12 +133,18 @@ class HistoryController: ParentController {
         getChart()
         getTimeline()
         
-        if let profile = ServiceUser.profile{
-            titleLbl.text =  "Your Summary"
-                //profile.level+" Summary"
+         titleLbl.text =  "Your Summary"
+        
+        if let profile = ServiceUser.profile {
+           
+            
             descriptionLbl.text = "Thank you for being a great \(profile.level)"
         }
-        // Do any additional setup after loading the view.
+        
+      
+        
+        descriptionLbl.text = "Thank you for being a great \(ServiceUser.getTypeLevel())"
+        
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -146,31 +153,17 @@ class HistoryController: ParentController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.view.layoutIfNeeded()
-//        let layer = UIView(frame: statsView.bounds)
-//        layer.layer.cornerRadius = 13
-//        layer.backgroundColor = UIColor.white
-//        layer.layer.shadowOffset = CGSize.zero
-//        layer.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.11).cgColor
-//        layer.layer.shadowOpacity = 1
-//        layer.layer.shadowRadius = 10
-//        self.statsView.addSubview(layer)
-//        self.statsView.sendSubview(toBack: layer)
     }
     
     @objc func toInvoice(gestureRecognizer:UIGestureRecognizer){
         self.performSegue(withIdentifier: "toInvoice", sender: gestureRecognizer.view)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+ 
     
 
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toInvoice"{
             if let view = sender as? HistoryView,let cntrl = segue.destination as? InvoiceController{

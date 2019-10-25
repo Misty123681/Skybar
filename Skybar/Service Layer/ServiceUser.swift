@@ -23,6 +23,41 @@ class ServiceUser: NSObject {
         return false;
     }
     
+    static func setProfile(profile:ProfileObject){
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(profile.firstName, forKey: "firstName")
+        userDefaults.set(profile.lastName, forKey: "lastName")
+        userDefaults.set(profile.email, forKey: "email")
+        userDefaults.set(profile.phoneCode, forKey: "phoneCode")
+        userDefaults.set(profile.mobile, forKey: "mobile")
+        userDefaults.set(profile.starMembershipSeed, forKey: "starMembershipSeed")
+        userDefaults.set(profile.address, forKey: "address")
+
+        
+    }
+    
+        
+      
+    
+    static func setTypeLevel(level:String){
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(level, forKey: "Level")
+    }
+    
+    static func getTypeLevel()->String{
+          let userDefaults = UserDefaults.standard
+        return  userDefaults.value(forKey: "Level") as? String ?? ""
+    }
+    
+    static func setProfileId(Id:String){
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(Id, forKey: "Id")
+    }
+    static func getProfileId()->String{
+        let userDefaults = UserDefaults.standard
+        return  userDefaults.value(forKey: "Id") as? String ?? ""
+    }
+    
     static func setPushNotification(activated:Bool){
         let userDefaults = UserDefaults.standard
         userDefaults.set(activated, forKey: "PushNotifications")

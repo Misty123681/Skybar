@@ -157,6 +157,7 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
     }
     
     func populateInfo(){
+        notSwitch.isOn = ServiceUser.getPushNotification()
         if let profile = ServiceUser.profile{
             fNameLbl.text = profile.firstName
             lNameLbl.text = profile.lastName
@@ -166,12 +167,25 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
             levelLbl.text = profile.level
             membershipLbl.text = "Membership STAR \(String(format: "%04d", profile.starMembershipSeed))"
             notSwitch.isOn = ServiceUser.getPushNotification()
+        }else{
+            let userDefaults = UserDefaults.standard
+             fNameLbl.text = userDefaults.value(forKey: "firstName") as? String ?? ""
+             lNameLbl.text = userDefaults.value(forKey: "lastName")as? String ?? ""
+             emailLbl.text = userDefaults.value(forKey: "email")as? String ?? ""
+            let mobile = userDefaults.value(forKey: "mobile")as? String ?? ""
+            let code =  userDefaults.value(forKey: "phoneCode")as? String ?? ""
+            mobileLbl.text = code + mobile
+            addressLbl.text = userDefaults.value(forKey: "address") as? String ?? ""
+            levelLbl.text = ServiceUser.getTypeLevel()
+            let membership = userDefaults.value(forKey: "starMembershipSeed") as? Int ?? 0
+             membershipLbl.text = "Membership STAR \(String(format: "%04d", membership))"
         }
     }
     
     func getImage(){
-        if let profile = ServiceUser.profile{
-            ServiceInterface.getImage(imageName: "\(profile.id).jpg", handler: { (success, result) in
+        //if let profile = ServiceUser.profile{
+          let id = ServiceUser.getProfileId()
+            ServiceInterface.getImage(imageName: "\(id).jpg", handler: { (success, result) in
                 
                 if success {
                     if let data = result as? Data{
@@ -185,23 +199,7 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
                     }
                 }
             })
-        }
+        //}
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

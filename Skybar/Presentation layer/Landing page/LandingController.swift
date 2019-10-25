@@ -17,9 +17,9 @@ class LandingController: ParentController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if ServiceUser.loggedIn(){
-            self.performSegue(withIdentifier: "toHome", sender: nil)
-        }
+//        if ServiceUser.loggedIn(){
+//            self.performSegue(withIdentifier: "toHome", sender: nil)
+//        }
     }
 
     override func didReceiveMemoryWarning() {

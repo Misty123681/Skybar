@@ -23,13 +23,9 @@ class StartPrivilegeView:UIView{
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = [UIColor.black]
-            //[
-           // UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
-           // UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
-        //]
+        
         gradient.locations = [0, 1]
-        //gradient.startPoint = CGPoint(x: 1, y: 0.2)
-        //gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
+
         gradient.cornerRadius = 8
         layer.layer.addSublayer(gradient)
         
@@ -38,9 +34,10 @@ class StartPrivilegeView:UIView{
     }
 }
 
-class HomeController: ParentController,InstaDelegate {
+class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     
-    
+     var timer: Timer!
+     var isAnimating = false
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var privilegeBtn: UIButton!
@@ -77,7 +74,8 @@ class HomeController: ParentController,InstaDelegate {
     var cacheEventImages = [NSCache<NSString, UIImage>]()
     var isedit = false
     
-  
+  var refreshControl: UIRefreshControl!
+    var frameEvent = CGRect()
 
     
     @IBOutlet weak var guestListBadgeLbl: UILabel!
@@ -187,7 +185,7 @@ class HomeController: ParentController,InstaDelegate {
         
         if let guestNotificationsCount = skyStatus.totalGuestsInVenueNotifications{
             if guestNotificationsCount > 0 {
-                reservationNotificationBadgeLbl.isHidden = false
+                reservationNotificationBadgeLbl.isHidden = true
                 if guestNotificationsCount >= 10{
                     guestListBadgeLbl.text = "9+"
                 }else{
@@ -217,8 +215,8 @@ class HomeController: ParentController,InstaDelegate {
                     
                // }
             }else{
-                let color1 = CIColor(color:UIColor(red: 69.0/255.0, green: 146.0/255.0, blue: 42.0/255.0, alpha: 1))
-                let color2 = CIColor(color:UIColor(red: 188.0/255.0, green: 228.0/255.0, blue: 130.0/255.0, alpha: 1))
+                _ = CIColor(color:UIColor(red: 69.0/255.0, green: 146.0/255.0, blue: 42.0/255.0, alpha: 1))
+                _ = CIColor(color:UIColor(red: 188.0/255.0, green: 228.0/255.0, blue: 130.0/255.0, alpha: 1))
                // if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
                     self.headerTwo.textColor =  UIColor.black
                     self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
@@ -228,7 +226,7 @@ class HomeController: ParentController,InstaDelegate {
         }
         let plz = "Please Use Promo Code "
         let promoCodeText = "KEYTOTHESKY "
-        let destination = "\nDestination SKY2.0 For Free Rides"
+        let destination = "\nDestination SKY2.0 For 100% cash back"
         
         let attrString = NSMutableAttributedString(string: plz,
                                                    attributes: [NSAttributedString.Key.font:
@@ -237,7 +235,7 @@ class HomeController: ParentController,InstaDelegate {
         
         attrString.append(NSMutableAttributedString(string: promoCodeText,
                                                     attributes: [NSAttributedString.Key.font:
-                                                        UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,NSAttributedString.Key.foregroundColor:UIColor.gray]));
+                                                        UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,NSAttributedString.Key.foregroundColor:UIColor(red: 219/255, green: 166/255, blue: 26/255, alpha: 1.0)]));
         
         attrString.append(NSMutableAttributedString(string: destination,
                                                     attributes: [NSAttributedString.Key.font:
@@ -250,8 +248,8 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             self.isOpen = isOpen
             if !isOpen{
                 redesignBtn(msg: skyStatus.rideDisabledMsg)
-                let color1 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
-                let color2 = CIColor(color:UIColor(red: 25.0/255.0, green: 146.0/255.0, blue: 224.0/255.0, alpha: 1))
+                _ = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
+                _ = CIColor(color:UIColor(red: 25.0/255.0, green: 146.0/255.0, blue: 224.0/255.0, alpha: 1))
                // if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
                     self.headerTwo.textColor =  UIColor.black
                // }
@@ -284,13 +282,14 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         careemIcon.isHidden = false
         if let msg = msg{
             careemMsg = msg
-            careemIcon.alpha = 0.5
-            takeMeBtn.alpha = 0.5
+            careemIcon.alpha =  1.0 //0.5
+            takeMeBtn.alpha =  1.0 //0.5
         }
     }
     
     
     func populateEvents(events:[Event]){
+        eventsContainer.delegate = self
         eventsContainer.subviews.forEach({ $0.removeFromSuperview() })
 
         if isAtSkybar{
@@ -394,6 +393,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                         //self.dragGesture.isEnabled = true
                         self.populateHeaders()
                         self.getCurrentEvents()
+                        self.endOfWork()
                         Timer.scheduledTimer(withTimeInterval: 20, repeats: false, block: { (timer) in
                             self.getCurrentStatus()
                         })
@@ -459,24 +459,78 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.scrollView.delegate = self
+        refreshControl = UIRefreshControl()
+        
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.tintColor = UIColor.black
+        
+        self.scrollView.addSubview(refreshControl)
+        
+        
+        
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     
         getInstaMedia()
         ServiceUser.setLoggedIn()
-        // Do any additional setup after loading the view.
+      
         getResetvationNumber()
      
         getCareemLinks()
         
         self.view.layoutIfNeeded()
         self.imageView.layer.cornerRadius = self.imageView.frame.size.height/2
-        
-      //  dragGesture = UIPanGestureRecognizer(target: self, action: #selector(refreshGesture))
-       // self.view.addGestureRecognizer(dragGesture)
+       
         
         designPrivilegeBtn()
     }
+    
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if refreshControl.isRefreshing {
+            if !isAnimating {
+                doSomething()
+            }
+        }
+    }
+    
+    func doSomething() {
+        self.RefreshData()
+    }
+    
+    
+    func RefreshData(){
+        getInstaMedia()
+        ServiceInterface.getCurrentSkyStatus { (success, result) in
+            if let data = result as? Data{
+                do{
+                    self.skyStatus = try JSONDecoder().decode(SkyStatus.self, from: data)
+                    OperationQueue.main.addOperation({
+                      
+                        self.populateHeaders()
+                        self.getCurrentEvents()
+                        self.endOfWork()
+                    })
+                }
+                catch let ex{
+                    print(ex)
+                }
+            }
+        }
+    }
+    
+    @objc func endOfWork() {
+        refreshControl.endRefreshing()
+      // timer.invalidate()
+       // timer = nil
+        isAnimating = false
+    }
+    
+//    func animateRefreshStep1() {
+//        isAnimating = true
+//    }
     
     @objc func appMovedToForeground() {
       self.cacheEventImages = [NSCache<NSString, UIImage>]()
@@ -488,51 +542,21 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         privilegeBtn.layer.cornerRadius = 8
         privilegeBtn.backgroundColor = UIColor.black
     }
+   
     
-    func snap(){
-        dragGesture.isEnabled = false
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
-            self.view.frame = CGRect(x: 0, y: 0, width: self.view.getWidth(), height: self.view.getHeight())
-        }, completion:{ finished in
-            self.dragGesture.isEnabled = true
-        })
-    }
-    
-    func refresh(){
-       self.getCurrentStatus()
-    }
-    
-    @objc func refreshGesture(gestureRecognizer:UIPanGestureRecognizer){
-        let translation = gestureRecognizer.translation(in: self.view)
-        let velocity = gestureRecognizer.velocity(in: self.view)
-        let threshold:CGFloat = 100
-        
-        if(velocity.y<0 || self.view.frame.origin.y>=threshold){
-            return
-        }
-        
-        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-            // note: 'view' is optional and need to be unwrapped
-            
-            self.view.center = CGPoint(x: self.view.center.x, y: self.view.center.y + translation.y)
-            gestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
-            
-            if self.view.frame.origin.y>=threshold {
-                refresh()
-            }
-        }else{
-            if self.view.frame.origin.y>=threshold {
-                refresh()
-            }else{
-                snap()
-            }
-        }
-    }
+   
 
     override func viewWillAppear(_ animated: Bool) {
         self.cacheEventImages = [NSCache<NSString, UIImage>]()
         getCurrentStatus()
         self.populateProfileInfo()
+        let mobile = UserDefaults.standard.value(forKey: "mobile")
+        if mobile == nil {
+            ServiceUser.setTypeLevel(level: ServiceUser.profile?.level ?? "" )
+            ServiceUser.setProfileId(Id: ServiceUser.profile?.id ?? "")
+            ServiceUser.setProfile(profile: ServiceUser.profile!)
+            
+        }
         self.reloadMedia()
         
         takeMeBtn.backgroundColor = .white
@@ -653,15 +677,15 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             if segue.identifier == "toGuestList"{
                 let dest = segue.destination as! GuestListController
                 dest.guests = self.guests
-                if let eventID = self.skyStatus.nearestEventDetails?.id{
+                if let eventID = self.skyStatus?.nearestEventDetails?.id{
                     dest.eventID = eventID
                 }
                 
-                if let info = self.skyStatus.nearestEventDetails{
+                if let info = self.skyStatus?.nearestEventDetails{
                     dest.event = info
                 }
                 
-                if let code = self.skyStatus.nearestEventDetails?.reservationInfo?.reservationAccessCode{
+                if let code = self.skyStatus?.nearestEventDetails?.reservationInfo?.reservationAccessCode{
                     dest.reservationCode = code
                 }
                 

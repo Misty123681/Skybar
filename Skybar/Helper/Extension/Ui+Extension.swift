@@ -30,3 +30,11 @@ extension StringProtocol where Index == String.Index {
         return trimmingCharacters(in: .whitespaces) == ""
     }
 }
+
+extension String {
+    func firstCharacterUpperCase() -> String? {
+        guard !isEmpty else { return nil }
+        let lowerCasedString = self.lowercased()
+        return lowerCasedString.replacingCharacters(in: lowerCasedString.startIndex...lowerCasedString.startIndex, with: String(lowerCasedString[lowerCasedString.startIndex]).uppercased())
+    }
+}

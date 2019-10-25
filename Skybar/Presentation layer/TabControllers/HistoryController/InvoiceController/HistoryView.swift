@@ -99,8 +99,23 @@ class HistoryView: UIView {
         }
     }
     @IBAction func valueChanged(_ sender: Any) {
-        setRatingAPI(rating: self.slider!.value)
         starManipulation(value: Int(self.slider!.value))
+         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.setRatingAPI(rating: self.slider!.value)
+        }
+    }
+    
+    
+    @IBAction func thisWasntMeBtnTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Are you sure, you want to report that this was not you?", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            
+           
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+       UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        
     }
     
     func setInfo(visit:Visit){
@@ -109,9 +124,9 @@ class HistoryView: UIView {
         self.titleLbl.text = self.visit.eventName
         self.descriptionLbl.text = self.visit.visitSummary
         
-        if let eventImage = self.visit.eventImage{
-            self.getImage(key:eventImage)
-        }
+       // if let eventImage = self.visit.eventImage{
+            self.getImage(key:self.visit.eventImage ?? "")
+       // }
         
         if let dateVisited = self.visit.dateVisited{
             if let date = Date(jsonDate: dateVisited){
@@ -124,15 +139,15 @@ class HistoryView: UIView {
             }
         }
         if let totalBill = self.visit.totalBillValue{
-            self.consumptionLbl.text = totalBill.toCurrency()
+            self.consumptionLbl.text = totalBill.toCurrency() //totalBillValue
         }
         
         if let freeBill = self.visit.discountProvided{
-            self.freeConsumptionLbl.text = freeBill.toCurrency()
+            self.freeConsumptionLbl.text = freeBill.toCurrency() // discountProvided
         }
         
         if let paidBill = self.visit.totalPaid{
-            self.paidConsumptionLbl.text = paidBill.toCurrency()
+            self.paidConsumptionLbl.text = paidBill.toCurrency() // totalPaid
         }
         
         
@@ -142,12 +157,34 @@ class HistoryView: UIView {
         
     }
     
-    func setRatingAPI(rating:Float){
-        ServiceInterface.setRating(visitID: visit.id!, rating: rating){ (success, result) in
+    
+    func thisWasNotMeAPI(){
+        ServiceInterface.thisWasNotMeAPI(visitID: "T##String", rating: 2.0) { (success, result) in
             
             if success {
                 
             }else{
+                
+            }
+        }
+        
+    }
+    
+    func setRatingAPI(rating:Float){
+        GlobalUI.showLoading(UIApplication.shared.keyWindow!)
+        ServiceInterface.setRating(visitID: visit.id!, rating: rating){ (success, result) in
+            GlobalUI.hideLoading()
+            if success{
+                OperationQueue.main.addOperation({
+                    let alert = UIAlertController(title: "You have rated successfully", message: nil, preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                    }
+                    alert.addAction(okAction)
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+                })
+            }
+            else{
                 
             }
         }

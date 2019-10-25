@@ -8,18 +8,12 @@
 
 import UIKit
 
-extension String {
-    func firstCharacterUpperCase() -> String? {
-        guard !isEmpty else { return nil }
-        let lowerCasedString = self.lowercased()
-        return lowerCasedString.replacingCharacters(in: lowerCasedString.startIndex...lowerCasedString.startIndex, with: String(lowerCasedString[lowerCasedString.startIndex]).uppercased())
-    }
-}
 
 class PrivilegesCell: UITableViewCell {
-
+    
+    // MARK: - outlets
+    
     @IBOutlet weak var btmDescription: UILabel!
-    var layerOverlay:UIView! = nil
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var privilegeImageView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
@@ -27,6 +21,9 @@ class PrivilegesCell: UITableViewCell {
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var houseRules: UIButton!
     @IBOutlet weak var houseRulesButtonHeightConstraint: NSLayoutConstraint!
+    
+    var layerOverlay:UIView! = nil
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -44,12 +41,7 @@ class PrivilegesCell: UITableViewCell {
         }
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+     // MARK: - set content
     func setContent(_ data:Privilege,_ index:Int){
         titleLbl.text = data.title
         
@@ -69,19 +61,12 @@ class PrivilegesCell: UITableViewCell {
         
         btmDescription.text = data.description;
         
-        //Dear XXX YYY,
-        
-//        We value you as a STAR, please find below your privileges in our venue.
-//        We strive to make your experience at SKY2.0 memorable…
-//
-//        Cheers to you!
         if(index == 0){
             
             let dear = "Dear "
             let name = "\(String(describing: ServiceUser.profile?.level ?? ""))".firstCharacterUpperCase() ?? ""
-                //(ServiceUser.profile?.firstName)!
+        
             let between = ",\n\nMany benefits await you as we strive to make your nights memorable."
-            //",\n\nMany benefits await you as we strive to make your nights memorable…"
             let final = "\n\nThank you,"
             let priveleges = "\n\nPRIVILEGES APPLY UPON YOUR PHYSICAL PRESENCE WITH YOUR STAR CARD ONLY"
             
@@ -103,13 +88,11 @@ class PrivilegesCell: UITableViewCell {
 
 
             topDescription.attributedText = attrString
-            
             houseRules.isHidden = false
             houseRulesButtonHeightConstraint.constant = 50.0
             
         }else{
             topDescription.text = nil
-            
             houseRules.isHidden = true
             houseRulesButtonHeightConstraint.constant = 10.0
         }

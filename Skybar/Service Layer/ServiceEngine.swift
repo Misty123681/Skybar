@@ -59,6 +59,7 @@ class ServiceEngine: NSObject {
         fullURL = fullURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         let url = URL(string: fullURL)
+        print(url!)
         var request:URLRequest = URLRequest(url: url!)
         request.httpMethod = httpMethod.rawValue
         request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData

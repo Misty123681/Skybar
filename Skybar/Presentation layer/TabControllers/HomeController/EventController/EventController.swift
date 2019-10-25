@@ -10,6 +10,7 @@ import UIKit
 
 class EventController: ParentController {
 
+    //MARK:- Outlets
     @IBOutlet weak var maxLbl: UILabel!
     @IBOutlet weak var barBtn: UIButton!
     @IBOutlet weak var tableBtn: UIButton!
@@ -20,17 +21,19 @@ class EventController: ParentController {
     @IBOutlet weak var guestNumberLbl: UILabel!
     @IBOutlet weak var plusBtn: UIButton!
     @IBOutlet weak var minusBtn: UIButton!
-    
     @IBOutlet weak var doorOpenLbl: UILabel!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var modifyBtn: UIButton!
+    @IBOutlet weak var reserveBtn: UIButton!
     
+    //MARK:- Variables
     var event:Event! = nil
     var reservation:Reservation! = nil
-    
     var guestCount = 0
     var reservationType = 1
     var reservationRules:ReservationRules! = nil
@@ -38,11 +41,28 @@ class EventController: ParentController {
     var maximumLimit = 15
     var editEvent = false
     
-    @IBOutlet weak var cancelBtn: UIButton!
-    @IBOutlet weak var modifyBtn: UIButton!
+     //MARK:- View methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setReservationConfiguration()
+    }
     
-    @IBOutlet weak var reserveBtn: UIButton!
+    override func viewDidAppear(_ animated: Bool) {
+        
+        setInfo()
+        
+        if editEvent{
+            self.cancelBtn.isHidden = false
+            self.modifyBtn.isHidden = false
+            self.reserveBtn.isHidden = true
+        }else{
+            self.cancelBtn.isHidden = true
+            self.modifyBtn.isHidden = true
+            self.reserveBtn.isHidden = false
+        }
+    }
     
+     //MARK:- Reservation cancel
     @IBAction func cancelACtion(_ sender: Any) {
         let alert = UIAlertController(title: "Are you sure you want to Cancel reservation?", message: nil, preferredStyle: .alert)
         
@@ -53,6 +73,8 @@ class EventController: ParentController {
         self.present(alert, animated: true, completion: nil)
         
     }
+    
+    //MARK:- Reservation modify
     
     @IBAction func modifyAction(_ sender: Any) {
         let alert = UIAlertController(title: "Are you sure you want to Modify reservation?", message: nil, preferredStyle: .alert)
@@ -65,6 +87,8 @@ class EventController: ParentController {
         
     }
     
+    //MARK:- Api Reservation Edit
+
     func editReservation(){
         var id = ""
         if let _ = event{
@@ -84,6 +108,8 @@ class EventController: ParentController {
         }
     }
     
+    //MARK:- Api Reservation cancel
+
     func cancelReservation(){
         var id = ""
         if let _ = event{
@@ -103,7 +129,6 @@ class EventController: ParentController {
                     let alert = UIAlertController(title: "Your booking was successfully deleted", message: nil, preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                     UIAlertAction in
-                  //self.reservationPopupView.isHidden=true
                     self.reservationPopupView.isHidden = true
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -113,11 +138,13 @@ class EventController: ParentController {
     }
     
     
-    
+    //MARK:- Actions and methods
+
     @IBAction func readReservationAction(_ sender: Any) {
         guard let url = URL(string: "http://www.skybarbeirut.com") else { return }
         UIApplication.shared.open(url)
     }
+    
     
     @IBAction func backAction(_ sender: Any) {
         if let nav = self.navigationController{
@@ -185,26 +212,7 @@ class EventController: ParentController {
         plusBtn.isEnabled = false
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setReservationConfiguration()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        setInfo()
-        
-        if editEvent{
-            self.cancelBtn.isHidden = false
-            self.modifyBtn.isHidden = false
-            self.reserveBtn.isHidden = true
-        }else{
-            self.cancelBtn.isHidden = true
-            self.modifyBtn.isHidden = true
-            self.reserveBtn.isHidden = false
-        }
-    }
+   
 
     func setReservationConfiguration(){
         
@@ -235,7 +243,7 @@ class EventController: ParentController {
                         self.guestCount = self.minimumLimit
                         OperationQueue.main.addOperation({
                             self.guestNumberLbl.text = "\(self.guestCount)"
-                            //self.maxLbl.text = "You can reserve up to \(self.maximumLimit) people"
+                            
                         })
                     }
                         
@@ -305,6 +313,8 @@ class EventController: ParentController {
         tableUIUpdate()
     }
     
+    //MARK:- Table tapped
+
     @IBAction func tableAction(_ sender: Any) {
         tableMode()
         guestCount = self.minimumLimit
@@ -364,10 +374,11 @@ class EventController: ParentController {
         }
     }
     
+    //MARK:- Bar tapped
+
     @IBAction func barAction(_ sender: Any) {
         self.minimumLimit = self.reservationRules.barMinimumNumberOfPeople
         self.maximumLimit = self.reservationRules.barMaximumNumberOfPeople
-        //self.maxLbl.text = "You can reserve up to \(self.maximumLimit) people"
         barUIUpdate()
         
         guestCount = self.minimumLimit
@@ -377,6 +388,8 @@ class EventController: ParentController {
         maxLbl.text = "Every bar stool fits 2 people"
     }
     
+    //MARK:- call tapped
+
     @IBAction func callToReserve(_ sender: Any) {
         if let url = URL(string: "tel://\(ServiceUser.contactPhoneNumber)"), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {
@@ -469,7 +482,8 @@ class EventController: ParentController {
         }
     }
     
-    
+    //MARK:- get image
+
     func getImage(key:String){
         self.loader.startAnimating()
         ServiceInterface.resizeImage(imageKey: key,width:Float(self.imageView.getWidth()),height:Float(self.imageView.getHeight()), handler: { (success, result) in
@@ -485,16 +499,8 @@ class EventController: ParentController {
         })
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    //MARK:- prepare segue methods
 
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toReserveEvent"){
             let cntrl = segue.destination as! ReserveEventController

@@ -9,19 +9,28 @@
 import UIKit
 
 class ParentController: UIViewController {
+    
+    let delObj = UIApplication.shared.delegate as! AppDelegate
+    var currentTab = 0
+    // MARK:- View cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
-
+    
+     // MARK:- Actions & methods
+    
     @IBAction func homeAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: false)
+//        self.navigationController?.popViewController(animated: false)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeController") as! HomeController
+        delObj.customNavigationVC.viewControllers = [homeVC]
+        delObj.window?.rootViewController = delObj.customNavigationVC
+
     }
     
     func getHomeController()->HomeController?{
@@ -32,54 +41,46 @@ class ParentController: UIViewController {
                 }
             }
         }
-        
+    
         return nil
     }
     
     @IBAction func historyAction(_ sender: Any) {
-       
-        if let cntrl = getHomeController(){
-            self.navigationController?.popViewController(animated: false)
-            cntrl.performSegue(withIdentifier: "toHistory", sender: nil)
-        }
-        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
+        delObj.customNavigationVC.viewControllers = [homeVC]
+        delObj.window?.rootViewController = delObj.customNavigationVC
+//        if let cntrl = getHomeController(){
+//            self.navigationController?.popViewController(animated: false)
+//            cntrl.performSegue(withIdentifier: "toHistory", sender: nil)
+//        }
+//
     }
     
     @IBAction func settingsAction(_ sender: Any) {
-        
-        if let cntrl = getHomeController(){
-            self.navigationController?.popViewController(animated: false)
-            cntrl.performSegue(withIdentifier: "toSettings", sender: nil)
-        }
-        
+//        if let cntrl = getHomeController(){
+//            self.navigationController?.popViewController(animated: false)
+//            cntrl.performSegue(withIdentifier: "toSettings", sender: nil)
+//        }
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "SettingsController") as! SettingsController
+        delObj.customNavigationVC.viewControllers = [homeVC]
+        delObj.window?.rootViewController = delObj.customNavigationVC
     }
     
     @IBAction func reserveAction(_ sender: Any) {
-        
-        if let cntrl = getHomeController(){
-            self.navigationController?.popViewController(animated: false)
-            cntrl.performSegue(withIdentifier: "toReserve", sender: nil)
-        }
-        
+//        if let cntrl = getHomeController(){
+//            self.navigationController?.popViewController(animated: false)
+//            cntrl.performSegue(withIdentifier: "toReserve", sender: nil)
+//        }
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "ReserveController") as! ReserveController
+        delObj.customNavigationVC.viewControllers = [homeVC]
+        delObj.window?.rootViewController = delObj.customNavigationVC
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func setCurrentTab(_ sender: UIButton) {
+        
     }
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .lightContent
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

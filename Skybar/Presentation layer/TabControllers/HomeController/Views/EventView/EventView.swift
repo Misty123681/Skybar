@@ -9,23 +9,22 @@
 import UIKit
 
 class EventView: UIView {
+    
     @IBOutlet weak var imageView: UIImageView!
-    var layerCorners:UIView! = nil
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var dayLbl: UILabel!
     @IBOutlet weak var monthLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
-    var event:Event! = nil
-    weak var controller:UIViewController! = nil
-    
     @IBOutlet weak var reserveLbl: UILabel!
     @IBOutlet weak var reserveIcon: UIImageView!
-    
     @IBOutlet weak var lblShare: UILabel!
-    
     @IBOutlet weak var reserveBtn: UIButton!
+    
+    var layerCorners:UIView! = nil
+    var event:Event! = nil
+    weak var controller:UIViewController! = nil
     var shareLink = ""
     var cacheArr = [NSCache<NSString, UIImage>]()
     var documentInteractionController:UIDocumentInteractionController!
@@ -36,8 +35,8 @@ class EventView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-       
     }
+    
     @IBAction func shareAction(_ sender: Any) {
         if shareLink.isEmpty{
             if let name = self.event.name, let _ = self.event.description{
@@ -45,7 +44,7 @@ class EventView: UIView {
                     shareAll = "\(dateEvent ?? "")\n \(name)"
 
                 }else{
-                    shareAll = "\(dateEvent ?? "")\n \(name)\n\n Please Use: \(event.reservationInfo?.reservationAccessCode ?? "")"
+                    shareAll = "\(dateEvent ?? "")\n \(name)\n\n Please Use \(event.reservationInfo?.reservationAccessCode ?? "")"
 
                 }
                 let activityViewController = UIActivityViewController(activityItems: [shareAll] as [Any], applicationActivities: nil)
@@ -81,7 +80,7 @@ class EventView: UIView {
             layerCorners.layer.shadowRadius = 10
             self.addSubview(layerCorners)
             self.sendSubviewToBack(layerCorners)
-            
+    
             innerView.layer.masksToBounds = true
             innerView.layer.cornerRadius = 13
         }
@@ -108,36 +107,7 @@ class EventView: UIView {
         if let image = self.event.eventImage{
             self.getImage(key:image,cnt:cnt)
         }
-        
-//        if self.event.booked ?? false{
-//            self.reserveIcon.image = UIImage(named: "confirmed_event")
-//            self.reserveLbl.text = "Confirmed"
-//            self.reserveLbl.textColor = UIColor(red: 0.13, green: 0.64, blue: 0, alpha: 1)
-//            self.reserveBtn.isUserInteractionEnabled = false
-//        }else{
-//            self.reserveIcon.image = UIImage(named: "reserve_Event")
-//            self.reserveLbl.text = "Reserve"
-//            self.reserveLbl.textColor = UIColor(red: 0.08, green: 0.34, blue: 0.8, alpha: 1)
-//            self.reserveBtn.isUserInteractionEnabled = true
-//        }
-        
-//        if let info = event.reservationInfo{
-//            if let statusID = info.reservationStatusID{
-//                if let status = ReservationStatus(rawValue: statusID){
-//                    switch status{
-//                    case .Approved:
-//                        self.reserveIcon.image = UIImage(named: "confirmed_event")
-//                        self.reserveLbl.text = "Confirmed"
-//                        self.reserveLbl.textColor = UIColor(red: 0.13, green: 0.64, blue: 0, alpha: 1)
-//                        self.reserveBtn.isUserInteractionEnabled = false
-//                    default:
-//                        break
-//                    }
-//
-//                }
-//            }
-//        }
-        
+
         if let info = event.reservationInfo{
             if let typeName = info.reservationStatusTypeName{
                 self.reserveLbl.text = typeName
@@ -174,42 +144,6 @@ class EventView: UIView {
 
             }
         }
-        
-        
-//        if let reservationStatus =  event.reservationInfo?.reservationStatusID{
-//            switch reservationStatus{
-//            case 1://Processing||Submitted
-//                statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
-//
-//                let image = #imageLiteral(resourceName: "time_icon")
-//                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1))
-//
-//            case 2://WalkinOnly||WaitList||Pending
-//                statusLbl.textColor = .orange
-//
-//                let image = #imageLiteral(resourceName: "pendingIcon")
-//                statusImg.image =  image.maskWithColor(color: .orange)
-//
-//            case 4://Rejected||FullCapacity
-//                statusLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
-//
-//                let image = #imageLiteral(resourceName: "rejectedIcon")
-//                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1))
-//
-//            default://Confirmed||Approved
-//                self.reserveIcon.image = UIImage(named: "confirmed_event")
-//                self.reserveLbl.textColor = UIColor(red: 0.13, green: 0.64, blue: 0, alpha: 1)
-//                self.lblShare.text = info.reservationAccessCode ?? ""
-//
-//                statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
-//
-//                let image = #imageLiteral(resourceName: "approveIcon")
-//                statusImg.image =  image.maskWithColor(color: UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1))
-//                break
-//            }
-//        }
-        
-        
         
         if let eventDate = self.event.eventDate{
             if let date = Date(jsonDate: eventDate){
@@ -252,19 +186,13 @@ class EventView: UIView {
                         imageCache.setObject(img, forKey: key as NSString)
                         if let controller = self.controller as? HomeController{
                             if  controller.cacheEventImages.count == cnt{
-                                //controller.cacheEventImages.append(imageCache)
                             }else{
                                  controller.cacheEventImages.append(imageCache)
                             }
-
                         }
                         if let controller = self.controller as? ReserveController{
-                           
                             controller.cacheEventImages.append(imageCache)
-                           
                         }
-                        
-                        
                     }
                 }
             }
@@ -274,7 +202,7 @@ class EventView: UIView {
     
     // MARK:- check event image in cache
     func getImage(key:String,cnt:Int){
-        
+
         if let controller = self.controller as? HomeController{
             self.cacheArr = controller.cacheEventImages
             if self.cacheArr.count == cnt{
@@ -301,7 +229,6 @@ class EventView: UIView {
             
         }
      
-      
       
     }
 
