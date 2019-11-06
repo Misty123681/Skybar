@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
 
     var window: UIWindow?
     var customNavigationVC:UINavigationController!
+    
+    //MARK:- delegate method for onesignal
     func onOSSubscriptionChanged(_ stateChanges: OSSubscriptionStateChanges!) {
         if !stateChanges.from.subscribed && stateChanges.to.subscribed {
             print("Subscribed for OneSignal push notifications!")
@@ -33,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
    
     
     fileprivate func oneSignalCallbackHandler(_ launchOptions: [UIApplication.LaunchOptionsKey : Any]?, _ onesignalInitSettings: [String : Bool]) {
+        
         let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
             
             print("Received Notification: \(String(describing: notification!.payload.notificationID))")
@@ -42,18 +45,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
             // This block gets called when the user reacts to a notification received
             let payload: OSNotificationPayload = result!.notification.payload
             
-            var fullMessage = payload.body
+            let fullMessage = payload.body
             print("Message = \(String(describing: fullMessage))")
             
             if payload.additionalData != nil {
                 if payload.title != nil {
                     let messageTitle = payload.title
                     print("Message Title = \(messageTitle!)")
-                }
-                
-                let additionalData = payload.additionalData
-                if additionalData?["Event"] != nil {
-                    fullMessage = fullMessage! + "\nPressed ButtonID: \(String(describing: additionalData!["EventI"]))"
                 }
             }
         }
@@ -66,21 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//
-//        let state = UIApplication.shared.applicationState
-//        switch state {
-//        case .active:
-//              print("foreground")
-//        case .inactive:
-//              print("inactive")
-//        case .background:
-//            print("background")
-//        }
-//
-
-    
-            IQKeyboardManager.shared.enable = true
         
+            IQKeyboardManager.shared.enable = true
+
            let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
         
             oneSignalCallbackHandler(launchOptions, onesignalInitSettings)
@@ -107,13 +93,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
        
-        
         if ServiceUser.loggedIn(){
             let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeController") as! HomeController
             customNavigationVC = UINavigationController(rootViewController: homeVC)
         } else {
             let landingVC = storyboard.instantiateViewController(withIdentifier: "LandingController") as! LandingController
-            customNavigationVC = UINavigationController(rootViewController: landingVC)
+             customNavigationVC = UINavigationController(rootViewController: landingVC)
         }
         customNavigationVC.isNavigationBarHidden = true
         self.window?.rootViewController = customNavigationVC
@@ -121,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     }
     
     
-    
+    //MARK:- method get called on notification taped
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         debugPrint("Received: \(userInfo)")
         

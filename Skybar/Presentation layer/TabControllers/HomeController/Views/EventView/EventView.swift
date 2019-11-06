@@ -104,9 +104,9 @@ class EventView: UIView {
         getShareLink()
         titleLbl.text = self.event.name
         descriptionLbl.text = self.event.description
-        if let image = self.event.eventImage{
-            self.getImage(key:image,cnt:cnt)
-        }
+        let image = self.event.eventImage
+            self.getImage(key:image ?? "",cnt:cnt)
+        //}
 
         if let info = event.reservationInfo{
             if let typeName = info.reservationStatusTypeName{

@@ -100,7 +100,7 @@ class HistoryView: UIView {
     }
     @IBAction func valueChanged(_ sender: Any) {
         starManipulation(value: Int(self.slider!.value))
-         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.setRatingAPI(rating: self.slider!.value)
         }
     }

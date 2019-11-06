@@ -73,9 +73,10 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     var skyStatus:SkyStatus! = nil
     var cacheEventImages = [NSCache<NSString, UIImage>]()
     var isedit = false
+    var frameEvent = CGRect()
     
   var refreshControl: UIRefreshControl!
-    var frameEvent = CGRect()
+    
 
     
     @IBOutlet weak var guestListBadgeLbl: UILabel!
@@ -204,7 +205,7 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
 
         self.bill = skyStatus.currentVisitInfo
         
-        let size = self.headerTwo.intrinsicContentSize
+        _ = self.headerTwo.intrinsicContentSize
         if let isFull = skyStatus.isFullCapacity{
             if isFull{
                 //let color1 = CIColor(color:UIColor(red: 248.0/255.0, green: 166.0/255.0, blue: 95.0/255.0, alpha: 1))
@@ -311,6 +312,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         var i = 0
         var x:CGFloat = 0
         self.view.layoutIfNeeded()
+        eventsContainer.delegate = self
         let width = eventsContainer.frame.size.width*0.8
         for event in events {
             let eventView:EventView = EventView.fromNib()
@@ -320,13 +322,19 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             eventView.setInfo(event: event, controller: self,cnt:events.count)
 
             eventsContainer.addSubview(eventView)
+//            if event.reservationInfo?.reservationStatusTypeName == "Confirmed"{
+//                frameEvent = eventView.frame
+//            }
             
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toEvent))
             eventView.addGestureRecognizer(tapGesture)
         }
         
         eventsContainer.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: x)
+          //scrollToPage(0)
+       
     }
+ 
     
     func populateProfileInfo(){
         if let profile = ServiceUser.profile{
@@ -581,25 +589,32 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     }
     
     
-  
-    @objc func toEvent(gesture:UITapGestureRecognizer){
-        
+
+    func scrollToPage(_ page: Int) {
+        UIView.animate(withDuration: 0.5) {
+            self.eventsContainer.contentOffset.x = self.frameEvent.width + 20 * CGFloat(page)
+        }
+    }
+    
+  @objc func toEvent(gesture:UITapGestureRecognizer){
+    
+
         if let eventView = gesture.view as? EventView{
             if eventView.event.reservationInfo?.reservationStatusID == 1 ||  eventView.event.reservationInfo?.reservationStatusID == 3 || eventView.event.reservationInfo?.reservationStatusID == 4 || eventView.event.reservationInfo?.reservationStatusID == 2{
                 let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
-                
+
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
                      self.isedit = true
                      self.toEventController(event: eventView.event)
                 }))
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
-              
+
             }else{
                  isedit =  false
                 self.toEventController(event: eventView.event)
             }
-           
+
         }
     }
     
