@@ -155,6 +155,11 @@
                         <constraint firstItem="PDs-FD-HwZ" firstAttribute="leading" secondItem="bab-Gi-hWy" secondAttribute="leading" id="dBY-xV-dZr"/>
                         <constraint firstItem="nJh-FC-O4O" firstAttribute="leading" secondItem="bab-Gi-hWy" secondAttribute="leading" id="jJu-6Y-7T9"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="0Zu-C1-KUM"/>
+                        </mask>
+                    </variation>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stargrey" translatesAutoresizingMaskIntoConstraints="NO" id="WUm-nC-Osn">
                     <rect key="frame" x="458" y="8" width="14" height="14"/>

@@ -44,6 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
         let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
             // This block gets called when the user reacts to a notification received
             let payload: OSNotificationPayload = result!.notification.payload
+            print(payload.additionalData)
+            let payload1: NSDictionary = payload.additionalData as NSDictionary
+            print(payload1)
             
             let fullMessage = payload.body
             print("Message = \(String(describing: fullMessage))")
@@ -105,20 +108,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
         return true
     }
     
-    
+  
     //MARK:- method get called on notification taped
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         debugPrint("Received: \(userInfo)")
+       let payload: NSDictionary = userInfo as NSDictionary
+        print(payload)
+       let dict = userInfo as! [String: Any]
+        print(dict)
         
-        let state = UIApplication.shared.applicationState
-        switch state {
-        case .active:
-              print("foreground")
-        case .inactive:
-            print("inactive")
-        case .background:
-             print("background")
-        }
+      
    
         
     }
