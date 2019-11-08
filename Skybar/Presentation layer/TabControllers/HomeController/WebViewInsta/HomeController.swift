@@ -601,14 +601,14 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
 
         if let eventView = gesture.view as? EventView{
             if eventView.event.reservationInfo?.reservationStatusID == 1 ||  eventView.event.reservationInfo?.reservationStatusID == 3 || eventView.event.reservationInfo?.reservationStatusID == 4 || eventView.event.reservationInfo?.reservationStatusID == 2{
-                let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
+              //  let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
 
-                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-                     self.isedit = true
+               // alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                
                      self.toEventController(event: eventView.event)
-                }))
-                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+               // }))
+              //  alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+              //  self.present(alert, animated: true, completion: nil)
 
             }else{
                  isedit =  false
