@@ -48,9 +48,7 @@ class EventController: ParentController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         setInfo()
-        
         if editEvent{
             self.cancelBtn.isHidden = false
             self.modifyBtn.isHidden = false
@@ -75,7 +73,6 @@ class EventController: ParentController {
     }
     
     //MARK:- Reservation modify
-    
     @IBAction func modifyAction(_ sender: Any) {
         let alert = UIAlertController(title: "Are you sure you want to Modify reservation?", message: nil, preferredStyle: .alert)
         
@@ -88,7 +85,6 @@ class EventController: ParentController {
     }
     
     //MARK:- Api Reservation Edit
-
     func editReservation(){
         var id = ""
         if let _ = event{
@@ -126,7 +122,7 @@ class EventController: ParentController {
                     self.navigationController?.popViewController(animated: true)
                 })
                 
-                    let alert = UIAlertController(title: "Your booking was successfully deleted", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Your booking was successfully deleted", message: nil, preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                     UIAlertAction in
                     self.reservationPopupView.isHidden = true
@@ -145,7 +141,6 @@ class EventController: ParentController {
         UIApplication.shared.open(url)
     }
     
-    
     @IBAction func backAction(_ sender: Any) {
         if let nav = self.navigationController{
             nav.popViewController(animated: true)
@@ -155,7 +150,6 @@ class EventController: ParentController {
     }
     
     @IBAction func plusAction(_ sender: Any) {
-        
         let addFactor = 2//reservationType == 2 ? 2 : 1
         guestCount += addFactor
         self.guestNumberLbl.text = "\(guestCount)"
@@ -212,10 +206,7 @@ class EventController: ParentController {
         plusBtn.isEnabled = false
     }
     
-   
-
     func setReservationConfiguration(){
-        
         self.guestNumberLbl.text = "\(guestCount)"
         enablePlusButton()
         
@@ -229,7 +220,6 @@ class EventController: ParentController {
         minusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
         
         GlobalUI.showLoading(self.view)
-        
         ServiceInterface.getReservationRules(handler: { (success, result) in
             GlobalUI.hideLoading()
             if success {
@@ -243,7 +233,6 @@ class EventController: ParentController {
                         self.guestCount = self.minimumLimit
                         OperationQueue.main.addOperation({
                             self.guestNumberLbl.text = "\(self.guestCount)"
-                            
                         })
                     }
                         
@@ -259,7 +248,7 @@ class EventController: ParentController {
         })
     }
     
-    
+    // MARK:-  show reservation popup
     func showReservationPopup(){
         
         var typStr = "Table"
@@ -268,7 +257,6 @@ class EventController: ParentController {
         }
         
         self.reservationNumberLbl.text = "\(typStr) Reservation for \(guestNumberLbl.text!)"
-        
         if let event = event{
             if let eventDate = event.eventDate{
                 if let date = Date(jsonDate: eventDate){
@@ -295,7 +283,6 @@ class EventController: ParentController {
                     self.reservationDateLbl.text = monthDayStr.uppercased()
                 }
             }
-            
             self.reservationNameLbl.text = reservation.eventName
         }
         

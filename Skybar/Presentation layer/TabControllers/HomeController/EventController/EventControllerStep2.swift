@@ -40,7 +40,6 @@ class EventControllerStep2: ParentController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // initialization
         addReservationPopUp()
         setInfo()
         getZone()
@@ -65,6 +64,7 @@ class EventControllerStep2: ParentController {
         self.view.addSubview(reservationPopupView)
     }
     
+    // MARK:- get Zone image
     func getZoneImage(){
        
         loader.startAnimating()
@@ -78,6 +78,7 @@ class EventControllerStep2: ParentController {
         }
     }
     
+    // MARK:- get Zone by budget
     func getZone(){
         ServiceInterface.getZonesByBudget(budget: budget, numberOfGuests: guestCount) { (success, result) in
 
@@ -110,8 +111,8 @@ class EventControllerStep2: ParentController {
         }
     }
     
+    // MARK:-  set info
     func setInfo(){
-        
         if reservationType == 1{
             reservationStatusLabel.text = "BAR BOOKING \(guestCount) GUESTS"
         }else{
@@ -172,6 +173,7 @@ class EventControllerStep2: ParentController {
         }
     }
     
+    // MARK:-  call tapped
     @IBAction func callToReserve(_ sender: Any) {
         if let url = URL(string: "tel://\(ServiceUser.contactPhoneNumber)"), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {

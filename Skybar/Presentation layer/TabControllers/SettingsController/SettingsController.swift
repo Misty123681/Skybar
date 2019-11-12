@@ -11,12 +11,12 @@ import OneSignal
 
 class SettingsController: ParentController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    //MARK:- Outlet
     @IBOutlet weak var referAStarBtn: UIButton!
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var editInfoBtn: UIButton!
     @IBOutlet weak var editNameBtn: UIButton!
     @IBOutlet weak var editImgBtn: UIButton!
-
     @IBOutlet weak var notSwitch: UISwitch!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
@@ -26,15 +26,48 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var membershipLbl: UILabel!
     @IBOutlet weak var levelLbl: UILabel!
+    
     var imagePicker = UIImagePickerController()
     
-    @IBAction func notificationChangeValue(_ sender: UISwitch) {
-        ServiceUser.setPushNotification(activated: sender.isOn)
-        OneSignal.setSubscription(sender.isOn)
+    //MARK:- view cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        getImage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        populateInfo()
+        self.view.layoutIfNeeded()
+        self.imageView.layer.cornerRadius = self.imageView.getHeight()/2
+        
+        referAStarBtn.layer.masksToBounds = true
+        referAStarBtn.layer.cornerRadius = 13
+        referAStarBtn.layer.borderWidth = 2
+        
+        var color1 = CIColor(color:UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 238.0/255.0, alpha: 1))
+        var color2 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
+        if let uiimage = GlobalUI.gradientImage(size: referAStarBtn.bounds.size, color1: color1, color2: color2){
+            referAStarBtn.layer.borderColor = UIColor.init(patternImage: uiimage).cgColor
+        }
+        
+        color2 = CIColor(color:UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 238.0/255.0, alpha: 1))
+        color1 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
+        if let uiimage = GlobalUI.gradientImage(size: notSwitch.bounds.size, color1: color1, color2: color2){
+            notSwitch.onTintColor = UIColor.init(patternImage: uiimage)
+        }
+        
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.default
+    }
+    
+    //MARK:- Action
+    @IBAction func notificationChangeValue(_ sender: UISwitch) {
+        ServiceUser.setPushNotification(activated: sender.isOn)
+        OneSignal.setSubscription(sender.isOn)
     }
     
     @IBAction func editAction(_ sender: Any) {
@@ -59,58 +92,9 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
             ServiceUser.clearMobileSessionID()
             self.navigationController?.popToRootViewController(animated: true)
         }))
-        
         alert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action) in
-            
         }))
-        
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        imageView.image = image
-        imagePicker.dismiss(animated: true, completion: nil)
-        if let data = image?.jpegData(compressionQuality:0.5){
-            uploadImage(data)
-        }
-    }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-    }
-    
-    func uploadImage(_ data:Data){
-        let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
-        
-        ServiceInterface.uploadImage(imageData: strBase64, handler: { (success, result) in
-            
-            if success {
-            }else{
-                if let res = result as? String{
-                    //GlobalUI.showMessage(title: "Error", message: res, cntrl: self)
-                }
-            }
-        })
-    }
-    func captureImage(){
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-            imagePicker.cameraDevice = .front
-            
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-    }
-    
-    func getImageFromGallery(){
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            
-            imagePicker.delegate = self
-            imagePicker.sourceType = .savedPhotosAlbum;
-            
-            self.present(imagePicker, animated: true, completion: nil)
-        }
     }
     
     @IBAction func editImageAction(_ sender: Any) {
@@ -127,35 +111,48 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
         self.present(alert, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getImage()
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        populateInfo()
-        self.view.layoutIfNeeded()
-        self.imageView.layer.cornerRadius = self.imageView.getHeight()/2
-        
-        referAStarBtn.layer.masksToBounds = true
-        referAStarBtn.layer.cornerRadius = 13
-        referAStarBtn.layer.borderWidth = 2
-        
-        var color1 = CIColor(color:UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 238.0/255.0, alpha: 1))
-        var color2 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
-        if let uiimage = GlobalUI.gradientImage(size: referAStarBtn.bounds.size, color1: color1, color2: color2){
-            referAStarBtn.layer.borderColor = UIColor.init(patternImage: uiimage).cgColor
+    
+    //MARK:- Methods
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        imageView.image = image
+        imagePicker.dismiss(animated: true, completion: nil)
+        if let data = image?.jpegData(compressionQuality:0.5){
+            uploadImage(data)
         }
-        
-        color2 = CIColor(color:UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 238.0/255.0, alpha: 1))
-        color1 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
-        if let uiimage = GlobalUI.gradientImage(size: notSwitch.bounds.size, color1: color1, color2: color2){
-            notSwitch.onTintColor = UIColor.init(patternImage: uiimage)
-        }
-        
     }
     
+    
+    func uploadImage(_ data:Data){
+        let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
+        ServiceInterface.uploadImage(imageData: strBase64, handler: { (success, result) in
+            if success {
+            }else{
+                if let res = result as? String{
+                    //GlobalUI.showMessage(title: "Error", message: res, cntrl: self)
+                }
+            }
+        })
+    }
+    
+    func captureImage(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.cameraDevice = .front
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func getImageFromGallery(){
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum;
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+  
     func populateInfo(){
         notSwitch.isOn = ServiceUser.getPushNotification()
         if let profile = ServiceUser.profile{
@@ -183,7 +180,6 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
     }
     
     func getImage(){
-        //if let profile = ServiceUser.profile{
           let id = ServiceUser.getProfileId()
             ServiceInterface.getImage(imageName: "\(id).jpg", handler: { (success, result) in
                 
@@ -199,7 +195,6 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
                     }
                 }
             })
-        //}
     }
 
 }

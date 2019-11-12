@@ -13,6 +13,7 @@ class NotificationView: UIView {
     @IBOutlet weak var valueLbl: UILabel!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var dateLbl: UILabel!
+    
     var layerCorners:UIView! = nil
     
     override func layoutSubviews() {

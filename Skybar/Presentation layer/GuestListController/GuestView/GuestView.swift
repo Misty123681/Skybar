@@ -9,17 +9,22 @@
 import UIKit
 
 class GuestView: UIView {
-    // MARK:- outlets and properties
+    // MARK:- outlets
+    
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var statusLbl: UILabel!
+    
+    //MARK:- properties
+
     var parent:GuestListController!
     var guest:GuestElement!
     var guestCount:Int!
     var eventId:String!
     var layerCorners:UIView! = nil
 
+    //MARK:- Remove Guest
     @IBAction func removeAction(_ sender: Any) {
         GlobalUI.showLoading(parent.view)
         ServiceInterface.removeGuest(guestID: self.guest.id) { (success, result) in
@@ -34,12 +39,9 @@ class GuestView: UIView {
         }
     }
     
-    func displayError(title: String, message: String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        parent.present(alert, animated: true, completion: nil)
-    }
+ 
     
+     //MARK:- Add Guest
     @IBAction func addAction(_ sender: Any) {
         
         if (nameTF.text?.isEmpty)!{
@@ -93,6 +95,14 @@ class GuestView: UIView {
         }
     }
     
+    func displayError(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        parent.present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK:- Set guest info
+
     func setInfo(guest:GuestElement, guestCount:Int, eventId:String,parent:GuestListController){
         self.parent = parent
         self.guest = guest

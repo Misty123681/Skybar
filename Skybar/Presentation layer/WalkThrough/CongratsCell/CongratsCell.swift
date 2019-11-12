@@ -17,7 +17,6 @@ class CongratsCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func setInformation(profileID:String,fName:String,lName:String){
@@ -38,5 +37,4 @@ class CongratsCell: UICollectionViewCell {
             }
         })
     }
-
 }

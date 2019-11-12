@@ -11,8 +11,7 @@ import UIKit
 
 class PrivilegesCell: UITableViewCell {
     
-    // MARK: - outlets
-    
+    // MARK: - Outlets
     @IBOutlet weak var btmDescription: UILabel!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var privilegeImageView: UIImageView!

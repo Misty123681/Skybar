@@ -16,11 +16,14 @@ protocol InstaDelegate {
 
 class InstaPhoto: UIView {
 
+    //MARK:- Outlet
+    
     @IBOutlet weak var playIcon: UIImageView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
-    var media:InstaMedia!
     @IBOutlet weak var imageView: UIImageView!
+    
     var parent:InstaDelegate!
+    var media:InstaMedia!
     
     override func awakeFromNib() {
         super.awakeFromNib()

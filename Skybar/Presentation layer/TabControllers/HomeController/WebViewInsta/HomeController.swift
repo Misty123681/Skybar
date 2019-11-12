@@ -19,16 +19,12 @@ class StartPrivilegeView:UIView{
         super.layoutSubviews()
         let layer = UIView(frame: self.bounds)
         layer.layer.cornerRadius = 8
-        
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = [UIColor.black]
-        
         gradient.locations = [0, 1]
-
         gradient.cornerRadius = 8
         layer.layer.addSublayer(gradient)
-        
         self.addSubview(layer)
         self.sendSubviewToBack(layer)
     }
@@ -36,8 +32,7 @@ class StartPrivilegeView:UIView{
 
 class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     
-     var timer: Timer!
-     var isAnimating = false
+    //MARK:- Outlet
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var privilegeBtn: UIButton!
@@ -49,7 +44,6 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     @IBOutlet weak var memberLbl: UILabel!
     @IBOutlet weak var instaTitleLbl: UILabel!
     @IBOutlet weak var startPrivilegesLbl: UILabel!
-    //@IBOutlet weak var consumptionLbl: UILabel!
     @IBOutlet weak var fNameLbl: UILabel!
     @IBOutlet weak var takeMeLbl: UILabel!
     @IBOutlet weak var takeMeBtn: UIButton!
@@ -58,9 +52,15 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     @IBOutlet weak var headerTwo: UILabel!
     @IBOutlet weak var UsePromoLabel: UILabel!
     @IBOutlet weak var headerOne: UILabel!
-    var instaView:InstaView = InstaView.fromNib()
     @IBOutlet weak var eventsContainer: UIScrollView!
     @IBOutlet weak var containerView: UIScrollView! = nil
+    @IBOutlet weak var guestListBadgeLbl: UILabel!
+    @IBOutlet weak var refreshLoader: UIActivityIndicatorView!
+    
+    //MARK:- Variable
+    var timer: Timer!
+    var isAnimating = false
+    var instaView:InstaView = InstaView.fromNib()
     var medias:[InstaMedia]! = nil
     var switchView:ViewSwitch = .view1
     var isAtSkybar:Bool = false
@@ -74,33 +74,76 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     var cacheEventImages = [NSCache<NSString, UIImage>]()
     var isedit = false
     var frameEvent = CGRect()
-    
-  var refreshControl: UIRefreshControl!
-    
-
-    
-    @IBOutlet weak var guestListBadgeLbl: UILabel!
-    
+    var refreshControl: UIRefreshControl!
     var refreshInitialCenter:CGPoint!
-    @IBOutlet weak var refreshLoader: UIActivityIndicatorView!
     var dragGesture:UIPanGestureRecognizer!
     var guests:[GuestElement]!
+   
+    //MARK:- View Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.scrollView.delegate = self
+        refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.tintColor = UIColor.black
+        self.scrollView.addSubview(refreshControl)
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        getInstaMedia()
+        ServiceUser.setLoggedIn()
+        getResetvationNumber()
+        getCareemLinks()
+        
+        self.view.layoutIfNeeded()
+        self.imageView.layer.cornerRadius = self.imageView.frame.size.height/2
+        
+        designPrivilegeBtn()
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.cacheEventImages = [NSCache<NSString, UIImage>]()
+        getCurrentStatus()
+        self.populateProfileInfo()
+        let mobile = UserDefaults.standard.value(forKey: "mobile")
+        if mobile == nil {
+            ServiceUser.setTypeLevel(level: ServiceUser.profile?.level ?? "" )
+            ServiceUser.setProfileId(Id: ServiceUser.profile?.id ?? "")
+            ServiceUser.setProfile(profile: ServiceUser.profile!)
+            
+        }
+        self.reloadMedia()
+        
+        takeMeBtn.backgroundColor = .white
+        takeMeBtn.layer.borderWidth = 2
+        takeMeBtn.layer.borderColor = UIColor(red: 0.22, green: 0.71, blue: 0.31, alpha: 1).cgColor
+        takeMeBtn.setTitleColor(UIColor(red: 0.22, green: 0.71, blue: 0.31, alpha: 1), for: .normal)
+        
+        self.view.layoutIfNeeded()
+        refreshInitialCenter = refreshLoader!.center
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        for view in self.view.subviews{
+            view.tag = Int(view.center.y)
+        }
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.default
+    }
+    
+    //MARK:- Function and method
     @IBAction func toReserve(_ sender: Any) {
         self.performSegue(withIdentifier: "toReserve", sender: nil)
     }
     
     @IBAction func myGuestListAction(_ sender: Any) {
-        
-       // if isAtSkybar{
             self.performSegue(withIdentifier: "toGuestList", sender: nil)
-      //  }else{
-        //    let alert = UIAlertController(title: "Guest List", message: "Only works on the day of the event", preferredStyle: .alert)
-         //   alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-         //   self.present(alert, animated: true, completion: nil)
-       // }
-        
     }
+    
     func openMedia(media: InstaMedia,index:Int) {
         self.view.layoutIfNeeded()
         instaView.frame = self.view.bounds
@@ -127,7 +170,6 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         }
         
         var urlString = ""
-        
         if let careemObj = careemLinks{
             if isAtSkybar{
                 urlString = careemObj.careemTakeMeHomeURL
@@ -135,7 +177,6 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
                 urlString = careemObj.careemTakeMeHomeURL
             }
             
-            //urlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             if UIApplication.shared.canOpenURL(URL(string: "careem:")!) {
                 if let url = URL(string: urlString){
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -145,6 +186,7 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
             }
         }
     }
+    //MARK:- Get instagram feeds
     func getInstaMedia(){
         let instaToken = "7537546145.ed04f18.35e74d443a97432493ffc5e355782db0"
         ServiceInterface.getInstagramMedia(token: instaToken) { (success, result) in
@@ -208,21 +250,14 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         _ = self.headerTwo.intrinsicContentSize
         if let isFull = skyStatus.isFullCapacity{
             if isFull{
-                //let color1 = CIColor(color:UIColor(red: 248.0/255.0, green: 166.0/255.0, blue: 95.0/255.0, alpha: 1))
-               // let color2 = CIColor(color:UIColor(red: 245.0/255.0, green: 109.0/255.0, blue: 47.0/255.0, alpha: 1))
-                //if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
                     self.headerTwo.textColor = UIColor.black
                     self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
-                    
-               // }
             }else{
                 _ = CIColor(color:UIColor(red: 69.0/255.0, green: 146.0/255.0, blue: 42.0/255.0, alpha: 1))
                 _ = CIColor(color:UIColor(red: 188.0/255.0, green: 228.0/255.0, blue: 130.0/255.0, alpha: 1))
-               // if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
+              
                     self.headerTwo.textColor =  UIColor.black
                     self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
-                    
-                //}
             }
         }
         let plz = "Please Use Promo Code "
@@ -243,7 +278,7 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
 UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregroundColor:UIColor.black,NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]));
    
         UsePromoLabel.attributedText = attrString;
-       // UsePromoLabel.sizeToFit() ;
+   
         if let isOpen = skyStatus.isOpen{
             
             self.isOpen = isOpen
@@ -251,9 +286,9 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                 redesignBtn(msg: skyStatus.rideDisabledMsg)
                 _ = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
                 _ = CIColor(color:UIColor(red: 25.0/255.0, green: 146.0/255.0, blue: 224.0/255.0, alpha: 1))
-               // if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
+               
                     self.headerTwo.textColor =  UIColor.black
-               // }
+        
                 
                 instaTitleLbl.text = "We Party Legendary"
                 
@@ -464,36 +499,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         }
     }
    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.scrollView.delegate = self
-        refreshControl = UIRefreshControl()
-        
-        refreshControl.backgroundColor = UIColor.clear
-        refreshControl.tintColor = UIColor.black
-        
-        self.scrollView.addSubview(refreshControl)
-        
-        
-        
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
-    
-        getInstaMedia()
-        ServiceUser.setLoggedIn()
-      
-        getResetvationNumber()
-     
-        getCareemLinks()
-        
-        self.view.layoutIfNeeded()
-        self.imageView.layer.cornerRadius = self.imageView.frame.size.height/2
-       
-        
-        designPrivilegeBtn()
-    }
+   
     
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -531,14 +537,9 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     
     @objc func endOfWork() {
         refreshControl.endRefreshing()
-      // timer.invalidate()
-       // timer = nil
         isAnimating = false
     }
     
-//    func animateRefreshStep1() {
-//        isAnimating = true
-//    }
     
     @objc func appMovedToForeground() {
       self.cacheEventImages = [NSCache<NSString, UIImage>]()
@@ -553,43 +554,6 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
    
     
    
-
-    override func viewWillAppear(_ animated: Bool) {
-        self.cacheEventImages = [NSCache<NSString, UIImage>]()
-        getCurrentStatus()
-        self.populateProfileInfo()
-        let mobile = UserDefaults.standard.value(forKey: "mobile")
-        if mobile == nil {
-            ServiceUser.setTypeLevel(level: ServiceUser.profile?.level ?? "" )
-            ServiceUser.setProfileId(Id: ServiceUser.profile?.id ?? "")
-            ServiceUser.setProfile(profile: ServiceUser.profile!)
-            
-        }
-        self.reloadMedia()
-        
-        takeMeBtn.backgroundColor = .white
-        takeMeBtn.layer.borderWidth = 2
-        takeMeBtn.layer.borderColor = UIColor(red: 0.22, green: 0.71, blue: 0.31, alpha: 1).cgColor
-        takeMeBtn.setTitleColor(UIColor(red: 0.22, green: 0.71, blue: 0.31, alpha: 1), for: .normal)
-        
-        self.view.layoutIfNeeded()
-        refreshInitialCenter = refreshLoader!.center
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        for view in self.view.subviews{
-            view.tag = Int(view.center.y)
-        }
-    }
-    
-   
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.default
-    }
-    
-    
-
     func scrollToPage(_ page: Int) {
         UIView.animate(withDuration: 0.5) {
             self.eventsContainer.contentOffset.x = self.frameEvent.width + 20 * CGFloat(page)
@@ -597,24 +561,8 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     }
     
   @objc func toEvent(gesture:UITapGestureRecognizer){
-    
-
-        if let eventView = gesture.view as? EventView{
-            if eventView.event.reservationInfo?.reservationStatusID == 1 ||  eventView.event.reservationInfo?.reservationStatusID == 3 || eventView.event.reservationInfo?.reservationStatusID == 4 || eventView.event.reservationInfo?.reservationStatusID == 2{
-              //  let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
-
-               // alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-                
-                     self.toEventController(event: eventView.event)
-               // }))
-              //  alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-              //  self.present(alert, animated: true, completion: nil)
-
-            }else{
-                 isedit =  false
-                self.toEventController(event: eventView.event)
-            }
-
+    if let eventView = gesture.view as? EventView{
+        self.toEventController(event: eventView.event)
         }
     }
     
@@ -674,7 +622,6 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEvent"{
             let dest = segue.destination as! EventController

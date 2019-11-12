@@ -17,20 +17,21 @@ class StatsView: UIView,ChartViewDelegate {
     @IBOutlet weak var complementaryLbl: UILabel!
     @IBOutlet weak var paidConsumptionLbl: UILabel!
     @IBOutlet weak var consumptionLbl: UILabel!
-
-    var layerCorners:UIView! = nil
     @IBOutlet weak var innerView: UIView!
+    
     var info:[Any]! = nil
+    var layerCorners:UIView! = nil
+    var dates = [String]()
+    var consumption = [Float]()
+    var complementary = [Float]()
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupChart()
     }
     
-    var dates = [String]()
-    var consumption = [Float]()
-    var complementary = [Float]()
-    
+   
     override func layoutSubviews() {
         
         super.layoutSubviews()
@@ -47,7 +48,7 @@ class StatsView: UIView,ChartViewDelegate {
             layerCorners.layer.shadowRadius = 10
             self.addSubview(layerCorners)
             self.sendSubviewToBack(layerCorners)
-            
+
             innerView.layer.masksToBounds = true
             innerView.layer.cornerRadius = 13
         }
@@ -64,13 +65,8 @@ class StatsView: UIView,ChartViewDelegate {
         var totalPaidConsumption:Float = 0
         
         visitsLbl.text = "\(info.count) Visits"
-        let size = self.visitsLbl.intrinsicContentSize
-        let color1 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
-        let color2 = CIColor(color:UIColor(red: 25.0/255.0, green: 146.0/255.0, blue: 224.0/255.0, alpha: 1))
-        //if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
-            self.visitsLbl.textColor =  UIColor.black
-                //UIColor.init(patternImage: uiimage)
-        //}
+        self.visitsLbl.textColor =  UIColor.black
+        
         
         for entry in info{
             if let entry = entry as? [String:Any]{
@@ -170,8 +166,6 @@ class StatsView: UIView,ChartViewDelegate {
                 dataEntries1.append(dataEntry1)
             }
             
-            //stack barchart
-            //let dataEntry = BarChartDataEntry(x: Double(i), yValues:  [self.unitsSold[i],self.unitsBought[i]], label: "groupChart")
         }
         
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Paid consumption")

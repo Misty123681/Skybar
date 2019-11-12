@@ -12,7 +12,7 @@ import IQKeyboardManagerSwift
 
 class ReferController: ParentController {
 
-      // MARK:- download image
+    // MARK:- Properties
     @IBOutlet weak var countryCodeTF: UITextField!
     @IBOutlet weak var phoneTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
@@ -26,6 +26,7 @@ class ReferController: ParentController {
         getCountryCodes()
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
     }
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .default
     }
@@ -58,6 +59,7 @@ class ReferController: ParentController {
         self.present(alert, animated: true, completion: nil)
     }
     
+      // MARK:- Refer star method
     @IBAction func submitAction(_ sender: Any) {
         
         if (countryCodeTF.text?.isEmpty)!{

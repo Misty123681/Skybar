@@ -54,6 +54,7 @@ class GuestListController: ParentController {
         }
     }
     
+      // MARK:- Populates guests
     func populateGuests(){
         self.view.layoutIfNeeded()
         container.subviews.forEach({ $0.removeFromSuperview() })

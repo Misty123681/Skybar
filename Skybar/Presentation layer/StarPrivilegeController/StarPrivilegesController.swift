@@ -19,7 +19,6 @@ class StarPrivilegesController: ParentController, WKUIDelegate, WKNavigationDele
     
     var privileges:[Privilege]! = nil
     
-    
     // MARK:- View cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +28,6 @@ class StarPrivilegesController: ParentController, WKUIDelegate, WKNavigationDele
         tableView.register(nib, forCellReuseIdentifier: "PrivilegesCell")
         self.houseRulesView.frame = self.view.frame
         self.view.addSubview(self.houseRulesView)
-        
         self.houseRulesView.isHidden = true
         loadLocalHTMLToWebView()
         getPrivileges()
@@ -70,7 +68,7 @@ class StarPrivilegesController: ParentController, WKUIDelegate, WKNavigationDele
     
    
 
-    // MARK:- privileges
+    // MARK:- Load privileges
     
     func getPrivileges(){
         
@@ -103,7 +101,7 @@ extension StarPrivilegesController:UITableViewDataSource,UITableViewDelegate{
         return 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "PrivilegesCell", for: indexPath) as! PrivilegesCell
         cell.setContent(privileges[indexPath.row],indexPath.row)
         cell.houseRules.addTarget(self, action: #selector(self.navigateToRulesRegulationsPreview), for: .touchUpInside)
@@ -113,6 +111,5 @@ extension StarPrivilegesController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
     
 }

@@ -60,10 +60,10 @@
                                     <constraint firstAttribute="height" constant="38" id="xeA-rt-Toy"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line1" translatesAutoresizingMaskIntoConstraints="NO" id="KaZ-qi-g9Z">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line1" translatesAutoresizingMaskIntoConstraints="NO" id="KaZ-qi-g9Z">
                                 <rect key="frame" x="16" y="178" width="187" height="51"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line2" translatesAutoresizingMaskIntoConstraints="NO" id="FuG-Sp-YMN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line2" translatesAutoresizingMaskIntoConstraints="NO" id="FuG-Sp-YMN">
                                 <rect key="frame" x="16" y="249" width="269" height="51"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line3" translatesAutoresizingMaskIntoConstraints="NO" id="OdY-pz-EVH">
@@ -82,6 +82,7 @@
                             <constraint firstItem="FCu-OW-NTL" firstAttribute="top" secondItem="OdY-pz-EVH" secondAttribute="bottom" constant="20" id="GQo-Sy-Kva"/>
                             <constraint firstItem="KaZ-qi-g9Z" firstAttribute="top" secondItem="Rty-3q-CjU" secondAttribute="bottom" constant="20" id="RS7-hR-PZz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KSX-EG-j5Y" secondAttribute="trailing" constant="13" id="Ywu-RN-gnG"/>
+                            <constraint firstItem="OdY-pz-EVH" firstAttribute="height" secondItem="FuG-Sp-YMN" secondAttribute="height" id="bKX-I1-MuV"/>
                             <constraint firstItem="KSX-EG-j5Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="13.33" id="bUq-qs-yMn"/>
                             <constraint firstItem="ubu-3i-Pgd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="278:375" id="dSL-T9-4j5"/>
                             <constraint firstItem="ubu-3i-Pgd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dmw-46-LM1"/>
@@ -3386,7 +3387,7 @@ Activated</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUt-Uy-6hq">
                                                         <rect key="frame" x="145" y="114.5" width="222" height="60"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="ddd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JYZ-hs-TYU">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JYZ-hs-TYU">
                                                                 <rect key="frame" x="0.0" y="0.0" width="222" height="32"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="32" id="hLj-cA-HAM"/>
@@ -3401,7 +3402,7 @@ Activated</string>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="ddd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UJy-40-SDi">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UJy-40-SDi">
                                                                 <rect key="frame" x="0.0" y="30" width="222" height="32"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="32" id="WxH-d0-YmC"/>
@@ -5701,8 +5702,8 @@ will get back to you shortly…</string>
     <inferredMetricsTieBreakers>
         <segue reference="Glr-RH-n9w"/>
         <segue reference="GAW-q1-mqA"/>
-        <segue reference="gzw-8O-fqF"/>
-        <segue reference="amd-fd-TFi"/>
+        <segue reference="Ufx-gE-QGe"/>
+        <segue reference="JHX-1d-x34"/>
         <segue reference="YjN-25-VUa"/>
         <segue reference="yqF-qQ-oVN"/>
         <segue reference="Kxi-fK-E6B"/>

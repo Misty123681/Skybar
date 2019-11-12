@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     }
     
    
-    
+    //MARK:- Callback on Notification Tapped
     fileprivate func oneSignalCallbackHandler(_ launchOptions: [UIApplication.LaunchOptionsKey : Any]?, _ onesignalInitSettings: [String : Bool]) {
         
         let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
@@ -67,6 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+      
         
             IQKeyboardManager.shared.enable = true
 
@@ -111,9 +113,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
   
     //MARK:- method get called on notification taped
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+       
+        
         debugPrint("Received: \(userInfo)")
-       let payload: NSDictionary = userInfo as NSDictionary
-        print(payload)
        let dict = userInfo as! [String: Any]
         print(dict)
         

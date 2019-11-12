@@ -24,11 +24,11 @@ class TutorialCell: UICollectionViewCell {
         // dynamic size for carousel
         var newMultiplier:CGFloat = 0.7
             let result = UIScreen.main.bounds.size
-            if(result.height <= 667.0){
+            if(result.height <= 667.0){  // iphone 5 size
                 newMultiplier  = 0.6
                 descriptiobLbl.font = descriptiobLbl.font.withSize(17)
             }else{
-                 newMultiplier = 0.7
+                 newMultiplier = 0.7  //  > iphone 5 size
                 descriptiobLbl.font = descriptiobLbl.font.withSize(20)
             }
            ConstraintHtImage = ConstraintHtImage.setMultiplier(multiplier: newMultiplier)
@@ -45,6 +45,7 @@ class TutorialCell: UICollectionViewCell {
         }
     }
     
+      // MARK:- set tutorials info
     func setInformation(imageName:String,descriptionStr:String,parent:WalkThrouController,startBtn:Bool=true){
         self.parent = parent
         self.descriptiobLbl.text = descriptionStr

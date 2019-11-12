@@ -9,31 +9,29 @@
 import UIKit
 
 
-
-import UIKit
-
 class EventControllerStep1: ParentController {
-    @IBOutlet weak var constraintWidthZoneImage: NSLayoutConstraint!
     
+    //MARK:- Outlet
+    @IBOutlet weak var constraintWidthZoneImage: NSLayoutConstraint!
     @IBOutlet weak var doorOpenLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
-    
     @IBOutlet weak var reservationStatusLabel: UILabel!
-    
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var discountLb: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var budgetLbl: UILabel!
     @IBOutlet weak var zoneImageView: UIImageView!
     
+    //MARK:- Outlet
     var event:Event! = nil
     var reservation:Reservation! = nil
     var guestCount = 0
     var reservationType = 1
     let step: Float = 50
     
+    //MARK:- View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setInfo()
@@ -45,17 +43,36 @@ class EventControllerStep1: ParentController {
         return UIStatusBarStyle.default
     }
     
+    //MARK:- IBAction
     @IBAction func budgetChange(_ slider: UISlider) {
         let roundedValue = round(slider.value / step) * step
         slider.value = roundedValue
-     
-        
+    
         let discountValue = slider.value*0.75
         discountLb.text = "25% DISCOUNT (\(discountValue.toCurrencyNoPrefix()))"
         budgetLbl.text = slider.value.toCurrencyNoPrefix()
         getZone()
     }
     
+    @IBAction func backAction(_ sender: Any) {
+        if let nav = self.navigationController{
+            nav.popViewController(animated: true)
+        }else{
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func callToReserve(_ sender: Any) {
+        if let url = URL(string: "tel://\(ServiceUser.contactPhoneNumber)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+    //MARK:- Methods
     func setInfo(){
         
         budgetLbl.text = slider.value.toCurrencyNoPrefix()
@@ -121,8 +138,7 @@ class EventControllerStep1: ParentController {
     }
     
     func getZone(){
-       
-        
+    
         loader.startAnimating()
         var serviceUrl:String
         serviceUrl = "https://skybarstar.com/UserAppService/GetAvailableZonesImage?budget=\(slider.value)&numberOfGuests=\(guestCount)"
@@ -134,24 +150,8 @@ class EventControllerStep1: ParentController {
         }
     }
     
-    @IBAction func backAction(_ sender: Any) {
-        if let nav = self.navigationController{
-            nav.popViewController(animated: true)
-        }else{
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func callToReserve(_ sender: Any) {
-        if let url = URL(string: "tel://\(ServiceUser.contactPhoneNumber)"), UIApplication.shared.canOpenURL(url) {
-            if #available(iOS 10, *) {
-                UIApplication.shared.open(url)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
-    }
-    
+   
+      //MARK:- segue methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toStep2"){
             let cntrl = segue.destination as! EventControllerStep2

@@ -11,12 +11,13 @@ import UIKit
 class LastReservationView: UIView {
 
     @IBOutlet weak var updateDateLbl: UILabel!
-    var layerCorners:UIView! = nil
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var statusLbl: UILabel!
     @IBOutlet weak var guestsLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
+    
     var reservation:Reservation! = nil
+    var layerCorners:UIView! = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -95,7 +96,7 @@ class LastReservationView: UIView {
             }
         }
         
-        guestsLbl.text = "\(reservation.numberOfGuests) Guests"
+        guestsLbl.text = "\(String(describing: reservation.numberOfGuests)) Guests"
         
     }
 

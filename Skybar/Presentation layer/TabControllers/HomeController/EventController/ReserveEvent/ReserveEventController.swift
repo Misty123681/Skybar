@@ -10,7 +10,7 @@ import UIKit
 
 class ReserveEventController: ParentController {
     
-     // MARK:- Outlets
+    // MARK:- Outlets
     @IBOutlet weak var maxLbl: UILabel!
     @IBOutlet weak var barBtn: UIButton!
     @IBOutlet weak var tableBtn: UIButton!
@@ -110,7 +110,7 @@ class ReserveEventController: ParentController {
         plusBtn.isEnabled = false
     }
     
-    
+    // MARK:- get reservation rules
     fileprivate func getReservationRules() {
         ServiceInterface.getReservationRules(handler: { (success, result) in
             GlobalUI.hideLoading()

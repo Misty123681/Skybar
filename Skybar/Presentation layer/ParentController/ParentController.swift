@@ -10,10 +10,12 @@ import UIKit
 
 class ParentController: UIViewController {
     
+    // MARK: - outlets
+    
     let delObj = UIApplication.shared.delegate as! AppDelegate
     var currentTab = 0
+    
     // MARK:- View cycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -25,7 +27,6 @@ class ParentController: UIViewController {
      // MARK:- Actions & methods
     
     @IBAction func homeAction(_ sender: Any) {
-//        self.navigationController?.popViewController(animated: false)
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeController") as! HomeController
         delObj.customNavigationVC.viewControllers = [homeVC]
@@ -50,18 +51,9 @@ class ParentController: UIViewController {
         let homeVC = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
         delObj.customNavigationVC.viewControllers = [homeVC]
         delObj.window?.rootViewController = delObj.customNavigationVC
-//        if let cntrl = getHomeController(){
-//            self.navigationController?.popViewController(animated: false)
-//            cntrl.performSegue(withIdentifier: "toHistory", sender: nil)
-//        }
-//
     }
     
     @IBAction func settingsAction(_ sender: Any) {
-//        if let cntrl = getHomeController(){
-//            self.navigationController?.popViewController(animated: false)
-//            cntrl.performSegue(withIdentifier: "toSettings", sender: nil)
-//        }
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let homeVC = storyboard.instantiateViewController(withIdentifier: "SettingsController") as! SettingsController
         delObj.customNavigationVC.viewControllers = [homeVC]
@@ -69,10 +61,6 @@ class ParentController: UIViewController {
     }
     
     @IBAction func reserveAction(_ sender: Any) {
-//        if let cntrl = getHomeController(){
-//            self.navigationController?.popViewController(animated: false)
-//            cntrl.performSegue(withIdentifier: "toReserve", sender: nil)
-//        }
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let homeVC = storyboard.instantiateViewController(withIdentifier: "ReserveController") as! ReserveController
         delObj.customNavigationVC.viewControllers = [homeVC]
