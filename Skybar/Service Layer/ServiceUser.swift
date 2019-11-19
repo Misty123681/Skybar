@@ -15,6 +15,8 @@ class ServiceUser: NSObject {
     static var contactPhoneNumber = ""
     static var location:CLLocationCoordinate2D! = nil
     
+
+    
     static func loggedIn()->Bool{
         let userDefaults = UserDefaults.standard
         if let _ = userDefaults.string(forKey: "LoggedIn"){
@@ -23,17 +25,15 @@ class ServiceUser: NSObject {
         return false;
     }
     
-    static func setProfile(profile:ProfileObject){
+    static func setProfile(profile:ProfileObject?){
         let userDefaults = UserDefaults.standard
-        userDefaults.set(profile.firstName, forKey: "firstName")
-        userDefaults.set(profile.lastName, forKey: "lastName")
-        userDefaults.set(profile.email, forKey: "email")
-        userDefaults.set(profile.phoneCode, forKey: "phoneCode")
-        userDefaults.set(profile.mobile, forKey: "mobile")
-        userDefaults.set(profile.starMembershipSeed, forKey: "starMembershipSeed")
-        userDefaults.set(profile.address, forKey: "address")
-
-        
+        userDefaults.set(profile?.firstName, forKey: "firstName")
+        userDefaults.set(profile?.lastName, forKey: "lastName")
+        userDefaults.set(profile?.email, forKey: "email")
+        userDefaults.set(profile?.phoneCode, forKey: "phoneCode")
+        userDefaults.set(profile?.mobile, forKey: "mobile")
+        userDefaults.set(profile?.starMembershipSeed, forKey: "starMembershipSeed")
+        userDefaults.set(profile?.address, forKey: "address")
     }
     
         

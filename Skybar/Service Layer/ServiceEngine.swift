@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Reachability
+import Foundation
+
 public typealias APICompletionHandler = (_ success:Bool,_ result:AnyObject?) -> Void
 enum MethodName:String{
     case GET = "GET"
@@ -38,6 +41,12 @@ class ServiceEngine: NSObject {
     
     public func startTask(pathURL:String,httpMethod:MethodName,addMobileSession:Bool=true,uriparams:[String:Any]?,bodyparams:[String:Any]?=nil,completionHandler:@escaping APICompletionHandler){
         
+        if !(NetworkConnection.isConnectedToNetwork()){
+            SkybarAlert().showAlert(NSLocalizedString("Check Network", comment: ""))
+             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
+            return
+        }
+        
         var paramStr = "?"
         
         if addMobileSession{
@@ -63,7 +72,7 @@ class ServiceEngine: NSObject {
         var request:URLRequest = URLRequest(url: url!)
         request.httpMethod = httpMethod.rawValue
         request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-        request.timeoutInterval = 40
+         request.timeoutInterval = 60
         
         if let params = bodyparams{
             do {
@@ -137,6 +146,11 @@ class ServiceEngine: NSObject {
     
     public func startTaskCancelleable(pathURL:String,httpMethod:MethodName,addMobileSession:Bool=true,uriparams:[String:Any]?,bodyparams:[String:Any]?=nil,completionHandler:@escaping APICompletionHandler){
         
+        if !(NetworkConnection.isConnectedToNetwork()){
+            SkybarAlert().showAlert(NSLocalizedString("Check Network", comment: ""))
+         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
+            return
+        }
         var paramStr = "?"
         
         if addMobileSession{
@@ -236,3 +250,4 @@ class ServiceEngine: NSObject {
         self.cancelleableTask.resume()
     }
 }
+

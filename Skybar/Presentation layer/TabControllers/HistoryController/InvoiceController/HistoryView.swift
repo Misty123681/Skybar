@@ -100,7 +100,7 @@ class HistoryView: UIView {
     }
     @IBAction func valueChanged(_ sender: Any) {
         starManipulation(value: Int(self.slider!.value))
-         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.setRatingAPI(rating: self.slider!.value)
         }
     }
@@ -175,14 +175,7 @@ class HistoryView: UIView {
         ServiceInterface.setRating(visitID: visit.id!, rating: rating){ (success, result) in
             GlobalUI.hideLoading()
             if success{
-                OperationQueue.main.addOperation({
-                    let alert = UIAlertController(title: "You have rated successfully", message: nil, preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
-                        UIAlertAction in
-                    }
-                    alert.addAction(okAction)
-                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-                })
+                
             }
             else{
                 

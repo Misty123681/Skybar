@@ -3,37 +3,45 @@ PODS:
   - Charts (3.4.0):
     - Charts/Core (= 3.4.0)
   - Charts/Core (3.4.0)
+  - Cosmos (20.0.1)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
   - IQKeyboardManagerSwift (6.5.1)
   - OneSignal (2.11.2)
+  - ReachabilitySwift (5.0.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Charts
+  - Cosmos
   - Crashlytics
   - Fabric
   - IQKeyboardManagerSwift
   - OneSignal
+  - ReachabilitySwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ActionSheetPicker-3.0
     - Charts
+    - Cosmos
     - Crashlytics
     - Fabric
     - IQKeyboardManagerSwift
     - OneSignal
+    - ReachabilitySwift
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
+  Cosmos: b47fddf2102bb48580cd3025d9ce0a5c658a65da
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   IQKeyboardManagerSwift: 9ac7524fad9f9fe9a3b98c927e7772471ca546d2
   OneSignal: 4e3e68bb6c29975286a2fa910cb49132bc6e20bb
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
 
-PODFILE CHECKSUM: 57067c88402d825bda91aec9b0fbdd929219df11
+PODFILE CHECKSUM: facac06a5727526606fef7cd3e47212afb829a20
 
 COCOAPODS: 1.7.5

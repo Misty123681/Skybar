@@ -9,6 +9,8 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+
+
 class GuestListController: ParentController {
     
     // MARK:- outlets
@@ -34,14 +36,21 @@ class GuestListController: ParentController {
     // MARK:- View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+     
         setInfo()
         self.populateGuests()
-
+        NotificationCenter.default.addObserver(self, selector: #selector(NetworkIssue), name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
+        
+        // Initialization code
+    }
+    
+    @objc func NetworkIssue() {
+        self.loader?.stopAnimating()
     }
     
     // MARK:- Actions & methods
     @IBAction func shareAccessCode(_ sender: Any) {
-        let shareAll = "\(dateLbl.text ?? "")\n \(titleLbl.text ?? "")\n\n Please Use \(accessCodeLbl.text!)"
+        let shareAll = "\(dateLbl.text ?? "")\n \(titleLbl.text ?? "")\n\n Please use access code:  \(accessCodeLbl.text!)"
         let activityViewController = UIActivityViewController(activityItems: [shareAll] as [Any], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
@@ -50,7 +59,12 @@ class GuestListController: ParentController {
         if let nav = self.navigationController{
             nav.popViewController(animated: true)
         }else{
+            let delObj = UIApplication.shared.delegate as! AppDelegate
             self.dismiss(animated: true, completion: nil)
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeController") as! HomeController
+            delObj.navigationVc.viewControllers = [homeVC]
+            delObj.window?.rootViewController = delObj.navigationVc
         }
     }
     
@@ -112,7 +126,7 @@ class GuestListController: ParentController {
     
      // MARK:- UiInitialise
     fileprivate func setInfo(){
-        accessCodeLbl.text = "Access Code: \(reservationCode)"
+        accessCodeLbl.text = "\(reservationCode)"
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 10
         if let _ = self.event{
             calendarIcon.isHidden = false
@@ -157,4 +171,40 @@ class GuestListController: ParentController {
         })
     }
   
+}
+
+
+//MARK:- extension
+
+extension GuestListController: GuestPage{
+    func guestNotification() {
+        print("guest notification received:")
+        getCurrentStatus()
+       
+    }
+    
+    func getCurrentStatus(){
+        ServiceInterface.getCurrentSkyStatus { (success, result) in
+            if let data = result as? Data{
+                do{
+                    let skyStatus = try JSONDecoder().decode(SkyStatus.self, from: data)
+                    if let eventID = skyStatus.nearestEventDetails?.id{
+                        self.eventID = eventID
+                    }
+                    
+                    if let info = skyStatus.nearestEventDetails{
+                        self.event = info
+                    }
+                    if let code = skyStatus.nearestEventDetails?.reservationInfo?.reservationAccessCode{
+                        self.reservationCode = code
+                    }
+                    self.setInfo()
+                    self.populateGuests()
+                }
+                catch let ex{
+                    print(ex)
+                }
+            }
+        }
+    }
 }

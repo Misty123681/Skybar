@@ -128,8 +128,15 @@ class HistoryController: ParentController {
         }
     }
     
+    @objc func NetworkIssue() {
+        loader.stopAnimating()
+       
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(NetworkIssue), name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
+
         getChart()
         getTimeline()
         

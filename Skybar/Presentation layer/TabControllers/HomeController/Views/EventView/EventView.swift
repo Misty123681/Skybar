@@ -10,6 +10,7 @@ import UIKit
 
 class EventView: UIView {
     
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
@@ -34,9 +35,11 @@ class EventView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+       
     }
     
+   
     @IBAction func shareAction(_ sender: Any) {
         if shareLink.isEmpty{
             if let name = self.event.name, let _ = self.event.description{
@@ -44,7 +47,7 @@ class EventView: UIView {
                     shareAll = "\(dateEvent ?? "")\n \(name)"
 
                 }else{
-                    shareAll = "\(dateEvent ?? "")\n \(name)\n\n Please Use \(event.reservationInfo?.reservationAccessCode ?? "")"
+                    shareAll = "\(dateEvent ?? "")\n \(name)\n\n Please use access code: \(event.reservationInfo?.reservationAccessCode ?? "")"
 
                 }
                 let activityViewController = UIActivityViewController(activityItems: [shareAll] as [Any], applicationActivities: nil)
@@ -175,6 +178,7 @@ class EventView: UIView {
     
     
     fileprivate func getEventImage(_ key: String,cnt:Int) {
+        
         self.loader.startAnimating()
         ServiceInterface.resizeImage(imageKey: key,width: Float(imageView.getWidth()),height: Float(imageView.getHeight()), handler: { (success, result) in
             OperationQueue.main.addOperation {

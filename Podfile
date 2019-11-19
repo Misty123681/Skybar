@@ -14,6 +14,8 @@ target 'Skybar' do
   pod 'ActionSheetPicker-3.0'
   #pod 'TesseractOCRiOS'
   pod 'Charts'
+  pod 'Cosmos'
+  pod 'ReachabilitySwift'
   #pod 'GoogleMobileVision/TextDetector'
   use_frameworks!
   pod 'Fabric'

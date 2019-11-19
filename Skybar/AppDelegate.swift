@@ -12,11 +12,21 @@ import OneSignal
 import Fabric
 import Crashlytics
 
+protocol GuestPage:class{
+    func guestNotification()
+}
+
+protocol HomePage:class{
+    func homeNotification()
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
 
     var window: UIWindow?
-    var customNavigationVC:UINavigationController!
+    var navigationVc:UINavigationController!
+    weak var delegate: GuestPage?
+    weak var delegateHome: HomePage?
     
     //MARK:- delegate method for onesignal
     func onOSSubscriptionChanged(_ stateChanges: OSSubscriptionStateChanges!) {
@@ -51,13 +61,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
             let fullMessage = payload.body
             print("Message = \(String(describing: fullMessage))")
             
+            var screenId = ""
             if payload.additionalData != nil {
-                if payload.title != nil {
-                    let messageTitle = payload.title
-                    print("Message Title = \(messageTitle!)")
+                if let screenID = payload.additionalData["ScreenId"] {
+                    screenId =  "\(screenID)"
+                    print("Message Title = \(screenID)")
                 }
             }
+            
+                switch screenId {
+                case "HomeScreen":
+                    self.navigateToHome()
+                case "RateUsScreen":
+                    self.navigateToMySKY()
+                case "MySkyScreen":
+                    self.navigateToMySKY()
+                case "GuestListScreen":
+                    self.navigateToGuestPage()
+                default:
+                    print("Home")
+                }
+            
+
         }
+        
         
         OneSignal.initWithLaunchOptions(launchOptions,
                                         appId: Helper.oneSignalAppID,
@@ -96,32 +123,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
         }
         
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        
-       
         if ServiceUser.loggedIn(){
             let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeController") as! HomeController
-            customNavigationVC = UINavigationController(rootViewController: homeVC)
+            navigationVc = UINavigationController(rootViewController: homeVC)
+            
         } else {
             let landingVC = storyboard.instantiateViewController(withIdentifier: "LandingController") as! LandingController
-             customNavigationVC = UINavigationController(rootViewController: landingVC)
+             navigationVc = UINavigationController(rootViewController: landingVC)
         }
-        customNavigationVC.isNavigationBarHidden = true
-        self.window?.rootViewController = customNavigationVC
+        navigationVc.isNavigationBarHidden = true
+        self.window?.rootViewController = navigationVc
         return true
+    }
+    
+    
+    func navigateToHome(){
+        
+        if let topVC = UIApplication.getTopViewController() {
+            if let vc  = topVC as? HomeController{
+                print("its Home page")
+                self.delegateHome = vc
+                delegateHome?.homeNotification()
+            }else{
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let vC = storyboard.instantiateViewController(withIdentifier: "HomeController") as! HomeController
+                navigationVc = UINavigationController(rootViewController: vC)
+                navigationVc.isNavigationBarHidden = true
+                self.window?.rootViewController = navigationVc
+            }
+        }
+      
+    }
+    func navigateToMySKY(){
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vC = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
+        navigationVc = UINavigationController(rootViewController: vC)
+        navigationVc.isNavigationBarHidden = true
+        self.window?.rootViewController = navigationVc
+    }
+    
+    func navigateToGuestPage(){
+        if let topVC = UIApplication.getTopViewController() {
+            if let vc  = topVC as? GuestListController{
+                print("its guest page")
+                self.delegate = vc
+                delegate?.guestNotification()
+            }else{
+                
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let vC = storyboard.instantiateViewController(withIdentifier: "GuestListController") as! GuestListController
+                navigationVc.isNavigationBarHidden = true
+                self.delegate = vC
+                delegate?.guestNotification()
+                self.window?.rootViewController = vC
+                self.window?.makeKeyAndVisible()
+            }
+        }
+       
     }
     
   
     //MARK:- method get called on notification taped
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-       
-        
+    
         debugPrint("Received: \(userInfo)")
        let dict = userInfo as! [String: Any]
         print(dict)
-        
-      
-   
-        
+       
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -150,3 +218,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
 
 }
 
+extension UIApplication {
+    
+    class func getTopViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        
+        if let nav = base as? UINavigationController {
+            return getTopViewController(base: nav.visibleViewController)
+            
+        } else if let presented = base?.presentedViewController {
+            return getTopViewController(base: presented)
+        }
+        return base
+    }
+}

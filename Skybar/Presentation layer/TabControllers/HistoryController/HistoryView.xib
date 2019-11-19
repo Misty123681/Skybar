@@ -197,10 +197,10 @@
                     </constraints>
                 </imageView>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="G8s-v5-BCA">
-                    <rect key="frame" x="370" y="0.5" width="104" height="30"/>
+                    <rect key="frame" x="370" y="-4.5" width="104" height="40"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="29" id="O8f-Wb-LVv"/>
+                        <constraint firstAttribute="height" constant="39" id="O8f-Wb-LVv"/>
                     </constraints>
                     <color key="minimumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

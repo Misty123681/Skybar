@@ -57,6 +57,10 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     @IBOutlet weak var guestListBadgeLbl: UILabel!
     @IBOutlet weak var refreshLoader: UIActivityIndicatorView!
     
+    @IBOutlet var rateUsView: UIView!
+    
+    
+    
     //MARK:- Variable
     var timer: Timer!
     var isAnimating = false
@@ -82,7 +86,9 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     //MARK:- View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+     
+        NotificationCenter.default.addObserver(self, selector: #selector(NetworkIssue), name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
+
         self.scrollView.delegate = self
         refreshControl = UIRefreshControl()
         refreshControl.backgroundColor = UIColor.clear
@@ -101,19 +107,23 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         self.imageView.layer.cornerRadius = self.imageView.frame.size.height/2
         
         designPrivilegeBtn()
+        
+        self.view.addSubview(rateUsView)
+        self.rateUsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        rateUsView.isHidden = true
+        
+    }
+    @objc func NetworkIssue() {
+    
+        GlobalUI.hideLoading()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         self.cacheEventImages = [NSCache<NSString, UIImage>]()
         getCurrentStatus()
         self.populateProfileInfo()
-        let mobile = UserDefaults.standard.value(forKey: "mobile")
-        if mobile == nil {
-            ServiceUser.setTypeLevel(level: ServiceUser.profile?.level ?? "" )
-            ServiceUser.setProfileId(Id: ServiceUser.profile?.id ?? "")
-            ServiceUser.setProfile(profile: ServiceUser.profile!)
-            
-        }
+        
         self.reloadMedia()
         
         takeMeBtn.backgroundColor = .white
@@ -134,6 +144,11 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.default
     }
+    
+    @IBAction func btnBackTapped(_ sender: Any) {
+          rateUsView.isHidden = true
+    }
+    
     
     //MARK:- Function and method
     @IBAction func toReserve(_ sender: Any) {
@@ -357,6 +372,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             eventView.setInfo(event: event, controller: self,cnt:events.count)
 
             eventsContainer.addSubview(eventView)
+            
 //            if event.reservationInfo?.reservationStatusTypeName == "Confirmed"{
 //                frameEvent = eventView.frame
 //            }
@@ -376,20 +392,28 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             fNameLbl.text = profile.firstName+" "+profile.lastName
             memberLbl.text = "STAR \(String(format: "%04d", profile.starMembershipSeed))"
             getImage()
+            let mobile = UserDefaults.standard.value(forKey: "mobile")
+            if mobile == nil {
+                ServiceUser.setTypeLevel(level: ServiceUser.profile?.level ?? "" )
+                ServiceUser.setProfileId(Id: ServiceUser.profile?.id ?? "")
+                ServiceUser.setProfile(profile: ServiceUser.profile)
+            }
         }else{
             getProfileInfo()
         }
     }
     
     func getProfileInfo(){
+        
         self.view.layoutIfNeeded()
-        GlobalUI.showLoading(self.view)
+       GlobalUI.showLoading(self.view)
         
         ServiceInterface.getUserProfileInfo(handler: { (success, result) in
             GlobalUI.hideLoading()
             if success {
                 do{
                     let profile = try JSONDecoder().decode(ProfileObject.self, from: result as! Data)
+                    
                     ServiceUser.profile = profile
                     OperationQueue.main.addOperation {
                         self.populateProfileInfo()
@@ -437,7 +461,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                         self.populateHeaders()
                         self.getCurrentEvents()
                         self.endOfWork()
-                        Timer.scheduledTimer(withTimeInterval: 20, repeats: false, block: { (timer) in
+                        Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { (timer) in
                             self.getCurrentStatus()
                         })
                     })
@@ -511,11 +535,11 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     }
     
     func doSomething() {
-        self.RefreshData()
+        self.refreshAllData()
     }
     
     
-    func RefreshData(){
+    func refreshAllData(){
         getInstaMedia()
         ServiceInterface.getCurrentSkyStatus { (success, result) in
             if let data = result as? Data{
@@ -658,5 +682,29 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         }
     }
     
+    func refreshEventData(){
+        self.cacheEventImages = [NSCache<NSString, UIImage>]()
+        ServiceInterface.getCurrentEvents { (success, result) in
+            if let data = result as? Data{
+                do{
+                    let events = try JSONDecoder().decode([Event].self, from: data)
+                    OperationQueue.main.addOperation({
+                        self.populateEvents(events:events)
+                    })
+                }
+                catch let ex{
+                    print(ex)
+                }
+            }
+        }
+        
+    }
+    
+}
 
+extension HomeController:HomePage{
+    func homeNotification() {
+          refreshEventData()
+    }
+    
 }
