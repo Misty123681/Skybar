@@ -10,7 +10,7 @@ import UIKit
 import Charts
 
 class StatsView: UIView,ChartViewDelegate {
-    
+     //MARK:- outlets
     @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var lastVisitLbl: UILabel!
     @IBOutlet weak var visitsLbl: UILabel!
@@ -19,6 +19,7 @@ class StatsView: UIView,ChartViewDelegate {
     @IBOutlet weak var consumptionLbl: UILabel!
     @IBOutlet weak var innerView: UIView!
     
+     //MARK:- variables
     var info:[Any]! = nil
     var layerCorners:UIView! = nil
     var dates = [String]()
@@ -35,9 +36,7 @@ class StatsView: UIView,ChartViewDelegate {
     override func layoutSubviews() {
         
         super.layoutSubviews()
-        if let _ = layerCorners{
-            
-        }else{
+        if let _ = layerCorners{}else{
             self.layoutIfNeeded()
             layerCorners = UIView(frame: self.innerView.frame)
             layerCorners.layer.cornerRadius = 13
@@ -66,7 +65,6 @@ class StatsView: UIView,ChartViewDelegate {
         
         visitsLbl.text = "\(info.count) Visits"
         self.visitsLbl.textColor =  UIColor.black
-        
         
         for entry in info{
             if let entry = entry as? [String:Any]{
@@ -149,6 +147,7 @@ class StatsView: UIView,ChartViewDelegate {
         legend.yEntrySpace = 0.0;
     }
     
+     //MARK:- set chart
     func setChart() {
         chartView.noDataText = "You need to provide data for the chart."
         var dataEntries: [BarChartDataEntry] = []
@@ -173,9 +172,6 @@ class StatsView: UIView,ChartViewDelegate {
         let chartDataSet1 = BarChartDataSet(entries: dataEntries1, label: "Discount")
         chartDataSet1.setColor(UIColor(red: 128/255.0, green: 128/255.0, blue: 128/255.0, alpha: 1))
         let dataSets: [BarChartDataSet] = [chartDataSet,chartDataSet1]
-        //chartDataSet.colors = [.purple]
-        //chartDataSet.colors = ChartColorTemplates.colorful()
-        //let chartData = BarChartData(dataSet: chartDataSet)
         
         let chartData = BarChartData(dataSets: dataSets)
         
@@ -183,7 +179,6 @@ class StatsView: UIView,ChartViewDelegate {
         let groupSpace = 0.8
         let barSpace = 0.0
         let barWidth = 0.1
-        // (0.3 + 0.05) * 2 + 0.3 = 1.00 -> interval per "group"
         
         let groupCount = self.dates.count
         let startYear = 0
@@ -191,9 +186,9 @@ class StatsView: UIView,ChartViewDelegate {
         
         chartData.barWidth = barWidth;
         chartView.xAxis.axisMinimum = Double(startYear)
-        let gg = chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
-        print("Groupspace: \(gg)")
-        chartView.xAxis.axisMaximum = Double(startYear) + gg * Double(groupCount)
+        let temp = chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
+        print("Groupspace: \(temp)")
+        chartView.xAxis.axisMaximum = Double(startYear) + temp * Double(groupCount)
         
         chartData.groupBars(fromX: Double(startYear), groupSpace: groupSpace, barSpace: barSpace)
         //chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)

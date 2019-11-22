@@ -9,6 +9,8 @@
 import UIKit
 
 class InvoiceController: ParentController {
+    
+    //MARK:- Outlets
 
     @IBOutlet weak var totalPaidLbl: UILabel!
     @IBOutlet weak var discountPercentLbl: UILabel!
@@ -18,9 +20,12 @@ class InvoiceController: ParentController {
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
+    //MARK:- Variable
     var visitObj:Visit! = nil
     var status:SkyStatus! = nil
     
+    //MARK:- view cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,9 +75,6 @@ class InvoiceController: ParentController {
             totalConsumptionLbl.text = totalBill.toCurrency()
             discountLbl.text = "- \(discountProvided.toCurrency())"
             totalPaidLbl.text = (totalBill-discountProvided).toCurrency()
-//            if let discount = visitObj.discount{
-//                discountPercentLbl.text = "Rewards discount \(discount)%"
-//            }
             descriptionLbl.text = status?.nearestEventDetails?.description
         }
         
@@ -101,13 +103,10 @@ class InvoiceController: ParentController {
                             self.populateInvoice(json:json!)
                         })
                     }
-                    catch{
-                        
-                    }
+                    catch{}
                 }
             })
         }
-        // Do any additional setup after loading the view.
     }
     
     func populateInvoice(json:[Any]){
@@ -137,12 +136,7 @@ class InvoiceController: ParentController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
+  
     func getImage(key:String){
         ServiceInterface.getImage(imageName: key, handler: { (success, result) in
             OperationQueue.main.addOperation {

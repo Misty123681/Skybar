@@ -10,7 +10,7 @@ import UIKit
 
 class EventView: UIView {
     
-    
+    //MARK:- outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
@@ -23,6 +23,7 @@ class EventView: UIView {
     @IBOutlet weak var lblShare: UILabel!
     @IBOutlet weak var reserveBtn: UIButton!
     
+     //MARK:- variable
     var layerCorners:UIView! = nil
     var event:Event! = nil
     weak var controller:UIViewController! = nil
@@ -35,8 +36,6 @@ class EventView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-       
     }
     
    
@@ -70,9 +69,17 @@ class EventView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let _ = layerCorners{
-            
-        }else{
+        let result = UIScreen.main.bounds.size
+        if(result.height <= 667.0){
+            titleLbl.font = titleLbl.font.withSize(14)
+            descriptionLbl.font = descriptionLbl.font.withSize(12)
+            monthLbl.font = monthLbl.font.withSize(14)
+            dayLbl.font = dayLbl.font.withSize(14)
+            lblShare.font = lblShare.font.withSize(13)
+            reserveLbl.font = reserveLbl.font.withSize(13)
+        }
+       
+        if let _ = layerCorners{}else{
             self.layoutIfNeeded()
             layerCorners = UIView(frame: self.bounds)
             layerCorners.layer.cornerRadius = 13
@@ -109,8 +116,7 @@ class EventView: UIView {
         descriptionLbl.text = self.event.description
         let image = self.event.eventImage
             self.getImage(key:image ?? "",cnt:cnt)
-        //}
-
+ 
         if let info = event.reservationInfo{
             if let typeName = info.reservationStatusTypeName{
                 self.reserveLbl.text = typeName

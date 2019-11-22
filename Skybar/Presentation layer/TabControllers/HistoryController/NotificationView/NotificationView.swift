@@ -9,7 +9,8 @@
 import UIKit
 
 class NotificationView: UIView {
-
+    
+    //MARK:- outlets
     @IBOutlet weak var valueLbl: UILabel!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var dateLbl: UILabel!
@@ -18,9 +19,7 @@ class NotificationView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let _ = layerCorners{
-            
-        }else{
+        if let _ = layerCorners{}else{
             self.layoutIfNeeded()
             layerCorners = UIView(frame: self.innerView.frame)
             layerCorners.layer.cornerRadius = 13

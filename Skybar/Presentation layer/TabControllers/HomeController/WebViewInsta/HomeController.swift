@@ -56,7 +56,6 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     @IBOutlet weak var containerView: UIScrollView! = nil
     @IBOutlet weak var guestListBadgeLbl: UILabel!
     @IBOutlet weak var refreshLoader: UIActivityIndicatorView!
-    
     @IBOutlet var rateUsView: UIView!
     
     
@@ -113,8 +112,8 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         rateUsView.isHidden = true
         
     }
-    @objc func NetworkIssue() {
     
+    @objc func NetworkIssue() {
         GlobalUI.hideLoading()
     }
     

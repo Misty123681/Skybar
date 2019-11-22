@@ -56,8 +56,7 @@ class TutorialCell: UICollectionViewCell {
         }else{
             letsStartBtnConstraint.constant = 0
         }
-        
-        
+ 
     }
 
 }

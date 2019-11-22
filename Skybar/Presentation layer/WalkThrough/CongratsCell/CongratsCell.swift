@@ -20,7 +20,6 @@ class CongratsCell: UICollectionViewCell {
     }
     
     func setInformation(profileID:String,fName:String,lName:String){
-        
         fNameLbl.text = fName
         lNameLbl.text = lName
         self.layoutIfNeeded()

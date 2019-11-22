@@ -16,6 +16,7 @@ enum TimelineType:Int {
 
 class HistoryController: ParentController {
     
+    //MARK:- Outlets
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
@@ -72,9 +73,7 @@ class HistoryController: ParentController {
                     y += (historyView.frame.size.height+20)
                     historyView.setInfo(visit: visit)
                     container.addSubview(historyView)
-                    
-//                    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toInvoice))
-//                    historyView.addGestureRecognizer(tapGesture)
+
                 }
                 break
             case .reservation:
@@ -133,23 +132,20 @@ class HistoryController: ParentController {
        
     }
     
+     //MARK:- view cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(NetworkIssue), name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
 
         getChart()
         getTimeline()
         
-         titleLbl.text =  "Your Summary"
+        titleLbl.text =  "Your Summary"
         
         if let profile = ServiceUser.profile {
-           
-            
             descriptionLbl.text = "Thank you for being a great \(profile.level)"
         }
-        
-      
-        
         descriptionLbl.text = "Thank you for being a great \(ServiceUser.getTypeLevel())"
         
     }
@@ -162,14 +158,12 @@ class HistoryController: ParentController {
         self.view.layoutIfNeeded()
     }
     
+    
+    
     @objc func toInvoice(gestureRecognizer:UIGestureRecognizer){
         self.performSegue(withIdentifier: "toInvoice", sender: gestureRecognizer.view)
     }
-    
- 
-    
 
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toInvoice"{

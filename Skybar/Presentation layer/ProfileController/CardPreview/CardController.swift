@@ -18,30 +18,25 @@ class CardController: ParentController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cardIV: UIImageView!
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
-        // Do any additional setup after loading the view.
-        getImage()
-        
+       
         if let url = URL(string:"http://skybarstar.com/privacy.html"){
-            webView.load(URLRequest(url:url))
+               webView.load(URLRequest(url:url))
+            
         }
         
         if let profile = ServiceUser.profile{
             nameLbl.text = profile.firstName+" "+profile.lastName
             levelLbl.text = "STAR \(String(format: "%04d", profile.starMembershipSeed))"
             
-//            let size = memberLbl.intrinsicContentSize
-//            let color1 = CIColor(color:UIColor(red: 255.0/255.0, green: 150.0/255.0, blue: 120.0/255.0, alpha: 1))
-//            let color2 = CIColor(color:UIColor(red: 196.0/255.0, green: 172.0/255.0, blue: 84.0/255.0, alpha: 1))
-//            if let uiimage = GlobalUI.gradientImage(size: size, color1: color1, color2: color2){
-//                memberLbl.textColor = UIColor.init(patternImage: uiimage)
-//            }
         }
-        
+         getImage()
     }
     
     @IBAction func sendMeKeyAction(_ sender: Any) {
@@ -53,13 +48,11 @@ class CardController: ParentController {
         ServiceInterface.acceptTerms(handler: nil)
         self.performSegue(withIdentifier: "toKey", sender: nil)
     }
+    
     @IBAction func popAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     @IBAction func checkAction(_ sender: Any) {
         if checkBtn.tag == 0{
             checkBtn.tag = 1
@@ -93,14 +86,5 @@ class CardController: ParentController {
         return .default
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

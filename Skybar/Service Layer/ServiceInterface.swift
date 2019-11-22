@@ -9,12 +9,17 @@
 import UIKit
 
 class ServiceInterface: NSObject {
-    //static let hostURL = "http://40.76.73.185/skybar/UserAppService/"
-   
-  // static let hostURL = "http://40.76.73.185/SkybarstarTest/UserAppService/" // testing
+    
+     // MARK:- Development
+   //static let hostURL = "http://40.76.73.185/SkybarstarTest/UserAppService/" // testing
+    
+    // MARK:- Distribution
+    
    static let hostURL = "http://skybarstar.com/UserAppService/" // live
+    
     static let cache = NSCache<AnyObject, AnyObject>()
     
+    // MARK:- Login api
     static func activateAccount(key:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)ActivateYourAccount"
         var params = [String:Any]()
@@ -26,6 +31,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+     // MARK:-  Resend code
     static func resendCode(mobileNumber:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)ResendCode"
         var params = [String:Any]()
@@ -37,6 +43,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:-  set address location
     static func setAddressLocation(longitude:Double,latitude:Double,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)SetAddresslocation"
         var params = [String:Any]()
@@ -47,7 +54,7 @@ class ServiceInterface: NSObject {
             }
         }
     }
-    
+       // MARK:- Terms and conditions
     static func acceptTerms(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)AcceptTerms"
         var params = [String:Any]()
@@ -59,6 +66,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+       // MARK:- download image
     static func getImage(imageName:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetImage"
         
@@ -83,6 +91,7 @@ class ServiceInterface: NSObject {
         }
     }
 
+       // MARK:- Upload profile photo
     static func uploadImage(imageData:String,handler:APICompletionHandler?){
         
         cache.removeAllObjects()
@@ -97,8 +106,7 @@ class ServiceInterface: NSObject {
         }
     }
     
-    //UserName pmo@cspsolutions.com
-    //password Csp00123@
+    // MARK:- IsValidMobileUser
     static func isValidMobileUser(username:String,password:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)isValidMobileUser"
         var params = [String:Any]()
@@ -111,6 +119,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+     // MARK:- Current Events
     static func getCurrentEvents(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetCurrentEvents"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:nil) { (success, result) in
@@ -120,6 +129,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+      // MARK:- Current sky status
     static func getCurrentSkyStatus(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetCurrentSkyStatus"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:nil) { (success, result) in
@@ -129,6 +139,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+       // MARK:- Get my all reservation
     static func getMyResevations(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetMyReservations"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:nil) { (success, result) in
@@ -138,6 +149,8 @@ class ServiceInterface: NSObject {
         }
     }
     
+    
+    // MARK:-  Get user profile info
     static func getUserProfileInfo(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetUserProfileInfo"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:nil) { (success, result) in
@@ -147,6 +160,8 @@ class ServiceInterface: NSObject {
         }
     }
     
+    
+    // MARK:-  Chart info
     static func getVisitsCharts(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetVisitsChart"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:nil) { (success, result) in
@@ -156,6 +171,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- Reservation number
     static func getReservationNumber(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)ReservationNumber"
        
@@ -166,6 +182,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+     // MARK:- History
     static func getTimelineInfo(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetTimelineInfo"
         
@@ -176,7 +193,7 @@ class ServiceInterface: NSObject {
         }
     }
  
-    
+     // MARK:-  Rate us
     static func setRating(visitID:String,rating:Float,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)RateVisitDetailed"
         
@@ -190,20 +207,13 @@ class ServiceInterface: NSObject {
             }
         }
     }
+    
+    // MARK:- this was not me
     static func thisWasNotMeAPI(visitID:String,rating:Float,handler:APICompletionHandler?){
-//        let fullPath = "\(hostURL)RateVisit"
-//
-//        var params = [String:Any]()
-//        params["visitID"] = visitID
-//        params["rating"] = rating
-//
-//        ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: params) { (success, result) in
-//            if let handler = handler{
-//                handler(success,result)
-//            }
-//        }
+
     }
     
+    // MARK:- Reservation rules
     static func getReservationRules(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetReservationsRules"
         
@@ -214,6 +224,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- share event link
     static func getShareLink(eventID:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)ShareEventLink"
         var params = [String:Any]()
@@ -225,6 +236,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- visit bill
     static func GetVisitBill(visitID:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetVisitBill"
         var params = [String:Any]()
@@ -236,6 +248,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- Active sky key
     static func activateSkyKey(key:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)ActivateSkykey"
         var params = [String:Any]()
@@ -247,6 +260,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- Get visit history
     static func getVisitsHistory(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetVisitsHistory"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:nil) { (success, result) in
@@ -256,6 +270,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- Get privileges
     static func getPrivileges(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetPrivileges"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:nil) { (success, result) in
@@ -265,6 +280,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- Logout mobile
     static func logoutMobile(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)LogoutMobile"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:nil) { (success, result) in
@@ -274,6 +290,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+       // MARK:-  Reserve Event
     static func reserveEvent(eventID:String,type:Int,guests:Int,budget:Float?,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)ReserveEvent" //Type/Guests/EventID
         var params = [String:Any]()
@@ -290,6 +307,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+       // MARK:-  update user profile info
     static func updateUserInfo(profile:ProfileObject,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)UpdateUserProfileInfo"
         var params = [String:Any]()
@@ -301,6 +319,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+       // MARK:- Refer friend
     static func referAFriend(fullName:String,email:String,mobile:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)ReferFriend"
         var params = [String:Any]()
@@ -315,6 +334,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+       // MARK:-  Get star
     static func getStarGuests(eventID:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetStarGuests"
         var params = [String:Any]()
@@ -326,6 +346,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+       // MARK:-  Add guest
     static func addGuest(fullName:String,eventID:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)AddGuest"
         var params = [String:Any]()
@@ -338,6 +359,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+       // MARK:-  delete guest
     static func removeGuest(guestID:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)RemoveGuest"
         var params = [String:Any]()
@@ -349,6 +371,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+       // MARK:-  Get all countries codes
     static func getCountryCodes(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetAllCountriesPhoneCodes"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: nil) { (success, result) in
@@ -358,6 +381,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- Instagram feeds
     static func getInstagramMedia(token:String,handler:APICompletionHandler?){
         let fullPath = "https://api.instagram.com/v1/users/self/media/recent/?access_token=\(token)"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,addMobileSession:false,uriparams:nil,bodyparams: nil) { (success, result) in
@@ -367,6 +391,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:-  Update player Id
     static func updateUserPlayer(playerId:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)UpdateUserPlayerID"
         var params = [String:Any]()
@@ -378,6 +403,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- Get Careem link
     static func getCareemLinks(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetCareemUrlLinks"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: nil) { (success, result) in
@@ -387,6 +413,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- Log Error
     static func logError(error:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)LogError"
         var params = [String:Any]()
@@ -398,6 +425,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- SetSeenReservationNotifications
     static func setSeenReservationNotifications(handler:APICompletionHandler?){
         let fullPath = "\(hostURL)SetSeenReservationNotifications"
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: nil) { (success, result) in
@@ -407,6 +435,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:-
     static func editReservation(reservationId:String,type:Int,guests:Int,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)EditReservation"
         var params = [String:Any]()

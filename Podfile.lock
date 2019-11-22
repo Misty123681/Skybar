@@ -9,7 +9,6 @@ PODS:
   - Fabric (1.10.2)
   - IQKeyboardManagerSwift (6.5.1)
   - OneSignal (2.11.2)
-  - ReachabilitySwift (5.0.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
@@ -19,7 +18,6 @@ DEPENDENCIES:
   - Fabric
   - IQKeyboardManagerSwift
   - OneSignal
-  - ReachabilitySwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -30,7 +28,6 @@ SPEC REPOS:
     - Fabric
     - IQKeyboardManagerSwift
     - OneSignal
-    - ReachabilitySwift
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
@@ -40,8 +37,7 @@ SPEC CHECKSUMS:
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   IQKeyboardManagerSwift: 9ac7524fad9f9fe9a3b98c927e7772471ca546d2
   OneSignal: 4e3e68bb6c29975286a2fa910cb49132bc6e20bb
-  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
 
-PODFILE CHECKSUM: facac06a5727526606fef7cd3e47212afb829a20
+PODFILE CHECKSUM: b282ed9fdd490120a3f5745cd7786e42552a1449
 
 COCOAPODS: 1.7.5

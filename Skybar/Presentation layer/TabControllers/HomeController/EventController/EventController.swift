@@ -44,6 +44,7 @@ class EventController: ParentController {
      //MARK:- View methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        addReservationPopUp()
         setReservationConfiguration()
     }
     
@@ -60,6 +61,12 @@ class EventController: ParentController {
         }
     }
     
+    
+    fileprivate func addReservationPopUp() {
+        let screen = UIScreen.main.bounds.size
+        reservationPopupView.frame = CGRect(x: 0, y: 0, width: screen.width, height: screen.height)
+        self.view.addSubview(reservationPopupView)
+    }
      //MARK:- Reservation cancel
     @IBAction func cancelACtion(_ sender: Any) {
         let alert = UIAlertController(title: "Are you sure you want to Cancel reservation?", message: nil, preferredStyle: .alert)

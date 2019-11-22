@@ -95,8 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
-      
-        
+    
             IQKeyboardManager.shared.enable = true
 
            let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
@@ -117,7 +116,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
             Fabric.with([Crashlytics.self])
         
         
-    
         if let window = UIApplication.shared.windows.first {
             window.backgroundColor = .white
         }
@@ -152,8 +150,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
                 self.window?.rootViewController = navigationVc
             }
         }
-      
     }
+    
     func navigateToMySKY(){
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vC = storyboard.instantiateViewController(withIdentifier: "HistoryController") as! HistoryController
@@ -187,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
     
         debugPrint("Received: \(userInfo)")
-       let dict = userInfo as! [String: Any]
+        let dict = userInfo as! [String: Any]
         print(dict)
        
     }

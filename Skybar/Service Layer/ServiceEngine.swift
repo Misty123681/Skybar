@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import Reachability
 import Foundation
 
 public typealias APICompletionHandler = (_ success:Bool,_ result:AnyObject?) -> Void
+
 enum MethodName:String{
     case GET = "GET"
     case POST = "POST"
@@ -32,7 +32,6 @@ class ServiceEngine: NSObject {
     }
     
     public class var sharedInstance: ServiceEngine {
-        
         struct Static {
             static let instance = ServiceEngine()
         }
@@ -201,7 +200,6 @@ class ServiceEngine: NSObject {
         
         self.cancelleableTask = URLSession.shared.dataTask(with: request) { data, response, error in
             URLCache.shared.removeAllCachedResponses()
-            //URLSession.shared.finishTasksAndInvalidate()
             
             if let httpResponse = response as? HTTPURLResponse {
                 if let headerStatus = httpResponse.allHeaderFields["Status"] as? String{

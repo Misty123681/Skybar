@@ -21,7 +21,6 @@ class GuestListController: ParentController {
     @IBOutlet weak var container: UIScrollView!
     @IBOutlet weak var doorOpenLbl: UILabel!
     @IBOutlet weak var loader: UIActivityIndicatorView!
-    @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var guestCountLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
@@ -40,8 +39,6 @@ class GuestListController: ParentController {
         setInfo()
         self.populateGuests()
         NotificationCenter.default.addObserver(self, selector: #selector(NetworkIssue), name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
-        
-        // Initialization code
     }
     
     @objc func NetworkIssue() {
@@ -107,8 +104,22 @@ class GuestListController: ParentController {
                         self.guestCountLbl.isHidden = (self.guests.count == 0)
                         self.guestCountLbl.text = "Guests(\(self.guests.count)/8)"
 
-                        self.accessCodeLbl.isHidden = self.guestCountLbl.isHidden
-                        self.accessCodeShareBtn.isHidden = self.guestCountLbl.isHidden
+                        //self.accessCodeLbl.isHidden = self.guestCountLbl.isHidden/
+                        //self.accessCodeShareBtn.isHidden = self.guestCountLbl.isHidden
+                       
+                            if self.guests.count == 0{
+                                self.accessCodeLbl.isHidden = true
+                                self.accessCodeShareBtn.isHidden = true
+                            }else{
+                                if self.reservationCode != ""{
+                                    self.accessCodeLbl.isHidden = false
+                                    self.accessCodeShareBtn.isHidden = false
+                                }else{
+                                    self.accessCodeLbl.isHidden = true
+                                    self.accessCodeShareBtn.isHidden = true
+                                }
+                               
+                        }
                        
                     }
                     
@@ -178,7 +189,6 @@ class GuestListController: ParentController {
 
 extension GuestListController: GuestPage{
     func guestNotification() {
-        print("guest notification received:")
         getCurrentStatus()
        
     }

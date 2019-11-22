@@ -9,11 +9,12 @@
 import UIKit
 
 class HistoryView: UIView {
-    var visit:Visit! = nil
-    var layerCorners:UIView! = nil
+    
+     //MARK:- outlets
+    
+   
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var innerView: UIView!
-    
     @IBOutlet weak var star5: UIImageView!
     @IBOutlet weak var star4: UIImageView!
     @IBOutlet weak var star3: UIImageView!
@@ -21,19 +22,21 @@ class HistoryView: UIView {
     @IBOutlet weak var star1: UIImageView!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var loader: UIActivityIndicatorView!
-    
     @IBOutlet weak var consumptionLbl: UILabel!
     @IBOutlet weak var freeConsumptionLbl: UILabel!
     @IBOutlet weak var paidConsumptionLbl: UILabel!
-    
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
+     //MARK:- Variable
+    var visit:Visit! = nil
+    var layerCorners:UIView! = nil
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let _ = layerCorners{
-            
-        }else{
+        if let _ = layerCorners{}else{
             self.layoutIfNeeded()
             layerCorners = UIView(frame: self.innerView.frame)
             layerCorners.layer.cornerRadius = 13
@@ -44,7 +47,6 @@ class HistoryView: UIView {
             layerCorners.layer.shadowRadius = 10
             self.addSubview(layerCorners)
             self.sendSubviewToBack(layerCorners)
-            
             innerView.layer.masksToBounds = true
             innerView.layer.cornerRadius = 13
         }
@@ -98,6 +100,7 @@ class HistoryView: UIView {
             break
         }
     }
+     //MARK:- rating slider changed
     @IBAction func valueChanged(_ sender: Any) {
         starManipulation(value: Int(self.slider!.value))
          DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -105,18 +108,30 @@ class HistoryView: UIView {
         }
     }
     
-    
+     //MARK:- report as this wasn't me
     @IBAction func thisWasntMeBtnTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Are you sure, you want to report that this was not you?", message: nil, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
             
-           
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
         
     }
+    
+    func thisWasNotMeAPI(){
+        ServiceInterface.thisWasNotMeAPI(visitID: "T##String", rating: 2.0) { (success, result) in
+            
+            if success {
+                
+            }else{
+                
+            }
+        }
+        
+    }
+    
     
     func setInfo(visit:Visit){
         self.visit = visit
@@ -124,10 +139,9 @@ class HistoryView: UIView {
         self.titleLbl.text = self.visit.eventName
         self.descriptionLbl.text = self.visit.visitSummary
         
-       // if let eventImage = self.visit.eventImage{
-            self.getImage(key:self.visit.eventImage ?? "")
-       // }
-        
+        self.getImage(key:self.visit.eventImage ?? "")
+    
+
         if let dateVisited = self.visit.dateVisited{
             if let date = Date(jsonDate: dateVisited){
                 let formatter = DateFormatter()
@@ -158,28 +172,10 @@ class HistoryView: UIView {
     }
     
     
-    func thisWasNotMeAPI(){
-        ServiceInterface.thisWasNotMeAPI(visitID: "T##String", rating: 2.0) { (success, result) in
-            
-            if success {
-                
-            }else{
-                
-            }
-        }
-        
-    }
-    
+   //MARK:-  set rating
     func setRatingAPI(rating:Float){
-        GlobalUI.showLoading(UIApplication.shared.keyWindow!)
         ServiceInterface.setRating(visitID: visit.id!, rating: rating){ (success, result) in
-            GlobalUI.hideLoading()
-            if success{
-                
-            }
-            else{
-                
-            }
+            if success{}
         }
     }
     
@@ -198,7 +194,4 @@ class HistoryView: UIView {
         })
     }
     
-    
-    
-
 }

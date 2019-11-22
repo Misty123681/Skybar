@@ -132,11 +132,11 @@ class EventControllerStep1: ParentController {
     
     fileprivate func setZoneImageSize() {
         let newMultiplier:CGFloat = 0.75
-        
         constraintWidthZoneImage = constraintWidthZoneImage.setMultiplier(multiplier: newMultiplier)
         self.loadViewIfNeeded()
     }
     
+     //MARK:- Get zone image
     func getZone(){
     
         loader.startAnimating()

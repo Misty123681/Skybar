@@ -128,9 +128,7 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
         ServiceInterface.uploadImage(imageData: strBase64, handler: { (success, result) in
             if success {
             }else{
-                if let res = result as? String{
-                    //GlobalUI.showMessage(title: "Error", message: res, cntrl: self)
-                }
+                if (result as? String) != nil{}
             }
         })
     }

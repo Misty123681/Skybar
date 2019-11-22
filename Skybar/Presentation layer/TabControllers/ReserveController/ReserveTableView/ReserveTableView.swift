@@ -15,12 +15,16 @@ enum ReservationType:Int {
 
 class ReserveTableView: UIView {
 
-    var layerCorners:UIView! = nil
+     //MARK:- Outlets
+  
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var statusLbl: UILabel!
     @IBOutlet weak var statusImg: UIImageView!
     @IBOutlet weak var guestsLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
+    
+      //MARK:- variable
+    var layerCorners:UIView! = nil
     var reservation:Reservation! = nil
     weak var parentControler:ReserveController! = nil
     
@@ -42,9 +46,7 @@ class ReserveTableView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let _ = layerCorners{
-            
-        }else{
+        if let _ = layerCorners{}else{
             self.layoutIfNeeded()
             layerCorners = UIView(frame: self.bounds)
             layerCorners.layer.cornerRadius = 13
@@ -70,25 +72,6 @@ class ReserveTableView: UIView {
         self.parentControler = parent
         
         statusLbl.text = reservation.reservationStatusTypeName?.uppercased()
-        
-        /*if let reservationStatus = self.reservation.reservationStatusID,let resStatus = ReservationStatus(rawValue: reservationStatus){
-            switch resStatus{
-            case .Pending:
-                statusLbl.textColor = .orange
-                break
-            case .Rejected:
-                statusLbl.textColor = UIColor.init(red: 241.0/255.0, green: 50.0/255.0, blue: 67.0/255.0, alpha: 1)
-                break
-            default://Confirmed
-                statusLbl.textColor = UIColor.init(red: 33.0/255.0, green: 164.0/255.0, blue: 0, alpha: 1)
-                break
-            }
-        }*/
-        
-        
-        
-      
-        
         
         
         if let reservationStatus = self.reservation.reservationStatusID{
@@ -144,30 +127,3 @@ class ReserveTableView: UIView {
     }
 }
 
-
-extension UIImage {
-    
-    func maskWithColor(color: UIColor) -> UIImage? {
-        let maskImage = cgImage!
-        
-        let width = size.width
-        let height = size.height
-        let bounds = CGRect(x: 0, y: 0, width: width, height: height)
-        
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        let context = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
-        
-        context.clip(to: bounds, mask: maskImage)
-        context.setFillColor(color.cgColor)
-        context.fill(bounds)
-        
-        if let cgImage = context.makeImage() {
-            let coloredImage = UIImage(cgImage: cgImage)
-            return coloredImage
-        } else {
-            return nil
-        }
-    }
-    
-}

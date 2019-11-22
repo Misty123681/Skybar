@@ -10,9 +10,12 @@ import UIKit
 
 class BillCell: UIView {
 
-    var Item:[String:Any]! = nil
+    //MARK:- Outlets
+   
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
+    
+    var Item:[String:Any]! = nil
     
     func setInfo(info:[String:Any]){
         Item = info

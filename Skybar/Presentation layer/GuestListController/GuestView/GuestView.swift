@@ -39,8 +39,7 @@ class GuestView: UIView {
         }
     }
     
- 
-    
+  
      //MARK:- Add Guest
     @IBAction func addAction(_ sender: Any) {
         

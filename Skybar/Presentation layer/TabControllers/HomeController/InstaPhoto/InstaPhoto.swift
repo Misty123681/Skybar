@@ -27,6 +27,7 @@ class InstaPhoto: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+       
         let tap = UITapGestureRecognizer(target: self, action: #selector(openMedia))
         self.addGestureRecognizer(tap)
     }

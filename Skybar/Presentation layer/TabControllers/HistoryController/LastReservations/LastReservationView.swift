@@ -9,13 +9,15 @@
 import UIKit
 
 class LastReservationView: UIView {
-
+    
+     //MARK:- outlets
     @IBOutlet weak var updateDateLbl: UILabel!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var statusLbl: UILabel!
     @IBOutlet weak var guestsLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     
+     //MARK:- Variable
     var reservation:Reservation! = nil
     var layerCorners:UIView! = nil
     

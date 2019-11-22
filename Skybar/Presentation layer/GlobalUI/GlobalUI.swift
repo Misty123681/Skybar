@@ -10,6 +10,7 @@ import UIKit
 public typealias ImageHandler = (_ success:Bool,_ data:Data?) -> Void
 
 class GlobalUI: NSObject {
+    
     static var loadingView:UIView!
     static var loadingIndicator:UIActivityIndicatorView!
     static var cachedImages = [String:Data]()
