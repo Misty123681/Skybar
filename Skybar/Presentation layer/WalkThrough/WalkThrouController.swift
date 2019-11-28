@@ -39,8 +39,9 @@ class WalkThrouController: ParentController{
         return UIStatusBarStyle.default
     }
     
-     // MARK:- Methods
+    // MARK:- Methods
     fileprivate func setUpData() {
+        
         titleArr.append("Free careem pick up and drop off".capitalized)
         descriptionArr.append("Don't drink and drive, just order a Careem ride from the app for free")
         imageArr.append("careem_screen")
@@ -64,7 +65,7 @@ class WalkThrouController: ParentController{
         titleArr.append("Rate The Night".capitalized)
         descriptionArr.append("Tap on the stars to let us know your satisfaction level on that night ")
         imageArr.append("rate_screen")
-    
+        
         titleArr.append("Refer A Star".capitalized)
         descriptionArr.append("Refer star candidates to this program")
         imageArr.append("refer_screen")
@@ -75,7 +76,7 @@ class WalkThrouController: ParentController{
         let nib1 = UINib(nibName: congratCellIdentifier, bundle: nil)
         collectionView.register(nib1, forCellWithReuseIdentifier: congratCellIdentifier)
     }
-  
+    
     
     @IBAction func nextAction(_ sender: Any) {
         let index = Int(collectionView.contentOffset.x/collectionView.getWidth())
@@ -93,7 +94,7 @@ class WalkThrouController: ParentController{
         collectionView.setContentOffset(CGPoint(x: collectionView.contentOffset.x+collectionView.getWidth(), y: 0), animated: true)
     }
     
-   
+    
 }
 
 // MARK:- extension
@@ -131,7 +132,7 @@ extension WalkThrouController:UICollectionViewDataSource,UICollectionViewDelegat
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let index = Int(scrollView.contentOffset.x/scrollView.getWidth())
         guard  index <= 6 else{
-          return
+            return
         }
         if index == 0 {
             titleLbl.text = ""
@@ -148,5 +149,5 @@ extension WalkThrouController:UICollectionViewDataSource,UICollectionViewDelegat
         
         pageControl.currentPage = index
     }
-
+    
 }

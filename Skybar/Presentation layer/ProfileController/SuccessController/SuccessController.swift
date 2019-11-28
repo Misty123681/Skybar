@@ -23,7 +23,7 @@ class WhiteButton:UIButton{
                 layer.tag = 100
                 layer.isUserInteractionEnabled = false
                 layer.layer.cornerRadius = 13
-                layer.backgroundColor = UIColor.white
+                layer.backgroundColor = whiteClr
                 layer.layer.shadowOffset = CGSize.zero
                 layer.layer.shadowColor = UIColor(red:1, green:1, blue:1, alpha:0.73).cgColor
                 layer.layer.shadowOpacity = 1
@@ -39,11 +39,11 @@ class WhiteButton:UIButton{
 class SuccessController: ParentController {
 
     @IBOutlet weak var overlayView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.layoutIfNeeded()
-        // Do any additional setup after loading the view.
         let layer = UIView(frame: self.view.bounds)
         
         let gradient = CAGradientLayer()
@@ -56,24 +56,8 @@ class SuccessController: ParentController {
         gradient.startPoint = CGPoint(x: 0.5, y: 0)
         gradient.endPoint = CGPoint(x: 0.5, y: 0.74)
         layer.layer.addSublayer(gradient)
-        
         self.overlayView.addSubview(layer)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

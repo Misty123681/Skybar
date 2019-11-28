@@ -13,7 +13,7 @@ class BillView: UIView {
     // MARK:- Outlets
     @IBOutlet weak var tabOpenLbl: UILabel!
     @IBOutlet weak var discountPercentageLbl: UILabel!
-    
+                                                                                                                                                                                                                                                                                                                               
     @IBOutlet weak var star5: UIImageView!
     @IBOutlet weak var star4: UIImageView!
     @IBOutlet weak var star3: UIImageView!
@@ -31,11 +31,41 @@ class BillView: UIView {
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     
+    // MARK:- Variable
     var bill:CurrentVisitInfo! = nil
     var layerCorners:UIView! = nil
     weak var controller:UIViewController! = nil
     
     
+    // MARK:- view methods
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if let _ = layerCorners{
+            
+        }else{
+            self.layoutIfNeeded()
+            layerCorners = UIView(frame: self.bounds)
+            layerCorners.layer.cornerRadius = 13
+            layerCorners.backgroundColor = whiteClr
+            layerCorners.layer.shadowOffset = CGSize.zero
+            layerCorners.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.11).cgColor
+            layerCorners.layer.shadowOpacity = 1
+            layerCorners.layer.shadowRadius = 10
+            self.addSubview(layerCorners)
+            self.sendSubviewToBack(layerCorners)
+            
+            innerView.layer.masksToBounds = true
+            innerView.layer.cornerRadius = 13
+        }
+    }
+    
+    
+    /// Share access code functionality
     @IBAction func shareAccessCode(_ sender: Any) {
         let shareAll = ["Please Use \(accessCodeLbl.text!)"]
         let activityViewController = UIActivityViewController(activityItems: shareAll as [Any], applicationActivities: nil)
@@ -48,6 +78,8 @@ class BillView: UIView {
         }
     }
     
+    
+    /// To disable rating view it set with gray images
     func disableAllStars(){
         star1.image = UIImage(named: "stargrey")
         star2.image = UIImage(named: "stargrey")
@@ -55,6 +87,7 @@ class BillView: UIView {
         star4.image = UIImage(named: "stargrey")
         star5.image = UIImage(named: "stargrey")
     }
+    
     
     
     func starManipulation(value:Int){
@@ -108,36 +141,13 @@ class BillView: UIView {
     func setRatingAPI(rating:Float){
         if let id = bill.visitID{
             ServiceInterface.setRating(visitID: id, rating: rating){ (success, result) in
-                
-                if success {
-                    
-                }else{
-                    
+                if success {}else{
                 }
             }
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if let _ = layerCorners{
-            
-        }else{
-            self.layoutIfNeeded()
-            layerCorners = UIView(frame: self.bounds)
-            layerCorners.layer.cornerRadius = 13
-            layerCorners.backgroundColor = UIColor.white
-            layerCorners.layer.shadowOffset = CGSize.zero
-            layerCorners.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.11).cgColor
-            layerCorners.layer.shadowOpacity = 1
-            layerCorners.layer.shadowRadius = 10
-            self.addSubview(layerCorners)
-            self.sendSubviewToBack(layerCorners)
-            
-            innerView.layer.masksToBounds = true
-            innerView.layer.cornerRadius = 13
-        }
-    }
+   
     
     func setInfo(bill:CurrentVisitInfo,eventDate:String?,discount:Float,controller:UIViewController){
         self.controller = controller
@@ -174,8 +184,7 @@ class BillView: UIView {
         }
         
         self.discountPercentageLbl.text = String(format:"%.00f %% Discount Total",discount)
-        
-        
+    
         if let currentTab = self.bill.yourCurrentTab{
             self.currentTabLbl.text = currentTab.toCurrencyNoPrefix()
         }
@@ -193,42 +202,7 @@ class BillView: UIView {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        let tap1 = UITapGestureRecognizer(target: self, action: #selector(tap1Action))
-        star1.addGestureRecognizer(tap1)
-        
-        let tap2 = UITapGestureRecognizer(target: self, action: #selector(tap2Action))
-        star2.addGestureRecognizer(tap2)
-        
-        let tap3 = UITapGestureRecognizer(target: self, action: #selector(tap3Action))
-        star3.addGestureRecognizer(tap3)
-        
-        let tap4 = UITapGestureRecognizer(target: self, action: #selector(tap4Action))
-        star4.addGestureRecognizer(tap4)
-        
-        let tap5 = UITapGestureRecognizer(target: self, action: #selector(tap5Action))
-        star5.addGestureRecognizer(tap5)
-    }
     
-    @objc func tap1Action(){
-        starManipulation(value: 1)
-    }
-    
-    @objc func tap2Action(){
-        starManipulation(value: 2)
-    }
-    
-    @objc func tap3Action(){
-        starManipulation(value: 3)
-    }
-    
-    @objc func tap4Action(){
-        starManipulation(value: 4)
-    }
-    
-    @objc func tap5Action(){
-        starManipulation(value: 5)
-    }
+  
 
 }

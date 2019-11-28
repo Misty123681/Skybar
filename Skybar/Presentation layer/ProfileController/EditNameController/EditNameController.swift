@@ -10,12 +10,38 @@ import UIKit
 import ActionSheetPicker_3_0
 
 class EditNameController: ParentController {
-
+    
+    // MARK:- Outlets
     var directInfo = false
-
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var lastNameTF: UITextField!
     @IBOutlet weak var firstNameTF: UITextField!
+    
+    // MARK:-view Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        lastNameTF.text = ServiceUser.profile?.lastName
+        lastNameTF.placeholder = ServiceUser.profile?.lastName
+        firstNameTF.text = ServiceUser.profile?.firstName
+        firstNameTF.placeholder = ServiceUser.profile?.firstName
+        let tap = UITapGestureRecognizer(target: self, action: #selector(displayTitles))
+        titleLbl.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if directInfo {
+            directInfo = false
+            self.performSegue(withIdentifier: "toInfo", sender: nil)
+        }
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.default
+    }
+    
+    
     @IBAction func backAction(_ sender: Any) {
         if let nav = self.navigationController{
             nav.popViewController(animated: true)
@@ -46,38 +72,12 @@ class EditNameController: ParentController {
             }
         })
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        lastNameTF.text = ServiceUser.profile?.lastName
-        lastNameTF.placeholder = ServiceUser.profile?.lastName
-        
-        firstNameTF.text = ServiceUser.profile?.firstName
-        firstNameTF.placeholder = ServiceUser.profile?.firstName
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(displayTitles))
-        titleLbl.addGestureRecognizer(tap)
-    }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if directInfo {
-            directInfo = false
-            self.performSegue(withIdentifier: "toInfo", sender: nil)
-        }
-    }
+    
 
     @IBAction func nextAction(_ sender: Any) {
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.default
-    }
     
     @objc func displayTitles(){
         ActionSheetMultipleStringPicker.show(withTitle: "Pick your title", rows: [

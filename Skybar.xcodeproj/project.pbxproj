@@ -10,6 +10,8 @@
 		55E1DDE1C4CC31C054A455B8 /* Pods_Skybar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3607E893CCD06800542112 /* Pods_Skybar.framework */; };
 		920E28692343677E0003746B /* Ui+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E28682343677E0003746B /* Ui+Extension.swift */; };
 		92325267233B911100F6291B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92325266233B911000F6291B /* WebKit.framework */; };
+		923F1BC7238F9AE0001A8C36 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923F1BC6238F9AE0001A8C36 /* AppColor.swift */; };
+		923F1BC9238FA40B001A8C36 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923F1BC8238FA40B001A8C36 /* CameraHandler.swift */; };
 		927093302383B5FF00F1F3F6 /* SkybarAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9270932F2383B5FF00F1F3F6 /* SkybarAlert.swift */; };
 		AA0F1F1E2187902400610D40 /* TimelineObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F1F1D2187902400610D40 /* TimelineObject.swift */; };
 		AA0F1F212188DC0300610D40 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F1F202188DC0300610D40 /* NotificationView.swift */; };
@@ -106,6 +108,8 @@
 		2A3607E893CCD06800542112 /* Pods_Skybar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skybar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		920E28682343677E0003746B /* Ui+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ui+Extension.swift"; sourceTree = "<group>"; };
 		92325266233B911000F6291B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		923F1BC6238F9AE0001A8C36 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		923F1BC8238FA40B001A8C36 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		9270932F2383B5FF00F1F3F6 /* SkybarAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkybarAlert.swift; sourceTree = "<group>"; };
 		AA0F1F1D2187902400610D40 /* TimelineObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineObject.swift; sourceTree = "<group>"; };
 		AA0F1F202188DC0300610D40 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -379,6 +383,8 @@
 				920E2867234367590003746B /* Extension */,
 				AA2E075B2105CB070070BE88 /* Helper.swift */,
 				9270932F2383B5FF00F1F3F6 /* SkybarAlert.swift */,
+				923F1BC6238F9AE0001A8C36 /* AppColor.swift */,
+				923F1BC8238FA40B001A8C36 /* CameraHandler.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -917,6 +923,7 @@
 				AAF45AE22126D23C0052E5EB /* ParentObject.swift in Sources */,
 				AA562E3D21E224AF0044DE8F /* BillView.swift in Sources */,
 				AA2E075F2105CD490070BE88 /* LoginControllerViewController.swift in Sources */,
+				923F1BC7238F9AE0001A8C36 /* AppColor.swift in Sources */,
 				AA52371121B718F100ECCC4E /* WalkThrouController.swift in Sources */,
 				AA625627222199EC00A75B51 /* EventControllerStep1.swift in Sources */,
 				AA1D18FF2119FF2500CA4A8F /* SettingsController.swift in Sources */,
@@ -942,6 +949,7 @@
 				AA2E075C2105CB070070BE88 /* Helper.swift in Sources */,
 				AA2E076B2107BC500070BE88 /* EditNameController.swift in Sources */,
 				AA0F1F55218B9F8800610D40 /* LastReservationView.swift in Sources */,
+				923F1BC9238FA40B001A8C36 /* CameraHandler.swift in Sources */,
 				AA2E07652105DB310070BE88 /* ParentController.swift in Sources */,
 				AA52DAFA2114BC2200600B38 /* CardController.swift in Sources */,
 			);
@@ -1147,7 +1155,7 @@
 				CODE_SIGN_ENTITLEMENTS = Skybar/Skybar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = BEPQ8J6P85;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1192,7 +1200,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.csp.skybar;
 				PRODUCT_NAME = "SKY 2.0";
-				PROVISIONING_PROFILE_SPECIFIER = SkybardevelopmentCertificate;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

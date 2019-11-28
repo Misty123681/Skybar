@@ -11,51 +11,50 @@ import MapKit
 import IQKeyboardManagerSwift
 import ActionSheetPicker_3_0
 
-class EditInfoController: ParentController,UITableViewDataSource,UITableViewDelegate {
+class EditInfoController: ParentController{
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var searchTableView: UITableView!
+    @IBOutlet weak var countryCodeTF: UITextField!
+    @IBOutlet weak var addressTF: UITextField!
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var phoneTF: UITextField!
+    
+    // MARK: - variables
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
     var coordinate:CLLocationCoordinate2D! = nil
     var startSearch = false
     var phoneCodes:[PhoneCode]!
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let searchResult = searchResults[indexPath.row]
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.textLabel?.text = searchResult.title
-        cell.detailTextLabel?.text = searchResult.subtitle
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let searchResult = searchResults[indexPath.row]
-        addressTF.text = searchResult.title
-        addressTF.resignFirstResponder()
-        tableView.isHidden = true
+    // MARK: - view cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        emailTF.text = ServiceUser.profile?.email
+        emailTF.placeholder = ServiceUser.profile?.email
+        countryCodeTF.text = ServiceUser.profile?.phoneCode
+        countryCodeTF.placeholder = ServiceUser.profile?.phoneCode
         
-        let searchRequest = MKLocalSearch.Request(completion: searchResult)
-        let search = MKLocalSearch(request: searchRequest)
-        search.start { (response, error) in
-            if let response = response{
-                if response.mapItems.count > 0{
-                    self.coordinate = response.mapItems[0].placemark.coordinate
-                    ServiceUser.location = self.coordinate
-                    print(self.coordinate)
-                }
-            }
+        if let mobileNumber = ServiceUser.profile?.mobile{
+            phoneTF.text = mobileNumber
+            phoneTF.placeholder = mobileNumber
         }
+        addressTF.text = ServiceUser.profile?.address
+        addressTF.placeholder = ServiceUser.profile?.address
+        searchTableView.tableFooterView = UIView()
+        searchCompleter.delegate = self
+        
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
+        getCountryCodes()
     }
     
-
-    @IBOutlet weak var searchTableView: UITableView!
-    @IBOutlet weak var countryCodeTF: UITextField!
-    @IBOutlet weak var addressTF: UITextField!
-    @IBOutlet weak var emailTF: UITextField!
-    @IBOutlet weak var phoneTF: UITextField!
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.default
+    }
+    
+    
     @IBAction func backAction(_ sender: Any) {
         if let nav = self.navigationController{
             nav.popViewController(animated: true)
@@ -78,6 +77,7 @@ class EditInfoController: ParentController,UITableViewDataSource,UITableViewDele
                 }
             }
             
+            //MARK:- update info
             ServiceInterface.updateUserInfo(profile: profile,handler: { (success, result) in
                 GlobalUI.hideLoading()
                 if success {
@@ -131,49 +131,10 @@ class EditInfoController: ParentController,UITableViewDataSource,UITableViewDele
             }
         })
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        emailTF.text = ServiceUser.profile?.email
-        emailTF.placeholder = ServiceUser.profile?.email
-        countryCodeTF.text = ServiceUser.profile?.phoneCode
-        countryCodeTF.placeholder = ServiceUser.profile?.phoneCode
-        
-        if let mobileNumber = ServiceUser.profile?.mobile{
-//            mobileNumber = mobileNumber.replacingOccurrences(of: "+", with: "")
-//            countryCodeTF.text = "+"+String((mobileNumber[...3]))
-            phoneTF.text = mobileNumber
-            phoneTF.placeholder = mobileNumber
-        }
-        addressTF.text = ServiceUser.profile?.address
-        addressTF.placeholder = ServiceUser.profile?.address
-        // Do any additional setup after loading the view.
-        
-        searchTableView.tableFooterView = UIView()
-        searchCompleter.delegate = self
-        
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
-        getCountryCodes()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.default
-    }
-
     
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
     @IBAction func countryCodeAction(_ sender: Any) {
         
         if let codes = phoneCodes{
@@ -190,6 +151,42 @@ class EditInfoController: ParentController,UITableViewDataSource,UITableViewDele
     }
 }
 
+ // MARK: - Table view Delegate
+extension EditInfoController:UITableViewDataSource,UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let searchResult = searchResults[indexPath.row]
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        cell.textLabel?.text = searchResult.title
+        cell.detailTextLabel?.text = searchResult.subtitle
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let searchResult = searchResults[indexPath.row]
+        addressTF.text = searchResult.title
+        addressTF.resignFirstResponder()
+        tableView.isHidden = true
+        
+        let searchRequest = MKLocalSearch.Request(completion: searchResult)
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { (response, error) in
+            if let response = response{
+                if response.mapItems.count > 0{
+                    self.coordinate = response.mapItems[0].placemark.coordinate
+                    ServiceUser.location = self.coordinate
+                    print(self.coordinate)
+                }
+            }
+        }
+    }
+    
+}
+
+ // MARK: -  MKLocalSearchCompleterDelegate
 extension EditInfoController: MKLocalSearchCompleterDelegate {
     
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
@@ -209,7 +206,5 @@ extension EditInfoController: MKLocalSearchCompleterDelegate {
         }
     }
     
-    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        
-    }
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {}
 }

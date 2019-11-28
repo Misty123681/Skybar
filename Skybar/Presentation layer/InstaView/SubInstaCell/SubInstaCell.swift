@@ -11,7 +11,7 @@ import AVKit
 
 class SubInstaCell: UICollectionViewCell {
 
-    //@IBOutlet weak var tagsLbl: UILabel!
+    // MARK:- Outlets
     @IBOutlet weak var likesLbl: UILabel!
     @IBOutlet weak var firstLineLbl: UILabel!
     @IBOutlet weak var playIconBtn: UIButton!
@@ -20,15 +20,16 @@ class SubInstaCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var fullnameLbl: UILabel!
     @IBOutlet weak var usernameLbl: UILabel!
+    @IBOutlet weak var contentView1: UIView!
+    
+    // MARK:- Variable
     var instaObject:InstaMedia!
     var parent:InstaDelegate!
     var player:AVPlayer!
     let playerViewController = AVPlayerViewController()
     
-    @IBOutlet weak var contentView1: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     @IBAction func playAction(_ sender: Any) {
@@ -80,13 +81,10 @@ class SubInstaCell: UICollectionViewCell {
         
         userImageView.imageFromServerURL(urlString: media.user.profilePicture)
         fullnameLbl.text = media.user.fullName
-        
-        
+    
         firstLineLbl.text = media.user.username
         usernameLbl.text = media.user.username
         likesLbl.text = "\(media.likes.count) ❤️"
-        
-        //tagsLbl.text = media.tags?.compactMap({$0.name}).joined(separator:" ")
         captionLbl.text = media.caption.text
         
     }

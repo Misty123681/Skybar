@@ -9,8 +9,8 @@
 import UIKit
 import OneSignal
 
-class SettingsController: ParentController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
+class SettingsController: ParentController {
+    
     //MARK:- Outlet
     @IBOutlet weak var referAStarBtn: UIButton!
     @IBOutlet weak var editBtn: UIButton!
@@ -27,8 +27,6 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
     @IBOutlet weak var membershipLbl: UILabel!
     @IBOutlet weak var levelLbl: UILabel!
     
-    var imagePicker = UIImagePickerController()
-    
     //MARK:- view cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,54 +35,64 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         populateInfo()
+        uiInitize()
+    }
+    
+    fileprivate func uiInitize() {
         self.view.layoutIfNeeded()
-        self.imageView.layer.cornerRadius = self.imageView.getHeight()/2
         
+        self.imageView.layer.cornerRadius = self.imageView.getHeight()/2
         referAStarBtn.layer.masksToBounds = true
         referAStarBtn.layer.cornerRadius = 13
         referAStarBtn.layer.borderWidth = 2
         
-        var color1 = CIColor(color:UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 238.0/255.0, alpha: 1))
-        var color2 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
+      
         if let uiimage = GlobalUI.gradientImage(size: referAStarBtn.bounds.size, color1: color1, color2: color2){
             referAStarBtn.layer.borderColor = UIColor.init(patternImage: uiimage).cgColor
         }
-        
-        color2 = CIColor(color:UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 238.0/255.0, alpha: 1))
-        color1 = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
         if let uiimage = GlobalUI.gradientImage(size: notSwitch.bounds.size, color1: color1, color2: color2){
             notSwitch.onTintColor = UIColor.init(patternImage: uiimage)
         }
-        
     }
+    
+    
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.default
     }
     
     //MARK:- Action
+    
+    /// push notification eanble and disable via button
+    ///
+    /// - Parameter sender: toggle switch input
     @IBAction func notificationChangeValue(_ sender: UISwitch) {
         ServiceUser.setPushNotification(activated: sender.isOn)
         OneSignal.setSubscription(sender.isOn)
     }
     
+    fileprivate func setEditButton(_ title:String,_ bool:Bool) {
+        editBtn.setTitle(title, for: .normal)
+        editInfoBtn.isHidden = bool
+        editNameBtn.isHidden = bool
+        editImgBtn.isHidden = bool
+    }
+    
     @IBAction func editAction(_ sender: Any) {
         if editBtn.tag == 0{
             editBtn.tag = 1
-            editBtn.setTitle("DONE", for: .normal)
-            editInfoBtn.isHidden = false
-            editNameBtn.isHidden = false
-            editImgBtn.isHidden = false
+             setEditButton("DONE", false)
         }else{
             editBtn.tag = 0
-            editBtn.setTitle("EDIT INFO", for: .normal)
-            editInfoBtn.isHidden = true
-            editNameBtn.isHidden = true
-            editImgBtn.isHidden = true
+            setEditButton("EDIT INFO", true)
+            
         }
     }
+    
+    
+    
+    /// logout and clear mobile session ID
     
     @IBAction func logoutAction(_ sender: Any) {
         let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
@@ -97,32 +105,21 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
         self.present(alert, animated: true, completion: nil)
     }
     
+    
     @IBAction func editImageAction(_ sender: Any) {
-        let alert = UIAlertController(title: "Change picture", message: nil, preferredStyle: .actionSheet)
-        let chooseAction = UIAlertAction(title: "Photo album", style: .default) { (action) in
-            self.getImageFromGallery()
-        }
-        let captureAction = UIAlertAction(title: "Take picture", style: .default) { (action) in
-            self.captureImage()
-        }
-        alert.addAction(chooseAction)
-        alert.addAction(captureAction)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    
-    //MARK:- Methods
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        imageView.image = image
-        imagePicker.dismiss(animated: true, completion: nil)
-        if let data = image?.jpegData(compressionQuality:0.5){
-            uploadImage(data)
+        CameraHandler.shared.showActionSheet(vc: self)
+        CameraHandler.shared.imagePickedBlock = { (image) in
+            self.imageView.image = image
+            if let data = image.jpegData(compressionQuality: 0.5){
+                self.uploadImage(data)
+            }
         }
     }
     
-    
+
+    /// upload image with base 64
+    ///
+    /// - Parameter data: input data bytes
     func uploadImage(_ data:Data){
         let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
         ServiceInterface.uploadImage(imageData: strBase64, handler: { (success, result) in
@@ -133,26 +130,12 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
         })
     }
     
-    func captureImage(){
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-            imagePicker.cameraDevice = .front
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-    }
     
-    func getImageFromGallery(){
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            imagePicker.delegate = self
-            imagePicker.sourceType = .savedPhotosAlbum;
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-    }
-    
-  
+    /// set profile info
     func populateInfo(){
+        
         notSwitch.isOn = ServiceUser.getPushNotification()
+        
         if let profile = ServiceUser.profile{
             fNameLbl.text = profile.firstName
             lNameLbl.text = profile.lastName
@@ -164,35 +147,37 @@ class SettingsController: ParentController,UINavigationControllerDelegate, UIIma
             notSwitch.isOn = ServiceUser.getPushNotification()
         }else{
             let userDefaults = UserDefaults.standard
-             fNameLbl.text = userDefaults.value(forKey: "firstName") as? String ?? ""
-             lNameLbl.text = userDefaults.value(forKey: "lastName")as? String ?? ""
-             emailLbl.text = userDefaults.value(forKey: "email")as? String ?? ""
+            fNameLbl.text = userDefaults.value(forKey: "firstName") as? String ?? ""
+            lNameLbl.text = userDefaults.value(forKey: "lastName")as? String ?? ""
+            emailLbl.text = userDefaults.value(forKey: "email")as? String ?? ""
             let mobile = userDefaults.value(forKey: "mobile")as? String ?? ""
             let code =  userDefaults.value(forKey: "phoneCode")as? String ?? ""
             mobileLbl.text = code + mobile
             addressLbl.text = userDefaults.value(forKey: "address") as? String ?? ""
             levelLbl.text = ServiceUser.getTypeLevel()
             let membership = userDefaults.value(forKey: "starMembershipSeed") as? Int ?? 0
-             membershipLbl.text = "Membership STAR \(String(format: "%04d", membership))"
+            membershipLbl.text = "Membership STAR \(String(format: "%04d", membership))"
         }
     }
     
+
+    /// get profile pick
     func getImage(){
-          let id = ServiceUser.getProfileId()
-            ServiceInterface.getImage(imageName: "\(id).jpg", handler: { (success, result) in
-                
-                if success {
-                    if let data = result as? Data{
-                        OperationQueue.main.addOperation {
-                            self.imageView.image = UIImage(data: data)
-                        }
-                    }
-                }else{
-                    if let res = result as? String{
-                        GlobalUI.showMessage(title: "Error", message: res, cntrl: self)
+        let id = ServiceUser.getProfileId()
+        ServiceInterface.getImage(imageName: "\(id).jpg", handler: { (success, result) in
+            
+            if success {
+                if let data = result as? Data{
+                    OperationQueue.main.addOperation {
+                        self.imageView.image = UIImage(data: data)
                     }
                 }
-            })
+            }else{
+                if let res = result as? String{
+                    GlobalUI.showMessage(title: "Error", message: res, cntrl: self)
+                }
+            }
+        })
     }
-
+    
 }

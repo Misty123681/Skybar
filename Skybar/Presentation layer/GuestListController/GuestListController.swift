@@ -14,7 +14,7 @@ import IQKeyboardManagerSwift
 class GuestListController: ParentController {
     
     // MARK:- outlets
-
+    
     @IBOutlet weak var accessCodeLbl: UILabel!
     @IBOutlet weak var accessCodeShareBtn: UIButton!
     @IBOutlet weak var calendarIcon: UIImageView!
@@ -35,7 +35,7 @@ class GuestListController: ParentController {
     // MARK:- View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         setInfo()
         self.populateGuests()
         NotificationCenter.default.addObserver(self, selector: #selector(NetworkIssue), name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
@@ -65,7 +65,7 @@ class GuestListController: ParentController {
         }
     }
     
-      // MARK:- Populates guests
+    // MARK:- Populates guests
     func populateGuests(){
         self.view.layoutIfNeeded()
         container.subviews.forEach({ $0.removeFromSuperview() })
@@ -103,26 +103,21 @@ class GuestListController: ParentController {
                         
                         self.guestCountLbl.isHidden = (self.guests.count == 0)
                         self.guestCountLbl.text = "Guests(\(self.guests.count)/8)"
-
-                        //self.accessCodeLbl.isHidden = self.guestCountLbl.isHidden/
-                        //self.accessCodeShareBtn.isHidden = self.guestCountLbl.isHidden
-                       
-                            if self.guests.count == 0{
+                        
+                        if self.guests.count == 0{
+                            self.accessCodeLbl.isHidden = true
+                            self.accessCodeShareBtn.isHidden = true
+                        }else{
+                            if self.reservationCode != ""{
+                                self.accessCodeLbl.isHidden = false
+                                self.accessCodeShareBtn.isHidden = false
+                            }else{
                                 self.accessCodeLbl.isHidden = true
                                 self.accessCodeShareBtn.isHidden = true
-                            }else{
-                                if self.reservationCode != ""{
-                                    self.accessCodeLbl.isHidden = false
-                                    self.accessCodeShareBtn.isHidden = false
-                                }else{
-                                    self.accessCodeLbl.isHidden = true
-                                    self.accessCodeShareBtn.isHidden = true
-                                }
-                               
+                            }
+                            
                         }
-                       
                     }
-                    
                 }
                 catch let error{
                     print(error)
@@ -135,7 +130,8 @@ class GuestListController: ParentController {
         })
     }
     
-     // MARK:- UiInitialise
+    // MARK:- UiInitialise
+    
     fileprivate func setInfo(){
         accessCodeLbl.text = "\(reservationCode)"
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 10

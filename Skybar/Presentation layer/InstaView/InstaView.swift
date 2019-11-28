@@ -9,16 +9,19 @@
 import UIKit
 import AVKit
 
-class InstaView: UIView,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class InstaView: UIView {
     
+    // MARK:- Outlets
     @IBOutlet weak var heightCollection: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
     
+     // MARK:- variable
     var parent:InstaDelegate! = nil
     var instaArray:[InstaMedia]! = nil
     let cellIdentifier = "SubInstaCell"
     var currentIndex = 0
     var cellHeight = CGFloat()
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,6 +52,11 @@ class InstaView: UIView,UICollectionViewDataSource,UICollectionViewDelegateFlowL
        self.removeFromSuperview()
     }
     
+    
+}
+
+// MARK:- collection view
+extension InstaView:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let _ = instaArray{
             return instaArray.count
@@ -64,15 +72,13 @@ class InstaView: UIView,UICollectionViewDataSource,UICollectionViewDelegateFlowL
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
         return size(for: indexPath)
     }
     
     private func size(for indexPath: IndexPath) -> CGSize {
         let cell = Bundle.main.loadNibNamed("SubInstaCell", owner: self, options: nil)?.first as! SubInstaCell
         
-        // configure cell with data in it
-         cell.setMedia(instaArray[indexPath.row], index: indexPath.row, parent: parent!)
+        cell.setMedia(instaArray[indexPath.row], index: indexPath.row, parent: parent!)
         
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
@@ -85,11 +91,8 @@ class InstaView: UIView,UICollectionViewDataSource,UICollectionViewDelegateFlowL
         
         // get size with width that you want and automatic height
         let size = cell.contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .defaultHigh, verticalFittingPriority: .fittingSizeLevel)
-        // if you want height and width both to be dynamic use below
-        // let size = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         
         return size
     }
 }
-
 

@@ -39,7 +39,14 @@ class EventView: UIView {
     }
     
    
-    @IBAction func shareAction(_ sender: Any) {
+    /**
+     method is used to share the access code to guest user
+     
+            Please use access code:"fdffdf"
+     - this to share guest
+     
+   */
+   @IBAction func shareAction(_ sender: Any) {
         if shareLink.isEmpty{
             if let name = self.event.name, let _ = self.event.description{
                 if event.reservationInfo?.reservationAccessCode == "" || event.reservationInfo?.reservationAccessCode == nil{
@@ -58,7 +65,9 @@ class EventView: UIView {
             controller.present(activityViewController, animated: true, completion: nil)
         }
     }
+ 
     
+   
     @IBAction func reserveAction(_ sender: Any) {
         if let controller = controller as? ReserveController{
             controller.selectEvent(info: event)
@@ -83,7 +92,7 @@ class EventView: UIView {
             self.layoutIfNeeded()
             layerCorners = UIView(frame: self.bounds)
             layerCorners.layer.cornerRadius = 13
-            layerCorners.backgroundColor = UIColor.white
+            layerCorners.backgroundColor = whiteClr
             layerCorners.layer.shadowOffset = CGSize.zero
             layerCorners.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.11).cgColor
             layerCorners.layer.shadowOpacity = 1
@@ -105,6 +114,7 @@ class EventView: UIView {
             }
         }
     }
+    
     
     func setInfo(event:Event,controller:UIViewController,cnt:Int){
         
@@ -183,6 +193,7 @@ class EventView: UIView {
     }
     
     
+    ///download the image
     fileprivate func getEventImage(_ key: String,cnt:Int) {
         
         self.loader.startAnimating()
@@ -211,6 +222,13 @@ class EventView: UIView {
     
     
     // MARK:- check event image in cache
+    
+    
+    /// this methods download the image with key before download it checkes for cache memory to have image
+    ///
+    /// - Parameters:
+    ///   - key: string as image input key
+    ///   - cnt: int as total number of imges
     func getImage(key:String,cnt:Int){
 
         if let controller = self.controller as? HomeController{

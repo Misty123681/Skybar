@@ -27,7 +27,7 @@ class TermsController: ParentController {
             webView.load(URLRequest(url:url))
             webView.navigationDelegate = self
         }
-          self.webviewHt.constant = self.view.frame.size.height
+        self.webviewHt.constant = self.view.frame.size.height
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {

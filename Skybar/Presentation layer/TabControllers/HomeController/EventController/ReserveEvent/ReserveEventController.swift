@@ -30,6 +30,30 @@ class ReserveEventController: ParentController {
     var minimumLimit = 0
     var maximumLimit = 15
     
+    // MARK:- view cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.layoutIfNeeded()
+        self.guestNumberLbl.text = "\(guestCount)"
+        enablePlusButton()
+        disableMinusButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        barBtn.tag = 11
+        setGradientBgToButton(btn: barBtn)
+        tableBtn.tag = 0
+        setGradientBgToButton(btn: tableBtn)
+        plusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
+        minusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
+        GlobalUI.showLoading(self.view)
+        getReservationRules()
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .default
+    }
+    
     
    //MARK:- action & methods
 
@@ -48,6 +72,10 @@ class ReserveEventController: ParentController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    /// increse the no of guest by 2
+    ///
+    /// - Parameter sender: input button
     @IBAction func plusAction(_ sender: Any) {
         guestCount += 2
         self.guestNumberLbl.text = "\(guestCount)"
@@ -55,7 +83,7 @@ class ReserveEventController: ParentController {
             enableMinusButton()
         }
 
-        if(guestCount >= self.maximumLimit){
+        if(guestCount >= self.maximumLimit){ // guestcnt >= maxlimit then its tbl else bar
             if(reservationType == 1){
                 tableAction(self.view)
                 maxLbl.text = "The reservation has become a table booking"
@@ -65,6 +93,9 @@ class ReserveEventController: ParentController {
         }
     }
     
+    /// decrease the the no of guest by 2
+    ///
+    /// - Parameter sender: input button
     @IBAction func minusAction(_ sender: Any) {
         guestCount -= 2
         enablePlusButton()
@@ -84,29 +115,29 @@ class ReserveEventController: ParentController {
     
     func enableMinusButton(){
         self.minusBtn.layer.borderWidth = 1
-        self.minusBtn.layer.borderColor = UIColor(red:0.08, green:0.34, blue:0.8, alpha:1).cgColor
-        self.minusBtn.setTitleColor(UIColor(red:0.08, green:0.34, blue:0.8, alpha:1), for: .normal)
+        self.minusBtn.layer.borderColor = blueColorTheme.cgColor
+        self.minusBtn.setTitleColor(blueColorTheme, for: .normal)
         minusBtn.isEnabled = true
     }
     
     func enablePlusButton(){
         self.plusBtn.layer.borderWidth = 1
-        self.plusBtn.layer.borderColor = UIColor(red:0.08, green:0.34, blue:0.8, alpha:1).cgColor
-        self.plusBtn.setTitleColor(UIColor(red:0.08, green:0.34, blue:0.8, alpha:1), for: .normal)
+        self.plusBtn.layer.borderColor = blueColorTheme.cgColor
+        self.plusBtn.setTitleColor(blueColorTheme, for: .normal)
         plusBtn.isEnabled = true
     }
     
     func disableMinusButton(){
         self.minusBtn.layer.borderWidth = 1
-        self.minusBtn.layer.borderColor = UIColor.gray.cgColor
-        self.minusBtn.setTitleColor(UIColor.gray, for: .normal)
+        self.minusBtn.layer.borderColor = grayColor.cgColor
+        self.minusBtn.setTitleColor(grayColor, for: .normal)
         minusBtn.isEnabled = false
     }
     
     func disablePlusButton(){
         self.plusBtn.layer.borderWidth = 1
-        self.plusBtn.layer.borderColor = UIColor.gray.cgColor
-        self.plusBtn.setTitleColor(UIColor.gray, for: .normal)
+        self.plusBtn.layer.borderColor = grayColor.cgColor
+        self.plusBtn.setTitleColor(grayColor, for: .normal)
         plusBtn.isEnabled = false
     }
     
@@ -137,30 +168,7 @@ class ReserveEventController: ParentController {
         })
     }
     
-    // MARK:- view cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.layoutIfNeeded()
-        self.guestNumberLbl.text = "\(guestCount)"
-        enablePlusButton()
-        disableMinusButton()
-    }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        barBtn.tag = 11
-        setGradientBgToButton(btn: barBtn)
-        tableBtn.tag = 0
-        setGradientBgToButton(btn: tableBtn)
-        plusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
-        minusBtn.titleEdgeInsets = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
-        GlobalUI.showLoading(self.view)
-        getReservationRules()
-    }
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .default
-    }
 
     
     
@@ -213,31 +221,10 @@ class ReserveEventController: ParentController {
     
     func setGradientBgToButton(btn: UIButton){
         if(btn.tag == 11){
-            btn.setTitleColor(.white, for: .normal)
-            let overlayer = UIView(frame: btn.bounds)
-            overlayer.tag = 10
-            overlayer.layer.cornerRadius = btn.frame.size.height/2
-            
-            let gradient = CAGradientLayer()
-            gradient.frame = btn.bounds
-            gradient.colors = [
-                UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
-                UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
-            ]
-            gradient.locations = [0, 1]
-            gradient.startPoint = CGPoint(x: 1, y: 0.2)
-            gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
-            gradient.cornerRadius = btn.frame.size.height/2
-            
-            overlayer.layer.addSublayer(gradient)
-            
-            btn.addSubview(overlayer)
-            btn.sendSubviewToBack(overlayer)
+           btn.setGradient()
         }else{
-            btn.setTitleColor(UIColor.init(red: 0, green: 164.0/255.0, blue: 242.0/255.0, alpha: 1), for: .normal)
-            
+            btn.setTitleColor(titleBlueClr, for: .normal)
             if let view = btn.viewWithTag(10){
-                
                 view.removeFromSuperview()
             }
         }

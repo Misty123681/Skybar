@@ -11,11 +11,11 @@ import UIKit
 class ServiceInterface: NSObject {
     
      // MARK:- Development
-   //static let hostURL = "http://40.76.73.185/SkybarstarTest/UserAppService/" // testing
+   static let hostURL = "http://40.76.73.185/SkybarstarTest/UserAppService/" // testing
     
     // MARK:- Distribution
     
-   static let hostURL = "http://skybarstar.com/UserAppService/" // live
+   //static let hostURL = "http://skybarstar.com/UserAppService/" // live
     
     static let cache = NSCache<AnyObject, AnyObject>()
     

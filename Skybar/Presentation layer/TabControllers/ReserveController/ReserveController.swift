@@ -7,6 +7,15 @@
 //
 
 import UIKit
+/**
+ enum for event reservation status
+ 
+ #  important  #
+   - 1 for submitted
+   - 2 pending the request
+   - 3 Approved the request
+   - 4 Approved
+ */
 
 enum ReservationStatus:Int{
     case Submitted = 1
@@ -16,23 +25,41 @@ enum ReservationStatus:Int{
 }
 
 class ReserveController: ParentController {
-
+    
+    // MARK:- Outlets
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var eventsContainer: UIScrollView!
     @IBOutlet weak var tableContainer: UIScrollView!
+    
+     // MARK:- Variables
     var cacheEventImages = [NSCache<NSString, UIImage>]()
     var events:[Event]!
     var editEvent = false
     var filter = false
     
+     // MARK:- view cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         getEvents()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.cacheEventImages = [NSCache<NSString, UIImage>]() // cleae cache for event images
+        getReservations()
     }
     
     
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get{return .default}
+    }
+    
+     // MARK:- Functions and IBoutlets
+    
+    /// search functionlity for events
+    ///
+    /// - Parameter tf: input as txtfield
     @IBAction func editChange(_ tf: UITextField) {
      
         if (tf.text?.isEmpty)!{
@@ -59,6 +86,7 @@ class ReserveController: ParentController {
         }
     }
     
+    
     func populateEvents(events:[Event]){
         self.view.layoutIfNeeded()
         eventsContainer.subviews.forEach({ $0.removeFromSuperview() })
@@ -83,6 +111,8 @@ class ReserveController: ParentController {
         eventsContainer.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: y, right: 0)
     }
     
+    
+    /// get all current event list
     func getEvents(){
         ServiceInterface.getCurrentEvents{ (success, result) in
             if let data = result as? Data{
@@ -145,11 +175,39 @@ class ReserveController: ParentController {
         }
     }
     
+    
+    
+    /// get all upcoming reservation list
+    func getReservations(){
+        ServiceInterface.getMyResevations{ (success, result) in
+            if let data = result as? Data{
+                do{
+                    let reservations = try JSONDecoder().decode([Reservation].self, from: data)
+                    OperationQueue.main.addOperation({
+                        self.populateReservations(reservations:reservations)
+                    })
+                }
+                catch let ex{
+                    print(ex)
+                }
+            }
+        }
+    }
+    
+ 
+    /// Tap on one of the upcoming event for modification
+    @objc func toEvent(gesture:UIGestureRecognizer){
+        if let eventView = gesture.view as? EventView,let info = eventView.event{
+            selectEvent(info: info)
+        }
+    }
+    
+    
     func selectEvent(info:Event){
         
         if let reservationstatusID = info.reservationInfo?.reservationStatusID{
             switch reservationstatusID{
-            case 1,2,3,4:
+            case 1,2,3,4: // asking for modification
                 let alert = UIAlertController(title: "Are you sure you want to Modify the Reservation?", message: nil, preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
@@ -170,43 +228,8 @@ class ReserveController: ParentController {
         
     }
     
-    func getReservations(){
-        ServiceInterface.getMyResevations{ (success, result) in
-            if let data = result as? Data{
-                do{
-                    let reservations = try JSONDecoder().decode([Reservation].self, from: data)
-                    OperationQueue.main.addOperation({
-                        self.populateReservations(reservations:reservations)
-                    })
-                }
-                catch let ex{
-                    print(ex)
-                }
-            }
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-          self.cacheEventImages = [NSCache<NSString, UIImage>]()
-    
-        getReservations()
-    }
-    
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        get{
-            return .default
-        }
-    }
-    
-    @objc func toEvent(gesture:UIGestureRecognizer){
-        if let eventView = gesture.view as? EventView,let info = eventView.event{
-            selectEvent(info: info)
-        }
-    }
-    
 
+    /// segue method called before perform the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toEvent"){
             let eventCntrl = segue.destination as! EventController

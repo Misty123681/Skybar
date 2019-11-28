@@ -11,10 +11,27 @@ import ActionSheetPicker_3_0
 
 class ResendController: ParentController {
 
+    // MARK:- Outlets
     @IBOutlet weak var countryCodeTF: UITextField!
     @IBOutlet weak var phoneNumberTF: UITextField!
     var phoneCodes:[PhoneCode]!
     
+    // MARK:- view cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        getCountryCodes()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        phoneNumberTF.becomeFirstResponder()
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.default
+    }
+    
+    // MARK:-  get country code
     func getCountryCodes(){
         GlobalUI.showLoading(self.view)
         
@@ -36,10 +53,7 @@ class ResendController: ParentController {
         })
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getCountryCodes()
-    }
+    
 
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -56,12 +70,8 @@ class ResendController: ParentController {
             return
         }
         
-        
-        //countryCodeTF.resignFirstResponder()
         phoneNumberTF.resignFirstResponder()
-        
         GlobalUI.showLoading(self.view)
-        
         let mobileNumber = countryCodeTF.text! + phoneNumberTF.text!
         
         ServiceInterface.resendCode(mobileNumber: mobileNumber, handler: { (success, result) in
@@ -86,20 +96,6 @@ class ResendController: ParentController {
         })
         
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        phoneNumberTF.becomeFirstResponder()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.default
-    }
     
     @IBAction func countryCodeAction(_ sender: Any) {
         
@@ -115,15 +111,5 @@ class ResendController: ParentController {
             }, cancel: { ActionMultipleStringCancelBlock in return }, origin: self.view)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

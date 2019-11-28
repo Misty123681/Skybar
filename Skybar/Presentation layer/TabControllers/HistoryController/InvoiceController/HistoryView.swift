@@ -12,7 +12,6 @@ class HistoryView: UIView {
     
      //MARK:- outlets
     
-   
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var star5: UIImageView!
@@ -40,7 +39,7 @@ class HistoryView: UIView {
             self.layoutIfNeeded()
             layerCorners = UIView(frame: self.innerView.frame)
             layerCorners.layer.cornerRadius = 13
-            layerCorners.backgroundColor = UIColor.white
+            layerCorners.backgroundColor = whiteClr
             layerCorners.layer.shadowOffset = CGSize.zero
             layerCorners.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.11).cgColor
             layerCorners.layer.shadowOpacity = 1
@@ -61,7 +60,7 @@ class HistoryView: UIView {
     }
     
     func starManipulation(value:Int){
-        
+
         switch value {
         case 0:
             disableAllStars()
@@ -100,6 +99,7 @@ class HistoryView: UIView {
             break
         }
     }
+    
      //MARK:- rating slider changed
     @IBAction func valueChanged(_ sender: Any) {
         starManipulation(value: Int(self.slider!.value))
@@ -167,6 +167,7 @@ class HistoryView: UIView {
         
         if let rating = self.visit.visitRatingValue{
             starManipulation(value: Int(rating))
+            //self.slider.isEnabled = false
         }
         
     }

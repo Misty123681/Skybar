@@ -10,7 +10,8 @@ import UIKit
 import WebKit
 
 class CardController: ParentController {
-
+    
+    // MARK: -  outlets
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var levelLbl: UILabel!
@@ -18,25 +19,26 @@ class CardController: ParentController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cardIV: UIImageView!
     
-
-    
+     // MARK: - view cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.layoutIfNeeded()
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
        
         if let url = URL(string:"http://skybarstar.com/privacy.html"){
                webView.load(URLRequest(url:url))
-            
         }
         
         if let profile = ServiceUser.profile{
             nameLbl.text = profile.firstName+" "+profile.lastName
             levelLbl.text = "STAR \(String(format: "%04d", profile.starMembershipSeed))"
-            
         }
          getImage()
+    }
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .default
     }
     
     @IBAction func sendMeKeyAction(_ sender: Any) {
@@ -63,6 +65,7 @@ class CardController: ParentController {
         }
     }
     
+    // MARK:- get image
     func getImage(){
         if let profile = ServiceUser.profile{
             ServiceInterface.getImage(imageName: "\(profile.id).jpg", handler: { (success, result) in
@@ -82,9 +85,4 @@ class CardController: ParentController {
         }
     }
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .default
-    }
-    
-
 }

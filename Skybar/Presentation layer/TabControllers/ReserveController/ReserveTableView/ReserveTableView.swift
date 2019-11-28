@@ -34,6 +34,8 @@ class ReserveTableView: UIView {
         self.addGestureRecognizer(tap)
     }
     
+    
+    /// call on tap
     @objc func callAction(){
         if let url = URL(string: "tel://\(ServiceUser.contactPhoneNumber)"), UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {
@@ -50,14 +52,13 @@ class ReserveTableView: UIView {
             self.layoutIfNeeded()
             layerCorners = UIView(frame: self.bounds)
             layerCorners.layer.cornerRadius = 13
-            layerCorners.backgroundColor = UIColor.white
+            layerCorners.backgroundColor = whiteClr
             layerCorners.layer.shadowOffset = CGSize.zero
             layerCorners.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.11).cgColor
             layerCorners.layer.shadowOpacity = 1
             layerCorners.layer.shadowRadius = 10
             self.addSubview(layerCorners)
             self.sendSubviewToBack(layerCorners)
-            
             innerView.layer.masksToBounds = true
             innerView.layer.cornerRadius = 13
         }
@@ -68,12 +69,14 @@ class ReserveTableView: UIView {
     }
     
     func setInfo(reservation:Reservation,parent:ReserveController){
+        
         self.reservation = reservation
         self.parentControler = parent
         
         statusLbl.text = reservation.reservationStatusTypeName?.uppercased()
         
         
+        /// reservation status
         if let reservationStatus = self.reservation.reservationStatusID{
             switch reservationStatus{
             case 1://Processing||Submitted
@@ -103,7 +106,6 @@ class ReserveTableView: UIView {
              
             }
         }
-        
         
         if let reservationtypeName = self.reservation.reservationTypeName{
             self.dateLbl.text = reservationtypeName

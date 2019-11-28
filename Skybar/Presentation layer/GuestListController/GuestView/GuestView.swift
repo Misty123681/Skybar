@@ -17,13 +17,14 @@ class GuestView: UIView {
     @IBOutlet weak var statusLbl: UILabel!
     
     //MARK:- properties
-
+    
     var parent:GuestListController!
     var guest:GuestElement!
     var guestCount:Int!
     var eventId:String!
     var layerCorners:UIView! = nil
-
+    
+    
     //MARK:- Remove Guest
     @IBAction func removeAction(_ sender: Any) {
         GlobalUI.showLoading(parent.view)
@@ -39,8 +40,8 @@ class GuestView: UIView {
         }
     }
     
-  
-     //MARK:- Add Guest
+    
+    //MARK:- Add Guest with validation
     @IBAction func addAction(_ sender: Any) {
         
         if (nameTF.text?.isEmpty)!{
@@ -49,7 +50,7 @@ class GuestView: UIView {
         }
         
         if (nameTF.text?.isEmptyField)! {
-              displayError(title: "Missing information", message: "This field cannot be left blank")
+            displayError(title: "Missing information", message: "This field cannot be left blank")
             return
         }
         
@@ -75,13 +76,11 @@ class GuestView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let _ = layerCorners{
-            
-        }else if !innerView.isHidden{
+        if let _ = layerCorners{}else if !innerView.isHidden{
             self.layoutIfNeeded()
             layerCorners = UIView(frame: self.bounds)
             layerCorners.layer.cornerRadius = 13
-            layerCorners.backgroundColor = UIColor.white
+            layerCorners.backgroundColor = whiteClr
             layerCorners.layer.shadowOffset = CGSize.zero
             layerCorners.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.11).cgColor
             layerCorners.layer.shadowOpacity = 1
@@ -101,8 +100,9 @@ class GuestView: UIView {
     }
     
     //MARK:- Set guest info
-
+    
     func setInfo(guest:GuestElement, guestCount:Int, eventId:String,parent:GuestListController){
+        
         self.parent = parent
         self.guest = guest
         self.guestCount = guestCount
@@ -110,12 +110,13 @@ class GuestView: UIView {
         
         nameLbl.text = guest.guestFullName
         nameTF.text = guest.guestFullName
+        
         if let enteredDate = guest.enteredDate{
             statusLbl.textColor = UIColor.init(red: 0.13, green: 0.64, blue: 0, alpha: 1)
             statusLbl.text = "Entered at \(enteredDate)"
         }
         
-        if guest.statusName == "Not In Venue Yet"{
+        if guest.statusName == "Not In Venue Yet"{  // guest is not arrived
             
             if let createDate = guest.creatededDate{
                 if let date = Date(jsonDate: createDate){
@@ -128,7 +129,7 @@ class GuestView: UIView {
                 }
             }
         }
-        else if guest.statusName == "In Venue"{
+        else if guest.statusName == "In Venue"{   // guest is arrived
             
             if let enterDate = guest.enteredDate{
                 if let date = Date(jsonDate: enterDate){
@@ -141,9 +142,8 @@ class GuestView: UIView {
                 }
             }
             
-            statusLbl.backgroundColor = UIColor.gray
+            statusLbl.backgroundColor = grayColor
         }
-  
+        
     }
-    
 }

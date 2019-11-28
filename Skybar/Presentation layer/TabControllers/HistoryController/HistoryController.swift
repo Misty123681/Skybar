@@ -71,8 +71,11 @@ class HistoryController: ParentController {
                     let historyView:HistoryView = HistoryView.fromNib()
                     historyView.frame = CGRect(x: 0, y: y, width: container.frame.size.width, height: historyView.frame.size.height)
                     y += (historyView.frame.size.height+20)
+                
                     historyView.setInfo(visit: visit)
                     container.addSubview(historyView)
+                   // let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toInvoice))
+                   // historyView.addGestureRecognizer(tapGesture)
 
                 }
                 break

@@ -187,29 +187,29 @@ class EventController: ParentController {
     
     func enableMinusButton(){
         self.minusBtn.layer.borderWidth = 1
-        self.minusBtn.layer.borderColor = UIColor(red:0.08, green:0.34, blue:0.8, alpha:1).cgColor
-        self.minusBtn.setTitleColor(UIColor(red:0.08, green:0.34, blue:0.8, alpha:1), for: .normal)
+        self.minusBtn.layer.borderColor = blueColorTheme.cgColor
+        self.minusBtn.setTitleColor(blueColorTheme, for: .normal)
         minusBtn.isEnabled = true
     }
     
     func enablePlusButton(){
         self.plusBtn.layer.borderWidth = 1
-        self.plusBtn.layer.borderColor = UIColor(red:0.08, green:0.34, blue:0.8, alpha:1).cgColor
-        self.plusBtn.setTitleColor(UIColor(red:0.08, green:0.34, blue:0.8, alpha:1), for: .normal)
+        self.plusBtn.layer.borderColor = blueColorTheme.cgColor
+        self.plusBtn.setTitleColor(blueColorTheme, for: .normal)
         plusBtn.isEnabled = true
     }
     
     func disableMinusButton(){
         self.minusBtn.layer.borderWidth = 1
-        self.minusBtn.layer.borderColor = UIColor.gray.cgColor
-        self.minusBtn.setTitleColor(UIColor.gray, for: .normal)
+        self.minusBtn.layer.borderColor = grayColor.cgColor
+        self.minusBtn.setTitleColor(grayColor, for: .normal)
         minusBtn.isEnabled = false
     }
     
     func disablePlusButton(){
         self.plusBtn.layer.borderWidth = 1
-        self.plusBtn.layer.borderColor = UIColor.gray.cgColor
-        self.plusBtn.setTitleColor(UIColor.gray, for: .normal)
+        self.plusBtn.layer.borderColor = grayColor.cgColor
+        self.plusBtn.setTitleColor(grayColor, for: .normal)
         plusBtn.isEnabled = false
     }
     
@@ -335,34 +335,14 @@ class EventController: ParentController {
         setGradientBgToButton(btn: tableBtn)
     }
     
+  
+    
     func setGradientBgToButton(btn: UIButton){
-        
         if(btn.tag == 11){
-            btn.setTitleColor(.white, for: .normal)
-            let overlayer = UIView(frame: btn.bounds)
-            overlayer.tag = 10
-            overlayer.layer.cornerRadius = btn.frame.size.height/2
-            
-            let gradient = CAGradientLayer()
-            gradient.frame = btn.bounds
-            gradient.colors = [
-                UIColor(red:0, green:0.64, blue:0.95, alpha:1).cgColor,
-                UIColor(red:0.04, green:0.22, blue:0.61, alpha:1).cgColor
-            ]
-            gradient.locations = [0, 1]
-            gradient.startPoint = CGPoint(x: 1, y: 0.2)
-            gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
-            gradient.cornerRadius = btn.frame.size.height/2
-            
-            overlayer.layer.addSublayer(gradient)
-            
-            btn.addSubview(overlayer)
-            btn.sendSubviewToBack(overlayer)
+            btn.setGradient()
         }else{
-            btn.setTitleColor(UIColor.init(red: 0, green: 164.0/255.0, blue: 242.0/255.0, alpha: 1), for: .normal)
-            
+            btn.setTitleColor(titleBlueClr, for: .normal)
             if let view = btn.viewWithTag(10){
-                
                 view.removeFromSuperview()
             }
         }

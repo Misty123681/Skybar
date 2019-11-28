@@ -38,7 +38,7 @@ class StarPrivilegesController: ParentController, WKUIDelegate, WKNavigationDele
             return .default
         }
     }
-    
+  
     // MARK:- action & methods
     
     @IBAction func popController(_ sender: Any) {
@@ -97,7 +97,6 @@ class StarPrivilegesController: ParentController, WKUIDelegate, WKNavigationDele
 
 extension StarPrivilegesController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let _ = privileges{return privileges.count}
         return 0
     }
     

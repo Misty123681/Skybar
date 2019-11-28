@@ -30,7 +30,7 @@ class PrivilegesCell: UITableViewCell {
             self.innerView.layoutIfNeeded()
             layerOverlay = UIView(frame: self.innerView.bounds)
             layerOverlay.layer.cornerRadius = 13
-            layerOverlay.backgroundColor = UIColor.white
+            layerOverlay.backgroundColor = whiteClr
             layerOverlay.layer.shadowOffset = CGSize.zero
             layerOverlay.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.23).cgColor
             layerOverlay.layer.shadowOpacity = 1

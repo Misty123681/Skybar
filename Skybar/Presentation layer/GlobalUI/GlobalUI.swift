@@ -10,10 +10,11 @@ import UIKit
 public typealias ImageHandler = (_ success:Bool,_ data:Data?) -> Void
 
 class GlobalUI: NSObject {
-    
+    // MARK:- Property
     static var loadingView:UIView!
     static var loadingIndicator:UIActivityIndicatorView!
     static var cachedImages = [String:Data]()
+    
     
     static func gradientImage(size: CGSize, color1: CIColor, color2: CIColor) -> UIImage? {
         
@@ -78,6 +79,7 @@ class GlobalUI: NSObject {
     }
 }
 
+// MARK:- UIVIEW extension
 extension UIView{
     func getX()->CGFloat{
         return self.getLeft()
@@ -110,6 +112,7 @@ extension UIView{
     }
 }
 
+// MARK:- Image extension
 extension UIImageView {
     public func imageFromServerURL(urlString: String,setImage:Bool=true,handler:ImageHandler?=nil) {
         
@@ -147,7 +150,7 @@ extension UIImageView {
         }).resume()
     }
 }
-
+// MARK:- UIVIEW extension
 extension UIView {
     class func fromNib<T: UIView>() -> T {
         return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T

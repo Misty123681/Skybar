@@ -93,7 +93,7 @@ class InvoiceController: ParentController {
             }
         }
         
-        if let visitID = status.currentVisitInfo?.visitID{
+        if let visitID = status?.currentVisitInfo?.visitID{
             ServiceInterface.GetVisitBill(visitID: visitID, handler: { (success, result) in
                 if let data = result as? Data{
                     do{

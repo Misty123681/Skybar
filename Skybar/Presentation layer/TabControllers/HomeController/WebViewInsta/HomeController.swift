@@ -70,68 +70,42 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     var isOpen = true
     var bill:CurrentVisitInfo! = nil
     var careemMsg = ""
-    let skybarLongitude = 55.297141
-    let skybarLatitude = 25.190911
     var careemLinks:CareemLinks! = nil
     var skyStatus:SkyStatus! = nil
     var cacheEventImages = [NSCache<NSString, UIImage>]()
     var isedit = false
-    var frameEvent = CGRect()
     var refreshControl: UIRefreshControl!
     var refreshInitialCenter:CGPoint!
     var dragGesture:UIPanGestureRecognizer!
     var guests:[GuestElement]!
+    //var frameEvent = CGRect()
    
     //MARK:- View Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        NotificationCenter.default.addObserver(self, selector: #selector(NetworkIssue), name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
-
-        self.scrollView.delegate = self
-        refreshControl = UIRefreshControl()
-        refreshControl.backgroundColor = UIColor.clear
-        refreshControl.tintColor = UIColor.black
-        self.scrollView.addSubview(refreshControl)
         
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
-        
+        intializationCode()
         getInstaMedia()
         ServiceUser.setLoggedIn()
         getResetvationNumber()
         getCareemLinks()
-        
-        self.view.layoutIfNeeded()
-        self.imageView.layer.cornerRadius = self.imageView.frame.size.height/2
-        
-        designPrivilegeBtn()
-        
-        self.view.addSubview(rateUsView)
-        self.rateUsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-        rateUsView.isHidden = true
-        
-    }
-    
-    @objc func NetworkIssue() {
-        GlobalUI.hideLoading()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.cacheEventImages = [NSCache<NSString, UIImage>]()
+        cacheEventImages = [NSCache<NSString, UIImage>]()
         getCurrentStatus()
-        self.populateProfileInfo()
-        
-        self.reloadMedia()
-        
+        populateProfileInfo()
+        reloadMedia()
+
         takeMeBtn.backgroundColor = .white
         takeMeBtn.layer.borderWidth = 2
         takeMeBtn.layer.borderColor = UIColor(red: 0.22, green: 0.71, blue: 0.31, alpha: 1).cgColor
         takeMeBtn.setTitleColor(UIColor(red: 0.22, green: 0.71, blue: 0.31, alpha: 1), for: .normal)
-        
         self.view.layoutIfNeeded()
         refreshInitialCenter = refreshLoader!.center
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -139,13 +113,41 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
             view.tag = Int(view.center.y)
         }
     }
-    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.default
     }
     
+    deinit {
+        print("Home get deallocated")
+    }
+    /// intialize the code
+    fileprivate func intializationCode() {
+        NotificationCenter.default.addObserver(self, selector: #selector(NetworkIssue), name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        self.scrollView.delegate = self
+        refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.tintColor = UIColor.black
+        self.scrollView.addSubview(refreshControl)
+        self.view.layoutIfNeeded()
+        self.imageView.layer.cornerRadius = self.imageView.frame.size.height/2
+        designPrivilegeBtn()
+        // self.view.addSubview(rateUsView)
+        //  self.rateUsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        // rateUsView.isHidden = true
+    }
+    
+   
     @IBAction func btnBackTapped(_ sender: Any) {
           rateUsView.isHidden = true
+    }
+    
+    
+    /// If network connection is off hide the loader
+    @objc func NetworkIssue() {
+        GlobalUI.hideLoading()
     }
     
     
@@ -158,6 +160,12 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
             self.performSegue(withIdentifier: "toGuestList", sender: nil)
     }
     
+    
+    /// on instagram cell click open the full page
+    ///
+    /// - Parameters:
+    ///   - media: media is of insta Object
+    ///   - index: int index
     func openMedia(media: InstaMedia,index:Int) {
         self.view.layoutIfNeeded()
         instaView.frame = self.view.bounds
@@ -185,6 +193,7 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         
         var urlString = ""
         if let careemObj = careemLinks{
+            
             if isAtSkybar{
                 urlString = careemObj.careemTakeMeHomeURL
             }else{
@@ -298,12 +307,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             self.isOpen = isOpen
             if !isOpen{
                 redesignBtn(msg: skyStatus.rideDisabledMsg)
-                _ = CIColor(color:UIColor(red: 16.0/255.0, green: 60.0/255.0, blue: 153.0/255.0, alpha: 1))
-                _ = CIColor(color:UIColor(red: 25.0/255.0, green: 146.0/255.0, blue: 224.0/255.0, alpha: 1))
-               
                     self.headerTwo.textColor =  UIColor.black
-        
-                
                 instaTitleLbl.text = "We Party Legendary"
                 
                 
@@ -341,7 +345,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     func populateEvents(events:[Event]){
         eventsContainer.delegate = self
         eventsContainer.subviews.forEach({ $0.removeFromSuperview() })
-
+    /// show UI for open tab when isAtskybar = true
         if isAtSkybar{
             self.view.layoutIfNeeded()
             let width = eventsContainer.frame.size.width-20
@@ -386,6 +390,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     }
  
     
+    /// pop up user info
     func populateProfileInfo(){
         if let profile = ServiceUser.profile{
             fNameLbl.text = profile.firstName+" "+profile.lastName
@@ -522,9 +527,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         }
     }
    
-   
-    
-    
+    // MARK:- scroll view method  called on ref
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if refreshControl.isRefreshing {
             if !isAnimating {
@@ -570,7 +573,6 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     
     
     func designPrivilegeBtn(){
-   
         privilegeBtn.layer.cornerRadius = 8
         privilegeBtn.backgroundColor = UIColor.black
     }
@@ -579,7 +581,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
    
     func scrollToPage(_ page: Int) {
         UIView.animate(withDuration: 0.5) {
-            self.eventsContainer.contentOffset.x = self.frameEvent.width + 20 * CGFloat(page)
+           // self.eventsContainer.contentOffset.x = self.frameEvent.width + 20 * CGFloat(page)
         }
     }
     
@@ -590,8 +592,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     }
     
     func toEventController(event:Event){
-        
-        
+    
         if let reservationstatusID = event.reservationInfo?.reservationStatusID{
             switch reservationstatusID{
             case 1,2,3,4:
@@ -616,8 +617,9 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
 
     }
     
+    
+    /// reload insta feeds
     func reloadMedia(){
-        
         containerView.subviews.forEach({ $0.removeFromSuperview() })
         if let _ = medias{
         }else{
@@ -681,6 +683,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         }
     }
     
+    /// refresh the events after push notifiaction Tapped
     func refreshEventData(){
         self.cacheEventImages = [NSCache<NSString, UIImage>]()
         ServiceInterface.getCurrentEvents { (success, result) in
@@ -698,12 +701,12 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         }
         
     }
-    
 }
 
+// MARK: - notification related notifiaction
 extension HomeController:HomePage{
     func homeNotification() {
           refreshEventData()
     }
-    
+
 }

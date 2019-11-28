@@ -38,3 +38,23 @@ extension String {
         return lowerCasedString.replacingCharacters(in: lowerCasedString.startIndex...lowerCasedString.startIndex, with: String(lowerCasedString[lowerCasedString.startIndex]).uppercased())
     }
 }
+
+extension UIButton{
+     func setGradient() {
+        self.setTitleColor(.white, for: .normal)
+        let overlayer = UIView(frame: self.bounds)
+        overlayer.tag = 10
+        overlayer.layer.cornerRadius = self.frame.size.height/2
+        
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = gradientColor
+        gradient.locations = [0, 1]
+        gradient.startPoint = CGPoint(x: 1, y: 0.2)
+        gradient.endPoint = CGPoint(x: 0.3, y: 0.67)
+        gradient.cornerRadius = self.frame.size.height/2
+        overlayer.layer.addSublayer(gradient)
+        self.addSubview(overlayer)
+        self.sendSubviewToBack(overlayer)
+    }
+}
