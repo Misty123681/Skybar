@@ -29,8 +29,7 @@ class SubInstaCell: UICollectionViewCell {
     let playerViewController = AVPlayerViewController()
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+        super.awakeFromNib()}
     
     @IBAction func playAction(_ sender: Any) {
         if let video = instaObject.videos{

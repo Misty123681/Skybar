@@ -10,13 +10,16 @@ import UIKit
 import MapKit
 
 class ServiceUser: NSObject {
+    
     static var mobileKey = "mobileSessionID"
     static var profile:ProfileObject? = nil
     static var contactPhoneNumber = ""
     static var location:CLLocationCoordinate2D! = nil
     
 
-    
+    /// return the logged status
+    ///
+    /// - Returns: Bool true or false
     static func loggedIn()->Bool{
         let userDefaults = UserDefaults.standard
         if let _ = userDefaults.string(forKey: "LoggedIn"){
@@ -25,6 +28,8 @@ class ServiceUser: NSObject {
         return false;
     }
     
+    
+    /// Save user info in user defaults
     static func setProfile(profile:ProfileObject?){
         let userDefaults = UserDefaults.standard
         userDefaults.set(profile?.firstName, forKey: "firstName")
@@ -36,8 +41,7 @@ class ServiceUser: NSObject {
         userDefaults.set(profile?.address, forKey: "address")
     }
     
-        
-      
+
     
     static func setTypeLevel(level:String){
         let userDefaults = UserDefaults.standard
@@ -82,6 +86,7 @@ class ServiceUser: NSObject {
         userDefaults.removeObject(forKey: "LoggedIn")
     }
     
+    /// store mobile session id used while calling apis
     static func storeMobileSessionID(sessionID:String){
         var cleanSessionID = sessionID.replacingOccurrences(of: "\"", with: "")
         cleanSessionID = cleanSessionID.replacingOccurrences(of: "\\", with: "")

@@ -117,9 +117,7 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         return UIStatusBarStyle.default
     }
     
-    deinit {
-        print("Home get deallocated")
-    }
+
     /// intialize the code
     fileprivate func intializationCode() {
         NotificationCenter.default.addObserver(self, selector: #selector(NetworkIssue), name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
@@ -216,7 +214,6 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
             if success {
                 do{
                     let medias = try JSONDecoder().decode(InstaMedias.self, from: result as! Data)
-                    print(medias)
                     self.medias = medias.data
                     OperationQueue.main.addOperation {
                         self.instaView.setConfig(arr: self.medias, parent: self)

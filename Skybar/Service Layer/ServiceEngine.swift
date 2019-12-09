@@ -11,14 +11,15 @@ import Foundation
 
 public typealias APICompletionHandler = (_ success:Bool,_ result:AnyObject?) -> Void
 
+/// url request type
 enum MethodName:String{
     case GET = "GET"
     case POST = "POST"
     case DELETE = "DELETE"
     case PUT = "PUT"
 }
+
 class ServiceEngine: NSObject {
-    
     
     var cancelleableTask:URLSessionDataTask!
     
@@ -67,7 +68,7 @@ class ServiceEngine: NSObject {
         fullURL = fullURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         let url = URL(string: fullURL)
-        print(url!)
+    
         var request:URLRequest = URLRequest(url: url!)
         request.httpMethod = httpMethod.rawValue
         request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
@@ -99,13 +100,12 @@ class ServiceEngine: NSObject {
                 if let headerStatus = httpResponse.allHeaderFields["Status"] as? String{
                     print("response header status: \(headerStatus)")
                 }
-                print("response code: \(httpResponse.statusCode)")
-                
+            
                 if httpResponse.statusCode != 200 {
                     if let data = data {
                         print("response url: "+fullURL)
                         let backToString = String(data: data, encoding: String.Encoding.utf8)
-                        print(backToString ?? String())
+            
                         ServiceInterface.logError(error: backToString ?? "", handler: nil)
                     }else{
                         ServiceInterface.logError(error: "Internal Error", handler: nil)
@@ -120,7 +120,6 @@ class ServiceEngine: NSObject {
             }
             
             guard error == nil else {
-                print(error!)
                 ServiceInterface.logError(error: error?.localizedDescription ?? "", handler: nil)
                 completionHandler(false, error?.localizedDescription as AnyObject)
                 return
@@ -134,8 +133,7 @@ class ServiceEngine: NSObject {
             }
             
             DispatchQueue.main.async {
-                let backToString = String(data: data, encoding: String.Encoding.utf8)
-                print(backToString ?? String())
+                _ = String(data: data, encoding: String.Encoding.utf8)
                 completionHandler(true, data as AnyObject)
             }
         }
@@ -210,7 +208,7 @@ class ServiceEngine: NSObject {
                 if httpResponse.statusCode != 200 {
                     if let data = data {
                         let backToString = String(data: data, encoding: String.Encoding.utf8)
-                        print(backToString ?? String())
+                       
                         ServiceInterface.logError(error: backToString ?? "", handler: nil)
                     }else{
                         ServiceInterface.logError(error: "Internal Error", handler: nil)
@@ -232,15 +230,13 @@ class ServiceEngine: NSObject {
             }
             
             guard let data = data else {
-                print("Data is empty")
                 ServiceInterface.logError(error: "No Data", handler: nil)
                 completionHandler(false, "No Data" as AnyObject)
                 return
             }
             
             DispatchQueue.main.async {
-                let backToString = String(data: data, encoding: String.Encoding.utf8)
-                print(backToString ?? String())
+                _ = String(data: data, encoding: String.Encoding.utf8)
                 completionHandler(true, data as AnyObject)
             }
         }

@@ -46,25 +46,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     //MARK:- Callback on Notification Tapped
     fileprivate func oneSignalCallbackHandler(_ launchOptions: [UIApplication.LaunchOptionsKey : Any]?, _ onesignalInitSettings: [String : Bool]){
         
-        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
-            print("Received Notification: \(String(describing: notification!.payload.notificationID))")
-        }
+        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in}
         
         let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
             // This block gets called when the user reacts to a notification received
             let payload: OSNotificationPayload = result!.notification.payload
-            print(payload.additionalData)
-            let payload1: NSDictionary = payload.additionalData as NSDictionary
-            print(payload1)
-            
-            let fullMessage = payload.body
-            print("Message = \(String(describing: fullMessage))")
-            
+          
+            let _: NSDictionary = payload.additionalData as NSDictionary
+        
             var screenId = ""
             if payload.additionalData != nil {
                 if let screenID = payload.additionalData["ScreenId"] {
                     screenId =  "\(screenID)"
-                    print("Message Title = \(screenID)")
                 }
             }
             
@@ -77,8 +70,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
                 self.navigateToMySKY()
             case "GuestListScreen":
                 self.navigateToGuestPage()
-            default:
-                print("Home")
+            default: break
+               //defaults home
             }
             
             
@@ -138,7 +131,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
         
         if let topVC = UIApplication.getTopViewController() {
             if let vc  = topVC as? HomeController{
-                print("its Home page")
                 self.delegateHome = vc
                 delegateHome?.homeNotification()
             }else{
@@ -162,7 +154,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     func navigateToGuestPage(){
         if let topVC = UIApplication.getTopViewController() {
             if let vc  = topVC as? GuestListController{
-                print("its guest page")
                 self.delegate = vc
                 delegate?.guestNotification()
             }else{

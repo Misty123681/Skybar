@@ -450,6 +450,7 @@
 				AA2E0770210DC4D60070BE88 /* ServiceEngine.swift */,
 				AA2E0772210DC6390070BE88 /* ServiceInterface.swift */,
 				AA5D4D89210DD0A200568D09 /* ServiceUser.swift */,
+				AA2E075A2105CAF90070BE88 /* Helper */,
 			);
 			path = "Service Layer";
 			sourceTree = "<group>";
@@ -649,7 +650,6 @@
 				AAFBAEA92141A49C0004CEB8 /* Skybar.entitlements */,
 				AAF45AE02126D2200052E5EB /* Business Layer */,
 				AA2E076F210DC4C50070BE88 /* Service Layer */,
-				AA2E075A2105CAF90070BE88 /* Helper */,
 				AA75F1CE21026F3C00B28C4D /* Fonts */,
 				AA75F1B22102436A00B28C4D /* AppDelegate.swift */,
 				AA75F1C42102452A00B28C4D /* Presentation layer */,
@@ -1093,7 +1093,7 @@
 				CODE_SIGN_ENTITLEMENTS = Skybar/Skybar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = BEPQ8J6P85;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1138,7 +1138,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.csp.skybar;
 				PRODUCT_NAME = "SKY 2.0";
-				PROVISIONING_PROFILE_SPECIFIER = SkybardevelopmentCertificate;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

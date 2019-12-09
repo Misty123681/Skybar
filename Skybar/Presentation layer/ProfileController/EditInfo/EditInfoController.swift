@@ -178,7 +178,6 @@ extension EditInfoController:UITableViewDataSource,UITableViewDelegate {
                 if response.mapItems.count > 0{
                     self.coordinate = response.mapItems[0].placemark.coordinate
                     ServiceUser.location = self.coordinate
-                    print(self.coordinate)
                 }
             }
         }

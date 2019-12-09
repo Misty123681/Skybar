@@ -11,11 +11,17 @@ import UIKit
 class ServiceInterface: NSObject {
     
      // MARK:- Development
-   static let hostURL = "http://40.76.73.185/SkybarstarTest/UserAppService/" // testing
+    
+   // static let hostURL = "http://192.119.87.9/SkybarstarTest/UserAppService/" // testing
     
     // MARK:- Distribution
+ 
+   // static let hostURL = "http://40.76.73.185/SkybarstarTest/UserAppService/"
     
-   //static let hostURL = "http://skybarstar.com/UserAppService/" // live
+    
+  static let hostURL = "http://skybarstar.com/UserAppService/" // live
+    
+    
     
     static let cache = NSCache<AnyObject, AnyObject>()
     
@@ -418,11 +424,11 @@ class ServiceInterface: NSObject {
         let fullPath = "\(hostURL)LogError"
         var params = [String:Any]()
         params["errorInfo"] = error
-        ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: params) { (success, result) in
-            if let handler = handler{
-                handler(success,result)
-            }
-        }
+//        ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: params) { (success, result) in
+//            if let handler = handler{
+//                handler(success,result)
+//            }
+//        }
     }
     
     // MARK:- SetSeenReservationNotifications
@@ -435,7 +441,7 @@ class ServiceInterface: NSObject {
         }
     }
     
-    // MARK:-
+    // MARK:- Modify reservation
     static func editReservation(reservationId:String,type:Int,guests:Int,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)EditReservation"
         var params = [String:Any]()
@@ -449,6 +455,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- cancel reservation
     static func cancelReservation(reservationId:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)CancelReservation"
         var params = [String:Any]()
@@ -461,6 +468,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- Get Zone area by budget
     static func getZonesByBudget(budget:Float,numberOfGuests:Int,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetZonesByBudget"
         var params = [String:Any]()
@@ -474,6 +482,7 @@ class ServiceInterface: NSObject {
         }
     }
     
+    // MARK:- get image by sized
     static func resizeImage(imageKey:String,width:Float,height:Float,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)GetImageResized"
         var params = [String:Any]()
@@ -486,6 +495,5 @@ class ServiceInterface: NSObject {
             }
         }
     }
-    
-    
+
 }

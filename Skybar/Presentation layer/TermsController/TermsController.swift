@@ -11,7 +11,8 @@ import WebKit
 
 class TermsController: ParentController {
     
-    // MARK:- Properties
+    //MARK:- Properties
+    
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var headingLbl: UILabel!

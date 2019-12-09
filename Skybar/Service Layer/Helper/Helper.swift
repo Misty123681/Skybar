@@ -103,6 +103,8 @@ extension Date {
     }
 }
 
+// MARK: - convert to AED
+
 extension Float{
     func toCurrency()->String{
         let formatter = NumberFormatter()
@@ -114,6 +116,7 @@ extension Float{
         return "AED \(formatter.string(from: self as NSNumber)!)"
     }
     
+    // MARK: - convert to AED without AED prefix
     func toCurrencyNoPrefix()->String{
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
