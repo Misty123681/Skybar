@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2989C63B23C30F3A009E3864 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2989C63A23C30F3A009E3864 /* RatingViewController.swift */; };
 		55E1DDE1C4CC31C054A455B8 /* Pods_Skybar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3607E893CCD06800542112 /* Pods_Skybar.framework */; };
 		920E28692343677E0003746B /* Ui+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E28682343677E0003746B /* Ui+Extension.swift */; };
 		92325267233B911100F6291B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92325266233B911000F6291B /* WebKit.framework */; };
@@ -105,6 +106,7 @@
 
 /* Begin PBXFileReference section */
 		137037C58A0DA0CEDA2A41C4 /* Pods-Skybar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skybar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skybar/Pods-Skybar.debug.xcconfig"; sourceTree = "<group>"; };
+		2989C63A23C30F3A009E3864 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		2A3607E893CCD06800542112 /* Pods_Skybar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skybar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		920E28682343677E0003746B /* Ui+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ui+Extension.swift"; sourceTree = "<group>"; };
 		92325266233B911000F6291B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -595,6 +597,7 @@
 			isa = PBXGroup;
 			children = (
 				AA5D4D8F2110CA2400568D09 /* HomeController.swift */,
+				2989C63A23C30F3A009E3864 /* RatingViewController.swift */,
 			);
 			path = WebViewInsta;
 			sourceTree = "<group>";
@@ -899,6 +902,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA75F1B52102436A00B28C4D /* LandingController.swift in Sources */,
+				2989C63B23C30F3A009E3864 /* RatingViewController.swift in Sources */,
 				AA2E076E2107C5A90070BE88 /* EditInfoController.swift in Sources */,
 				AA1D18D92114E2E300CA4A8F /* ReserveController.swift in Sources */,
 				AA369FD6215041A100B356BA /* StarPrivilegesController.swift in Sources */,

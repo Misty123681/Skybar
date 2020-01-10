@@ -248,7 +248,7 @@ class ParentObject: Codable {
 
 struct InstaMedias: Codable {
     let pagination: Pagination
-    let data: [InstaMedia]
+    let   data: [InstaMedia]
     let meta: Meta
 }
 

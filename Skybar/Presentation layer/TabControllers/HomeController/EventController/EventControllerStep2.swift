@@ -50,23 +50,19 @@ class EventControllerStep2: ParentController {
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.default
     }
-    
      //MARK:- Methods and action
     fileprivate func setZoneImageSize() {
         let newMultiplier:CGFloat = 0.75
         constraintWidthZoneImage = constraintWidthZoneImage.setMultiplier(multiplier: newMultiplier)
         self.loadViewIfNeeded()
     }
-    
     fileprivate func addReservationPopUp() {
         let screen = UIScreen.main.bounds.size
         reservationPopupView.frame = CGRect(x: 0, y: 0, width: screen.width, height: screen.height)
         self.view.addSubview(reservationPopupView)
     }
-    
     // MARK:- get Zone image
     func getZoneImage(){
-       
         loader.startAnimating()
         var serviceUrl:String
         serviceUrl = "https://skybarstar.com/UserAppService/GetAvailableZonesImage?budget=\(budget)&numberOfGuests=\(guestCount)"
@@ -77,18 +73,14 @@ class EventControllerStep2: ParentController {
             })
         }
     }
-    
     // MARK:- get Zone by budget
     func getZone(){
         ServiceInterface.getZonesByBudget(budget: budget, numberOfGuests: guestCount) { (success, result) in
-
             if success {
                 do{
                     let zones = try JSONDecoder().decode(Zones.self, from: result as! Data)
                     OperationQueue.main.addOperation({
-                        
                         self.zonesLabel.text = "ZONES: "
-                        
                         for (index,zone) in zones.enumerated(){
                             if let name = zone.zoneName{
                                 self.zonesLabel.text! += name
@@ -107,7 +99,6 @@ class EventControllerStep2: ParentController {
                     GlobalUI.showMessage(title: "Error", message: res, cntrl: self)
                 }
             }
-            
         }
     }
     
@@ -118,19 +109,13 @@ class EventControllerStep2: ParentController {
         }else{
             reservationStatusLabel.text = "TABLE BOOKING \(guestCount) GUESTS"
         }
-        
         budgetLbl.text = "Booking per person \(budget.toCurrency())"
-        
         if let event = event{
-            
             titleLbl.text = event.name
-            
             descriptionLbl.text = event.description
-            
             if let doorOpen = event.doorOpen{
                 doorOpenLbl.text = "Doors open at \(doorOpen)"
             }
-            
             if let eventDate = event.eventDate{
                 if let date = Date(jsonDate: eventDate){
                     let formatter = DateFormatter()
@@ -142,12 +127,10 @@ class EventControllerStep2: ParentController {
                 }
             }
         }
-        
         if let reservation = reservation{
             if let name = reservation.eventName{
                 titleLbl.text = name
             }
-            
             if let desc = reservation.description{
                 descriptionLbl.text = desc
             }
@@ -157,14 +140,12 @@ class EventControllerStep2: ParentController {
                     let formatter = DateFormatter()
                     // initially set the format based on your datepicker date / server String
                     formatter.dateFormat = "MMM dd, yyyy"
-                    
                     let monthDayStr = formatter.string(from: date) // string purpose I add here
                     dateLbl.text = monthDayStr.uppercased()
                 }
             }
         }
     }
-    
     @IBAction func backAction(_ sender: Any) {
         if let nav = self.navigationController{
             nav.popViewController(animated: true)
@@ -172,7 +153,6 @@ class EventControllerStep2: ParentController {
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
     // MARK:-  call tapped
     @IBAction func callToReserve(_ sender: Any) {
         if let url = URL(string: "tel://\(ServiceUser.contactPhoneNumber)"), UIApplication.shared.canOpenURL(url) {
@@ -183,14 +163,12 @@ class EventControllerStep2: ParentController {
             }
         }
     }
-    
     @IBAction func hidePopup(_ sender: Any) {
         reservationPopupView.isHidden = true
         if let homeController = self.navigationController?.viewControllers.filter({$0 is HomeController}).first{
             self.navigationController?.popToViewController(homeController, animated: true)
         }
     }
-    
     @IBAction func reserveEvent(){
         GlobalUI.showLoading(self.view)
         ServiceInterface.reserveEvent(eventID: event.id!, type: reservationType, guests:guestCount, budget: budget , handler: { (success, result) in
@@ -208,28 +186,22 @@ class EventControllerStep2: ParentController {
             }
         })
     }
-    
     func showReservationPopup(){
-        
         let typStr = "Table"
         self.reservationNumberLbl.text = "\(typStr) Reservation for \(guestCount)"
         self.zonesResLbl.text = self.zonesLabel.text
-        
         if let event = event{
             if let eventDate = event.eventDate{
                 if let date = Date(jsonDate: eventDate){
                     let formatter = DateFormatter()
                     // initially set the format based on your datepicker date / server String
                     formatter.dateFormat = "EEE - MMM dd yyyy"
-                    
                     let monthDayStr = formatter.string(from: date) // string purpose I add here
                     self.reservationDateLbl.text = monthDayStr.uppercased()
                 }
             }
-            
             self.reservationNameLbl.text = event.name
         }
-        
         if let reservation = reservation{
             if let eventDate = reservation.eventDate{
                 if let date = Date(jsonDate: eventDate){
@@ -241,12 +213,8 @@ class EventControllerStep2: ParentController {
                     self.reservationDateLbl.text = monthDayStr.uppercased()
                 }
             }
-            
             self.reservationNameLbl.text = reservation.eventName
         }
-        
         self.reservationPopupView.isHidden = false
     }
-    
-    
 }

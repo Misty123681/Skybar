@@ -15,6 +15,7 @@ struct TimelineElement: Codable {
     let visit: Visit?
     let reservation: Reservation?
     let notification: Notification?
+   
     let timelineItemType: Int
     
     enum CodingKeys: String, CodingKey {
@@ -478,5 +479,21 @@ struct NearestEventDetails: Codable {
         case totalEventVisits = "TotalEventVisits"
         case totalEventVisitGuests = "TotalEventVisitGuests"
         //case reservationInfo = "ReservationInfo"
+    }
+   
+}
+struct userEventExperienceModel {
+    let EventId: String
+    let musicRatingValue: String?
+    let ServiceRatingValue : String?
+    let AtmosphereRatingValue:String?
+    let OverallRatingValue: String?
+
+    enum CodingKeys: String, CodingKey {
+        case eventId = "EventId"
+        case musicRatingValue = "musicRatingValue"
+        case serviceRatingValue = "ServiceRatingValue"
+        case atmosphereRatingValue = "AtmosphereRatingValue"
+        case overallRatingValue = "OverallRatingValue"
     }
 }

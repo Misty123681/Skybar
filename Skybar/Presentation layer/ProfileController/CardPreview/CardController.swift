@@ -36,7 +36,7 @@ class CardController: ParentController {
             levelLbl.text = "STAR \(String(format: "%04d", profile.starMembershipSeed))"
         }
          getImage()
-    }
+    } 
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .default
     }

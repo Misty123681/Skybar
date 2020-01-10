@@ -110,27 +110,44 @@ class HistoryView: UIView {
     
      //MARK:- report as this wasn't me
     @IBAction func thisWasntMeBtnTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Are you sure, you want to report that this was not you?", message: nil, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-            
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-       UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        ServiceInterface.thisWasNotMeAPI(caseNumber: true, handler: { (success, result) in
+            GlobalUI.hideLoading()
+            if success {
+                if let data = result as? Data{
+                    if var code = String(data: data, encoding: String.Encoding.utf8){
+                        code = code.replacingOccurrences(of: "\"", with: "")
+                        if(!code.isEmpty){
+                            let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
+
+                        }else{
+                             let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
+                            
+                            
+                        }
+                    }
+                }
+            }else{
+                if let res = result as? String{
+
+                }
+            }
+        })
+        
         
     }
     
-    func thisWasNotMeAPI(){
-        ServiceInterface.thisWasNotMeAPI(visitID: "T##String", rating: 2.0) { (success, result) in
-            
-            if success {
-                
-            }else{
-                
-            }
-        }
-        
-    }
+//    func thisWasNotMeAPI(){
+//        ServiceInterface.thisWasNotMeAPI(caseNumber: "T##String", rating: 2.0) { (success, result) in
+//
+//            if success {
+//
+//            }else{
+//
+//            }
+//        }
+//
+//    }
     
     
     func setInfo(visit:Visit){

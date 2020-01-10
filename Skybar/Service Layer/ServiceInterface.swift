@@ -12,19 +12,49 @@ class ServiceInterface: NSObject {
     
      // MARK:- Development
     
-   // static let hostURL = "http://192.119.87.9/SkybarstarTest/UserAppService/" // testing
+    static let hostURL = "http://192.119.87.9/SkybarstarTest/UserAppService/" // testing
     
     // MARK:- Distribution
  
    // static let hostURL = "http://40.76.73.185/SkybarstarTest/UserAppService/"
     
-    
-  static let hostURL = "http://skybarstar.com/UserAppService/" // live
-    
-    
-    
-    static let cache = NSCache<AnyObject, AnyObject>()
-    
+  static let cache = NSCache<AnyObject, AnyObject>()
+ // static let hostURL = "http://skybarstar.com/UserAppService/" // live
+//    func rateExperience(user: userEventExperienceModel,completion:@escaping (NSDictionary) -> ()){
+//        if let url = URL(string: "\(ServiceInterface.hostURL)GetTimelineInfo") {
+//            let request = NSMutableURLRequest( url: url as URL)
+//            let registerDict = ["EventId": user.EventId, "musicRatingValue": user.musicRatingValue!, "ServiceRatingValue": user.ServiceRatingValue!, "AtmosphereRatingValue": user.AtmosphereRatingValue!, "OverAllRatingValue": user.OverallRatingValue!] as [String : Any]
+//                print(registerDict)
+//            let jsonData = try! JSONSerialization.data(withJSONObject: user, options: JSONSerialization.WritingOptions.init(rawValue: 0))
+//            request.httpMethod = "POST"
+//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//            request.httpBody = jsonData
+//            let task = URLSession.shared.dataTask(with: request as URLRequest) {
+//                data, response, error in
+//                do{
+//                    if let data = data,
+//                        let jsonString =  try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+//                        , error == nil {
+//                        completion(jsonString)
+//                    } else {
+//                        print("error=\(error!.localizedDescription)")
+//                        let errorDict = ["error_status":true,"message":error!.localizedDescription] as [String : Any]
+//                        completion(errorDict as NSDictionary)
+//
+//                    }
+//                }
+//                catch{
+//                    print("error=\(error.localizedDescription)")
+//                    let errorDict = ["error_status":true,"message":error.localizedDescription] as [String : Any]
+//                    completion(errorDict as NSDictionary)
+//
+//                }
+//
+//            }
+//            task.resume()
+//        }
+//
+//    }
     // MARK:- Login api
     static func activateAccount(key:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)ActivateYourAccount"
@@ -34,14 +64,28 @@ class ServiceInterface: NSObject {
             if let handler = handler{
                 handler(success,result)
             }
-        }
+        }   
     }
     
+    // MARK:- Rating Code
+static func submitUserRating(eventId:String,musicRatingValue:String,ServiceRatingValue:String,AtmosphereRatingValue:String,OverallRatingValue:String,handler:APICompletionHandler?){
+        let fullPath = "\(hostURL)RatingExperience"
+        var params = [String:Any]()
+    debugPrint(params)
+        params = ["EventId": eventId, "musicRatingValue": musicRatingValue, "ServiceRatingValue": ServiceRatingValue, "AtmosphereRatingValue": AtmosphereRatingValue, "OverAllRatingValue": OverallRatingValue] as [String : Any]
+        ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:params) { (success, result) in
+            if let handler = handler{
+                handler(success,result) 
+            }
+        }
+    }
+
      // MARK:-  Resend code
     static func resendCode(mobileNumber:String,handler:APICompletionHandler?){
         let fullPath = "\(hostURL)ResendCode"
         var params = [String:Any]()
         params["mobileNumber"] = mobileNumber
+        print(params)
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:params) { (success, result) in
             if let handler = handler{
                 handler(success,result)
@@ -198,6 +242,15 @@ class ServiceInterface: NSObject {
             }
         }
     }
+    static func userEventExperience(handler:APICompletionHandler?){
+        let fullPath = "\(hostURL)GetTimelineInfo"
+        
+        ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:nil) { (success, result) in
+            if let handler = handler{
+                handler(success,result)
+            }
+        }
+    }
  
      // MARK:-  Rate us
     static func setRating(visitID:String,rating:Float,handler:APICompletionHandler?){
@@ -215,8 +268,19 @@ class ServiceInterface: NSObject {
     }
     
     // MARK:- this was not me
-    static func thisWasNotMeAPI(visitID:String,rating:Float,handler:APICompletionHandler?){
+    static func thisWasNotMeAPI(caseNumber: Bool ,handler:APICompletionHandler?){
+        let fullPath = "\(hostURL)ReportCase"
+        var params = [String:Any]()
+        params["caseNumber"] = "1"
+        debugPrint(params)
 
+        ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil) { (success, result) in
+            debugPrint(result)
+            
+            if let handler = handler{
+                handler(success,result)
+            }
+        }
     }
     
     // MARK:- Reservation rules

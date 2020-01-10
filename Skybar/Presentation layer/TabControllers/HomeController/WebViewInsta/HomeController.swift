@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 enum ViewSwitch {
     case view1
@@ -14,7 +15,7 @@ enum ViewSwitch {
 }
 
 class StartPrivilegeView:UIView{
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         let layer = UIView(frame: self.bounds)
@@ -31,7 +32,11 @@ class StartPrivilegeView:UIView{
 }
 
 class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
-    
+    var atmosphererating = 0
+    var servicerating = 0
+    var musicrating = 0
+    var overAllrating = 0
+  
     //MARK:- Outlet
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -56,7 +61,6 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     @IBOutlet weak var containerView: UIScrollView! = nil
     @IBOutlet weak var guestListBadgeLbl: UILabel!
     @IBOutlet weak var refreshLoader: UIActivityIndicatorView!
-    @IBOutlet var rateUsView: UIView!
     
     
     
@@ -90,6 +94,7 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         ServiceUser.setLoggedIn()
         getResetvationNumber()
         getCareemLinks()
+        // Register touch handlers
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,15 +137,9 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         self.view.layoutIfNeeded()
         self.imageView.layer.cornerRadius = self.imageView.frame.size.height/2
         designPrivilegeBtn()
-        // self.view.addSubview(rateUsView)
-        //  self.rateUsView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-        // rateUsView.isHidden = true
     }
     
-   
-    @IBAction func btnBackTapped(_ sender: Any) {
-          rateUsView.isHidden = true
-    }
+
     
     
     /// If network connection is off hide the loader
@@ -151,11 +150,18 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     
     //MARK:- Function and method
     @IBAction func toReserve(_ sender: Any) {
+        
         self.performSegue(withIdentifier: "toReserve", sender: nil)
     }
     
     @IBAction func myGuestListAction(_ sender: Any) {
-            self.performSegue(withIdentifier: "toGuestList", sender: nil)
+        
+        
+//         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//        let ratingVC = storyboard.instantiateViewController(withIdentifier: "RatingViewController") as! RatingViewController
+//        self.navigationController?.pushViewController(ratingVC, animated: true)
+
+         self.performSegue(withIdentifier: "toGuestList", sender: nil)
     }
     
     
@@ -699,6 +705,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         
     }
 }
+
 
 // MARK: - notification related notifiaction
 extension HomeController:HomePage{
