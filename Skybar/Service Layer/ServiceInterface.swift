@@ -68,12 +68,19 @@ class ServiceInterface: NSObject {
     }
     
     // MARK:- Rating Code
-static func submitUserRating(eventId:String,musicRatingValue:String,ServiceRatingValue:String,AtmosphereRatingValue:String,OverallRatingValue:String,handler:APICompletionHandler?){
-        let fullPath = "\(hostURL)RatingExperience"
+static func submitUserRating(eventId:String,musicRatingValue:String,serviceRatingValue:String,atmosphereRatingValue:String,overallRatingValue:String,handler:APICompletionHandler?){
+        let fullPath = "\(hostURL)RateExperience"
         var params = [String:Any]()
+        params["EventID"] = eventId
+    params["EventID"] = eventId
+    params["MusicRatingValue"] = musicRatingValue
+    params["ServiceRatingValue"] = serviceRatingValue
+    params["AtmosphereRatingValue"] = atmosphereRatingValue
+    params["OverallRatingValue"] = overallRatingValue
+     
     debugPrint(params)
-        params = ["EventId": eventId, "musicRatingValue": musicRatingValue, "ServiceRatingValue": ServiceRatingValue, "AtmosphereRatingValue": AtmosphereRatingValue, "OverAllRatingValue": OverallRatingValue] as [String : Any]
-        ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .GET,uriparams:params) { (success, result) in
+
+     ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: params){ (success, result) in
             if let handler = handler{
                 handler(success,result) 
             }
@@ -274,7 +281,7 @@ static func submitUserRating(eventId:String,musicRatingValue:String,ServiceRatin
         params["caseNumber"] = "1"
         debugPrint(params)
 
-        ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil) { (success, result) in
+        ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: params) { (success, result) in
             debugPrint(result)
             
             if let handler = handler{

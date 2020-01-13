@@ -97,6 +97,7 @@ class ServiceEngine: NSObject {
             //URLSession.shared.finishTasksAndInvalidate()
             
             if let httpResponse = response as? HTTPURLResponse {
+                
                 if let headerStatus = httpResponse.allHeaderFields["Status"] as? String{
                     print("response header status: \(headerStatus)")
                 }

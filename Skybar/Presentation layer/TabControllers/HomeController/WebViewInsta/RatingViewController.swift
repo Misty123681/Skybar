@@ -64,14 +64,14 @@ class RatingViewController: UIViewController{
         print("=\(atmosphereRating)==\(serviceRating)===\(musicRating)====\(overAllRating)")
 
         GlobalUI.showLoading(self.view)
-        ServiceInterface.submitUserRating( eventId: "", musicRatingValue: String(musicRating), ServiceRatingValue: String(serviceRating), AtmosphereRatingValue: String(atmosphereRating), OverallRatingValue: String(overAllRating), handler: { (success, result) in
+        ServiceInterface.submitUserRating( eventId: "DC204FFD-3132-44D6-B4AB-1897470353CC", musicRatingValue: String(musicRating), serviceRatingValue: String(serviceRating), atmosphereRatingValue: String(atmosphereRating), overallRatingValue: String(overAllRating), handler: { (success, result) in
             GlobalUI.hideLoading()
             if success {
                 if let data = result as? Data{
                     if var code = String(data: data, encoding: String.Encoding.utf8){
                         code = code.replacingOccurrences(of: "\"", with: "")
                         if(!code.isEmpty){
-                            GlobalUI.showMessage(title: "Rating", message: "rating of the event", cntrl: self)
+                            GlobalUI.showMessage(title: "Rating", message: "Rating successfully uploaded.", cntrl: self)
                             self.navigationController?.popViewController(animated: true)
                         }else{
                             GlobalUI.showMessage(title: "Error", message: "rating could not be sent", cntrl: self)

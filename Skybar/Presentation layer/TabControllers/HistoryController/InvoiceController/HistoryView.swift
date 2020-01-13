@@ -117,14 +117,20 @@ class HistoryView: UIView {
                 if let data = result as? Data{
                     if var code = String(data: data, encoding: String.Encoding.utf8){
                         code = code.replacingOccurrences(of: "\"", with: "")
-                        if(!code.isEmpty){
-                            let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-
-                        }else{
-                             let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                            
-                            
+                       debugPrint(code)
+                        var mesgStg :String = ""
+                        if code == "true"{
+                            mesgStg = "Your request has been submit successfully."
+                        }else if code == "false"{
+                           mesgStg = "Something went wrong. Please try again later."
                         }
+                        
+                        let alertView = UIAlertController(title: "Sucess", message:mesgStg, preferredStyle: .alert)
+
+                        alertView.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+
+                        UIApplication.shared.keyWindow?.rootViewController?.present(alertView, animated: true, completion: nil)
+                        
                     }
                 }
             }else{
@@ -136,18 +142,7 @@ class HistoryView: UIView {
         
         
     }
-    
-//    func thisWasNotMeAPI(){
-//        ServiceInterface.thisWasNotMeAPI(caseNumber: "T##String", rating: 2.0) { (success, result) in
-//
-//            if success {
-//
-//            }else{
-//
-//            }
-//        }
-//
-//    }
+
     
     
     func setInfo(visit:Visit){
@@ -180,7 +175,6 @@ class HistoryView: UIView {
         if let paidBill = self.visit.totalPaid{
             self.paidConsumptionLbl.text = paidBill.toCurrency() // totalPaid
         }
-        
         
         if let rating = self.visit.visitRatingValue{
             starManipulation(value: Int(rating))

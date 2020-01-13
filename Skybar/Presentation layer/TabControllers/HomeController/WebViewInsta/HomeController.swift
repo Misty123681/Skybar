@@ -157,11 +157,11 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     @IBAction func myGuestListAction(_ sender: Any) {
         
         
-//         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        let ratingVC = storyboard.instantiateViewController(withIdentifier: "RatingViewController") as! RatingViewController
-//        self.navigationController?.pushViewController(ratingVC, animated: true)
+         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let ratingVC = storyboard.instantiateViewController(withIdentifier: "RatingViewController") as! RatingViewController
+        self.navigationController?.pushViewController(ratingVC, animated: true)
 
-         self.performSegue(withIdentifier: "toGuestList", sender: nil)
+        // self.performSegue(withIdentifier: "toGuestList", sender: nil)
     }
     
     
