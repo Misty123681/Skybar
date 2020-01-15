@@ -83,6 +83,8 @@ class StarPrivilegesController: ParentController, WKUIDelegate, WKNavigationDele
                 OperationQueue.main.addOperation {
                     self.tableView.reloadData()
                 }
+                   
+               // }
             }else{
                 if let res = result as? String{
                     GlobalUI.showMessage(title: "Error", message: res, cntrl: self)
@@ -97,6 +99,9 @@ class StarPrivilegesController: ParentController, WKUIDelegate, WKNavigationDele
 
 extension StarPrivilegesController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let _ = privileges{
+            return privileges.count
+        }
         return 0
     }
     

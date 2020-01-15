@@ -280,9 +280,11 @@ static func submitUserRating(eventId:String,musicRatingValue:String,serviceRatin
         var params = [String:Any]()
         params["caseNumber"] = "1"
         debugPrint(params)
+        print(params)
 
         ServiceEngine.sharedInstance.startTask(pathURL: fullPath, httpMethod: .POST,uriparams:nil,bodyparams: params) { (success, result) in
             debugPrint(result)
+             print(result)
             
             if let handler = handler{
                 handler(success,result)

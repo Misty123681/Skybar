@@ -17,7 +17,7 @@ protocol GuestPage:class{
 }
 
 protocol HomePage:class{
-    func homeNotification()
+    func homeNotification(screenID:String)
 }
 
 @UIApplicationMain
@@ -46,14 +46,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     //MARK:- Callback on Notification Tapped
     fileprivate func oneSignalCallbackHandler(_ launchOptions: [UIApplication.LaunchOptionsKey : Any]?, _ onesignalInitSettings: [String : Bool]){
         
-        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in}
+        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
+            if let payload = notification?.payload{
+                if payload.additionalData != nil {
+                    if let screenID = payload.additionalData["ScreenId"] {
+                        if "\(screenID)" == "RateUsScreen"{
+                           self.navigateToHome(screenID: "RateUsScreen")
+                        }
+                    }
+                }
+            }
+        }
         
         let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
             // This block gets called when the user reacts to a notification received
             let payload: OSNotificationPayload = result!.notification.payload
-          
-            let _: NSDictionary = payload.additionalData as NSDictionary
-        
+            
+            //let _: NSDictionary = payload.additionalData as NSDictionary
+            
             var screenId = ""
             if payload.additionalData != nil {
                 if let screenID = payload.additionalData["ScreenId"] {
@@ -63,15 +73,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
             
             switch screenId {
             case "HomeScreen":
-                self.navigateToHome()
+                self.navigateToHome(screenID: "HomeScreen")
             case "RateUsScreen":
-                self.navigateToMySKY()
+                self.navigateToHome(screenID: "RateUsScreen")
             case "MySkyScreen":
                 self.navigateToMySKY()
             case "GuestListScreen":
                 self.navigateToGuestPage()
             default: break
-               //defaults home
+                //defaults home
             }
             
             
@@ -127,20 +137,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     }
     
     
-    func navigateToHome(){
+    func navigateToHome(screenID:String){
         
         if let topVC = UIApplication.getTopViewController() {
             if let vc  = topVC as? HomeController{
                 self.delegateHome = vc
-                delegateHome?.homeNotification()
+                
             }else{
                 let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                 let vC = storyboard.instantiateViewController(withIdentifier: "HomeController") as! HomeController
+                self.delegateHome = vC
                 navigationVc = UINavigationController(rootViewController: vC)
                 navigationVc.isNavigationBarHidden = true
                 self.window?.rootViewController = navigationVc
             }
         }
+        
+        delegateHome?.homeNotification(screenID: screenID)
     }
     
     func navigateToMySKY(){

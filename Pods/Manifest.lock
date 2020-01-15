@@ -20,7 +20,7 @@ DEPENDENCIES:
   - OneSignal
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - ActionSheetPicker-3.0
     - Charts
     - Cosmos

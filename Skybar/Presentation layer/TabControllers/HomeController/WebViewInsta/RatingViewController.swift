@@ -54,7 +54,7 @@ class RatingViewController: UIViewController{
     
     // MARK: Methods using in ViewController
     @IBAction func backButton(_ sender: UIButton) {
-    self.navigationController?.popViewController(animated: true)
+    self.dismiss(animated: true, completion: nil)
        
     }
     
@@ -72,7 +72,7 @@ class RatingViewController: UIViewController{
                         code = code.replacingOccurrences(of: "\"", with: "")
                         if(!code.isEmpty){
                             GlobalUI.showMessage(title: "Rating", message: "Rating successfully uploaded.", cntrl: self)
-                            self.navigationController?.popViewController(animated: true)
+                             self.dismiss(animated: true, completion: nil)
                         }else{
                             GlobalUI.showMessage(title: "Error", message: "rating could not be sent", cntrl: self)
                         }
@@ -89,7 +89,7 @@ class RatingViewController: UIViewController{
     }
     
     @IBAction func skipButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+         self.dismiss(animated: true, completion: nil)
     }
     // MARK: Delegates methods for storing a rating values
     private func didFinishAtmosphereTouchingCosmos(_ rating: Double) {

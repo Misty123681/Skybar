@@ -15,7 +15,7 @@ enum ViewSwitch {
 }
 
 class StartPrivilegeView:UIView{
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         let layer = UIView(frame: self.bounds)
@@ -36,7 +36,7 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     var servicerating = 0
     var musicrating = 0
     var overAllrating = 0
-  
+    
     //MARK:- Outlet
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -83,9 +83,9 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     var dragGesture:UIPanGestureRecognizer!
     var guests:[GuestElement]!
     //var frameEvent = CGRect()
-   
+    
     //MARK:- View Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,13 +97,14 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         // Register touch handlers
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         
         cacheEventImages = [NSCache<NSString, UIImage>]()
         getCurrentStatus()
         populateProfileInfo()
         reloadMedia()
-
+        
         takeMeBtn.backgroundColor = .white
         takeMeBtn.layer.borderWidth = 2
         takeMeBtn.layer.borderColor = UIColor(red: 0.22, green: 0.71, blue: 0.31, alpha: 1).cgColor
@@ -122,7 +123,7 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         return UIStatusBarStyle.default
     }
     
-
+    
     /// intialize the code
     fileprivate func intializationCode() {
         NotificationCenter.default.addObserver(self, selector: #selector(NetworkIssue), name: NSNotification.Name(rawValue: "NetworkIssue"), object: nil)
@@ -139,7 +140,7 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         designPrivilegeBtn()
     }
     
-
+    
     
     
     /// If network connection is off hide the loader
@@ -155,13 +156,7 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
     }
     
     @IBAction func myGuestListAction(_ sender: Any) {
-        
-        
-         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let ratingVC = storyboard.instantiateViewController(withIdentifier: "RatingViewController") as! RatingViewController
-        self.navigationController?.pushViewController(ratingVC, animated: true)
-
-        // self.performSegue(withIdentifier: "toGuestList", sender: nil)
+        self.performSegue(withIdentifier: "toGuestList", sender: nil)
     }
     
     
@@ -270,20 +265,20 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         if let headerTwo = skyStatus.headingTwo{
             self.headerTwo.text = headerTwo
         }
-
+        
         self.bill = skyStatus.currentVisitInfo
         
         _ = self.headerTwo.intrinsicContentSize
         if let isFull = skyStatus.isFullCapacity{
             if isFull{
-                    self.headerTwo.textColor = UIColor.black
-                    self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
+                self.headerTwo.textColor = UIColor.black
+                self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
             }else{
                 _ = CIColor(color:UIColor(red: 69.0/255.0, green: 146.0/255.0, blue: 42.0/255.0, alpha: 1))
                 _ = CIColor(color:UIColor(red: 188.0/255.0, green: 228.0/255.0, blue: 130.0/255.0, alpha: 1))
-              
-                    self.headerTwo.textColor =  UIColor.black
-                    self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
+                
+                self.headerTwo.textColor =  UIColor.black
+                self.headerTwo.font=UIFont(name:"SourceSansPro-Bold", size: 24)
             }
         }
         let plz = "Please Use Promo Code "
@@ -301,16 +296,16 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
         
         attrString.append(NSMutableAttributedString(string: destination,
                                                     attributes: [NSAttributedString.Key.font:
-UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregroundColor:UIColor.black,NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]));
-   
+                                                        UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregroundColor:UIColor.black,NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]));
+        
         UsePromoLabel.attributedText = attrString;
-   
+        
         if let isOpen = skyStatus.isOpen{
             
             self.isOpen = isOpen
             if !isOpen{
                 redesignBtn(msg: skyStatus.rideDisabledMsg)
-                    self.headerTwo.textColor =  UIColor.black
+                self.headerTwo.textColor =  UIColor.black
                 instaTitleLbl.text = "We Party Legendary"
                 
                 
@@ -324,10 +319,10 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             
             if isAtSkybar{
                 
-//                if let consumption = skyStatus{
-//                    consumptionLbl.text = "Current consumption: \(consumption.toCurrencyNoPrefix())"
-//                }
-//
+                //                if let consumption = skyStatus{
+                //                    consumptionLbl.text = "Current consumption: \(consumption.toCurrencyNoPrefix())"
+                //                }
+                //
                 takeMeBtn.setTitle("TAKE ME HOME", for: .normal)
             }else{
                 takeMeBtn.setTitle("TAKE ME TO SKY 2.0", for: .normal)
@@ -348,7 +343,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     func populateEvents(events:[Event]){
         eventsContainer.delegate = self
         eventsContainer.subviews.forEach({ $0.removeFromSuperview() })
-    /// show UI for open tab when isAtskybar = true
+        /// show UI for open tab when isAtskybar = true
         if isAtSkybar{
             self.view.layoutIfNeeded()
             let width = eventsContainer.frame.size.width-20
@@ -376,22 +371,22 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             i += 1
             x += (eventView.frame.size.width+20)
             eventView.setInfo(event: event, controller: self,cnt:events.count)
-
+            
             eventsContainer.addSubview(eventView)
             
-//            if event.reservationInfo?.reservationStatusTypeName == "Confirmed"{
-//                frameEvent = eventView.frame
-//            }
+            //            if event.reservationInfo?.reservationStatusTypeName == "Confirmed"{
+            //                frameEvent = eventView.frame
+            //            }
             
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toEvent))
             eventView.addGestureRecognizer(tapGesture)
         }
         
         eventsContainer.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: x)
-          //scrollToPage(0)
-       
+        //scrollToPage(0)
+        
     }
- 
+    
     
     /// pop up user info
     func populateProfileInfo(){
@@ -413,7 +408,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     func getProfileInfo(){
         
         self.view.layoutIfNeeded()
-       GlobalUI.showLoading(self.view)
+        GlobalUI.showLoading(self.view)
         
         ServiceInterface.getUserProfileInfo(handler: { (success, result) in
             GlobalUI.hideLoading()
@@ -439,7 +434,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     
     func getImage(){
         if let profile = ServiceUser.profile{
-                ServiceInterface.getImage(imageName: "\(profile.id).jpg", handler: { (success, result) in
+            ServiceInterface.getImage(imageName: "\(profile.id).jpg", handler: { (success, result) in
                 
                 if success {
                     if let data = result as? Data{
@@ -494,7 +489,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                 }
             }
         }
-    
+        
     }
     
     func getResetvationNumber(){
@@ -529,7 +524,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             }
         }
     }
-   
+    
     // MARK:- scroll view method  called on ref
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if refreshControl.isRefreshing {
@@ -551,7 +546,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                 do{
                     self.skyStatus = try JSONDecoder().decode(SkyStatus.self, from: data)
                     OperationQueue.main.addOperation({
-                      
+                        
                         self.populateHeaders()
                         self.getCurrentEvents()
                         self.endOfWork()
@@ -571,7 +566,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
     
     
     @objc func appMovedToForeground() {
-      self.cacheEventImages = [NSCache<NSString, UIImage>]()
+        self.cacheEventImages = [NSCache<NSString, UIImage>]()
     }
     
     
@@ -579,23 +574,23 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         privilegeBtn.layer.cornerRadius = 8
         privilegeBtn.backgroundColor = UIColor.black
     }
-   
     
-   
+    
+    
     func scrollToPage(_ page: Int) {
         UIView.animate(withDuration: 0.5) {
-           // self.eventsContainer.contentOffset.x = self.frameEvent.width + 20 * CGFloat(page)
+            // self.eventsContainer.contentOffset.x = self.frameEvent.width + 20 * CGFloat(page)
         }
     }
     
-  @objc func toEvent(gesture:UITapGestureRecognizer){
-    if let eventView = gesture.view as? EventView{
-        self.toEventController(event: eventView.event)
+    @objc func toEvent(gesture:UITapGestureRecognizer){
+        if let eventView = gesture.view as? EventView{
+            self.toEventController(event: eventView.event)
         }
     }
     
     func toEventController(event:Event){
-    
+        
         if let reservationstatusID = event.reservationInfo?.reservationStatusID{
             switch reservationstatusID{
             case 1,2,3,4:
@@ -617,7 +612,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             self.performSegue(withIdentifier: "toEvent", sender: event)
         }
         
-
+        
     }
     
     
@@ -632,7 +627,7 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
         var x:CGFloat = 0
         let height = containerView.frame.size.height
         let width = height
-
+        
         for (index,media) in medias.enumerated(){
             let view:InstaPhoto = InstaPhoto.fromNib()
             view.frame = CGRect(x: x, y: 0, width: width, height: height)
@@ -640,16 +635,16 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
             view.tag = index
             containerView.addSubview(view)
             
-             x += width + 5
+            x += width + 5
         }
         
         containerView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: x)
         
     }
-
+    
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEvent"{
             let dest = segue.destination as! EventController
@@ -658,31 +653,31 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
                 dest.editEvent = isedit
             }
         }else
-        if segue.identifier == "fullScreen"{
-            let dest = segue.destination as! FullscreenController
-            if let url = sender as? String{
-                dest.url = url
-            }
-        }else
-            if segue.identifier == "toGuestList"{
-                let dest = segue.destination as! GuestListController
-                dest.guests = self.guests
-                if let eventID = self.skyStatus?.nearestEventDetails?.id{
-                    dest.eventID = eventID
+            if segue.identifier == "fullScreen"{
+                let dest = segue.destination as! FullscreenController
+                if let url = sender as? String{
+                    dest.url = url
                 }
-                
-                if let info = self.skyStatus?.nearestEventDetails{
-                    dest.event = info
-                }
-                
-                if let code = self.skyStatus?.nearestEventDetails?.reservationInfo?.reservationAccessCode{
-                    dest.reservationCode = code
-                }
-                
-            }else if segue.identifier == "toInvoice"{
-                if let status = skyStatus,let cntrl = segue.destination as? InvoiceController{
-                    cntrl.status = status
-                }
+            }else
+                if segue.identifier == "toGuestList"{
+                    let dest = segue.destination as! GuestListController
+                    dest.guests = self.guests
+                    if let eventID = self.skyStatus?.nearestEventDetails?.id{
+                        dest.eventID = eventID
+                    }
+                    
+                    if let info = self.skyStatus?.nearestEventDetails{
+                        dest.event = info
+                    }
+                    
+                    if let code = self.skyStatus?.nearestEventDetails?.reservationInfo?.reservationAccessCode{
+                        dest.reservationCode = code
+                    }
+                    
+                }else if segue.identifier == "toInvoice"{
+                    if let status = skyStatus,let cntrl = segue.destination as? InvoiceController{
+                        cntrl.status = status
+                    }
         }
     }
     
@@ -709,8 +704,18 @@ UIFont.init(name: "SourceSansPro-bold",size:16)!,NSAttributedString.Key.foregrou
 
 // MARK: - notification related notifiaction
 extension HomeController:HomePage{
-    func homeNotification() {
-          refreshEventData()
+    func homeNotification(screenID: String) {
+        if screenID == "RateUsScreen"{
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let ratingVC = storyboard.instantiateViewController(withIdentifier: "RatingViewController") as! RatingViewController
+            ratingVC.modalPresentationStyle = .fullScreen
+            self.present(ratingVC, animated: false, completion: nil)
+            
+        }else{
+            refreshEventData()
+        }
+        
     }
-
+    
 }

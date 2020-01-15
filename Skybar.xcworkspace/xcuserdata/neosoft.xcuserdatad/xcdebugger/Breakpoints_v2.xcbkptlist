@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
+   uuid = "21D40584-D514-40F7-BA84-9FB465489CE1"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "9695B2EE-514E-44C5-87C0-5A0B245A8D05"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -22,6 +24,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "9E657998-FF55-448E-A22E-59DED321698F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -38,6 +41,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "BF2669B7-B169-4F62-91CA-79E14FA96D41"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -54,6 +58,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "59021AAE-D90B-49D6-84DE-395F2621FB58"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -70,6 +75,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "96B94EA4-53ED-4901-9452-201922A95D86"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -86,6 +92,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "471FC001-7F44-4D34-89AF-0447F0D8C83C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -102,6 +109,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "959739ED-7F2E-4F2A-93D0-2225D94E88CA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -118,6 +126,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "4ADC9A37-43BE-4664-A537-65FCFDA7F2EB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -131,34 +140,34 @@
             landmarkType = "7">
             <Locations>
                <Location
+                  uuid = "4ADC9A37-43BE-4664-A537-65FCFDA7F2EB - d0ec052a8521c56e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SKY_2_0.ProfileController.toImageAction(Any) -&gt; ()"
                   moduleName = "SKY 2.0"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Documents/Skybar/skybar/Skybar/Presentation%20layer/ProfileController/ProfileController.swift"
-                  timestampString = "597219402.714196"
+                  urlString = "file:///Users/neosoft/Desktop/blueskyapp-ios/Skybar/Presentation%20layer/ProfileController/ProfileController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "90"
                   endingLineNumber = "90"
-                  offsetFromSymbolStart = "129">
+                  offsetFromSymbolStart = "145">
                </Location>
                <Location
+                  uuid = "4ADC9A37-43BE-4664-A537-65FCFDA7F2EB - c7b1f17c24120ba7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (__C.UIImage) -&gt; () in SKY_2_0.ProfileController.toImageAction(Any) -&gt; ()"
                   moduleName = "SKY 2.0"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Documents/Skybar/skybar/Skybar/Presentation%20layer/ProfileController/ProfileController.swift"
-                  timestampString = "597219402.717833"
+                  urlString = "file:///Users/neosoft/Desktop/blueskyapp-ios/Skybar/Presentation%20layer/ProfileController/ProfileController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
                   endingLineNumber = "91"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "115">
                </Location>
             </Locations>
          </BreakpointContent>

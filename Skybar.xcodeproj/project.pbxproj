@@ -1095,9 +1095,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_ENTITLEMENTS = Skybar/Skybar.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ravindra SK (GVQ38FJQS9)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RKMQKMSBB7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1140,9 +1140,9 @@
 					"-framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.csp.skybar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fws.push;
 				PRODUCT_NAME = "SKY 2.0";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = devpushflatword;
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1157,9 +1157,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_ENTITLEMENTS = Skybar/Skybar.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ravindra SK (GVQ38FJQS9)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RKMQKMSBB7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1202,9 +1202,9 @@
 					"-framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.csp.skybar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fws.push;
 				PRODUCT_NAME = "SKY 2.0";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = devpushflatword;
 				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
