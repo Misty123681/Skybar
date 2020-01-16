@@ -5308,6 +5308,7 @@ Activated</string>
                         <outlet property="rateexpLbl" destination="9f8-3A-Jm9" id="To8-xl-kx9"/>
                         <outlet property="serviceCosmos" destination="DBo-dk-mVB" id="prO-Dm-FYr"/>
                         <outlet property="serviceLbl" destination="qEg-gj-eUd" id="YDR-7f-blW"/>
+                        <outlet property="submitButton" destination="Ohp-7m-S3M" id="xVe-Zs-9aR"/>
                         <outlet property="tellUsLbl" destination="nRL-0J-WS9" id="JtP-YP-afN"/>
                     </connections>
                 </viewController>

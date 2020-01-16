@@ -17,7 +17,7 @@ protocol GuestPage:class{
 }
 
 protocol HomePage:class{
-    func homeNotification(screenID:String)
+    func homeNotification(screenID:String,info:RateUsInfo?)
 }
 
 @UIApplicationMain
@@ -47,14 +47,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     fileprivate func oneSignalCallbackHandler(_ launchOptions: [UIApplication.LaunchOptionsKey : Any]?, _ onesignalInitSettings: [String : Bool]){
         
         let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
+            
+            var screenId = ""
+            var eventId = ""
+            
             if let payload = notification?.payload{
+                
                 if payload.additionalData != nil {
+                    
                     if let screenTempID = payload.additionalData["ScreenId"] {
-                        let screenID = "\(screenTempID)".removeWhiteSpace()
-                        if "\(screenID)" == "RateUsScreen"{
-                           self.navigateToHome(screenID: "RateUsScreen")
+                        
+                        screenId = "\(screenTempID)".removeWhiteSpace()
+                        
+                        if "\(screenId)" == "RateUsScreen"{
+                            if let eventTempID = payload.additionalData["EventId"] {
+                                eventId = "\(eventTempID)".removeWhiteSpace()
+                            }
+                            let rateInfo = RateUsInfo(screenId: screenId, EventID: eventId)
+                            
+                            self.navigateToHome(screenID: "RateUsScreen", info: rateInfo)
                         }
+                        
                     }
+                    
+                    
                 }
             }
         }
@@ -63,19 +79,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
             // This block gets called when the user reacts to a notification received
             let payload: OSNotificationPayload = result!.notification.payload
             
-
+            
             var screenId = ""
+            var eventId = ""
             if payload.additionalData != nil {
                 if let screenTempID = payload.additionalData["ScreenId"] {
                     screenId = "\(screenTempID)".removeWhiteSpace()
+                }
+                if let eventTempID = payload.additionalData["EventId"] {
+                    eventId = "\(eventTempID)".removeWhiteSpace()
                 }
             }
             print(payload.additionalData)
             switch screenId {
             case "HomeScreen":
-                self.navigateToHome(screenID: "HomeScreen")
+                self.navigateToHome(screenID: "HomeScreen", info: nil)
             case "RateUsScreen":
-                self.navigateToHome(screenID: "RateUsScreen")
+                let rateInfo = RateUsInfo(screenId: screenId, EventID: eventId)
+                self.navigateToHome(screenID: "RateUsScreen", info:rateInfo )
             case "MySkyScreen":
                 self.navigateToMySKY()
             case "GuestListScreen":
@@ -137,7 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
     }
     
     
-    func navigateToHome(screenID:String){
+    func navigateToHome(screenID:String,info:RateUsInfo?){
         
         if let topVC = UIApplication.getTopViewController() {
             if let vc  = topVC as? HomeController{
@@ -153,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
             }
         }
         
-        delegateHome?.homeNotification(screenID: screenID)
+        delegateHome?.homeNotification(screenID: screenID, info: info)
     }
     
     func navigateToMySKY(){

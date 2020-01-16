@@ -9,16 +9,29 @@
 import UIKit
 import Cosmos
 
+struct RateUsInfo{
+    let screebID:String
+    let EventId:String
+    init(screenId:String,EventID:String) {
+        screebID = screenId
+        EventId = EventID
+        
+    }
+    
+}
 
 class RatingViewController: UIViewController{
     var atmosphereRating = 0
     var serviceRating = 0
     var musicRating = 0
     var overAllRating = 0
+    var rateInfo : RateUsInfo?
+    
     // MARK: outlets for VC
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var boomBoxLbl: UILabel!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var rateexpLbl: UILabel!
     @IBOutlet weak var tellUsLbl: UILabel!
     @IBOutlet weak var atmosphereLbl: UILabel!
@@ -29,6 +42,7 @@ class RatingViewController: UIViewController{
     @IBOutlet weak var serviceCosmos: CosmosView!
     @IBOutlet weak var musicCosmos: CosmosView!
     @IBOutlet weak var overAllCosmos: CosmosView!
+    
     // MARK: Calling delegate methods to return rating values
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +57,15 @@ class RatingViewController: UIViewController{
         
     }
     override func viewDidAppear(_ animated: Bool) {
+        guard let info = rateInfo else{
+            return
+        }
+        
+        if info.EventId == info.screebID{
+            submitButton.isEnabled = false
+        }else{
+            submitButton.isEnabled = true
+        }
         
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,15 +77,16 @@ class RatingViewController: UIViewController{
     
     // MARK: Methods using in ViewController
     @IBAction func backButton(_ sender: UIButton) {
-    self.dismiss(animated: true, completion: nil)
-       
+        self.dismiss(animated: true, completion: nil)
+        
     }
     
-     // MARK: submit action  API Integration
+    // MARK: submit action  API Integration
     @IBAction func submitButton(_ sender: UIButton) {
         
         print("=\(atmosphereRating)==\(serviceRating)===\(musicRating)====\(overAllRating)")
-
+        
+        
         GlobalUI.showLoading(self.view)
         ServiceInterface.submitUserRating( eventId: "DC204FFD-3132-44D6-B4AB-1897470353CC", musicRatingValue: String(musicRating), serviceRatingValue: String(serviceRating), atmosphereRatingValue: String(atmosphereRating), overallRatingValue: String(overAllRating), handler: { (success, result) in
             GlobalUI.hideLoading()
@@ -72,7 +96,7 @@ class RatingViewController: UIViewController{
                         code = code.replacingOccurrences(of: "\"", with: "")
                         if(!code.isEmpty){
                             GlobalUI.showMessage(title: "Rating", message: "Rating successfully uploaded.", cntrl: self)
-                             self.dismiss(animated: true, completion: nil)
+                            self.dismiss(animated: true, completion: nil)
                         }else{
                             GlobalUI.showMessage(title: "Error", message: "rating could not be sent", cntrl: self)
                         }
@@ -84,12 +108,12 @@ class RatingViewController: UIViewController{
                 }
             }
         })
-       
+        
         
     }
     
     @IBAction func skipButton(_ sender: UIButton) {
-         self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     // MARK: Delegates methods for storing a rating values
     private func didFinishAtmosphereTouchingCosmos(_ rating: Double) {
@@ -114,6 +138,6 @@ class RatingViewController: UIViewController{
 
 
 
-    
+
 
 

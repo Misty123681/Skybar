@@ -704,11 +704,15 @@ class HomeController: ParentController,InstaDelegate,UIScrollViewDelegate {
 
 // MARK: - notification related notifiaction
 extension HomeController:HomePage{
-    func homeNotification(screenID: String) {
+   
+    
+    func homeNotification(screenID: String,info: RateUsInfo?) {
         if screenID == "RateUsScreen"{
             
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let ratingVC = storyboard.instantiateViewController(withIdentifier: "RatingViewController") as! RatingViewController
+            ratingVC.rateInfo = info
+            
             ratingVC.modalPresentationStyle = .fullScreen
             self.present(ratingVC, animated: false, completion: nil)
             
