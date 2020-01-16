@@ -49,7 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
         let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
             if let payload = notification?.payload{
                 if payload.additionalData != nil {
-                    if let screenID = payload.additionalData["ScreenId"] {
+                    if let screenTempID = payload.additionalData["ScreenId"] {
+                        let screenID = "\(screenTempID)".removeWhiteSpace()
                         if "\(screenID)" == "RateUsScreen"{
                            self.navigateToHome(screenID: "RateUsScreen")
                         }
@@ -62,15 +63,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,OSSubscriptionObserver {
             // This block gets called when the user reacts to a notification received
             let payload: OSNotificationPayload = result!.notification.payload
             
-            //let _: NSDictionary = payload.additionalData as NSDictionary
-            
+
             var screenId = ""
             if payload.additionalData != nil {
-                if let screenID = payload.additionalData["ScreenId"] {
-                    screenId =  "\(screenID)"
+                if let screenTempID = payload.additionalData["ScreenId"] {
+                    screenId = "\(screenTempID)".removeWhiteSpace()
                 }
             }
-            
+            print(payload.additionalData)
             switch screenId {
             case "HomeScreen":
                 self.navigateToHome(screenID: "HomeScreen")

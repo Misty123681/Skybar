@@ -140,34 +140,34 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "4ADC9A37-43BE-4664-A537-65FCFDA7F2EB - d0ec052a8521c56e"
+                  uuid = "4ADC9A37-43BE-4664-A537-65FCFDA7F2EB - b5c70a7174ff1a75"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "SKY_2_0.ProfileController.toImageAction(Any) -&gt; ()"
                   moduleName = "SKY 2.0"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/blueskyapp-ios/Skybar/Presentation%20layer/ProfileController/ProfileController.swift"
+                  urlString = "file:///Users/neosoft/Desktop/Flatworlds/blueskyapp-ios/Skybar/Presentation%20layer/ProfileController/ProfileController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "90"
                   endingLineNumber = "90"
-                  offsetFromSymbolStart = "145">
+                  offsetFromSymbolStart = "176">
                </Location>
                <Location
-                  uuid = "4ADC9A37-43BE-4664-A537-65FCFDA7F2EB - c7b1f17c24120ba7"
+                  uuid = "4ADC9A37-43BE-4664-A537-65FCFDA7F2EB - a29afe27d5ccd4bc"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (__C.UIImage) -&gt; () in SKY_2_0.ProfileController.toImageAction(Any) -&gt; ()"
                   moduleName = "SKY 2.0"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/neosoft/Desktop/blueskyapp-ios/Skybar/Presentation%20layer/ProfileController/ProfileController.swift"
+                  urlString = "file:///Users/neosoft/Desktop/Flatworlds/blueskyapp-ios/Skybar/Presentation%20layer/ProfileController/ProfileController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
                   endingLineNumber = "91"
-                  offsetFromSymbolStart = "115">
+                  offsetFromSymbolStart = "140">
                </Location>
             </Locations>
          </BreakpointContent>

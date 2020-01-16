@@ -37,6 +37,11 @@ extension String {
         let lowerCasedString = self.lowercased()
         return lowerCasedString.replacingCharacters(in: lowerCasedString.startIndex...lowerCasedString.startIndex, with: String(lowerCasedString[lowerCasedString.startIndex]).uppercased())
     }
+    
+    func removeWhiteSpace()->String{
+        return self.trimmingCharacters(in: .whitespaces) 
+
+    }
 }
 
 extension UIButton{
