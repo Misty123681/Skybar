@@ -50,6 +50,7 @@ class RatingViewController: UIViewController{
         serviceCosmos.didFinishTouchingCosmos = didFinishServiceTouchingCosmos
         musicCosmos.didFinishTouchingCosmos = didFinishMusicTouchingCosmos
         overAllCosmos.didFinishTouchingCosmos = didFinishOverAllTouchingCosmos
+         
     }
     
     // MARK: VC life cycle methods
@@ -61,10 +62,14 @@ class RatingViewController: UIViewController{
             return
         }
         
-        if info.EventId == info.screebID{
+        if info.EventId == info.screebID || info.EventId == ""{
             submitButton.isEnabled = false
+            submitButton.setTitleColor(.gray, for: .normal)
+            
         }else{
             submitButton.isEnabled = true
+           
+            
         }
         
     }
